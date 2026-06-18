@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIES | Speaking — News & Global Issues</title>
+<style>
+:root {
+  --primary: #1a3c6e;
+  --secondary: #2e7bcf;
+  --accent: #f0a500;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --purple: #8e44ad;
+  --teal: #16a085;
+  --orange: #e67e22;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --border: #d0dce8;
+  --text: #222;
+  --muted: #6b7c93;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; }
+
+/* ── Header ── */
+.site-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff; padding: 24px 32px 18px; display: flex; align-items: center; gap: 16px;
+}
+.site-header .logo { font-size: 2.4rem; }
+.site-header h1 { font-size: 1.45rem; font-weight: 700; margin-bottom: 3px; }
+.site-header p { font-size: .85rem; opacity: .82; }
+.instruction-bar {
+  background: #fff8e1; border-bottom: 2px solid var(--accent);
+  padding: 12px 32px; font-size: .88rem; color: #7a5500;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.instruction-bar span { font-size: 1.1rem; }
+
+/* ── Tabs ── */
+.tab-nav {
+  background: var(--card); border-bottom: 2px solid var(--border);
+  display: flex; overflow-x: auto; padding: 0 16px;
+  position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+.tab-btn {
+  padding: 13px 16px; cursor: pointer; border: none; background: none;
+  font-size: .88rem; font-weight: 600; color: var(--muted); white-space: nowrap;
+  border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s;
+}
+.tab-btn:hover { color: var(--secondary); }
+.tab-btn.active { color: var(--secondary); border-bottom-color: var(--secondary); }
+
+/* ── Content ── */
+.tab-panel { display: none; padding: 24px 28px; max-width: 1000px; margin: 0 auto; }
+.tab-panel.active { display: block; }
+
+/* ── Topic intro ── */
+.topic-intro {
+  background: linear-gradient(135deg, var(--primary) 0%, #2557a7 100%);
+  color: #fff; border-radius: 14px; padding: 20px 24px; margin-bottom: 22px;
+  display: flex; align-items: center; gap: 16px;
+}
+.topic-intro .topic-icon { font-size: 2.5rem; }
+.topic-intro h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
+.topic-intro p { font-size: .85rem; opacity: .88; }
+
+/* ── Cards ── */
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(26,60,110,.06);
+}
+.card-title {
+  font-size: 1rem; font-weight: 700; color: var(--primary);
+  margin-bottom: 14px; display: flex; gap: 8px; align-items: center;
+  padding-bottom: 10px; border-bottom: 2px solid var(--border);
+}
+.card-title .badge {
+  font-size: .72rem; background: var(--secondary); color: #fff;
+  border-radius: 99px; padding: 2px 10px; font-weight: 600;
+}
+
+/* ── Memory hack ── */
+.memory-hack {
+  background: #fef9e7; border: 2px solid var(--accent);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 16px;
+  font-size: .88rem;
+}
+.memory-hack strong { color: #d4820a; }
+
+/* ── Vocab items ── */
+.vocab-list { display: flex; flex-direction: column; gap: 8px; }
+.vocab-item {
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+}
+.vocab-item .term {
+  background: #eef5ff; padding: 9px 14px;
+  font-weight: 700; color: var(--primary); font-size: .92rem;
+  display: flex; align-items: center;
+}
+.vocab-item .def {
+  background: #fff; padding: 9px 14px;
+  font-size: .88rem; color: #333; display: flex; align-items: center;
+}
+.vocab-item .eg { color: var(--muted); font-style: italic; font-size: .82rem; margin-left: 6px; }
+
+/* ── Chunk chips ── */
+.chunk-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.chunk {
+  background: var(--secondary); color: #fff;
+  border-radius: 8px; padding: 6px 14px; font-size: .85rem; font-weight: 600;
+}
+.chunk.green { background: var(--green); }
+.chunk.orange { background: var(--orange); }
+.chunk.purple { background: var(--purple); }
+.chunk.teal { background: var(--teal); }
+.chunk.red { background: var(--red); }
+
+/* ── Matrix table ── */
+.matrix-table {
+  width: 100%; border-collapse: collapse; font-size: .87rem; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+.matrix-table thead tr { background: var(--primary); color: #fff; }
+.matrix-table th { padding: 11px 16px; text-align: left; font-weight: 700; }
+.matrix-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+.matrix-table tbody tr:nth-child(even) { background: #f4f8ff; }
+.matrix-table tbody tr:hover { background: #e8f0ff; }
+.matrix-table td:first-child { font-weight: 700; color: var(--primary); }
+.matrix-table td:nth-child(2) { color: var(--red); font-weight: 600; }
+.matrix-table td:nth-child(3) { color: var(--teal); }
+
+/* ── Timeline ── */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--secondary), var(--accent));
+}
+.tl-step {
+  position: relative; margin-bottom: 14px; background: #fff;
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px;
+  font-size: .88rem;
+}
+.tl-step::before {
+  content: attr(data-num);
+  position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
+  width: 20px; height: 20px; background: var(--secondary); color: #fff;
+  border-radius: 50%; font-size: .72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.tl-step strong { color: var(--primary); }
+.tl-step em { color: var(--muted); font-size: .82rem; }
+
+/* ── Word family row ── */
+.wf-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.wf-cell { background: #f0f6ff; border-radius: 8px; padding: 10px 14px; font-size: .87rem; }
+.wf-cell .label { font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 4px; }
+.wf-cell .word { font-weight: 700; color: var(--primary); font-size: .98rem; }
+.wf-cell .arrow { color: var(--accent); font-weight: 700; margin: 0 4px; }
+
+/* ── Section divider ── */
+.section-label {
+  font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--secondary); margin: 18px 0 10px; padding-left: 4px;
+  border-left: 3px solid var(--secondary); padding-left: 10px;
+}
+
+/* ── Practice section ── */
+.practice-card {
+  background: linear-gradient(135deg, #1a3c6e 0%, #2e7bcf 100%);
+  border-radius: 14px; padding: 22px 26px; margin-top: 10px; color: #fff;
+}
+.practice-card h3 { font-size: 1rem; margin-bottom: 16px; display: flex; gap: 8px; align-items: center; }
+.question { margin-bottom: 16px; }
+.question p { font-weight: 600; margin-bottom: 8px; font-size: .92rem; }
+.q-num { color: var(--accent); margin-right: 4px; }
+.option-group { display: flex; flex-direction: column; gap: 6px; }
+.option-group label {
+  display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.25); border-radius: 8px; cursor: pointer;
+  background: rgba(255,255,255,.08); font-size: .88rem; transition: background .15s;
+}
+.option-group label:hover { background: rgba(255,255,255,.18); }
+.option-group input[type=radio] { accent-color: var(--accent); }
+.fill-input {
+  border: 1.5px solid rgba(255,255,255,.3); border-radius: 8px; padding: 7px 12px;
+  font-size: .92rem; width: 240px; background: rgba(255,255,255,.12); color: #fff;
+  outline: none;
+}
+.fill-input::placeholder { color: rgba(255,255,255,.5); }
+.fill-input:focus { border-color: var(--accent); }
+.feedback { font-size: .85rem; padding: 5px 10px; border-radius: 6px; margin-top: 5px; display: none; }
+.feedback.correct { background: rgba(39,174,96,.25); color: #90eea8; display: block; border: 1px solid rgba(39,174,96,.4); }
+.feedback.wrong { background: rgba(231,76,60,.25); color: #ffaaaa; display: block; border: 1px solid rgba(231,76,60,.4); }
+.option-group label.correct-ans { background: rgba(39,174,96,.25) !important; border-color: rgba(39,174,96,.6) !important; }
+.option-group label.wrong-ans { background: rgba(231,76,60,.25) !important; border-color: rgba(231,76,60,.6) !important; }
+.btn-check {
+  background: var(--accent); color: #fff; border: none; padding: 9px 22px;
+  border-radius: 8px; font-size: .9rem; font-weight: 700; cursor: pointer; margin-top: 8px;
+}
+.btn-check:hover { background: #d08a00; }
+.score-badge {
+  display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.15);
+  border-radius: 99px; padding: 5px 14px; font-size: .88rem; margin-top: 10px; display: none;
+}
+.speaking-task {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px; padding: 14px 18px; margin-top: 8px; font-size: .88rem; line-height: 1.7;
+}
+.speaking-task ol { padding-left: 18px; }
+.speaking-task li { margin-bottom: 6px; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+@media (max-width: 640px) {
+  .tab-panel { padding: 16px; }
+  .vocab-item { grid-template-columns: 1fr; }
+  .wf-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ TOP BAR ════ -->
+<div style="background:#0f2547; color:rgba(255,255,255,.55); text-align:center; font-size:.75rem; letter-spacing:.12em; padding:5px 0; font-family:'Segoe UI',Arial,sans-serif;">
+  HUONG STELLA PARADIGM
+</div>
+
+<!-- ════ HEADER ════ -->
+<div class="site-header">
+  <div class="logo">📰</div>
+  <div>
+    <h1>ARIES | Speaking — News &amp; Global Issues</h1>
+    <p>Master vocabulary in chunks &amp; collocations — 5 essential IELTS topics</p>
+  </div>
+</div>
+
+<div class="instruction-bar">
+  <span>💡</span>
+  <div><strong>How to use this guide:</strong> Don't memorize single words — learn them as <strong>chunks</strong> (words that go together naturally). Work through each topic, then test yourself with the practice exercises.</div>
+</div>
+
+<!-- ════ TAB NAV ════ -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('media')">📰 Media &amp; Fame</button>
+  <button class="tab-btn" onclick="showTab('disaster')">🌪️ Natural Disasters</button>
+  <button class="tab-btn" onclick="showTab('crime')">⚖️ Crime &amp; Justice</button>
+  <button class="tab-btn" onclick="showTab('politics')">🗳️ Politics &amp; War</button>
+  <button class="tab-btn" onclick="showTab('health')">🏥 Health &amp; Society</button>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOPIC 1 — MEDIA & FAME
+══════════════════════════════════════ -->
+<div id="tab-media" class="tab-panel active">
+
+  <div class="topic-intro">
+    <div class="topic-icon">📰</div>
+    <div>
+      <h2>Topic 1: Media, Fame &amp; Bias</h2>
+      <p>Use these words to discuss <em>how news is reported</em>, the <em>celebrity world</em>, and <em>media fairness</em>.</p>
+    </div>
+  </div>
+
+  <!-- 1A: Journalism world -->
+  <div class="card">
+    <div class="card-title">📌 Part A — The World of Journalism <span class="badge">Core Vocabulary</span></div>
+    <div class="vocab-list">
+      <div class="vocab-item"><div class="term">The press / journalism</div><div class="def">The profession of collecting, writing and reporting news</div></div>
+      <div class="vocab-item"><div class="term">A daily paper</div><div class="def">A newspaper published every day except Sunday</div></div>
+      <div class="vocab-item"><div class="term">Current affairs</div><div class="def">Important political or social events happening right now</div></div>
+      <div class="vocab-item"><div class="term">Publish an article</div><div class="def">To prepare and release a news story in print or online</div></div>
+      <div class="vocab-item"><div class="term">A rolling news edition</div><div class="def">A continuous, constantly-updated online or TV news stream</div></div>
+      <div class="vocab-item"><div class="term">Breaking news</div><div class="def">An important story that has just happened <span class="eg">— e.g. "Breaking news: earthquake hits the capital"</span></div></div>
+    </div>
+  </div>
+
+  <!-- 1B: Headlines -->
+  <div class="card">
+    <div class="card-title">📌 Part B — Decoding Dramatic Headlines <span class="badge">Headline Language</span></div>
+    <div class="memory-hack">🧠 <strong>Memory Hack — "Same Form" Rule:</strong> Many headline words work as <em>both a verb AND a noun</em>. Learn both uses at once!</div>
+    <div class="vocab-list">
+      <div class="vocab-item">
+        <div class="term">Clash</div>
+        <div class="def">To fight or disagree seriously (V) / A serious conflict (N)<span class="eg"> — "Police clash with protesters" / "a violent clash"</span></div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Axe</div>
+        <div class="def">To cut a large number of jobs (V)<span class="eg"> — "200 workers axed by factory"</span></div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Pledge / Promise</div>
+        <div class="def">To make a formal public promise (V) / The promise itself (N)<span class="eg"> — "Government pledges aid to victims"</span></div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Claim</div>
+        <div class="def">To state something is true, without proof (V) / The statement (N)<span class="eg"> — "He claims it is true" / "He made a claim"</span></div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Aid</div>
+        <div class="def">Money, food, or help sent to people in need (N/V)<span class="eg"> — "Government pledges aid to flood victims"</span></div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Scare</div>
+        <div class="def">A situation causing public fear or worry (N)<span class="eg"> — "a health scare / a bomb scare"</span></div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Demonstrate / Protest</div>
+        <div class="def">To show public disagreement (V) / A public march (N)<span class="eg"> — "Thousands protest in the streets"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1C: Fame -->
+  <div class="card">
+    <div class="card-title">📌 Part C — Fame &amp; The Public Eye <span class="badge">Speaking Chunks</span></div>
+    <p style="font-size:.85rem; color:var(--muted); margin-bottom:12px">Use these <strong>ready-made phrases</strong> directly in your IELTS Speaking answers.</p>
+    <div class="chunk-grid">
+      <div class="chunk green">shoot to fame</div>
+      <div class="chunk green">become famous overnight</div>
+      <div class="chunk orange">be in the public eye</div>
+      <div class="chunk orange">make the headlines</div>
+      <div class="chunk purple">the tabloid press</div>
+      <div class="chunk purple">gossip columns</div>
+      <div class="chunk teal">a worldwide phenomenon</div>
+      <div class="chunk teal">paparazzi</div>
+    </div>
+    <div class="vocab-list" style="margin-top:14px">
+      <div class="vocab-item"><div class="term">Shoot to fame</div><div class="def">To become famous very suddenly and quickly</div></div>
+      <div class="vocab-item"><div class="term">In the public eye</div><div class="def">Constantly watched and written about by the media</div></div>
+      <div class="vocab-item"><div class="term">The tabloid press</div><div class="def">Newspapers that focus on celebrity gossip and scandal</div></div>
+      <div class="vocab-item"><div class="term">A worldwide phenomenon</div><div class="def">Something or someone famous in every part of the world</div></div>
+      <div class="vocab-item"><div class="term">Paparazzi</div><div class="def">Photographers who follow celebrities to take photos to sell</div></div>
+    </div>
+  </div>
+
+  <!-- 1D: Bias -->
+  <div class="card">
+    <div class="card-title">📌 Part D — Media Bias: Opposites to Know <span class="badge">Describing Journalists</span></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+      <div style="background:#ffeaea; border-radius:10px; padding:14px 16px;">
+        <div style="font-size:.74rem; font-weight:700; text-transform:uppercase; color:#c0392b; margin-bottom:8px; letter-spacing:.06em">❌ Unfair</div>
+        <div style="font-weight:700; color:#c0392b; font-size:.98rem;">Biased / Prejudiced / Subjective</div>
+        <div style="font-size:.84rem; margin-top:6px; color:#555;">Unfairly supporting only one side; not fair to all views</div>
+        <div style="font-size:.82rem; font-style:italic; color:var(--muted); margin-top:5px;">"The report was clearly biased against the government."</div>
+      </div>
+      <div style="background:#e8f8ee; border-radius:10px; padding:14px 16px;">
+        <div style="font-size:.74rem; font-weight:700; text-transform:uppercase; color:#27ae60; margin-bottom:8px; letter-spacing:.06em">✅ Fair</div>
+        <div style="font-weight:700; color:#27ae60; font-size:.98rem;">Impartial / Objective</div>
+        <div style="font-size:.84rem; margin-top:6px; color:#555;">Fair and balanced; presenting all sides without taking a side</div>
+        <div style="font-size:.82rem; font-style:italic; color:var(--muted); margin-top:5px;">"Good journalists try to remain impartial at all times."</div>
+      </div>
+    </div>
+    <div class="vocab-list">
+      <div class="vocab-item"><div class="term">Sensational</div><div class="def">Making stories seem more shocking than they are to attract readers</div></div>
+      <div class="vocab-item"><div class="term">Influential</div><div class="def">Having a powerful effect on people's opinions and decisions</div></div>
+    </div>
+  </div>
+
+  <!-- PRACTICE 1 -->
+  <div class="practice-card">
+    <h3>✏️ Practice Exercises — Media &amp; Fame</h3>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060;">Exercise 1 — Choose the correct word (Q1–5)</div>
+
+    <div class="question">
+      <p><span class="q-num">Q1.</span> "The ___ reported that the CEO had resigned." (= professional news industry)</p>
+      <div class="option-group">
+        <label><input type="radio" name="mq1" value="A"> paparazzi</label>
+        <label><input type="radio" name="mq1" value="B"> press</label>
+        <label><input type="radio" name="mq1" value="C"> tabloid</label>
+      </div>
+      <div class="feedback" id="mq1-fb"></div>
+    </div>
+
+    <div class="question">
+      <p><span class="q-num">Q2.</span> "The company ___ 300 jobs last month." (= cut them)</p>
+      <div class="option-group">
+        <label><input type="radio" name="mq2" value="A"> clashed</label>
+        <label><input type="radio" name="mq2" value="B"> pledged</label>
+        <label><input type="radio" name="mq2" value="C"> axed</label>
+      </div>
+      <div class="feedback" id="mq2-fb"></div>
+    </div>
+
+    <div class="question">
+      <p><span class="q-num">Q3.</span> A journalist who presents all sides fairly is described as ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="mq3" value="A"> sensational</label>
+        <label><input type="radio" name="mq3" value="B"> biased</label>
+        <label><input type="radio" name="mq3" value="C"> impartial</label>
+      </div>
+      <div class="feedback" id="mq3-fb"></div>
+    </div>
+
+    <div class="question">
+      <p><span class="q-num">Q4.</span> She ___ to fame after her video went viral overnight.</p>
+      <div class="option-group">
+        <label><input type="radio" name="mq4" value="A"> shot</label>
+        <label><input type="radio" name="mq4" value="B"> claimed</label>
+        <label><input type="radio" name="mq4" value="C"> published</label>
+      </div>
+      <div class="feedback" id="mq4-fb"></div>
+    </div>
+
+    <div class="question">
+      <p><span class="q-num">Q5.</span> ___ events = important political events happening now</p>
+      <div class="option-group">
+        <label><input type="radio" name="mq5" value="A"> Breaking</label>
+        <label><input type="radio" name="mq5" value="B"> Current</label>
+        <label><input type="radio" name="mq5" value="C"> Rolling</label>
+      </div>
+      <div class="feedback" id="mq5-fb"></div>
+    </div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:16px;">Exercise 2 — Fill in the blank (Q6–8)</div>
+
+    <div class="question">
+      <p><span class="q-num">Q6.</span> "The government ___ aid to the earthquake victims." (formal promise)</p>
+      <input type="text" class="fill-input" id="mq6" placeholder="one word">
+      <div class="feedback" id="mq6-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q7.</span> Gossip photographers who follow celebrities are called ___.</p>
+      <input type="text" class="fill-input" id="mq7" placeholder="one word">
+      <div class="feedback" id="mq7-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q8.</span> "There was a health ___ after the water was contaminated." (= public fear)</p>
+      <input type="text" class="fill-input" id="mq8" placeholder="one word">
+      <div class="feedback" id="mq8-fb"></div>
+    </div>
+
+    <button class="btn-check" onclick="checkMedia()">✔ Check Answers</button>
+    <div class="score-badge" id="media-score"></div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:20px;">🗣️ Speaking Task</div>
+    <div class="speaking-task">
+      <p style="margin-bottom:8px"><strong>Use these 4 phrases in one short news broadcast (30–60 seconds):</strong></p>
+      <p style="font-style:italic; opacity:.85; margin-bottom:10px">📻 Imagine you are a TV presenter reading this evening's headlines.</p>
+      <ol>
+        <li><strong>current affairs</strong></li>
+        <li><strong>pledged aid</strong></li>
+        <li><strong>clashed with</strong></li>
+        <li><strong>impartial</strong></li>
+      </ol>
+      <p style="margin-top:10px; opacity:.8; font-size:.83rem;">💡 Model opener: <em>"Good evening. In tonight's current affairs…"</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOPIC 2 — NATURAL DISASTERS
+══════════════════════════════════════ -->
+<div id="tab-disaster" class="tab-panel">
+
+  <div class="topic-intro">
+    <div class="topic-icon">🌪️</div>
+    <div>
+      <h2>Topic 2: Natural Disasters</h2>
+      <p>Describe dramatic events step-by-step: <em>The Event → The Damage → The Response</em></p>
+    </div>
+  </div>
+
+  <!-- 2A: Disasters -->
+  <div class="card">
+    <div class="card-title">📌 Part A — The Disasters (Types) <span class="badge">Nouns</span></div>
+    <div class="vocab-list">
+      <div class="vocab-item"><div class="term">Earthquake</div><div class="def">A sudden violent movement of the Earth's crust</div></div>
+      <div class="vocab-item"><div class="term">Hurricane / Typhoon</div><div class="def">A violent tropical storm with extremely strong circular winds</div></div>
+      <div class="vocab-item"><div class="term">Volcanic eruption</div><div class="def">When a volcano explodes and throws out hot lava and ash</div></div>
+      <div class="vocab-item"><div class="term">Drought</div><div class="def">A long period without rain causing crops and water supplies to fail</div></div>
+      <div class="vocab-item"><div class="term">Tidal wave / Tsunami</div><div class="def">A massive ocean wave caused by underwater earthquakes</div></div>
+      <div class="vocab-item"><div class="term">Flood</div><div class="def">A large amount of water covering land that is normally dry</div></div>
+    </div>
+  </div>
+
+  <!-- 2B: Word families -->
+  <div class="card">
+    <div class="card-title">📌 Part B — Word Families: Verb → Noun <span class="badge">Word Building</span></div>
+    <div class="memory-hack">🧠 <strong>Memory Hack:</strong> Learning the verb AND noun together doubles your vocabulary instantly!</div>
+    <div class="wf-grid">
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Strike / Hit</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">— <span style="color:var(--muted); font-weight:400; font-size:.85rem;">(same word used in both)</span></div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.85rem; color:#555;">"The earthquake struck at dawn."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Erupt</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Eruption</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.85rem; color:#555;">"The eruption destroyed three villages."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Destroy</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Destruction</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.85rem; color:#555;">"The scale of destruction was shocking."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Damage</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Damage</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.85rem; color:#555;">"The storm caused enormous damage."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Collapse</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Collapse</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.85rem; color:#555;">"The building collapsed in seconds."</div></div>
+    </div>
+  </div>
+
+  <!-- 2C: Timeline -->
+  <div class="card">
+    <div class="card-title">📌 Part C — The Disaster Timeline: Event → Damage → Response</div>
+    <div class="section-label">🔴 Phase 1: The Event</div>
+    <div class="timeline">
+      <div class="tl-step" data-num="1"><strong>struck / hit</strong> — The earthquake <strong>struck</strong> the coastal city. <em>(= sudden impact)</em></div>
+      <div class="tl-step" data-num="2"><strong>exploded / went off</strong> — A volcano <strong>erupted</strong> without warning. <em>(= sudden release of energy)</em></div>
+    </div>
+    <div class="section-label">🟠 Phase 2: The Damage</div>
+    <div class="timeline">
+      <div class="tl-step" data-num="3"><strong>collapsed</strong> — Buildings <strong>collapsed</strong> to the ground. <em>(= fell completely)</em></div>
+      <div class="tl-step" data-num="4"><strong>were trapped</strong> — Many people <strong>were trapped</strong> under the rubble. <em>(= stuck, unable to escape)</em></div>
+      <div class="tl-step" data-num="5"><strong>rising death toll</strong> — There was a <strong>rising death toll</strong> of over 500. <em>(= increasing number of deaths)</em></div>
+      <div class="tl-step" data-num="6"><strong>starve to death</strong> — Villagers could <strong>starve to death</strong> without food supplies. <em>(= die from hunger)</em></div>
+    </div>
+    <div class="section-label">🟢 Phase 3: The Response</div>
+    <div class="timeline">
+      <div class="tl-step" data-num="7"><strong>evacuate</strong> — Emergency teams <strong>evacuated</strong> 10,000 residents. <em>(= moved people to safety)</em></div>
+      <div class="tl-step" data-num="8"><strong>rescue</strong> — Firefighters <strong>rescued</strong> survivors from the rubble. <em>(= saved people)</em></div>
+      <div class="tl-step" data-num="9"><strong>maintain supplies</strong> — Aid workers <strong>maintained supplies</strong> of clean water. <em>(= kept providing essentials)</em></div>
+    </div>
+  </div>
+
+  <!-- PRACTICE 2 -->
+  <div class="practice-card">
+    <h3>✏️ Practice Exercises — Natural Disasters</h3>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060;">Exercise 1 — Choose the correct word (Q1–5)</div>
+
+    <div class="question">
+      <p><span class="q-num">Q1.</span> The hurricane ___ the coastal city, destroying thousands of homes.</p>
+      <div class="option-group">
+        <label><input type="radio" name="dq1" value="A"> evacuated</label>
+        <label><input type="radio" name="dq1" value="B"> struck</label>
+        <label><input type="radio" name="dq1" value="C"> rescued</label>
+      </div>
+      <div class="feedback" id="dq1-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q2.</span> After the earthquake, many families were ___ under the collapsed buildings.</p>
+      <div class="option-group">
+        <label><input type="radio" name="dq2" value="A"> evacuated</label>
+        <label><input type="radio" name="dq2" value="B"> maintained</label>
+        <label><input type="radio" name="dq2" value="C"> trapped</label>
+      </div>
+      <div class="feedback" id="dq2-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q3.</span> "A long period with no rain" describes a ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="dq3" value="A"> drought</label>
+        <label><input type="radio" name="dq3" value="B"> typhoon</label>
+        <label><input type="radio" name="dq3" value="C"> eruption</label>
+      </div>
+      <div class="feedback" id="dq3-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q4.</span> What is the NOUN form of the verb "destroy"?</p>
+      <div class="option-group">
+        <label><input type="radio" name="dq4" value="A"> destructive</label>
+        <label><input type="radio" name="dq4" value="B"> destruction</label>
+        <label><input type="radio" name="dq4" value="C"> destroyed</label>
+      </div>
+      <div class="feedback" id="dq4-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q5.</span> The ___ death toll rose to 2,000 as rescue teams found more victims.</p>
+      <div class="option-group">
+        <label><input type="radio" name="dq5" value="A"> evacuating</label>
+        <label><input type="radio" name="dq5" value="B"> rising</label>
+        <label><input type="radio" name="dq5" value="C"> collapsing</label>
+      </div>
+      <div class="feedback" id="dq5-fb"></div>
+    </div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:16px;">Exercise 2 — Fill in the blank (Q6–8)</div>
+    <div class="question">
+      <p><span class="q-num">Q6.</span> Aid workers ___ food and water supplies to survivors for three weeks.</p>
+      <input type="text" class="fill-input" id="dq6" placeholder="one word">
+      <div class="feedback" id="dq6-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q7.</span> The verb form of "eruption" is ___.</p>
+      <input type="text" class="fill-input" id="dq7" placeholder="one word">
+      <div class="feedback" id="dq7-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q8.</span> Hundreds of families were ___ from their homes before the flood arrived.</p>
+      <input type="text" class="fill-input" id="dq8" placeholder="one word">
+      <div class="feedback" id="dq8-fb"></div>
+    </div>
+
+    <button class="btn-check" onclick="checkDisaster()">✔ Check Answers</button>
+    <div class="score-badge" id="disaster-score"></div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:20px;">🗣️ Speaking Task</div>
+    <div class="speaking-task">
+      <p style="margin-bottom:8px"><strong>Describe this news scenario using the timeline vocabulary:</strong></p>
+      <p style="opacity:.85; font-style:italic; margin-bottom:10px;">A major earthquake has just hit a coastal city of 500,000 people.</p>
+      <ol>
+        <li>Describe the event <em>(struck / hit / went off)</em></li>
+        <li>Describe the damage <em>(collapsed / trapped / death toll)</em></li>
+        <li>Describe the response <em>(evacuate / rescue / maintain supplies)</em></li>
+      </ol>
+      <p style="margin-top:10px; opacity:.8; font-size:.83rem;">💡 Aim for 3 sentences, one for each phase. Try to sound like a news reporter!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOPIC 3 — CRIME & JUSTICE
+══════════════════════════════════════ -->
+<div id="tab-crime" class="tab-panel">
+
+  <div class="topic-intro">
+    <div class="topic-icon">⚖️</div>
+    <div>
+      <h2>Topic 3: Crime &amp; The Justice System</h2>
+      <p>Learn crimes, criminals, and the justice process as a <em>complete word family matrix</em>.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📌 Part A — Crime &amp; Criminal Matrix <span class="badge">Word Families</span></div>
+    <div class="memory-hack">🧠 <strong>Memory Hack — Steal vs. Rob:</strong> You <strong>steal things</strong> (money, a bike, a phone), but you <strong>rob people or places</strong> (a bank, a museum, a person). <em>"The thief stole his wallet" ✔ / "The robber robbed the bank" ✔</em></div>
+    <div style="overflow-x: auto;">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>The Crime (Noun)</th>
+            <th>The Criminal (Person)</th>
+            <th>The Action (Verb + Example)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Theft <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(taking property)</span></td>
+            <td>Thief</td>
+            <td><em>Steals</em> — "steals cars / money / phones"</td>
+          </tr>
+          <tr>
+            <td>Robbery <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(theft using violence)</span></td>
+            <td>Robber</td>
+            <td><em>Robs</em> — "robs a bank / robs a person"</td>
+          </tr>
+          <tr>
+            <td>Burglary <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(entering building to steal)</span></td>
+            <td>Burglar</td>
+            <td><em>Breaks into</em> — "breaks into a house and steals"</td>
+          </tr>
+          <tr>
+            <td>Shoplifting <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(stealing from a shop)</span></td>
+            <td>Shoplifter</td>
+            <td><em>Shoplifts</em> — "steals from a supermarket"</td>
+          </tr>
+          <tr>
+            <td>Mugging <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(attacking in public to steal)</span></td>
+            <td>Mugger</td>
+            <td><em>Mugs</em> — "mugs someone on a dark street"</td>
+          </tr>
+          <tr>
+            <td>Assault <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(attacking and hurting)</span></td>
+            <td>Attacker</td>
+            <td><em>Assaults / Stabs / Attacks</em></td>
+          </tr>
+          <tr>
+            <td>Murder <span style="font-weight:400; color:var(--muted); font-size:.82rem;">(killing deliberately)</span></td>
+            <td>Murderer</td>
+            <td><em>Murders / Shoots / Kills</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Justice Timeline -->
+  <div class="card">
+    <div class="card-title">📌 Part B — The Justice Timeline <span class="badge">Step-by-Step</span></div>
+    <p style="font-size:.85rem; color:var(--muted); margin-bottom:14px">Learn the 6 stages of the justice system in order — this is a common IELTS Speaking Part 3 topic.</p>
+    <div class="timeline">
+      <div class="tl-step" data-num="1">A <strong>victim</strong> (person harmed) or <strong>witness</strong> (person who saw it) <strong>reports the crime</strong> to police.</div>
+      <div class="tl-step" data-num="2">Police <strong>investigate the crime scene</strong> and look for <strong>evidence</strong> <em>(fingerprints, CCTV footage, witnesses)</em>.</div>
+      <div class="tl-step" data-num="3">Police <strong>catch / arrest a suspect</strong> — the person they believe committed the crime.</div>
+      <div class="tl-step" data-num="4">If there is enough evidence, police <strong>charge the suspect</strong>, who then appears in <strong>court</strong>.</div>
+      <div class="tl-step" data-num="5">In court: The <strong>prosecution</strong> tries to prove the <strong>accused is guilty</strong>; the <strong>defence</strong> argues they are <strong>innocent</strong>. A <strong>judge</strong> and <strong>jury</strong> decide the verdict.</div>
+      <div class="tl-step" data-num="6">If found <strong>guilty</strong>, the judge gives a <strong>sentence</strong> — e.g., a <strong>prison term</strong> or a <strong>fine</strong>.</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE 3 -->
+  <div class="practice-card">
+    <h3>✏️ Practice Exercises — Crime &amp; Justice</h3>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060;">Exercise 1 — Choose the correct word (Q1–5)</div>
+
+    <div class="question">
+      <p><span class="q-num">Q1.</span> Someone entered her house at night and stole her laptop. This is ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="cq1" value="A"> mugging</label>
+        <label><input type="radio" name="cq1" value="B"> burglary</label>
+        <label><input type="radio" name="cq1" value="C"> robbery</label>
+      </div>
+      <div class="feedback" id="cq1-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q2.</span> "The criminal ___ the bank and escaped with $50,000." (using violence)</p>
+      <div class="option-group">
+        <label><input type="radio" name="cq2" value="A"> stole</label>
+        <label><input type="radio" name="cq2" value="B"> mugged</label>
+        <label><input type="radio" name="cq2" value="C"> robbed</label>
+      </div>
+      <div class="feedback" id="cq2-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q3.</span> The person the police believe committed the crime is called a ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="cq3" value="A"> witness</label>
+        <label><input type="radio" name="cq3" value="B"> judge</label>
+        <label><input type="radio" name="cq3" value="C"> suspect</label>
+      </div>
+      <div class="feedback" id="cq3-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q4.</span> The ___ tries to prove the accused is NOT guilty.</p>
+      <div class="option-group">
+        <label><input type="radio" name="cq4" value="A"> prosecution</label>
+        <label><input type="radio" name="cq4" value="B"> defence</label>
+        <label><input type="radio" name="cq4" value="C"> jury</label>
+      </div>
+      <div class="feedback" id="cq4-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q5.</span> What comes AFTER the police arrest a suspect?</p>
+      <div class="option-group">
+        <label><input type="radio" name="cq5" value="A"> They investigate the crime scene</label>
+        <label><input type="radio" name="cq5" value="B"> They charge the suspect</label>
+        <label><input type="radio" name="cq5" value="C"> The judge gives a sentence</label>
+      </div>
+      <div class="feedback" id="cq5-fb"></div>
+    </div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:16px;">Exercise 2 — Fill in the blank (Q6–8)</div>
+    <div class="question">
+      <p><span class="q-num">Q6.</span> Someone who attacks people in the street to steal their phone is a ___.</p>
+      <input type="text" class="fill-input" id="cq6" placeholder="one word">
+      <div class="feedback" id="cq6-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q7.</span> At the end of a trial, the judge gives a ___ (e.g., 5 years in prison).</p>
+      <input type="text" class="fill-input" id="cq7" placeholder="one word">
+      <div class="feedback" id="cq7-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q8.</span> Objects like fingerprints and CCTV footage are types of ___.</p>
+      <input type="text" class="fill-input" id="cq8" placeholder="one word">
+      <div class="feedback" id="cq8-fb"></div>
+    </div>
+
+    <button class="btn-check" onclick="checkCrime()">✔ Check Answers</button>
+    <div class="score-badge" id="crime-score"></div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:20px;">🗣️ Speaking Task</div>
+    <div class="speaking-task">
+      <p style="margin-bottom:8px"><strong>Answer this IELTS Part 3 question in 3–5 sentences:</strong></p>
+      <p style="font-style:italic; margin-bottom:10px; font-size:1rem;">"Do you think the justice system in your country is fair? Why or why not?"</p>
+      <p style="opacity:.85; font-size:.84rem;">Use at least 3 words from the matrix: <em>guilty / innocent / sentence / evidence / prosecution / suspect</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOPIC 4 — POLITICS, WAR & PEACE
+══════════════════════════════════════ -->
+<div id="tab-politics" class="tab-panel">
+
+  <div class="topic-intro">
+    <div class="topic-icon">🗳️</div>
+    <div>
+      <h2>Topic 4: Politics, War &amp; Peace</h2>
+      <p>Learn government vocabulary, conflict language, and <em>verb→noun word families</em> for academic speech.</p>
+    </div>
+  </div>
+
+  <!-- 4A: Politics -->
+  <div class="card">
+    <div class="card-title">📌 Part A — Government &amp; Politics <span class="badge">Core Collocations</span></div>
+    <div class="vocab-list">
+      <div class="vocab-item"><div class="term">Hold an election</div><div class="def">When citizens vote to choose their political leaders</div></div>
+      <div class="vocab-item"><div class="term">Political party</div><div class="def">A group of people with shared political beliefs; the party with the majority governs</div></div>
+      <div class="vocab-item"><div class="term">Announce a policy</div><div class="def">To publicly state a new government plan or rule</div></div>
+      <div class="vocab-item"><div class="term">Launch a campaign</div><div class="def">To start a public effort to achieve a goal <span class="eg">— e.g., "a health campaign / a fitness campaign"</span></div></div>
+      <div class="vocab-item"><div class="term">Face opposition</div><div class="def">To deal with groups who strongly disagree with your plans</div></div>
+      <div class="vocab-item"><div class="term">Focus on a priority</div><div class="def">To give all attention and resources to the most important issue</div></div>
+      <div class="vocab-item"><div class="term">Persuade</div><div class="def">To convince someone to agree with you by giving good reasons</div></div>
+    </div>
+  </div>
+
+  <!-- 4B: Historical verb/noun -->
+  <div class="card">
+    <div class="card-title">📌 Part B — Historical Events: Verb → Noun <span class="badge">Academic Word Building</span></div>
+    <div class="memory-hack">🧠 <strong>Memory Hack:</strong> Using the noun form (e.g., "the <em>invasion</em> of…") sounds more academic than a verb sentence ("they <em>invaded</em>…"). Learn both!</div>
+    <div class="wf-grid">
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Invade</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Invasion</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.84rem; color:#555;">"The invasion led to years of conflict."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Discover</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Discovery</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.84rem; color:#555;">"A major discovery changed history."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Assassinate</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Assassination</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.84rem; color:#555;">"The assassination shocked the nation."</div></div>
+
+      <div class="wf-cell"><div class="label">Verb</div><div class="word">Establish</div></div>
+      <div class="wf-cell"><div class="label">Noun</div><div class="word">Establishment</div></div>
+      <div class="wf-cell"><div class="label">Example</div><div class="word" style="font-weight:400; font-size:.84rem; color:#555;">"The establishment of a new treaty."</div></div>
+    </div>
+  </div>
+
+  <!-- 4C: War/Peace timeline -->
+  <div class="card">
+    <div class="card-title">📌 Part C — War &amp; Peace: From Start to Finish</div>
+    <div class="section-label">💥 The Start</div>
+    <div class="timeline">
+      <div class="tl-step" data-num="1">A <strong>civil war broke out</strong> — a war between groups inside the same country. <em>("The conflict broke out suddenly.")</em></div>
+      <div class="tl-step" data-num="2">A <strong>bomb exploded / went off</strong> in the capital city.</div>
+    </div>
+    <div class="section-label">⚔️ The Conflict</div>
+    <div class="timeline">
+      <div class="tl-step" data-num="3">Soldiers fought <strong>in battle</strong>, trying to <strong>capture the enemy</strong> <em>(= take control of them)</em>.</div>
+      <div class="tl-step" data-num="4">One side was forced to <strong>surrender / give up</strong> <em>(= admit defeat)</em>.</div>
+    </div>
+    <div class="section-label">🕊️ The Peace</div>
+    <div class="timeline">
+      <div class="tl-step" data-num="5"><strong>Allies</strong> (countries supporting each other) stepped in to help.</div>
+      <div class="tl-step" data-num="6">Both sides agreed to a <strong>ceasefire</strong> — an agreement to stop all fighting.</div>
+      <div class="tl-step" data-num="7">Leaders met to <strong>negotiate a peace settlement</strong> — a formal, lasting end to the war — by choosing to <strong>compromise</strong> <em>(accept less than they wanted)</em>.</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE 4 -->
+  <div class="practice-card">
+    <h3>✏️ Practice Exercises — Politics, War &amp; Peace</h3>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060;">Exercise 1 — Choose the correct word (Q1–5)</div>
+
+    <div class="question">
+      <p><span class="q-num">Q1.</span> The government ___ a new campaign to reduce plastic waste.</p>
+      <div class="option-group">
+        <label><input type="radio" name="pq1" value="A"> surrendered</label>
+        <label><input type="radio" name="pq1" value="B"> launched</label>
+        <label><input type="radio" name="pq1" value="C"> assassinated</label>
+      </div>
+      <div class="feedback" id="pq1-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q2.</span> A war between two groups within the same country is called a ___ war.</p>
+      <div class="option-group">
+        <label><input type="radio" name="pq2" value="A"> civil</label>
+        <label><input type="radio" name="pq2" value="B"> world</label>
+        <label><input type="radio" name="pq2" value="C"> cold</label>
+      </div>
+      <div class="feedback" id="pq2-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q3.</span> Both sides agreed to a ___ — stopping all fighting immediately.</p>
+      <div class="option-group">
+        <label><input type="radio" name="pq3" value="A"> campaign</label>
+        <label><input type="radio" name="pq3" value="B"> ceasefire</label>
+        <label><input type="radio" name="pq3" value="C"> election</label>
+      </div>
+      <div class="feedback" id="pq3-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q4.</span> What is the NOUN form of "invade"?</p>
+      <div class="option-group">
+        <label><input type="radio" name="pq4" value="A"> invasive</label>
+        <label><input type="radio" name="pq4" value="B"> invader</label>
+        <label><input type="radio" name="pq4" value="C"> invasion</label>
+      </div>
+      <div class="feedback" id="pq4-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q5.</span> To ___ means to accept less than you originally wanted in order to reach agreement.</p>
+      <div class="option-group">
+        <label><input type="radio" name="pq5" value="A"> capture</label>
+        <label><input type="radio" name="pq5" value="B"> compromise</label>
+        <label><input type="radio" name="pq5" value="C"> surrender</label>
+      </div>
+      <div class="feedback" id="pq5-fb"></div>
+    </div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:16px;">Exercise 2 — Fill in the blank (Q6–8)</div>
+    <div class="question">
+      <p><span class="q-num">Q6.</span> Countries that agree to support each other are called ___.</p>
+      <input type="text" class="fill-input" id="pq6" placeholder="one word">
+      <div class="feedback" id="pq6-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q7.</span> To kill a famous political leader is to ___ them.</p>
+      <input type="text" class="fill-input" id="pq7" placeholder="one word">
+      <div class="feedback" id="pq7-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q8.</span> The leaders met to ___ a peace settlement. (= talk formally)</p>
+      <input type="text" class="fill-input" id="pq8" placeholder="one word">
+      <div class="feedback" id="pq8-fb"></div>
+    </div>
+
+    <button class="btn-check" onclick="checkPolitics()">✔ Check Answers</button>
+    <div class="score-badge" id="politics-score"></div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:20px;">🗣️ Speaking Task</div>
+    <div class="speaking-task">
+      <p style="margin-bottom:8px"><strong>Answer this IELTS Part 3 question (3–5 sentences):</strong></p>
+      <p style="font-style:italic; margin-bottom:10px; font-size:1rem;">"What do you think is the most effective way to end a conflict between two countries?"</p>
+      <p style="opacity:.85; font-size:.84rem;">Must use: <em>negotiate / ceasefire / compromise / allies</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOPIC 5 — HEALTH & SOCIETY
+══════════════════════════════════════ -->
+<div id="tab-health" class="tab-panel">
+
+  <div class="topic-intro">
+    <div class="topic-icon">🏥</div>
+    <div>
+      <h2>Topic 5: Health &amp; Society</h2>
+      <p>Master the <em>"Go + Adjective" grammar rule</em> and condition→adjective word families.</p>
+    </div>
+  </div>
+
+  <!-- 5A: Go + Adj rule -->
+  <div class="card">
+    <div class="card-title">📌 Part A — The "Go + Adjective" Grammar Rule <span class="badge">Memory Hack</span></div>
+    <div class="memory-hack">🧠 <strong>Memory Hack:</strong> Use <strong>"go"</strong> (not "become") to describe <em>negative physical changes</em> in the body. This is a uniquely English pattern that will impress an examiner!</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;">
+      <div style="background:#fff0f0; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.5rem; margin-bottom:4px">👁️</div>
+        <div style="font-weight:700; color:var(--primary)">go blind</div>
+        <div style="font-size:.8rem; color:var(--muted)">lose your sight</div>
+      </div>
+      <div style="background:#fff0f0; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.5rem; margin-bottom:4px">👂</div>
+        <div style="font-weight:700; color:var(--primary)">go deaf</div>
+        <div style="font-size:.8rem; color:var(--muted)">lose your hearing</div>
+      </div>
+      <div style="background:#fff8e1; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.5rem; margin-bottom:4px">👴</div>
+        <div style="font-weight:700; color:var(--primary)">go grey</div>
+        <div style="font-size:.8rem; color:var(--muted)">hair turns grey</div>
+      </div>
+      <div style="background:#fff0f0; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.5rem; margin-bottom:4px">🫁</div>
+        <div style="font-weight:700; color:var(--primary)">go blue</div>
+        <div style="font-size:.8rem; color:var(--muted)">face/lips turn blue</div>
+      </div>
+      <div style="background:#fff0f0; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.5rem; margin-bottom:4px">🧠</div>
+        <div style="font-weight:700; color:var(--primary)">go senile</div>
+        <div style="font-size:.8rem; color:var(--muted)">lose mental ability with age</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5B: Condition→Adjective matrix -->
+  <div class="card">
+    <div class="card-title">📌 Part B — Condition → Adjective Word Families <span class="badge">Word Building</span></div>
+    <div style="overflow-x: auto;">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Condition (Noun)</th>
+            <th>Person / Adjective</th>
+            <th>Key Collocation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Allergy</td>
+            <td>Allergic</td>
+            <td><em>"allergic to nuts / pollen / dust"</em></td>
+          </tr>
+          <tr>
+            <td>Obesity</td>
+            <td>Obese</td>
+            <td><em>"severely obese" / "obesity rates are rising"</em></td>
+          </tr>
+          <tr>
+            <td>Diabetes</td>
+            <td>Diabetic</td>
+            <td><em>"a diabetic patient" / "diabetes can lead to blindness"</em></td>
+          </tr>
+          <tr>
+            <td>Depression</td>
+            <td>Depressed</td>
+            <td><em>"feel depressed" / "suffer from depression"</em></td>
+          </tr>
+          <tr>
+            <td>Infection</td>
+            <td>Infectious</td>
+            <td><em>"highly infectious disease" / "spreads quickly"</em></td>
+          </tr>
+          <tr>
+            <td>Disability</td>
+            <td>Disabled</td>
+            <td><em>"a disabled person" / "mobility disability"</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5C: Age groups -->
+  <div class="card">
+    <div class="card-title">📌 Part C — Health Issues by Age Group</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div>
+        <div class="section-label">👦 Common in Young People</div>
+        <div class="vocab-list">
+          <div class="vocab-item"><div class="term">Asthma / Allergies</div><div class="def">Breathing difficulty caused by pollution, food, or dust</div></div>
+          <div class="vocab-item"><div class="term">Obesity</div><div class="def">Being very overweight; can lead to heart attacks &amp; diabetes</div></div>
+          <div class="vocab-item"><div class="term">Infectious diseases</div><div class="def">Illnesses that pass easily from person to person</div></div>
+          <div class="vocab-item"><div class="term">Depression</div><div class="def">A serious medical condition of persistent sadness</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">👵 Common in Older People</div>
+        <div class="vocab-list">
+          <div class="vocab-item"><div class="term">Disability</div><div class="def">Not being able to use a part of the body properly</div></div>
+          <div class="vocab-item"><div class="term">Stroke</div><div class="def">A sudden brain illness that can stop movement or speech</div></div>
+          <div class="vocab-item"><div class="term">Arthritis</div><div class="def">Joint pain especially in fingers, knees, and hips</div></div>
+          <div class="vocab-item"><div class="term">Memory loss</div><div class="def">Gradual loss of the ability to remember things</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5D: Health verbs -->
+  <div class="card">
+    <div class="card-title">📌 Part D — Key Health Action Verbs <span class="badge">Speaking Chunks</span></div>
+    <div class="vocab-list">
+      <div class="vocab-item"><div class="term">suffer from</div><div class="def">To have a medical condition over time <span class="eg">— "suffer from asthma / depression / memory loss"</span></div></div>
+      <div class="vocab-item"><div class="term">lead to</div><div class="def">To cause a bad result <span class="eg">— "Obesity can lead to diabetes and heart attacks"</span></div></div>
+      <div class="vocab-item"><div class="term">go blind / deaf</div><div class="def">To lose sight or hearing <span class="eg">— "Diabetes can cause patients to go blind"</span></div></div>
+      <div class="vocab-item"><div class="term">be diagnosed with</div><div class="def">When a doctor confirms you have a condition <span class="eg">— "She was diagnosed with arthritis"</span></div></div>
+    </div>
+  </div>
+
+  <!-- PRACTICE 5 -->
+  <div class="practice-card">
+    <h3>✏️ Practice Exercises — Health &amp; Society</h3>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060;">Exercise 1 — Choose the correct word (Q1–5)</div>
+
+    <div class="question">
+      <p><span class="q-num">Q1.</span> An elderly man lost his hearing after years of noise exposure. We say he ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="hq1" value="A"> went deaf</label>
+        <label><input type="radio" name="hq1" value="B"> became deaf</label>
+        <label><input type="radio" name="hq1" value="C"> got deafness</label>
+      </div>
+      <div class="feedback" id="hq1-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q2.</span> "A disease that spreads easily from person to person" is described as ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="hq2" value="A"> disabled</label>
+        <label><input type="radio" name="hq2" value="B"> infectious</label>
+        <label><input type="radio" name="hq2" value="C"> obese</label>
+      </div>
+      <div class="feedback" id="hq2-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q3.</span> Obesity can ___ heart disease and type 2 diabetes.</p>
+      <div class="option-group">
+        <label><input type="radio" name="hq3" value="A"> lead to</label>
+        <label><input type="radio" name="hq3" value="B"> suffer from</label>
+        <label><input type="radio" name="hq3" value="C"> go to</label>
+      </div>
+      <div class="feedback" id="hq3-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q4.</span> What is the ADJECTIVE form of "diabetes"?</p>
+      <div class="option-group">
+        <label><input type="radio" name="hq4" value="A"> diabetes</label>
+        <label><input type="radio" name="hq4" value="B"> diabetic</label>
+        <label><input type="radio" name="hq4" value="C"> diabetical</label>
+      </div>
+      <div class="feedback" id="hq4-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q5.</span> A sudden brain illness that can stop someone walking or talking is a ___.</p>
+      <div class="option-group">
+        <label><input type="radio" name="hq5" value="A"> stroke</label>
+        <label><input type="radio" name="hq5" value="B"> drought</label>
+        <label><input type="radio" name="hq5" value="C"> depression</label>
+      </div>
+      <div class="feedback" id="hq5-fb"></div>
+    </div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:16px;">Exercise 2 — Fill in the blank (Q6–8)</div>
+    <div class="question">
+      <p><span class="q-num">Q6.</span> "He has ___ from asthma since childhood." (= had it as an ongoing condition)</p>
+      <input type="text" class="fill-input" id="hq6" placeholder="two words">
+      <div class="feedback" id="hq6-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q7.</span> Joint pain affecting the fingers and knees is called ___.</p>
+      <input type="text" class="fill-input" id="hq7" placeholder="one word">
+      <div class="feedback" id="hq7-fb"></div>
+    </div>
+    <div class="question">
+      <p><span class="q-num">Q8.</span> What is the adjective of "allergy"? (e.g., "I am ___ to peanuts.")</p>
+      <input type="text" class="fill-input" id="hq8" placeholder="one word">
+      <div class="feedback" id="hq8-fb"></div>
+    </div>
+
+    <button class="btn-check" onclick="checkHealth()">✔ Check Answers</button>
+    <div class="score-badge" id="health-score"></div>
+
+    <div class="section-label" style="color:#f0c060; border-color:#f0c060; margin-top:20px;">🗣️ Speaking Task</div>
+    <div class="speaking-task">
+      <p style="margin-bottom:8px"><strong>Describe a health problem that is common in your country (3–5 sentences):</strong></p>
+      <p style="opacity:.85; font-size:.84rem; margin-bottom:10px;">Structure your answer: What is it? → Who does it affect? → What does it lead to? → What can be done?</p>
+      <p style="opacity:.85; font-size:.84rem;">Must use: <em>suffer from / lead to / infectious / obese or obesity</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ JAVASCRIPT ════ -->
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+function getR(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : null; }
+function getT(id) { return (document.getElementById(id).value || '').trim().toLowerCase(); }
+function fb(id, ok, msg) {
+  const el = document.getElementById(id + '-fb');
+  el.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+  el.textContent = ok ? '✔ Correct! ' + msg : '✘ ' + msg;
+  el.style.display = 'block';
+}
+function mark(name, chosen, correct) {
+  document.querySelectorAll(`input[name="${name}"]`).forEach(i => {
+    const lbl = i.closest('label');
+    if (i.value === correct) lbl.classList.add('correct-ans');
+    else if (i.value === chosen && chosen !== correct) lbl.classList.add('wrong-ans');
+  });
+}
+function showScore(id, s, t) {
+  const el = document.getElementById(id);
+  el.textContent = `Score: ${s}/${t} (${Math.round(s/t*100)}%)`;
+  el.style.display = 'inline-flex';
+  el.style.background = s/t >= .8 ? 'rgba(39,174,96,.3)' : s/t >= .6 ? 'rgba(240,165,0,.3)' : 'rgba(231,76,60,.3)';
+}
+
+// ── MEDIA ──
+function checkMedia() {
+  const mcq = [{n:'mq1',a:'B',m:'The press = the professional news industry.'},{n:'mq2',a:'C',m:'"Axe" = cut (jobs) dramatically.'},{n:'mq3',a:'C',m:'"Impartial" = fair, showing all sides.'},{n:'mq4',a:'A',m:'"Shot to fame" = became famous suddenly.'},{n:'mq5',a:'B',m:'"Current affairs" = important events happening now.'}];
+  let s = 0;
+  mcq.forEach(q => { const v = getR(q.n); const ok = v===q.a; if(ok)s++; fb(q.n, ok, ok?q.m:'Correct: '+q.a+'. '+q.m); mark(q.n,v,q.a); });
+  const fills = [{id:'mq6',c:['pledged'],m:'"Pledged" = made a formal public promise.'},{id:'mq7',c:['paparazzi'],m:'Paparazzi = celebrity-following photographers.'},{id:'mq8',c:['scare'],m:'"A health scare" = a public situation causing fear about illness.'}];
+  fills.forEach(q => { const v = getT(q.id); const ok = q.c.includes(v); if(ok)s++; fb(q.id, ok, ok?q.m:'Expected: '+q.c[0]+'. '+q.m); });
+  showScore('media-score', s, 8);
+}
+
+// ── DISASTERS ──
+function checkDisaster() {
+  const mcq = [{n:'dq1',a:'B',m:'"Struck" = hit suddenly and powerfully.'},{n:'dq2',a:'C',m:'"Trapped" = stuck inside, unable to escape.'},{n:'dq3',a:'A',m:'A drought = a long period without rain.'},{n:'dq4',a:'B',m:'destroy → destruction (noun form).'},{n:'dq5',a:'B',m:'"Rising death toll" = increasing number of deaths.'}];
+  let s = 0;
+  mcq.forEach(q => { const v = getR(q.n); const ok = v===q.a; if(ok)s++; fb(q.n, ok, ok?q.m:'Correct: '+q.a+'. '+q.m); mark(q.n,v,q.a); });
+  const fills = [{id:'dq6',c:['maintained'],m:'"Maintained supplies" = kept providing essentials continuously.'},{id:'dq7',c:['erupt'],m:'eruption → erupt (verb form).'},{id:'dq8',c:['evacuated'],m:'"Evacuated" = moved to safety before disaster struck.'}];
+  fills.forEach(q => { const v = getT(q.id); const ok = q.c.includes(v); if(ok)s++; fb(q.id, ok, ok?q.m:'Expected: '+q.c[0]+'. '+q.m); });
+  showScore('disaster-score', s, 8);
+}
+
+// ── CRIME ──
+function checkCrime() {
+  const mcq = [{n:'cq1',a:'B',m:'Burglary = entering a building illegally to steal.'},{n:'cq2',a:'C',m:'"Robbed" = stole using violence from a place.'},{n:'cq3',a:'C',m:'A suspect = the person police believe committed the crime.'},{n:'cq4',a:'B',m:'The defence argues the accused is innocent.'},{n:'cq5',a:'B',m:'After arrest → charge the suspect → go to court.'}];
+  let s = 0;
+  mcq.forEach(q => { const v = getR(q.n); const ok = v===q.a; if(ok)s++; fb(q.n, ok, ok?q.m:'Correct: '+q.a+'. '+q.m); mark(q.n,v,q.a); });
+  const fills = [{id:'cq6',c:['mugger'],m:'A mugger attacks people in public places to steal.'},{id:'cq7',c:['sentence'],m:'A sentence = the punishment given by the judge.'},{id:'cq8',c:['evidence'],m:'Evidence = proof used in court (fingerprints, footage, etc.).'}];
+  fills.forEach(q => { const v = getT(q.id); const ok = q.c.includes(v); if(ok)s++; fb(q.id, ok, ok?q.m:'Expected: '+q.c[0]+'. '+q.m); });
+  showScore('crime-score', s, 8);
+}
+
+// ── POLITICS ──
+function checkPolitics() {
+  const mcq = [{n:'pq1',a:'B',m:'"Launched a campaign" = started a public initiative.'},{n:'pq2',a:'A',m:'A civil war = a war inside one country.'},{n:'pq3',a:'B',m:'A ceasefire = an agreement to stop fighting.'},{n:'pq4',a:'C',m:'invade → invasion (noun form).'},{n:'pq5',a:'B',m:'"Compromise" = accept less to reach agreement.'}];
+  let s = 0;
+  mcq.forEach(q => { const v = getR(q.n); const ok = v===q.a; if(ok)s++; fb(q.n, ok, ok?q.m:'Correct: '+q.a+'. '+q.m); mark(q.n,v,q.a); });
+  const fills = [{id:'pq6',c:['allies'],m:'Allies = countries that agree to support each other.'},{id:'pq7',c:['assassinate'],m:'"Assassinate" = to kill a famous person for political reasons.'},{id:'pq8',c:['negotiate'],m:'"Negotiate" = to have formal talks to reach an agreement.'}];
+  fills.forEach(q => { const v = getT(q.id); const ok = q.c.includes(v); if(ok)s++; fb(q.id, ok, ok?q.m:'Expected: '+q.c[0]+'. '+q.m); });
+  showScore('politics-score', s, 8);
+}
+
+// ── HEALTH ──
+function checkHealth() {
+  const mcq = [{n:'hq1',a:'A',m:'"Go deaf" is the correct English pattern for this physical change.'},{n:'hq2',a:'B',m:'"Infectious" = spreading easily from person to person.'},{n:'hq3',a:'A',m:'"Lead to" = cause a bad result.'},{n:'hq4',a:'B',m:'diabetes → diabetic (adjective form).'},{n:'hq5',a:'A',m:'A stroke = a sudden brain illness affecting movement/speech.'}];
+  let s = 0;
+  mcq.forEach(q => { const v = getR(q.n); const ok = v===q.a; if(ok)s++; fb(q.n, ok, ok?q.m:'Correct: '+q.a+'. '+q.m); mark(q.n,v,q.a); });
+  const fills = [{id:'hq6',c:['suffered from'],m:'"Suffered from" = had a condition for a long time.'},{id:'hq7',c:['arthritis'],m:'Arthritis = joint pain in fingers, knees, hips.'},{id:'hq8',c:['allergic'],m:'allergy → allergic (adjective): "I am allergic to peanuts."'}];
+  fills.forEach(q => { const v = getT(q.id); const ok = q.c.includes(v); if(ok)s++; fb(q.id, ok, ok?q.m:'Expected: '+q.c[0]+'. '+q.m); });
+  showScore('health-score', s, 8);
+}
+</script>
+</body>
+</html>
