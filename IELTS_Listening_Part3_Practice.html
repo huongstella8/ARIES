@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Listening Part 3 – OG Tests 4–8</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#eef2f7;color:#1a202c;min-height:100vh}
+header{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);color:#fff;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+header h1{font-size:1.4rem;font-weight:700;letter-spacing:.3px}
+header p{font-size:.82rem;opacity:.85;margin-top:3px}
+.student-bar{background:#fff;border-bottom:2px solid #d1dde8;padding:12px 30px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.student-bar label{font-size:.82rem;font-weight:600;color:#4a5568;white-space:nowrap}
+.student-bar input{border:1.5px solid #cbd5e0;border-radius:6px;padding:6px 11px;font-size:.88rem;width:200px;transition:border-color .2s}
+.student-bar input:focus{outline:none;border-color:#2d6a9f}
+.tab-bar{background:#fff;border-bottom:2px solid #d1dde8;padding:0 30px;display:flex;gap:0;overflow-x:auto}
+.tab-btn{padding:12px 18px;font-size:.85rem;font-weight:600;color:#718096;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color .2s}
+.tab-btn:hover{color:#2d6a9f}
+.tab-btn.active{color:#2d6a9f;border-bottom-color:#2d6a9f}
+.tab-btn.done{color:#38a169}
+.tab-btn.done.active{color:#38a169;border-bottom-color:#38a169}
+.panel{display:none;padding:24px 30px;max-width:900px;margin:0 auto}
+.panel.active{display:block}
+.test-header{background:#fff;border-radius:10px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.test-badge{background:#2d6a9f;color:#fff;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:20px;white-space:nowrap}
+.test-header h2{font-size:1.05rem;font-weight:700;color:#1a202c}
+.test-header p{font-size:.8rem;color:#718096;margin-top:2px}
+audio{width:100%;height:42px;border-radius:8px;margin:8px 0}
+.audio-note{font-size:.76rem;color:#e53e3e;background:#fff5f5;border:1px solid #fed7d7;border-radius:6px;padding:7px 12px;margin-bottom:14px}
+.q-section{background:#fff;border-radius:10px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.q-section-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#4a5568;margin-bottom:14px;padding-bottom:8px;border-bottom:1.5px solid #edf2f7}
+.instruction{font-size:.82rem;color:#718096;font-style:italic;margin-bottom:14px;line-height:1.5}
+.question{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #edf2f7}
+.question:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.q-num{display:inline-block;background:#ebf4ff;color:#2b6cb0;font-weight:700;font-size:.8rem;padding:2px 8px;border-radius:4px;margin-bottom:8px}
+.q-text{font-size:.9rem;font-weight:600;color:#1a202c;margin-bottom:10px;line-height:1.5}
+.option{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;border-radius:7px;cursor:pointer;transition:background .15s;margin-bottom:4px}
+.option:hover{background:#ebf4ff}
+.option input[type=radio]{margin-top:2px;accent-color:#2d6a9f;flex-shrink:0;width:15px;height:15px}
+.option-label{font-size:.87rem;color:#2d3748;line-height:1.4}
+.option-key{font-weight:700;color:#4a5568;margin-right:2px}
+select.match-sel{border:1.5px solid #cbd5e0;border-radius:6px;padding:6px 10px;font-size:.86rem;cursor:pointer;background:#fff;min-width:60px;transition:border-color .2s}
+select.match-sel:focus{outline:none;border-color:#2d6a9f}
+.match-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.match-label{font-size:.87rem;color:#1a202c;flex:1;min-width:160px;font-weight:500}
+.match-num{font-weight:700;color:#2b6cb0;font-size:.82rem;background:#ebf4ff;padding:2px 7px;border-radius:4px;margin-right:4px;white-space:nowrap}
+.text-input{border:1.5px solid #cbd5e0;border-radius:6px;padding:7px 12px;font-size:.87rem;width:200px;transition:border-color .2s}
+.text-input:focus{outline:none;border-color:#2d6a9f}
+.fill-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.fill-context{font-size:.87rem;color:#1a202c;line-height:1.6}
+.advantages-box{background:#f7fafc;border:1.5px solid #e2e8f0;border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:.86rem}
+.advantages-box strong{display:block;margin-bottom:8px;color:#2d3748}
+.advantages-box li{list-style:none;padding:3px 0;color:#4a5568}
+.advantages-box li span{font-weight:700;color:#2d6a9f;margin-right:6px}
+.submit-row{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.btn-submit{background:#2d6a9f;color:#fff;border:none;border-radius:8px;padding:11px 26px;font-size:.9rem;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-submit:hover{background:#1e4f7a}
+.btn-submit:disabled{background:#a0aec0;cursor:not-allowed}
+.btn-reset{background:#fff;color:#718096;border:1.5px solid #cbd5e0;border-radius:8px;padding:11px 22px;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-reset:hover{border-color:#718096;color:#1a202c}
+.score-banner{border-radius:10px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.score-banner.great{background:#f0fff4;border:1.5px solid #9ae6b4}
+.score-banner.ok{background:#fffbeb;border:1.5px solid #fbd38d}
+.score-banner.poor{background:#fff5f5;border:1.5px solid #feb2b2}
+.score-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;flex-shrink:0}
+.score-circle.great{background:#38a169;color:#fff}
+.score-circle.ok{background:#d69e2e;color:#fff}
+.score-circle.poor{background:#e53e3e;color:#fff}
+.score-text h3{font-size:1rem;font-weight:700;color:#1a202c}
+.score-text p{font-size:.83rem;color:#718096;margin-top:3px}
+.result-item{background:#fff;border-radius:8px;padding:14px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.result-item.correct{border-left:4px solid #38a169}
+.result-item.wrong{border-left:4px solid #e53e3e}
+.result-item .ri-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ri-qnum{font-weight:700;font-size:.8rem;background:#edf2f7;padding:2px 8px;border-radius:4px;color:#4a5568}
+.ri-status{font-size:.8rem;font-weight:700;padding:2px 8px;border-radius:4px}
+.ri-status.correct{background:#f0fff4;color:#276749}
+.ri-status.wrong{background:#fff5f5;color:#c53030}
+.ri-answers{font-size:.85rem;color:#2d3748;line-height:1.6;margin-bottom:6px}
+.ri-answers .your{color:#e53e3e}
+.ri-answers .ans{color:#276749;font-weight:600}
+.ri-explanation{font-size:.83rem;color:#4a5568;background:#f7fafc;border-radius:6px;padding:8px 12px;line-height:1.5;border-left:3px solid #90cdf4}
+/* Logbook */
+.logbook-wrap{background:#fff;border-radius:10px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.logbook-wrap h2{font-size:1.05rem;font-weight:700;margin-bottom:4px}
+.logbook-wrap p{font-size:.82rem;color:#718096;margin-bottom:18px}
+.lb-entry{border:1.5px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;position:relative}
+.lb-entry.new-entry{border-color:#bee3f8;background:#ebf8ff}
+.lb-entry-header{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.lb-badge{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;background:#ebf4ff;color:#2b6cb0}
+.lb-badge.wrong{background:#fff5f5;color:#c53030}
+.lb-field{margin-bottom:8px}
+.lb-field label{font-size:.78rem;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.lb-field select,.lb-field textarea,.lb-field input{width:100%;border:1.5px solid #cbd5e0;border-radius:6px;padding:7px 10px;font-size:.84rem;font-family:inherit}
+.lb-field textarea{resize:vertical;min-height:60px}
+.lb-field select:focus,.lb-field textarea:focus{outline:none;border-color:#2d6a9f}
+.lb-empty{text-align:center;color:#a0aec0;font-size:.88rem;padding:30px 0}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:#fff;border-radius:12px;padding:26px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.modal h2{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.modal p{font-size:.83rem;color:#718096;margin-bottom:18px;line-height:1.5}
+.modal-actions{display:flex;gap:10px;margin-top:18px;justify-content:flex-end}
+.btn-primary{background:#2d6a9f;color:#fff;border:none;border-radius:7px;padding:9px 20px;font-size:.87rem;font-weight:700;cursor:pointer}
+.btn-primary:hover{background:#1e4f7a}
+.btn-secondary{background:#edf2f7;color:#4a5568;border:none;border-radius:7px;padding:9px 20px;font-size:.87rem;font-weight:600;cursor:pointer}
+.btn-secondary:hover{background:#e2e8f0}
+/* Summary */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px}
+.summary-card{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.summary-card .sc-score{font-size:1.6rem;font-weight:800;margin-bottom:4px}
+.summary-card .sc-label{font-size:.78rem;color:#718096}
+.summary-card.total{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);color:#fff}
+.summary-card.total .sc-label{color:rgba(255,255,255,.75)}
+.action-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.btn-download{background:#276749;color:#fff;border:none;border-radius:8px;padding:11px 22px;font-size:.88rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-download:hover{background:#1d5233}
+.btn-email{background:#553c9a;color:#fff;border:none;border-radius:8px;padding:11px 22px;font-size:.88rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-email:hover{background:#3d2e73}
+.teacher-form{background:#fff;border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.teacher-form h3{font-size:.95rem;font-weight:700;margin-bottom:12px}
+.teacher-form .tf-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.teacher-form input[type=email]{border:1.5px solid #cbd5e0;border-radius:6px;padding:8px 12px;font-size:.87rem;flex:1;min-width:220px}
+.teacher-form input[type=email]:focus{outline:none;border-color:#2d6a9f}
+.teacher-form textarea{width:100%;border:1.5px solid #cbd5e0;border-radius:6px;padding:9px 12px;font-size:.85rem;min-height:80px;font-family:inherit;resize:vertical;margin-bottom:10px}
+.teacher-form textarea:focus{outline:none;border-color:#2d6a9f}
+.alert{padding:10px 16px;border-radius:7px;font-size:.84rem;margin-bottom:12px}
+.alert.success{background:#f0fff4;color:#276749;border:1px solid #9ae6b4}
+.alert.info{background:#ebf8ff;color:#2c5282;border:1px solid #90cdf4}
+@media(max-width:600px){
+  .panel{padding:16px}
+  header{padding:14px 16px}
+  .student-bar{padding:10px 16px}
+  .tab-bar{padding:0 10px}
+  .tab-btn{padding:10px 12px;font-size:.78rem}
+  .action-bar{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>🎧 IELTS Listening – Section 3 Practice</h1>
+    <p>Official Cambridge Guide to IELTS · Tests 4–8 · Auto-scoring with Explanations</p>
+  </div>
+  <div style="font-size:.8rem;opacity:.7;text-align:right">
+    Place MP3 files in the<br>same folder as this HTML
+  </div>
+</header>
+
+<div class="student-bar">
+  <label>Student name:</label>
+  <input type="text" id="inp-name" placeholder="Enter your full name" />
+  <label>Date:</label>
+  <input type="date" id="inp-date" />
+  <label>Teacher email (for sending results):</label>
+  <input type="email" id="inp-teacher-email" placeholder="teacher@school.com" value="huongstella8@gmail.com" style="width:210px" />
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('test4')" id="tab-test4">Test 4</button>
+  <button class="tab-btn" onclick="switchTab('test5')" id="tab-test5">Test 5</button>
+  <button class="tab-btn" onclick="switchTab('test6')" id="tab-test6">Test 6</button>
+  <button class="tab-btn" onclick="switchTab('test7')" id="tab-test7">Test 7</button>
+  <button class="tab-btn" onclick="switchTab('test8')" id="tab-test8">Test 8</button>
+  <button class="tab-btn" onclick="switchTab('logbook')" id="tab-logbook">📓 Error Logbook</button>
+  <button class="tab-btn" onclick="switchTab('summary')" id="tab-summary">📊 Summary &amp; Results</button>
+</div>
+
+<!-- ===================== TEST 4 ===================== -->
+<div class="panel active" id="panel-test4">
+  <div class="test-header">
+    <div>
+      <div class="test-badge">TEST 4 · SECTION 3</div>
+      <h2 style="margin-top:6px">Food Waste</h2>
+      <p>Questions 21–30 · 10 marks</p>
+    </div>
+  </div>
+  <div class="audio-note">⚠ Audio file: <strong>[OG} Cam52-T4-S3.mp3</strong> — keep this file in the same folder as the HTML.</div>
+  <audio controls id="audio-test4">
+    <source src="[OG} Cam52-T4-S3.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–25 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+
+    <!-- Q21 -->
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">What point does Robert make about the 2013 study in Britain?</div>
+      <label class="option"><input type="radio" name="t4q21" value="A"><span class="option-label"><span class="option-key">A</span> It focused more on packaging than wasted food.</span></label>
+      <label class="option"><input type="radio" name="t4q21" value="B"><span class="option-label"><span class="option-key">B</span> It proved that households produced more waste than restaurants.</span></label>
+      <label class="option"><input type="radio" name="t4q21" value="C"><span class="option-label"><span class="option-key">C</span> It included liquid waste as well as solid waste.</span></label>
+    </div>
+    <!-- Q22 -->
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">The speakers agree that food waste reports should emphasise the connection between carbon dioxide emissions and</div>
+      <label class="option"><input type="radio" name="t4q22" value="A"><span class="option-label"><span class="option-key">A</span> food production.</span></label>
+      <label class="option"><input type="radio" name="t4q22" value="B"><span class="option-label"><span class="option-key">B</span> transport of food to landfill sites.</span></label>
+      <label class="option"><input type="radio" name="t4q22" value="C"><span class="option-label"><span class="option-key">C</span> distribution of food products.</span></label>
+    </div>
+    <!-- Q23 -->
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">Television programmes now tend to focus on</div>
+      <label class="option"><input type="radio" name="t4q23" value="A"><span class="option-label"><span class="option-key">A</span> the nutritional value of food products.</span></label>
+      <label class="option"><input type="radio" name="t4q23" value="B"><span class="option-label"><span class="option-key">B</span> the origin of food products.</span></label>
+      <label class="option"><input type="radio" name="t4q23" value="C"><span class="option-label"><span class="option-key">C</span> the chemicals found in food products.</span></label>
+    </div>
+    <!-- Q24 -->
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">For Anna, the most significant point about food waste is</div>
+      <label class="option"><input type="radio" name="t4q24" value="A"><span class="option-label"><span class="option-key">A</span> the moral aspect.</span></label>
+      <label class="option"><input type="radio" name="t4q24" value="B"><span class="option-label"><span class="option-key">B</span> the environmental impact.</span></label>
+      <label class="option"><input type="radio" name="t4q24" value="C"><span class="option-label"><span class="option-key">C</span> the economic effect.</span></label>
+    </div>
+    <!-- Q25 -->
+    <div class="question">
+      <span class="q-num">25</span>
+      <div class="q-text">Anna and Robert decide to begin their presentation by</div>
+      <label class="option"><input type="radio" name="t4q25" value="A"><span class="option-label"><span class="option-key">A</span> handing out a questionnaire.</span></label>
+      <label class="option"><input type="radio" name="t4q25" value="B"><span class="option-label"><span class="option-key">B</span> providing statistical evidence.</span></label>
+      <label class="option"><input type="radio" name="t4q25" value="C"><span class="option-label"><span class="option-key">C</span> showing images of wasted food.</span></label>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 26–30 · Matching</div>
+    <div class="instruction">What advantage do the speakers identify for each of the following projects?<br>Choose <strong>FIVE</strong> answers from the box and write the correct letter, <strong>A–G</strong>, next to Questions 26–30.</div>
+    <div class="advantages-box">
+      <strong>Advantages</strong>
+      <ul>
+        <li><span>A</span> It should save time.</li>
+        <li><span>B</span> It will create new jobs.</li>
+        <li><span>C</span> It will benefit local communities.</li>
+        <li><span>D</span> It will make money.</li>
+        <li><span>E</span> It will encourage personal responsibility.</li>
+        <li><span>F</span> It will be easy to advertise.</li>
+        <li><span>G</span> It will involve very little cost.</li>
+      </ul>
+    </div>
+    <div class="instruction"><strong>Projects</strong></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">edible patch</span><select class="match-sel" id="t4q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">ripeness sensor</span><select class="match-sel" id="t4q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">waste tracking technology</span><select class="match-sel" id="t4q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">smartphone application</span><select class="match-sel" id="t4q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label">food waste composting</span><select class="match-sel" id="t4q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+  </div>
+
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('test4')">Submit Test 4</button>
+    <button class="btn-reset" onclick="resetTest('test4')">Reset</button>
+  </div>
+  <div id="results-test4"></div>
+</div>
+
+<!-- ===================== TEST 5 ===================== -->
+<div class="panel" id="panel-test5">
+  <div class="test-header">
+    <div>
+      <div class="test-badge">TEST 5 · SECTION 3</div>
+      <h2 style="margin-top:6px">Furniture Rossi</h2>
+      <p>Questions 21–30 · 10 marks</p>
+    </div>
+  </div>
+  <div class="audio-note">⚠ Audio file: <strong>[OG} Cam56_T5_S3.mp3</strong> — keep this file in the same folder as the HTML.</div>
+  <audio controls id="audio-test5">
+    <source src="[OG} Cam56_T5_S3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–25 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <!-- Q21 -->
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">Why has James chosen to do a case study on the company <em>Furniture Rossi</em>?</div>
+      <label class="option"><input type="radio" name="t5q21" value="A"><span class="option-label"><span class="option-key">A</span> It has enjoyed global success.</span></label>
+      <label class="option"><input type="radio" name="t5q21" value="B"><span class="option-label"><span class="option-key">B</span> It is still in a developmental phase.</span></label>
+      <label class="option"><input type="radio" name="t5q21" value="C"><span class="option-label"><span class="option-key">C</span> It is an example of a foreign company being rebranded for Australia.</span></label>
+    </div>
+    <!-- Q22 -->
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">According to James, why did Luca Rossi start a furniture company?</div>
+      <label class="option"><input type="radio" name="t5q22" value="A"><span class="option-label"><span class="option-key">A</span> Furniture-making was already a family occupation.</span></label>
+      <label class="option"><input type="radio" name="t5q22" value="B"><span class="option-label"><span class="option-key">B</span> Rossi saw a need for hand-crafted furniture.</span></label>
+      <label class="option"><input type="radio" name="t5q22" value="C"><span class="option-label"><span class="option-key">C</span> The work Rossi had done previously was unrewarding.</span></label>
+    </div>
+    <!-- Q23 -->
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">What gave <em>Furniture Rossi</em> a competitive advantage over other furniture companies?</div>
+      <label class="option"><input type="radio" name="t5q23" value="A"><span class="option-label"><span class="option-key">A</span> its staff</span></label>
+      <label class="option"><input type="radio" name="t5q23" value="B"><span class="option-label"><span class="option-key">B</span> its lower prices</span></label>
+      <label class="option"><input type="radio" name="t5q23" value="C"><span class="option-label"><span class="option-key">C</span> its locally sourced products</span></label>
+    </div>
+    <!-- Q24 -->
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">What does the tutor recommend James does when writing the second draft of his case study?</div>
+      <label class="option"><input type="radio" name="t5q24" value="A"><span class="option-label"><span class="option-key">A</span> provide more detailed references</span></label>
+      <label class="option"><input type="radio" name="t5q24" value="B"><span class="option-label"><span class="option-key">B</span> check for written accuracy</span></label>
+      <label class="option"><input type="radio" name="t5q24" value="C"><span class="option-label"><span class="option-key">C</span> add his own views</span></label>
+    </div>
+    <!-- Q25 -->
+    <div class="question">
+      <span class="q-num">25</span>
+      <div class="q-text">What do the tutor and James agree was wrong with James' last presentation?</div>
+      <label class="option"><input type="radio" name="t5q25" value="A"><span class="option-label"><span class="option-key">A</span> It was too short.</span></label>
+      <label class="option"><input type="radio" name="t5q25" value="B"><span class="option-label"><span class="option-key">B</span> It focused too much on statistics.</span></label>
+      <label class="option"><input type="radio" name="t5q25" value="C"><span class="option-label"><span class="option-key">C</span> There was not enough interaction with the audience.</span></label>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 26–30 · Flow-chart Completion</div>
+    <div class="instruction">Complete the flow-chart below.<br>Choose <strong>FIVE</strong> answers from the list below and write the correct letter, <strong>A–G</strong>, next to Questions 26–30.</div>
+    <div class="advantages-box">
+      <strong>Options</strong>
+      <ul>
+        <li><span>A</span> website</li><li><span>B</span> locations</li><li><span>C</span> designs</li>
+        <li><span>D</span> TV advertising campaigns</li><li><span>E</span> quality</li>
+        <li><span>F</span> values</li><li><span>G</span> software programs</li>
+      </ul>
+    </div>
+    <div class="instruction"><strong>History of Furniture Rossi</strong></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">The product __ led to a wider customer base.</span><select class="match-sel" id="t5q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">Greater customer demand meant other __ were needed.</span><select class="match-sel" id="t5q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">Better __ increased overall profitability.</span><select class="match-sel" id="t5q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">Changes to the __ were brought on by customer complaints.</span><select class="match-sel" id="t5q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label"><em>Furniture Rossi</em> wants to make people more aware of its __.</span><select class="match-sel" id="t5q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+  </div>
+
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('test5')">Submit Test 5</button>
+    <button class="btn-reset" onclick="resetTest('test5')">Reset</button>
+  </div>
+  <div id="results-test5"></div>
+</div>
+
+<!-- ===================== TEST 6 ===================== -->
+<div class="panel" id="panel-test6">
+  <div class="test-header">
+    <div>
+      <div class="test-badge">TEST 6 · SECTION 3</div>
+      <h2 style="margin-top:6px">Biofuels – Problems and Potential</h2>
+      <p>Questions 21–30 · 10 marks</p>
+    </div>
+  </div>
+  <div class="audio-note">⚠ Audio file: <strong>[OG} Cam59_T6_S3.mp3</strong> — keep this file in the same folder as the HTML.</div>
+  <audio controls id="audio-test6">
+    <source src="[OG} Cam59_T6_S3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–26 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <!-- Q21 -->
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">Mike suggests they begin their presentation by</div>
+      <label class="option"><input type="radio" name="t6q21" value="A"><span class="option-label"><span class="option-key">A</span> explaining what kind of harm is caused by fossil fuels.</span></label>
+      <label class="option"><input type="radio" name="t6q21" value="B"><span class="option-label"><span class="option-key">B</span> pointing out that biofuels were in use before fossil fuels.</span></label>
+      <label class="option"><input type="radio" name="t6q21" value="C"><span class="option-label"><span class="option-key">C</span> ensuring students know the difference between fossil fuels and biofuels.</span></label>
+    </div>
+    <!-- Q22 -->
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">Karina doesn't want to discuss the production of ethanol because</div>
+      <label class="option"><input type="radio" name="t6q22" value="A"><span class="option-label"><span class="option-key">A</span> other students will already be familiar with the process.</span></label>
+      <label class="option"><input type="radio" name="t6q22" value="B"><span class="option-label"><span class="option-key">B</span> there will not be time to cover more important information.</span></label>
+      <label class="option"><input type="radio" name="t6q22" value="C"><span class="option-label"><span class="option-key">C</span> they may not provide an accurate description.</span></label>
+    </div>
+    <!-- Q23 -->
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">Which source of biofuel do the students agree is least environmentally friendly?</div>
+      <label class="option"><input type="radio" name="t6q23" value="A"><span class="option-label"><span class="option-key">A</span> sugar cane</span></label>
+      <label class="option"><input type="radio" name="t6q23" value="B"><span class="option-label"><span class="option-key">B</span> corn</span></label>
+      <label class="option"><input type="radio" name="t6q23" value="C"><span class="option-label"><span class="option-key">C</span> canola</span></label>
+    </div>
+    <!-- Q24 -->
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">What is the main problem facing the development of the biofuel industry in the USA?</div>
+      <label class="option"><input type="radio" name="t6q24" value="A"><span class="option-label"><span class="option-key">A</span> inadequate infrastructure for transporting ethanol</span></label>
+      <label class="option"><input type="radio" name="t6q24" value="B"><span class="option-label"><span class="option-key">B</span> not enough farmers growing biofuel crops</span></label>
+      <label class="option"><input type="radio" name="t6q24" value="C"><span class="option-label"><span class="option-key">C</span> little government support of biofuel development</span></label>
+    </div>
+    <!-- Q25 -->
+    <div class="question">
+      <span class="q-num">25</span>
+      <div class="q-text">Karina doubts that sugar cane production in Brazil will</div>
+      <label class="option"><input type="radio" name="t6q25" value="A"><span class="option-label"><span class="option-key">A</span> lead to the loss of wildlife habitats.</span></label>
+      <label class="option"><input type="radio" name="t6q25" value="B"><span class="option-label"><span class="option-key">B</span> create a large number of jobs in the biofuel sector.</span></label>
+      <label class="option"><input type="radio" name="t6q25" value="C"><span class="option-label"><span class="option-key">C</span> continue to provide enough energy for the country's needs.</span></label>
+    </div>
+    <!-- Q26 -->
+    <div class="question">
+      <span class="q-num">26</span>
+      <div class="q-text">Karina and Mike conclude that in order to increase the use of biofuels</div>
+      <label class="option"><input type="radio" name="t6q26" value="A"><span class="option-label"><span class="option-key">A</span> the price of fossil fuels must go up.</span></label>
+      <label class="option"><input type="radio" name="t6q26" value="B"><span class="option-label"><span class="option-key">B</span> more machinery must be adapted to use them.</span></label>
+      <label class="option"><input type="radio" name="t6q26" value="C"><span class="option-label"><span class="option-key">C</span> production methods must be more energy-efficient.</span></label>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 27–30 · Short Answer</div>
+    <div class="instruction">Answer the questions below. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</div>
+    <div class="instruction" style="margin-bottom:16px">What <strong>TWO</strong> biofuel-related problems do Mike and Karina decide to focus on in the last section?</div>
+    <div class="fill-row" style="margin-bottom:12px">
+      <span class="match-num">27</span>
+      <input type="text" class="text-input" id="t6q27" placeholder="Type answer...">
+    </div>
+    <div class="fill-row" style="margin-bottom:20px">
+      <span class="match-num">28</span>
+      <input type="text" class="text-input" id="t6q28" placeholder="Type answer...">
+    </div>
+    <div class="instruction" style="margin-bottom:12px">Which two sources of biofuel do Mike and Karina say are being tried out?</div>
+    <div class="fill-row" style="margin-bottom:12px">
+      <span class="match-num">29</span>
+      <input type="text" class="text-input" id="t6q29" placeholder="Type answer...">
+    </div>
+    <div class="fill-row" style="margin-bottom:6px">
+      <span class="match-num" style="background:#f0fff4;color:#276749">•</span>
+      <span class="fill-context">algae &nbsp;(given)</span>
+    </div>
+    <div class="fill-row">
+      <span class="match-num">30</span>
+      <input type="text" class="text-input" id="t6q30" placeholder="Type answer...">
+    </div>
+  </div>
+
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('test6')">Submit Test 6</button>
+    <button class="btn-reset" onclick="resetTest('test6')">Reset</button>
+  </div>
+  <div id="results-test6"></div>
+</div>
+
+<!-- ===================== TEST 7 ===================== -->
+<div class="panel" id="panel-test7">
+  <div class="test-header">
+    <div>
+      <div class="test-badge">TEST 7 · SECTION 3</div>
+      <h2 style="margin-top:6px">Marketing Report</h2>
+      <p>Questions 21–30 · 10 marks</p>
+    </div>
+  </div>
+  <div class="audio-note">⚠ Audio file: <strong>[OG} Cam64-T7-S3.mp3</strong> — keep this file in the same folder as the HTML.</div>
+  <audio controls id="audio-test7">
+    <source src="[OG} Cam64-T7-S3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–26 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <!-- Q21 -->
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">Why did Leo choose instant coffee as the topic for his marketing report?</div>
+      <label class="option"><input type="radio" name="t7q21" value="A"><span class="option-label"><span class="option-key">A</span> He found plenty of material on the topic.</span></label>
+      <label class="option"><input type="radio" name="t7q21" value="B"><span class="option-label"><span class="option-key">B</span> He had some practical experience in the area.</span></label>
+      <label class="option"><input type="radio" name="t7q21" value="C"><span class="option-label"><span class="option-key">C</span> He had an idea of a brand he wanted to target.</span></label>
+    </div>
+    <!-- Q22 -->
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">Leo discovered that in Australia, recent technological developments</div>
+      <label class="option"><input type="radio" name="t7q22" value="A"><span class="option-label"><span class="option-key">A</span> are producing less healthy types of instant coffee.</span></label>
+      <label class="option"><input type="radio" name="t7q22" value="B"><span class="option-label"><span class="option-key">B</span> are reducing the demand for instant coffee.</span></label>
+      <label class="option"><input type="radio" name="t7q22" value="C"><span class="option-label"><span class="option-key">C</span> are improving the quality of instant coffee.</span></label>
+    </div>
+    <!-- Q23 -->
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">What do the speakers agree about Leo's table of coffee products?</div>
+      <label class="option"><input type="radio" name="t7q23" value="A"><span class="option-label"><span class="option-key">A</span> It needs more explanation in the text.</span></label>
+      <label class="option"><input type="radio" name="t7q23" value="B"><span class="option-label"><span class="option-key">B</span> It is factually inaccurate in some places.</span></label>
+      <label class="option"><input type="radio" name="t7q23" value="C"><span class="option-label"><span class="option-key">C</span> It would be best to put this in the appendix.</span></label>
+    </div>
+    <!-- Q24 -->
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">What do they decide about the description of Shaffers coffee as a market follower?</div>
+      <label class="option"><input type="radio" name="t7q24" value="A"><span class="option-label"><span class="option-key">A</span> Leo needs to define his terms.</span></label>
+      <label class="option"><input type="radio" name="t7q24" value="B"><span class="option-label"><span class="option-key">B</span> Leo needs to provide more evidence.</span></label>
+      <label class="option"><input type="radio" name="t7q24" value="C"><span class="option-label"><span class="option-key">C</span> Leo needs to put it in a different section.</span></label>
+    </div>
+    <!-- Q25 -->
+    <div class="question">
+      <span class="q-num">25</span>
+      <div class="q-text">What does Anna say about originality in someone's first marketing report?</div>
+      <label class="option"><input type="radio" name="t7q25" value="A"><span class="option-label"><span class="option-key">A</span> Clear analysis of data can be considered original.</span></label>
+      <label class="option"><input type="radio" name="t7q25" value="B"><span class="option-label"><span class="option-key">B</span> Graphs and diagrams should be original, not copied.</span></label>
+      <label class="option"><input type="radio" name="t7q25" value="C"><span class="option-label"><span class="option-key">C</span> Reports should contain some original data collected by the student.</span></label>
+    </div>
+    <!-- Q26 -->
+    <div class="question">
+      <span class="q-num">26</span>
+      <div class="q-text">What difference between his school assignments and this report has surprised Leo?</div>
+      <label class="option"><input type="radio" name="t7q26" value="A"><span class="option-label"><span class="option-key">A</span> not knowing the criteria for getting a good mark</span></label>
+      <label class="option"><input type="radio" name="t7q26" value="B"><span class="option-label"><span class="option-key">B</span> being required to produce work without assistance</span></label>
+      <label class="option"><input type="radio" name="t7q26" value="C"><span class="option-label"><span class="option-key">C</span> having to do a great deal of research</span></label>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 27–30 · Note Completion</div>
+    <div class="instruction">Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</div>
+    <div class="advantages-box" style="margin-bottom:16px">
+      <strong>Notes on specific sections of marketing report</strong>
+      <div style="margin-top:10px">
+        <div style="font-weight:600;color:#2d3748;margin-bottom:6px">Executive summary</div>
+        <div class="fill-row" style="margin-bottom:8px">
+          <span class="fill-context">Give a brief overview including the</span>
+          <span class="match-num">27</span>
+          <input type="text" class="text-input" id="t7q27" placeholder="one word...">
+        </div>
+        <div style="font-weight:600;color:#2d3748;margin:10px 0 6px">Problems</div>
+        <div class="fill-row" style="margin-bottom:8px">
+          <span class="fill-context">Link each problem to a</span>
+          <span class="match-num">28</span>
+          <input type="text" class="text-input" id="t7q28" placeholder="one word...">
+          <span class="fill-context">which explains it</span>
+        </div>
+        <div style="font-weight:600;color:#2d3748;margin:10px 0 6px">Implementation</div>
+        <div class="fill-row" style="margin-bottom:6px">
+          <span class="fill-context">Include details such as participants,</span>
+          <span class="match-num">29</span>
+          <input type="text" class="text-input" id="t7q29" placeholder="one word...">
+          <span class="fill-context">and sequence</span>
+        </div>
+        <div class="fill-row">
+          <span class="fill-context">Section is often poorly done because of lack of</span>
+          <span class="match-num">30</span>
+          <input type="text" class="text-input" id="t7q30" placeholder="one word...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('test7')">Submit Test 7</button>
+    <button class="btn-reset" onclick="resetTest('test7')">Reset</button>
+  </div>
+  <div id="results-test7"></div>
+</div>
+
+<!-- ===================== TEST 8 ===================== -->
+<div class="panel" id="panel-test8">
+  <div class="test-header">
+    <div>
+      <div class="test-badge">TEST 8 · SECTION 3</div>
+      <h2 style="margin-top:6px">Training Film for Museum Employees</h2>
+      <p>Questions 21–30 · 10 marks</p>
+    </div>
+  </div>
+  <div class="audio-note">⚠ Audio file: <strong>[OG} Cam68-T8-S3.mp3</strong> — keep this file in the same folder as the HTML.</div>
+  <audio controls id="audio-test8">
+    <source src="[OG} Cam68-T8-S3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–27 · Matching</div>
+    <div class="instruction">What helped Stewart with each of the following stages in making his training film for museum employees?<br>Choose <strong>SEVEN</strong> answers from the box and write the correct letter, <strong>A–I</strong>, next to Questions 21–27.</div>
+    <div class="advantages-box">
+      <strong>What helped Stewart</strong>
+      <ul>
+        <li><span>A</span> advice from friends</li>
+        <li><span>B</span> information on a website</li>
+        <li><span>C</span> being allowed extra time</li>
+        <li><span>D</span> meeting a professional film maker</li>
+        <li><span>E</span> good weather conditions</li>
+        <li><span>F</span> getting a better computer</li>
+        <li><span>G</span> support of a manager</li>
+        <li><span>H</span> help from a family member</li>
+        <li><span>I</span> work on a previous assignment</li>
+      </ul>
+    </div>
+    <div class="instruction"><strong>Stages in making the training film</strong></div>
+    <div class="match-row"><span class="match-num">21</span><span class="match-label">finding a location</span><select class="match-sel" id="t8q21"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+    <div class="match-row"><span class="match-num">22</span><span class="match-label">deciding on equipment</span><select class="match-sel" id="t8q22"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+    <div class="match-row"><span class="match-num">23</span><span class="match-label">writing the script</span><select class="match-sel" id="t8q23"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+    <div class="match-row"><span class="match-num">24</span><span class="match-label">casting</span><select class="match-sel" id="t8q24"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label">filming</span><select class="match-sel" id="t8q25"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">editing</span><select class="match-sel" id="t8q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">designing the DVD cover</span><select class="match-sel" id="t8q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-title">Questions 28–30 · Note Completion</div>
+    <div class="instruction">Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</div>
+    <div class="advantages-box">
+      <strong>Stewart's work placement: benefits to the Central Museum Association</strong>
+      <div class="fill-row" style="margin-top:10px;margin-bottom:8px">
+        <span class="fill-context">his understanding of the Association's</span>
+        <span class="match-num">28</span>
+        <input type="text" class="text-input" id="t8q28" placeholder="one word...">
+      </div>
+      <div style="padding:3px 0;color:#4a5568;font-size:.86rem">• the reduction in expense</div>
+      <div class="fill-row" style="margin-top:8px;margin-bottom:8px">
+        <span class="fill-context">increased co-operation between</span>
+        <span class="match-num">29</span>
+        <input type="text" class="text-input" id="t8q29" placeholder="one word...">
+      </div>
+      <div class="fill-row" style="margin-bottom:6px">
+        <span class="fill-context">continuous</span>
+        <span class="match-num">30</span>
+        <input type="text" class="text-input" id="t8q30" placeholder="one word...">
+        <span class="fill-context">which led to a better product</span>
+      </div>
+      <div style="padding:3px 0;color:#4a5568;font-size:.86rem">• ideas for distribution of the film</div>
+    </div>
+  </div>
+
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('test8')">Submit Test 8</button>
+    <button class="btn-reset" onclick="resetTest('test8')">Reset</button>
+  </div>
+  <div id="results-test8"></div>
+</div>
+
+<!-- ===================== ERROR LOGBOOK ===================== -->
+<div class="panel" id="panel-logbook">
+  <div class="logbook-wrap">
+    <h2>📓 Error Logbook</h2>
+    <p>Track your mistakes and reflect on why you got each answer wrong. This logbook is automatically populated after each test submission.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+      <button class="btn-download" onclick="downloadLogbook()">⬇ Download Logbook</button>
+      <button class="btn-reset" onclick="clearLogbook()">🗑 Clear All Entries</button>
+    </div>
+    <div id="logbook-entries"><div class="lb-empty">No entries yet — submit a test to populate your error logbook.</div></div>
+  </div>
+</div>
+
+<!-- ===================== SUMMARY ===================== -->
+<div class="panel" id="panel-summary">
+  <div style="background:#fff;border-radius:10px;padding:22px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:16px">📊 Score Summary</h2>
+    <div class="summary-grid" id="summary-grid">
+      <div class="summary-card"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">Test 4</div></div>
+      <div class="summary-card"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">Test 5</div></div>
+      <div class="summary-card"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">Test 6</div></div>
+      <div class="summary-card"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">Test 7</div></div>
+      <div class="summary-card"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">Test 8</div></div>
+      <div class="summary-card total"><div class="sc-score" id="total-score-display">–/50</div><div class="sc-label">Total Score</div></div>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn-download" onclick="downloadResults()">⬇ Download Full Results</button>
+    <button class="btn-email" onclick="showEmailForm()">✉ Send Results to Teacher</button>
+  </div>
+
+  <div class="teacher-form" id="email-form" style="display:none">
+    <h3>✉ Send Results to Teacher</h3>
+    <div class="tf-row">
+      <label style="font-size:.82rem;font-weight:600;white-space:nowrap">Teacher email:</label>
+      <input type="email" id="tf-teacher" placeholder="teacher@school.com" value="huongstella8@gmail.com">
+    </div>
+    <div class="tf-row">
+      <label style="font-size:.82rem;font-weight:600;white-space:nowrap">Your name:</label>
+      <input type="text" id="tf-student" placeholder="Your full name" style="border:1.5px solid #cbd5e0;border-radius:6px;padding:8px 12px;font-size:.87rem;flex:1;min-width:180px">
+    </div>
+    <label style="font-size:.82rem;font-weight:600;display:block;margin-bottom:4px">Message to teacher (optional):</label>
+    <textarea id="tf-message" placeholder="Any notes about your practice session..."></textarea>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-primary" onclick="sendEmail()">📧 Open Email Client</button>
+      <button class="btn-primary" style="background:#276749" onclick="copyResults()">📋 Copy Results to Clipboard</button>
+      <button class="btn-secondary" onclick="document.getElementById('email-form').style.display='none'">Cancel</button>
+    </div>
+    <div id="email-alert" style="margin-top:10px"></div>
+  </div>
+
+  <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)">
+    <h3 style="font-size:.95rem;font-weight:700;margin-bottom:14px">Detailed Results by Test</h3>
+    <div id="summary-detail"></div>
+  </div>
+</div>
+
+<!-- Modal for logbook prompt -->
+<div class="modal-overlay" id="lb-modal" style="display:none" onclick="closeLbModalOutside(event)">
+  <div class="modal">
+    <h2>📓 Update Your Error Logbook</h2>
+    <p>You got some answers wrong. Complete a brief reflection for each incorrect answer to help you remember the correct one.</p>
+    <div id="lb-modal-content"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="skipLogbook()">Skip</button>
+      <button class="btn-primary" onclick="saveLogbookEntries()">Save Entries</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// =====================================================================
+//  ANSWER KEY & QUESTION DATA
+// =====================================================================
+const DATA = {
+  test4: {
+    title:'Test 4 – Food Waste',
+    audio:'[OG} Cam52-T4-S3.mp3',
+    questions:[
+      {id:'t4q21',num:21,type:'radio',display:'Q21',
+        text:'What point does Robert make about the 2013 study in Britain?',
+        answer:'C',
+        explanation:'Robert highlights that the 2013 study was unusual because it measured <strong>both liquid and solid food waste</strong>, giving a more complete picture of overall food wastage than previous research which only counted solid waste.'},
+      {id:'t4q22',num:22,type:'radio',display:'Q22',
+        text:'The speakers agree food waste reports should emphasise CO₂ emissions and ___',
+        answer:'A',
+        explanation:'Both speakers agree the key link is between CO₂ and <strong>food production</strong> (i.e., farming and growing crops), not transport to landfill or distribution — because the carbon cost of producing food that is wasted is the most significant environmental issue.'},
+      {id:'t4q23',num:23,type:'radio',display:'Q23',
+        text:'Television programmes now tend to focus on ___',
+        answer:'B',
+        explanation:'TV programmes (such as farm-to-table shows) now emphasise <strong>the origin of food</strong> — where it is grown and how it is produced — rather than its nutritional content or chemicals.'},
+      {id:'t4q24',num:24,type:'radio',display:'Q24',
+        text:'For Anna, the most significant point about food waste is ___',
+        answer:'A',
+        explanation:'Anna says the most important issue for her is the <strong>moral aspect</strong> — that wasting food is ethically wrong when millions of people suffer from hunger around the world.'},
+      {id:'t4q25',num:25,type:'radio',display:'Q25',
+        text:'Anna and Robert decide to begin their presentation by ___',
+        answer:'C',
+        explanation:'They agree that opening with <strong>images of wasted food</strong> will be the most powerful way to engage the audience, more so than statistics or questionnaires.'},
+      {id:'t4q26',num:26,type:'select',display:'Q26',
+        text:'edible patch',
+        answer:'C',
+        explanation:'The edible patch grows food in shared community spaces, directly <strong>benefiting local communities</strong> by providing accessible fresh food for local residents (C).'},
+      {id:'t4q27',num:27,type:'select',display:'Q27',
+        text:'ripeness sensor',
+        answer:'A',
+        explanation:'A sensor that accurately detects when fruit/vegetables are ripe eliminates guesswork and <strong>saves time</strong> (A) when deciding what to eat first to avoid waste.'},
+      {id:'t4q28',num:28,type:'select',display:'Q28',
+        text:'waste tracking technology',
+        answer:'F',
+        explanation:'The speakers note this technology has a clear, simple message that makes it <strong>easy to advertise</strong> (F) to households and businesses.'},
+      {id:'t4q29',num:29,type:'select',display:'Q29',
+        text:'smartphone application',
+        answer:'E',
+        explanation:'The app puts decisions in the individual\'s hands, prompting users to take <strong>personal responsibility</strong> (E) for their own food waste habits.'},
+      {id:'t4q30',num:30,type:'select',display:'Q30',
+        text:'food waste composting',
+        answer:'G',
+        explanation:'Composting requires minimal equipment and uses food scraps already available, making it a solution that <strong>involves very little cost</strong> (G).'}
+    ]
+  },
+  test5: {
+    title:'Test 5 – Furniture Rossi',
+    audio:'[OG} Cam56_T5_S3.mp3',
+    questions:[
+      {id:'t5q21',num:21,type:'radio',display:'Q21',
+        text:'Why has James chosen to do a case study on Furniture Rossi?',
+        answer:'B',
+        explanation:'James chose Furniture Rossi because it is <strong>still in a developmental phase</strong> — an evolving company is more interesting to analyse as its strategies are still unfolding.'},
+      {id:'t5q22',num:22,type:'radio',display:'Q22',
+        text:'Why did Luca Rossi start a furniture company?',
+        answer:'C',
+        explanation:'James explains that Luca Rossi was dissatisfied with his previous career — <strong>the work was unrewarding</strong> — and wanted something more fulfilling, which led him to start the furniture business.'},
+      {id:'t5q23',num:23,type:'radio',display:'Q23',
+        text:'What gave Furniture Rossi a competitive advantage?',
+        answer:'A',
+        explanation:'The company\'s skilled and knowledgeable <strong>staff</strong> gave it an edge over competitors, as employees had specialist knowledge of hand-crafted furniture techniques.'},
+      {id:'t5q24',num:24,type:'radio',display:'Q24',
+        text:'What does the tutor recommend for the second draft?',
+        answer:'C',
+        explanation:'The tutor advises James that the second draft should include James\'s own critical analysis — he needs to <strong>add his own views</strong>, not just describe facts.'},
+      {id:'t5q25',num:25,type:'radio',display:'Q25',
+        text:'What was wrong with James\' last presentation?',
+        answer:'C',
+        explanation:'Both agree the main weakness was that it was too one-sided, with <strong>not enough interaction with the audience</strong> — no questions or engagement with listeners.'},
+      {id:'t5q26',num:26,type:'select',display:'Q26',
+        text:'The product __ led to a wider customer base.',
+        answer:'C',
+        explanation:'Improved product <strong>designs</strong> (C) attracted a wider range of customers, expanding the company\'s market reach.'},
+      {id:'t5q27',num:27,type:'select',display:'Q27',
+        text:'Greater customer demand meant other __ were needed.',
+        answer:'B',
+        explanation:'Higher demand required new store <strong>locations</strong> (B) to be opened to meet customers in different areas.'},
+      {id:'t5q28',num:28,type:'select',display:'Q28',
+        text:'Better __ increased overall profitability.',
+        answer:'E',
+        explanation:'Improvements in product <strong>quality</strong> (E) led to higher customer satisfaction and revenue, boosting overall profitability.'},
+      {id:'t5q29',num:29,type:'select',display:'Q29',
+        text:'Changes to the __ were brought on by customer complaints.',
+        answer:'A',
+        explanation:'Customer feedback and complaints about usability prompted changes to the company\'s <strong>website</strong> (A).'},
+      {id:'t5q30',num:30,type:'select',display:'Q30',
+        text:'Furniture Rossi wants to make people more aware of its __.',
+        answer:'F',
+        explanation:'The company wants consumers to understand its core <strong>values</strong> (F) such as sustainability and craftsmanship.'}
+    ]
+  },
+  test6: {
+    title:'Test 6 – Biofuels',
+    audio:'[OG} Cam59_T6_S3.mp3',
+    questions:[
+      {id:'t6q21',num:21,type:'radio',display:'Q21',
+        text:'Mike suggests they begin their presentation by ___',
+        answer:'C',
+        explanation:'Mike argues the presentation must first <strong>establish a clear distinction</strong> between fossil fuels and biofuels before any meaningful discussion can proceed, so the audience has the necessary baseline knowledge.'},
+      {id:'t6q22',num:22,type:'radio',display:'Q22',
+        text:'Karina doesn\'t want to discuss ethanol production because ___',
+        answer:'B',
+        explanation:'Karina argues that explaining the ethanol production process will take up time better spent on key issues — <strong>there won\'t be time to cover more important information</strong> about the potential and problems of biofuels.'},
+      {id:'t6q23',num:23,type:'radio',display:'Q23',
+        text:'Which source of biofuel is least environmentally friendly?',
+        answer:'B',
+        explanation:'Both students agree <strong>corn</strong> (B) is the least environmentally friendly biofuel source, because corn farming is highly intensive, displaces food crops, and produces comparatively less energy than the input it requires.'},
+      {id:'t6q24',num:24,type:'radio',display:'Q24',
+        text:'The main problem facing biofuel development in the USA?',
+        answer:'A',
+        explanation:'The primary barrier in the USA is the <strong>inadequate infrastructure for transporting ethanol</strong> (A) — unlike petrol, ethanol cannot easily be moved through existing pipelines, requiring costly new distribution networks.'},
+      {id:'t6q25',num:25,type:'radio',display:'Q25',
+        text:'Karina doubts that sugar cane production in Brazil will ___',
+        answer:'A',
+        explanation:'Karina doubts the claim that sugar cane expansion will be safe for wildlife — she is concerned that land clearing for plantations will <strong>lead to the loss of wildlife habitats</strong> (A).'},
+      {id:'t6q26',num:26,type:'radio',display:'Q26',
+        text:'To increase use of biofuels, Mike and Karina conclude ___',
+        answer:'C',
+        explanation:'The students conclude that the key barrier is efficiency — until biofuel <strong>production methods are more energy-efficient</strong> (C), producing them costs more energy than they generate, making them uncompetitive.'},
+      {id:'t6q27',num:27,type:'text',display:'Q27',
+        text:'Biofuel-related problem #1',
+        answer:'food miles',
+        altAnswers:['food mile'],
+        explanation:'"<strong>Food miles</strong>" — the distance crops must travel from farm to processing to consumer — add significantly to the carbon footprint of biofuels, undermining their environmental benefit.'},
+      {id:'t6q28',num:28,type:'text',display:'Q28',
+        text:'Biofuel-related problem #2',
+        answer:'health',
+        altAnswers:[],
+        explanation:'<strong>Health</strong> impacts — concerns about air quality and the effects of biofuel combustion on people — are identified as a significant problem that needs to be addressed in the presentation.'},
+      {id:'t6q29',num:29,type:'text',display:'Q29',
+        text:'Alternative biofuel source being tried out',
+        answer:'wood',
+        altAnswers:['straw','wood chips'],
+        explanation:'<strong>Wood</strong> (lignocellulosic biomass) is one of the experimental biofuel sources being explored, as it grows abundantly and does not displace food crops.'},
+      {id:'t6q30',num:30,type:'text',display:'Q30',
+        text:'Another biofuel source being tried out (besides algae)',
+        answer:'grass',
+        altAnswers:['switchgrass','grasses'],
+        explanation:'Certain types of <strong>grass</strong> (such as switchgrass) are being trialled as biofuel sources because of their fast growth rate and lower environmental impact compared to food crops.'}
+    ]
+  },
+  test7: {
+    title:'Test 7 – Marketing Report',
+    audio:'[OG} Cam64-T7-S3.mp3',
+    questions:[
+      {id:'t7q21',num:21,type:'radio',display:'Q21',
+        text:'Why did Leo choose instant coffee as his marketing report topic?',
+        answer:'C',
+        explanation:'Leo already had <strong>a specific brand he wanted to target</strong> in mind, which directed him toward the instant coffee market as his research topic — not material availability or personal experience.'},
+      {id:'t7q22',num:22,type:'radio',display:'Q22',
+        text:'In Australia, recent technological developments in instant coffee are ___',
+        answer:'C',
+        explanation:'Leo discovered that new technology is being used to <strong>improve the quality and taste</strong> of instant coffee in Australia, which is counter to the common assumption that instant coffee is low quality.'},
+      {id:'t7q23',num:23,type:'radio',display:'Q23',
+        text:'What do the speakers agree about Leo\'s coffee products table?',
+        answer:'C',
+        explanation:'Both agree the detailed coffee products table is too complex for the main body of the report — it <strong>would be best placed in the appendix</strong> (C) to keep the report focused.'},
+      {id:'t7q24',num:24,type:'radio',display:'Q24',
+        text:'What should Leo do about describing Shaffers as a market follower?',
+        answer:'B',
+        explanation:'The description of Shaffers as a "market follower" is too brief and unsupported — <strong>Leo needs to provide more evidence</strong> (B) to back up this claim with data or examples.'},
+      {id:'t7q25',num:25,type:'radio',display:'Q25',
+        text:'What does Anna say about originality in a first marketing report?',
+        answer:'A',
+        explanation:'Anna clarifies that originality doesn\'t require collecting new data — <strong>a clear analysis of existing data can be considered original</strong> (A), as long as the interpretation is the student\'s own.'},
+      {id:'t7q26',num:26,type:'radio',display:'Q26',
+        text:'What has surprised Leo about this report vs. school assignments?',
+        answer:'C',
+        explanation:'Leo is surprised by <strong>the volume of research required</strong> (C) compared to school work, where much more guidance and pre-selected information was provided to students.'},
+      {id:'t7q27',num:27,type:'text',display:'Q27',
+        text:'Executive summary: overview including the ___',
+        answer:'recommendations',
+        altAnswers:['recommendation'],
+        explanation:'The executive summary should include the key <strong>recommendations</strong> so readers immediately understand the report\'s main conclusions and suggested actions.'},
+      {id:'t7q28',num:28,type:'text',display:'Q28',
+        text:'Problems: link each problem to a ___ which explains it',
+        answer:'theory',
+        altAnswers:['theories'],
+        explanation:'Each identified problem should be linked to an academic <strong>theory</strong> or model (e.g. marketing frameworks) that provides a conceptual explanation for why the problem exists.'},
+      {id:'t7q29',num:29,type:'text',display:'Q29',
+        text:'Implementation: include participants, ___ and sequence',
+        answer:'costs',
+        altAnswers:['cost'],
+        explanation:'The implementation section must be practical — it needs realistic details including <strong>costs</strong>, who is involved (participants), and the order of steps (sequence).'},
+      {id:'t7q30',num:30,type:'text',display:'Q30',
+        text:'Implementation often poorly done because of lack of ___',
+        answer:'research',
+        altAnswers:[],
+        explanation:'The implementation section is frequently weak because students don\'t do enough <strong>research</strong> into what is practically feasible, leading to vague or unrealistic plans.'}
+    ]
+  },
+  test8: {
+    title:'Test 8 – Training Film for Museum Employees',
+    audio:'[OG} Cam68-T8-S3.mp3',
+    questions:[
+      {id:'t8q21',num:21,type:'select',display:'Q21',
+        text:'finding a location',
+        answer:'G',
+        explanation:'Stewart received <strong>support from a manager</strong> (G) who helped him identify and gain access to a suitable museum filming location.'},
+      {id:'t8q22',num:22,type:'select',display:'Q22',
+        text:'deciding on equipment',
+        answer:'B',
+        explanation:'Stewart consulted <strong>information on a website</strong> (B) to research and compare equipment options before deciding what to use.'},
+      {id:'t8q23',num:23,type:'select',display:'Q23',
+        text:'writing the script',
+        answer:'I',
+        explanation:'Experience from <strong>work on a previous assignment</strong> (I) gave Stewart a framework and skills he adapted when writing the training film script.'},
+      {id:'t8q24',num:24,type:'select',display:'Q24',
+        text:'casting',
+        answer:'A',
+        explanation:'<strong>Advice from friends</strong> (A) helped Stewart find suitable people to appear in the training film.'},
+      {id:'t8q25',num:25,type:'select',display:'Q25',
+        text:'filming',
+        answer:'E',
+        explanation:'<strong>Good weather conditions</strong> (E) meant outdoor shots could be filmed without interruption, making the filming stage go smoothly.'},
+      {id:'t8q26',num:26,type:'select',display:'Q26',
+        text:'editing',
+        answer:'F',
+        explanation:'Stewart obtained <strong>a better computer</strong> (F) which allowed him to run the video editing software efficiently.'},
+      {id:'t8q27',num:27,type:'select',display:'Q27',
+        text:'designing the DVD cover',
+        answer:'H',
+        explanation:'<strong>Help from a family member</strong> (H) with design skills helped Stewart create the DVD cover artwork.'},
+      {id:'t8q28',num:28,type:'text',display:'Q28',
+        text:'his understanding of the Association\'s ___',
+        answer:'aims',
+        altAnswers:['aim','goals','objectives'],
+        explanation:'Stewart\'s understanding of the museum association\'s <strong>aims</strong> (its goals and purpose) was one of the key benefits he brought to the placement.'},
+      {id:'t8q29',num:29,type:'text',display:'Q29',
+        text:'increased co-operation between ___',
+        answer:'departments',
+        altAnswers:['department'],
+        explanation:'The project led to increased co-operation between different <strong>departments</strong> within the museum association, which had not previously worked closely together.'},
+      {id:'t8q30',num:30,type:'text',display:'Q30',
+        text:'continuous ___ which led to a better product',
+        answer:'editing',
+        altAnswers:['revision','revisions'],
+        explanation:'Continuous <strong>editing</strong> — repeated revision and improvement of the film — was identified as leading to a higher quality final product.'}
+    ]
+  }
+};
+
+// =====================================================================
+//  STATE
+// =====================================================================
+let scores = {test4:null,test5:null,test6:null,test7:null,test8:null};
+let logbookEntries = JSON.parse(localStorage.getItem('ielts_logbook') || '[]');
+let pendingLogbookData = [];
+
+// =====================================================================
+//  TAB SWITCHING
+// =====================================================================
+function switchTab(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  if(id==='logbook') renderLogbook();
+  if(id==='summary') renderSummary();
+}
+
+// =====================================================================
+//  GET ANSWER
+// =====================================================================
+function getAnswer(q){
+  if(q.type==='radio'){
+    const sel=document.querySelector(`input[name="${q.id}"]:checked`);
+    return sel?sel.value:'';
+  }
+  if(q.type==='select'){
+    const el=document.getElementById(q.id);
+    return el?el.value:'';
+  }
+  if(q.type==='text'){
+    const el=document.getElementById(q.id);
+    return el?el.value.trim():'';
+  }
+  return '';
+}
+
+function checkText(userAns, q){
+  const u=userAns.toLowerCase().trim();
+  if(u===q.answer.toLowerCase()) return true;
+  if(q.altAnswers && q.altAnswers.some(a=>a.toLowerCase()===u)) return true;
+  return false;
+}
+
+function checkAnswer(q, userAns){
+  if(q.type==='text') return checkText(userAns,q);
+  return userAns===q.answer;
+}
+
+// =====================================================================
+//  SUBMIT TEST
+// =====================================================================
+function submitTest(testId){
+  const test=DATA[testId];
+  let correct=0;
+  let wrongQs=[];
+  let resultItems=[];
+
+  test.questions.forEach(q=>{
+    const userAns=getAnswer(q);
+    const isCorrect=userAns!=='' && checkAnswer(q,userAns);
+    if(isCorrect) correct++;
+    else wrongQs.push({q,userAns});
+
+    let userLabel=userAns||'(no answer)';
+    let correctLabel=q.type==='text'?q.answer:q.answer;
+
+    resultItems.push({q,userAns,isCorrect,userLabel,correctLabel});
+  });
+
+  scores[testId]={score:correct,total:test.questions.length,items:resultItems};
+  const pct=Math.round(correct/test.questions.length*100);
+  const grade=pct>=80?'great':pct>=60?'ok':'poor';
+  const emoji=pct>=80?'🎉':pct>=60?'👍':'📚';
+
+  // Render results
+  let html=`<div style="margin-top:20px">
+    <div class="score-banner ${grade}">
+      <div class="score-circle ${grade}">${correct}/${test.questions.length}</div>
+      <div class="score-text">
+        <h3>${emoji} ${pct}% — ${pct>=80?'Excellent!':pct>=60?'Good effort':'Keep practising!'}</h3>
+        <p>${correct} correct out of ${test.questions.length} questions</p>
+        ${wrongQs.length>0?`<p style="color:#e53e3e;margin-top:4px">⚠ ${wrongQs.length} error${wrongQs.length>1?'s':''} added to your logbook</p>`:'<p style="color:#276749;margin-top:4px">✅ Perfect score! No logbook entries needed.</p>'}
+      </div>
+    </div>`;
+
+  resultItems.forEach(ri=>{
+    const cls=ri.isCorrect?'correct':'wrong';
+    const icon=ri.isCorrect?'✓':'✗';
+    const ansText=ri.q.type==='radio'||ri.q.type==='select'
+      ?`Your answer: <span class="${ri.isCorrect?'ans':'your'}">${ri.userLabel}</span>${!ri.isCorrect?` · Correct: <span class="ans">${ri.correctLabel}</span>`:''}`
+      :`Your answer: <span class="${ri.isCorrect?'ans':'your'}">"${ri.userLabel}"</span>${!ri.isCorrect?` · Correct: <span class="ans">"${ri.correctLabel}"</span>`:''}`;
+
+    html+=`<div class="result-item ${cls}">
+      <div class="ri-header">
+        <span class="ri-qnum">${ri.q.display}</span>
+        <span class="ri-status ${cls}">${icon} ${ri.isCorrect?'Correct':'Incorrect'}</span>
+      </div>
+      <div class="ri-answers">${ansText}</div>
+      <div class="ri-explanation">💡 ${ri.q.explanation}</div>
+    </div>`;
+  });
+  html+='</div>';
+
+  document.getElementById('results-'+testId).innerHTML=html;
+
+  // Mark tab as done
+  document.getElementById('tab-'+testId).classList.add('done');
+
+  // Disable submit button
+  document.querySelector(`#panel-${testId} .btn-submit`).disabled=true;
+
+  // Logbook for wrong answers
+  if(wrongQs.length>0){
+    pendingLogbookData={testId, testTitle:test.title, wrongQs};
+    setTimeout(()=>showLogbookModal(testId, test.title, wrongQs), 600);
+  }
+
+  // Scroll to results
+  setTimeout(()=>document.getElementById('results-'+testId).scrollIntoView({behavior:'smooth',block:'start'}),200);
+}
+
+// =====================================================================
+//  RESET TEST
+// =====================================================================
+function resetTest(testId){
+  if(!confirm('Reset all answers for this test?')) return;
+  const test=DATA[testId];
+  test.questions.forEach(q=>{
+    if(q.type==='radio') document.querySelectorAll(`input[name="${q.id}"]`).forEach(r=>r.checked=false);
+    if(q.type==='select'){const el=document.getElementById(q.id);if(el)el.value='';}
+    if(q.type==='text'){const el=document.getElementById(q.id);if(el)el.value='';}
+  });
+  document.getElementById('results-'+testId).innerHTML='';
+  document.querySelector(`#panel-${testId} .btn-submit`).disabled=false;
+  document.getElementById('tab-'+testId).classList.remove('done');
+  scores[testId]=null;
+}
+
+// =====================================================================
+//  LOGBOOK MODAL
+// =====================================================================
+function showLogbookModal(testId, testTitle, wrongQs){
+  let html='';
+  wrongQs.forEach(({q,userAns},i)=>{
+    html+=`<div class="lb-entry new-entry" style="margin-bottom:14px">
+      <div class="lb-entry-header">
+        <span class="lb-badge">${testTitle}</span>
+        <span class="lb-badge wrong">Q${q.num} – Incorrect</span>
+      </div>
+      <div style="font-size:.84rem;color:#2d3748;margin-bottom:8px">
+        <strong>Question:</strong> ${q.text || q.display}<br>
+        <strong>You answered:</strong> <span style="color:#e53e3e">${userAns||'(blank)'}</span><br>
+        <strong>Correct answer:</strong> <span style="color:#276749;font-weight:700">${q.answer}</span>
+      </div>
+      <div class="lb-field">
+        <label>Why did you get this wrong?</label>
+        <select data-lb-i="${i}">
+          <option value="">Select a reason...</option>
+          <option value="Didn't hear clearly">Didn't hear clearly</option>
+          <option value="Misunderstood the question">Misunderstood the question</option>
+          <option value="Vocabulary gap">Vocabulary gap</option>
+          <option value="Confused between options">Confused between options</option>
+          <option value="Lack of content knowledge">Lack of content knowledge</option>
+          <option value="Rushed / careless">Rushed / careless</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="lb-field">
+        <label>Notes / what to remember:</label>
+        <textarea data-lb-note="${i}" placeholder="Write what you'll do differently next time..."></textarea>
+      </div>
+    </div>`;
+  });
+  document.getElementById('lb-modal-content').innerHTML=html;
+  document.getElementById('lb-modal').style.display='flex';
+}
+
+function closeLbModalOutside(e){
+  if(e.target.id==='lb-modal') skipLogbook();
+}
+
+function skipLogbook(){
+  document.getElementById('lb-modal').style.display='none';
+  pendingLogbookData=null;
+}
+
+function saveLogbookEntries(){
+  if(!pendingLogbookData) return;
+  const {testId,testTitle,wrongQs}=pendingLogbookData;
+  const reasons=document.querySelectorAll('[data-lb-i]');
+  const notes=document.querySelectorAll('[data-lb-note]');
+
+  const today=document.getElementById('inp-date').value||new Date().toISOString().slice(0,10);
+  const student=document.getElementById('inp-name').value||'Student';
+
+  wrongQs.forEach(({q,userAns},i)=>{
+    logbookEntries.push({
+      date:today,
+      student,
+      test:testTitle,
+      qNum:`Q${q.num}`,
+      questionText:q.text||q.display,
+      yourAnswer:userAns||'(blank)',
+      correctAnswer:q.answer,
+      reason:reasons[i]?reasons[i].value:'',
+      notes:notes[i]?notes[i].value:'',
+      explanation:q.explanation.replace(/<[^>]*>/g,'')
+    });
+  });
+  localStorage.setItem('ielts_logbook', JSON.stringify(logbookEntries));
+  document.getElementById('lb-modal').style.display='none';
+  pendingLogbookData=null;
+}
+
+// =====================================================================
+//  RENDER LOGBOOK
+// =====================================================================
+function renderLogbook(){
+  const container=document.getElementById('logbook-entries');
+  if(logbookEntries.length===0){
+    container.innerHTML='<div class="lb-empty">No entries yet — submit a test to populate your error logbook.</div>';
+    return;
+  }
+  let html='';
+  logbookEntries.slice().reverse().forEach((e,i)=>{
+    html+=`<div class="lb-entry">
+      <div class="lb-entry-header">
+        <span class="lb-badge">${e.date}</span>
+        <span class="lb-badge">${e.test}</span>
+        <span class="lb-badge wrong">${e.qNum}</span>
+        ${e.student?`<span style="font-size:.78rem;color:#718096">${e.student}</span>`:''}
+      </div>
+      <div style="font-size:.84rem;color:#2d3748;margin-bottom:8px;line-height:1.5">
+        <strong>Question:</strong> ${e.questionText}<br>
+        <strong>Your answer:</strong> <span style="color:#e53e3e">${e.yourAnswer}</span> &nbsp;→&nbsp;
+        <strong>Correct:</strong> <span style="color:#276749;font-weight:700">${e.correctAnswer}</span>
+      </div>
+      ${e.reason?`<div style="font-size:.82rem;margin-bottom:4px"><strong>Reason:</strong> ${e.reason}</div>`:''}
+      ${e.notes?`<div style="font-size:.82rem;margin-bottom:4px"><strong>Notes:</strong> ${e.notes}</div>`:''}
+      <div style="font-size:.8rem;color:#4a5568;background:#f7fafc;padding:7px 10px;border-radius:6px;border-left:3px solid #90cdf4;margin-top:6px">💡 ${e.explanation}</div>
+      <button onclick="deleteLogEntry(${logbookEntries.length-1-i})" style="margin-top:8px;font-size:.76rem;color:#e53e3e;background:none;border:none;cursor:pointer;padding:0">🗑 Remove entry</button>
+    </div>`;
+  });
+  container.innerHTML=html;
+}
+
+function deleteLogEntry(idx){
+  if(!confirm('Remove this entry?')) return;
+  logbookEntries.splice(idx,1);
+  localStorage.setItem('ielts_logbook',JSON.stringify(logbookEntries));
+  renderLogbook();
+}
+
+function clearLogbook(){
+  if(!confirm('Clear ALL logbook entries? This cannot be undone.')) return;
+  logbookEntries=[];
+  localStorage.setItem('ielts_logbook','[]');
+  renderLogbook();
+}
+
+function downloadLogbook(){
+  const today=new Date().toISOString().slice(0,10);
+  const student=document.getElementById('inp-name').value||'Student';
+  let txt=`IELTS LISTENING PART 3 – ERROR LOGBOOK\n`;
+  txt+=`Student: ${student}\nDate exported: ${today}\n`;
+  txt+='='.repeat(60)+'\n\n';
+  if(logbookEntries.length===0){txt+='No entries recorded yet.\n';}
+  else{
+    logbookEntries.forEach((e,i)=>{
+      txt+=`Entry ${i+1} | ${e.date} | ${e.test} | ${e.qNum}\n`;
+      txt+=`Question: ${e.questionText}\n`;
+      txt+=`Your answer: ${e.yourAnswer}  →  Correct: ${e.correctAnswer}\n`;
+      if(e.reason) txt+=`Reason: ${e.reason}\n`;
+      if(e.notes) txt+=`Notes: ${e.notes}\n`;
+      txt+=`Explanation: ${e.explanation}\n`;
+      txt+='-'.repeat(50)+'\n';
+    });
+  }
+  downloadText(txt,`IELTS_ErrorLogbook_${student.replace(/\s+/g,'_')}_${today}.txt`);
+}
+
+// =====================================================================
+//  SUMMARY
+// =====================================================================
+function renderSummary(){
+  const testIds=['test4','test5','test6','test7','test8'];
+  const labels=['Test 4','Test 5','Test 6','Test 7','Test 8'];
+  let totalScore=0, totalMax=0, completedCount=0;
+  let gridHTML='';
+  let detailHTML='';
+
+  testIds.forEach((id,i)=>{
+    const s=scores[id];
+    if(s){
+      const pct=Math.round(s.score/s.total*100);
+      const color=pct>=80?'#38a169':pct>=60?'#d69e2e':'#e53e3e';
+      gridHTML+=`<div class="summary-card"><div class="sc-score" style="color:${color}">${s.score}/${s.total}</div><div class="sc-label">${labels[i]}<br><span style="font-size:.72rem">${pct}%</span></div></div>`;
+      totalScore+=s.score; totalMax+=s.total; completedCount++;
+      // Detail
+      detailHTML+=`<div style="margin-bottom:16px"><h4 style="font-size:.9rem;font-weight:700;color:#2d3748;margin-bottom:8px">${DATA[id].title} — ${s.score}/${s.total} (${pct}%)</h4>`;
+      s.items.forEach(ri=>{
+        detailHTML+=`<div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:5px;font-size:.82rem">
+          <span style="font-weight:700;min-width:30px;color:${ri.isCorrect?'#276749':'#e53e3e'}">${ri.isCorrect?'✓':'✗'}</span>
+          <span style="color:#4a5568">${ri.q.display}: ${ri.isCorrect?'Correct':'Incorrect'} — Correct answer: <strong>${ri.q.answer}</strong></span>
+        </div>`;
+      });
+      detailHTML+='</div>';
+    } else {
+      gridHTML+=`<div class="summary-card"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">${labels[i]}</div></div>`;
+    }
+  });
+
+  const totalCard=totalMax>0
+    ?`<div class="summary-card total"><div class="sc-score" id="total-score-display">${totalScore}/${totalMax}</div><div class="sc-label">Total Score<br><span style="font-size:.72rem">${Math.round(totalScore/totalMax*100)}% · ${completedCount}/5 tests done</span></div></div>`
+    :`<div class="summary-card total"><div class="sc-score" id="total-score-display">–/50</div><div class="sc-label">Total Score</div></div>`;
+
+  document.getElementById('summary-grid').innerHTML=gridHTML+totalCard;
+  document.getElementById('summary-detail').innerHTML=detailHTML||'<p style="color:#a0aec0;font-size:.85rem">No tests submitted yet.</p>';
+}
+
+// =====================================================================
+//  DOWNLOAD RESULTS
+// =====================================================================
+function buildResultsText(){
+  const student=document.getElementById('inp-name').value||'Student';
+  const date=document.getElementById('inp-date').value||new Date().toISOString().slice(0,10);
+  const testIds=['test4','test5','test6','test7','test8'];
+  let totalScore=0,totalMax=0;
+  let txt=`IELTS LISTENING PART 3 – PRACTICE RESULTS\n`;
+  txt+=`Student: ${student}\nDate: ${date}\n`;
+  txt+='='.repeat(60)+'\n\n';
+
+  testIds.forEach(id=>{
+    const s=scores[id];
+    const t=DATA[id];
+    txt+=`${t.title.toUpperCase()}\n`;
+    if(!s){txt+='Not attempted.\n\n';return;}
+    const pct=Math.round(s.score/s.total*100);
+    txt+=`Score: ${s.score}/${s.total} (${pct}%)\n\n`;
+    s.items.forEach(ri=>{
+      txt+=`  ${ri.isCorrect?'[✓]':'[✗]'} ${ri.q.display}: `;
+      txt+=`Your answer: "${ri.userAns||'blank'}" | Correct: "${ri.q.answer}"\n`;
+      if(!ri.isCorrect) txt+=`      → ${ri.q.explanation.replace(/<[^>]*>/g,'')}\n`;
+    });
+    txt+='\n';
+    totalScore+=s.score; totalMax+=s.total;
+  });
+
+  txt+='='.repeat(60)+'\n';
+  txt+=`TOTAL SCORE: ${totalScore}/${totalMax}`;
+  if(totalMax>0) txt+=` (${Math.round(totalScore/totalMax*100)}%)`;
+  txt+='\n\n';
+
+  if(logbookEntries.length>0){
+    txt+='ERROR LOGBOOK SUMMARY\n'+'-'.repeat(40)+'\n';
+    logbookEntries.forEach((e,i)=>{
+      txt+=`${i+1}. ${e.test} ${e.qNum}: Correct answer: ${e.correctAnswer}`;
+      if(e.reason) txt+=` | Reason: ${e.reason}`;
+      txt+='\n';
+    });
+  }
+  return txt;
+}
+
+function downloadResults(){
+  const student=document.getElementById('inp-name').value||'Student';
+  const date=document.getElementById('inp-date').value||new Date().toISOString().slice(0,10);
+  const txt=buildResultsText();
+  downloadText(txt,`IELTS_Part3_Results_${student.replace(/\s+/g,'_')}_${date}.txt`);
+}
+
+function downloadText(text, filename){
+  const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+// =====================================================================
+//  SEND TO TEACHER
+// =====================================================================
+function showEmailForm(){
+  const form=document.getElementById('email-form');
+  form.style.display='block';
+  const teacherEmail=document.getElementById('inp-teacher-email').value;
+  if(teacherEmail) document.getElementById('tf-teacher').value=teacherEmail;
+  const student=document.getElementById('inp-name').value;
+  if(student) document.getElementById('tf-student').value=student;
+  form.scrollIntoView({behavior:'smooth'});
+}
+
+function sendEmail(){
+  const toEmail=document.getElementById('tf-teacher').value.trim();
+  const studentName=document.getElementById('tf-student').value.trim()||document.getElementById('inp-name').value||'Student';
+  const extraMsg=document.getElementById('tf-message').value.trim();
+  const date=document.getElementById('inp-date').value||new Date().toISOString().slice(0,10);
+
+  if(!toEmail){
+    document.getElementById('email-alert').innerHTML='<div class="alert info">Please enter your teacher\'s email address.</div>';
+    return;
+  }
+
+  const resultsText=buildResultsText();
+  const subject=encodeURIComponent(`IELTS Listening Part 3 Results – ${studentName} – ${date}`);
+  const body=encodeURIComponent((extraMsg?extraMsg+'\n\n':'')+resultsText);
+  window.location.href=`mailto:${toEmail}?subject=${subject}&body=${body}`;
+
+  document.getElementById('email-alert').innerHTML='<div class="alert success">✅ Email client opened. If it didn\'t open, use "Copy Results" and paste into your email manually.</div>';
+}
+
+function copyResults(){
+  const studentName=document.getElementById('tf-student').value.trim()||document.getElementById('inp-name').value||'Student';
+  const txt=buildResultsText();
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(txt).then(()=>{
+      document.getElementById('email-alert').innerHTML='<div class="alert success">✅ Results copied to clipboard! Paste into your email.</div>';
+    });
+  } else {
+    const ta=document.createElement('textarea');
+    ta.value=txt; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    document.getElementById('email-alert').innerHTML='<div class="alert success">✅ Results copied to clipboard!</div>';
+  }
+}
+
+// =====================================================================
+//  INIT
+// =====================================================================
+document.getElementById('inp-date').value=new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
