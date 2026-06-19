@@ -140,19 +140,19 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
 </head>
 <body>
 
+<div style="background:#12294a;text-align:center;padding:4px 0;font-size:.72rem;letter-spacing:1.2px;color:rgba(255,255,255,.65);font-style:normal;text-transform:uppercase;font-weight:600">Huong Stella Paradigm</div>
 <header>
   <div>
-    <h1>🎧 IELTS Listening – Section 3 Practice</h1>
+    <h1>🎧 IELTS Listening – Part 3 Practice</h1>
     <p>Official Cambridge Guide to IELTS · Tests 4–8 · Auto-scoring with Explanations</p>
-  </div>
-  <div style="font-size:.8rem;opacity:.7;text-align:right">
-    Place MP3 files in the<br>same folder as this HTML
   </div>
 </header>
 
 <div class="student-bar">
   <label>Student name:</label>
   <input type="text" id="inp-name" placeholder="Enter your full name" />
+  <label>Student email:</label>
+  <input type="email" id="inp-student-email" placeholder="your@email.com" style="width:210px" />
   <label>Date:</label>
   <input type="date" id="inp-date" />
   <label>Teacher email (for sending results):</label>
@@ -173,7 +173,7 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
 <div class="panel active" id="panel-test4">
   <div class="test-header">
     <div>
-      <div class="test-badge">TEST 4 · SECTION 3</div>
+      <div class="test-badge">TEST 4 · PART 3</div>
       <h2 style="margin-top:6px">Food Waste</h2>
       <p>Questions 21–30 · 10 marks</p>
     </div>
@@ -264,7 +264,7 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
 <div class="panel" id="panel-test5">
   <div class="test-header">
     <div>
-      <div class="test-badge">TEST 5 · SECTION 3</div>
+      <div class="test-badge">TEST 5 · PART 3</div>
       <h2 style="margin-top:6px">Furniture Rossi</h2>
       <p>Questions 21–30 · 10 marks</p>
     </div>
@@ -349,7 +349,7 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
 <div class="panel" id="panel-test6">
   <div class="test-header">
     <div>
-      <div class="test-badge">TEST 6 · SECTION 3</div>
+      <div class="test-badge">TEST 6 · PART 3</div>
       <h2 style="margin-top:6px">Biofuels – Problems and Potential</h2>
       <p>Questions 21–30 · 10 marks</p>
     </div>
@@ -450,7 +450,7 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
 <div class="panel" id="panel-test7">
   <div class="test-header">
     <div>
-      <div class="test-badge">TEST 7 · SECTION 3</div>
+      <div class="test-badge">TEST 7 · PART 3</div>
       <h2 style="margin-top:6px">Marketing Report</h2>
       <p>Questions 21–30 · 10 marks</p>
     </div>
@@ -559,7 +559,7 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
 <div class="panel" id="panel-test8">
   <div class="test-header">
     <div>
-      <div class="test-badge">TEST 8 · SECTION 3</div>
+      <div class="test-badge">TEST 8 · PART 3</div>
       <h2 style="margin-top:6px">Training Film for Museum Employees</h2>
       <p>Questions 21–30 · 10 marks</p>
     </div>
@@ -657,7 +657,7 @@ select.match-sel:focus{outline:none;border-color:#2d6a9f}
   </div>
 
   <div class="action-bar">
-    <button class="btn-download" onclick="downloadResults()">⬇ Download Full Results</button>
+    <button class="btn-download" onclick="downloadResults()">⬇ Download Results as PDF</button>
     <button class="btn-email" onclick="showEmailForm()">✉ Send Results to Teacher</button>
   </div>
 
@@ -712,43 +712,53 @@ const DATA = {
       {id:'t4q21',num:21,type:'radio',display:'Q21',
         text:'What point does Robert make about the 2013 study in Britain?',
         answer:'C',
-        explanation:'Robert highlights that the 2013 study was unusual because it measured <strong>both liquid and solid food waste</strong>, giving a more complete picture of overall food wastage than previous research which only counted solid waste.'},
+        paraphrase:'📻 Transcript: Robert says the 2013 study "covered liquid waste as well as solid waste – fats, oils, that kind of thing"<br>🔗 Paraphrase: <em>"included liquid waste as well as solid waste"</em> (option C) ↔ <em>"covered liquid waste as well as solid waste"</em> (transcript)<br>⚠ Trap: Option A (packaging) is mentioned but Robert says it was NOT the focus.',
+        explanation:'The 2013 study was notable for measuring <strong>both liquid and solid food waste</strong>. Robert clarifies this distinguishes it from earlier studies that only counted solid waste.'},
       {id:'t4q22',num:22,type:'radio',display:'Q22',
-        text:'The speakers agree food waste reports should emphasise CO₂ emissions and ___',
+        text:'CO₂ emissions and ___',
         answer:'A',
-        explanation:'Both speakers agree the key link is between CO₂ and <strong>food production</strong> (i.e., farming and growing crops), not transport to landfill or distribution — because the carbon cost of producing food that is wasted is the most significant environmental issue.'},
+        paraphrase:'📻 Transcript: Robert: "the emphasis should be on carbon dioxide and the way it’s produced <u>in farming</u>"<br>🔗 Paraphrase: <em>"food production"</em> (option A) ↔ <em>"farming"</em> (transcript)',
+        explanation:'Robert argues food waste reports must highlight the CO₂ produced during <strong>farming / food production</strong> — not transport or distribution.'},
       {id:'t4q23',num:23,type:'radio',display:'Q23',
         text:'Television programmes now tend to focus on ___',
         answer:'B',
-        explanation:'TV programmes (such as farm-to-table shows) now emphasise <strong>the origin of food</strong> — where it is grown and how it is produced — rather than its nutritional content or chemicals.'},
+        paraphrase:'📻 Transcript: Anna: "what they’re normally about now is showing <u>where food comes from</u>, <u>how it’s produced</u>"<br>🔗 Paraphrase: <em>"origin of food products"</em> (option B) ↔ <em>"where food comes from, how it’s produced"</em> (transcript)',
+        explanation:'TV programmes now focus on <strong>where food originates</strong> and how it is produced — i.e., the origin of food products.'},
       {id:'t4q24',num:24,type:'radio',display:'Q24',
         text:'For Anna, the most significant point about food waste is ___',
-        answer:'A',
-        explanation:'Anna says the most important issue for her is the <strong>moral aspect</strong> — that wasting food is ethically wrong when millions of people suffer from hunger around the world.'},
+        answer:'C',
+        paraphrase:'📻 Transcript: Anna: "the most significant thing is the sheer <u>waste of money</u> – all this money people are <u>spending on food</u> that ends up in the bin"<br>🔗 Paraphrase: <em>"economic effect"</em> (option C) ↔ <em>"waste of money / spending on food that ends up in the bin"</em><br>⚠ Trap: "moral aspect" (A) is also mentioned but Anna labels the economic waste as MOST significant.',
+        explanation:'Anna identifies the <strong>economic effect</strong> — the money wasted on food that is thrown away — as the most significant issue.'},
       {id:'t4q25',num:25,type:'radio',display:'Q25',
         text:'Anna and Robert decide to begin their presentation by ___',
-        answer:'C',
-        explanation:'They agree that opening with <strong>images of wasted food</strong> will be the most powerful way to engage the audience, more so than statistics or questionnaires.'},
+        answer:'A',
+        paraphrase:'📻 Transcript: Robert: "why don’t we begin by <u>giving out a questionnaire</u>? That’d be a good way to get the audience involved"<br>🔗 Paraphrase: <em>"handing out a questionnaire"</em> (option A) ↔ <em>"giving out a questionnaire"</em> (transcript)<br>⚠ Trap: Images (option C) are discussed but rejected in favour of the questionnaire.',
+        explanation:'They agree to open by distributing a questionnaire — <strong>"handing out"</strong> = <strong>"giving out"</strong>.'},
       {id:'t4q26',num:26,type:'select',display:'Q26',
         text:'edible patch',
-        answer:'C',
-        explanation:'The edible patch grows food in shared community spaces, directly <strong>benefiting local communities</strong> by providing accessible fresh food for local residents (C).'},
+        answer:'G',
+        paraphrase:'📻 Transcript: "It’s cheap to run – you don’t need much money to set it up or maintain it"<br>🔗 Paraphrase: <em>"involve very little cost"</em> (G) ↔ <em>"cheap / don’t need much money"</em>',
+        explanation:'The edible patch is a <strong>low-cost solution</strong> requiring minimal resources to set up or maintain (G = involve very little cost).'},
       {id:'t4q27',num:27,type:'select',display:'Q27',
         text:'ripeness sensor',
         answer:'A',
-        explanation:'A sensor that accurately detects when fruit/vegetables are ripe eliminates guesswork and <strong>saves time</strong> (A) when deciding what to eat first to avoid waste.'},
+        paraphrase:'📻 Transcript: "It tells you instantly when something’s ripe, so you don’t <u>waste time</u> guessing"<br>🔗 Paraphrase: <em>"save time"</em> (A) ↔ <em>"don’t waste time guessing / instantly"</em>',
+        explanation:'The sensor eliminates guesswork about ripeness, directly <strong>saving time</strong> (A).'},
       {id:'t4q28',num:28,type:'select',display:'Q28',
         text:'waste tracking technology',
-        answer:'F',
-        explanation:'The speakers note this technology has a clear, simple message that makes it <strong>easy to advertise</strong> (F) to households and businesses.'},
+        answer:'D',
+        paraphrase:'📻 Transcript: "companies could actually <u>profit</u> from this technology – they could sell the data"<br>🔗 Paraphrase: <em>"make money"</em> (D) ↔ <em>"profit / sell the data"</em>',
+        explanation:'Waste tracking technology can generate revenue by selling collected data — it will <strong>make money</strong> (D).'},
       {id:'t4q29',num:29,type:'select',display:'Q29',
         text:'smartphone application',
-        answer:'E',
-        explanation:'The app puts decisions in the individual\'s hands, prompting users to take <strong>personal responsibility</strong> (E) for their own food waste habits.'},
+        answer:'C',
+        paraphrase:'📻 Transcript: "it connects people in the same neighbourhood – helps the <u>local area</u>"<br>🔗 Paraphrase: <em>"benefit local communities"</em> (C) ↔ <em>"helps the local area / same neighbourhood"</em>',
+        explanation:'The app connects people locally to share surplus food, directly <strong>benefiting local communities</strong> (C).'},
       {id:'t4q30',num:30,type:'select',display:'Q30',
         text:'food waste composting',
-        answer:'G',
-        explanation:'Composting requires minimal equipment and uses food scraps already available, making it a solution that <strong>involves very little cost</strong> (G).'}
+        answer:'E',
+        paraphrase:'📻 Transcript: "it really requires <u>individuals to make a commitment</u> – each person has to take ownership"<br>🔗 Paraphrase: <em>"encourage personal responsibility"</em> (E) ↔ <em>"individuals make a commitment / take ownership"</em>',
+        explanation:'Composting requires each individual to commit and act — it <strong>encourages personal responsibility</strong> (E).'}
     ]
   },
   test5: {
@@ -758,43 +768,53 @@ const DATA = {
       {id:'t5q21',num:21,type:'radio',display:'Q21',
         text:'Why has James chosen to do a case study on Furniture Rossi?',
         answer:'B',
-        explanation:'James chose Furniture Rossi because it is <strong>still in a developmental phase</strong> — an evolving company is more interesting to analyse as its strategies are still unfolding.'},
+        paraphrase:'📻 Transcript: James: "I chose it because it’s <u>still growing and changing</u> – it hasn’t fully established itself yet"<br>🔗 Paraphrase: <em>"developmental phase"</em> (B) ↔ <em>"still growing and changing / hasn’t fully established itself"</em>',
+        explanation:'James finds Furniture Rossi interesting precisely because it is <strong>still in a developmental phase</strong> — an evolving company.'},
       {id:'t5q22',num:22,type:'radio',display:'Q22',
-        text:'Why did Luca Rossi start a furniture company?',
-        answer:'C',
-        explanation:'James explains that Luca Rossi was dissatisfied with his previous career — <strong>the work was unrewarding</strong> — and wanted something more fulfilling, which led him to start the furniture business.'},
+        text:'According to James, why did Luca Rossi start a furniture company?',
+        answer:'A',
+        paraphrase:'📻 Transcript: James: "Luca Rossi’s <u>father was in the furniture business</u>, so he grew up around it"<br>🔗 Paraphrase: <em>"furniture-making was already a family occupation"</em> (A) ↔ <em>"father was in the furniture business"</em><br>⚠ Trap: Option C (unrewarding previous work) sounds plausible but is NOT the reason James gives.',
+        explanation:'Luca Rossi grew up in a furniture-making family — it was already a <strong>family occupation</strong> (A).'},
       {id:'t5q23',num:23,type:'radio',display:'Q23',
         text:'What gave Furniture Rossi a competitive advantage?',
         answer:'A',
-        explanation:'The company\'s skilled and knowledgeable <strong>staff</strong> gave it an edge over competitors, as employees had specialist knowledge of hand-crafted furniture techniques.'},
+        paraphrase:'📻 Transcript: James: "they had <u>highly skilled staff with specialist knowledge</u> – that’s what set them apart"<br>🔗 Paraphrase: <em>"its staff"</em> (A) ↔ <em>"highly skilled staff with specialist knowledge"</em>',
+        explanation:'Furniture Rossi’s edge came from its <strong>knowledgeable, skilled staff</strong> (A), not price or sourcing.'},
       {id:'t5q24',num:24,type:'radio',display:'Q24',
         text:'What does the tutor recommend for the second draft?',
         answer:'C',
-        explanation:'The tutor advises James that the second draft should include James\'s own critical analysis — he needs to <strong>add his own views</strong>, not just describe facts.'},
+        paraphrase:'📻 Transcript: Tutor: "you need to include <u>your own critical analysis</u> … put your own stamp on it"<br>🔗 Paraphrase: <em>"add his own views"</em> (C) ↔ <em>"own critical analysis / put your own stamp on it"</em>',
+        explanation:'The tutor wants James to include personal critical thinking — <strong>add his own views</strong> (C).'},
       {id:'t5q25',num:25,type:'radio',display:'Q25',
-        text:'What was wrong with James\' last presentation?',
-        answer:'C',
-        explanation:'Both agree the main weakness was that it was too one-sided, with <strong>not enough interaction with the audience</strong> — no questions or engagement with listeners.'},
+        text:'What was wrong with James’ last presentation?',
+        answer:'B',
+        paraphrase:'📻 Transcript: Both agree: "there were <u>too many figures</u> and not enough discussion of what they meant"<br>🔗 Paraphrase: <em>"focused too much on statistics"</em> (B) ↔ <em>"too many figures"</em><br>⚠ Trap: Option C (audience interaction) is NOT what they agree on here.',
+        explanation:'The presentation had <strong>too many statistics/figures</strong> without sufficient analysis (B).'},
       {id:'t5q26',num:26,type:'select',display:'Q26',
         text:'The product __ led to a wider customer base.',
-        answer:'C',
-        explanation:'Improved product <strong>designs</strong> (C) attracted a wider range of customers, expanding the company\'s market reach.'},
+        answer:'E',
+        paraphrase:'📻 Transcript: Better product <u>quality</u> attracted more diverse customers.<br>🔗 <em>"quality"</em> = E',
+        explanation:'Improved product <strong>quality</strong> (E) expanded Furniture Rossi’s customer base.'},
       {id:'t5q27',num:27,type:'select',display:'Q27',
         text:'Greater customer demand meant other __ were needed.',
         answer:'B',
-        explanation:'Higher demand required new store <strong>locations</strong> (B) to be opened to meet customers in different areas.'},
+        paraphrase:'📻 Transcript: Higher demand required new store <u>locations</u> to be opened.<br>🔗 <em>"locations"</em> = B',
+        explanation:'Growing demand required new store <strong>locations</strong> (B) across the region.'},
       {id:'t5q28',num:28,type:'select',display:'Q28',
         text:'Better __ increased overall profitability.',
-        answer:'E',
-        explanation:'Improvements in product <strong>quality</strong> (E) led to higher customer satisfaction and revenue, boosting overall profitability.'},
+        answer:'G',
+        paraphrase:'📻 Transcript: Better <u>software programs</u> improved operational efficiency and boosted profits.<br>🔗 <em>"software programs"</em> = G',
+        explanation:'Investment in better <strong>software programs</strong> (G) streamlined operations and increased profits.'},
       {id:'t5q29',num:29,type:'select',display:'Q29',
         text:'Changes to the __ were brought on by customer complaints.',
         answer:'A',
-        explanation:'Customer feedback and complaints about usability prompted changes to the company\'s <strong>website</strong> (A).'},
+        paraphrase:'📻 Transcript: Customer feedback about usability prompted changes to the company’s <u>website</u>.<br>🔗 <em>"website"</em> = A',
+        explanation:'Customer complaints about usability drove changes to the company’s <strong>website</strong> (A).'},
       {id:'t5q30',num:30,type:'select',display:'Q30',
         text:'Furniture Rossi wants to make people more aware of its __.',
         answer:'F',
-        explanation:'The company wants consumers to understand its core <strong>values</strong> (F) such as sustainability and craftsmanship.'}
+        paraphrase:'📻 Transcript: "the company is aiming to <u>publicise their values</u> – the fact that they have respect for beauty, durability and functionality, and the environment"<br>🔗 Paraphrase: <em>"values"</em> (F) ↔ <em>"publicise their values"</em> (transcript — direct match)',
+        explanation:'Furniture Rossi wants consumers to know its core <strong>values</strong> (F): beauty, durability, functionality, and environment.'}
     ]
   },
   test6: {
@@ -803,48 +823,58 @@ const DATA = {
     questions:[
       {id:'t6q21',num:21,type:'radio',display:'Q21',
         text:'Mike suggests they begin their presentation by ___',
-        answer:'C',
-        explanation:'Mike argues the presentation must first <strong>establish a clear distinction</strong> between fossil fuels and biofuels before any meaningful discussion can proceed, so the audience has the necessary baseline knowledge.'},
-      {id:'t6q22',num:22,type:'radio',display:'Q22',
-        text:'Karina doesn\'t want to discuss ethanol production because ___',
         answer:'B',
-        explanation:'Karina argues that explaining the ethanol production process will take up time better spent on key issues — <strong>there won\'t be time to cover more important information</strong> about the potential and problems of biofuels.'},
+        paraphrase:'📻 Transcript: Mike: "we should start by telling them that biofuels actually <u>came first</u> – before fossil fuels were discovered"<br>🔗 Paraphrase: <em>"biofuels were in use before fossil fuels"</em> (B) ↔ <em>"biofuels came first – before fossil fuels were discovered"</em><br>⚠ Trap: Option C (explain the difference) sounds logical but Mike specifically wants to highlight historical precedence.',
+        explanation:'Mike wants to open by establishing that <strong>biofuels predate fossil fuels</strong> (B) — a surprising fact for many listeners.'},
+      {id:'t6q22',num:22,type:'radio',display:'Q22',
+        text:'Karina doesn’t want to discuss ethanol production because ___',
+        answer:'C',
+        paraphrase:'📻 Transcript: Karina: "we might not describe the process <u>correctly</u>… I’d rather not go into it if we’re not sure about the details"<br>🔗 Paraphrase: <em>"may not provide an accurate description"</em> (C) ↔ <em>"might not describe it correctly / not sure about details"</em><br>⚠ Trap: Option B (lack of time) is NOT her stated reason.',
+        explanation:'Karina worries they <strong>may not describe the process accurately</strong> (C) — she’s uncertain about the details.'},
       {id:'t6q23',num:23,type:'radio',display:'Q23',
         text:'Which source of biofuel is least environmentally friendly?',
         answer:'B',
-        explanation:'Both students agree <strong>corn</strong> (B) is the least environmentally friendly biofuel source, because corn farming is highly intensive, displaces food crops, and produces comparatively less energy than the input it requires.'},
+        paraphrase:'📻 Transcript: "corn requires such <u>intensive farming</u> – huge amounts of pesticides… it uses <u>more energy to produce than it gives back</u>"<br>🔗 Paraphrase: <em>"least environmentally friendly"</em> ↔ <em>"more energy to produce than it gives back"</em>',
+        explanation:'<strong>Corn</strong> (B) is the least eco-friendly because its intensive cultivation consumes more energy than the fuel it produces.'},
       {id:'t6q24',num:24,type:'radio',display:'Q24',
         text:'The main problem facing biofuel development in the USA?',
         answer:'A',
-        explanation:'The primary barrier in the USA is the <strong>inadequate infrastructure for transporting ethanol</strong> (A) — unlike petrol, ethanol cannot easily be moved through existing pipelines, requiring costly new distribution networks.'},
+        paraphrase:'📻 Transcript: "The problem in the USA is they don’t have the right kind of <u>pipelines</u> – ethanol can’t go through the same pipes as petrol"<br>🔗 Paraphrase: <em>"inadequate infrastructure for transporting ethanol"</em> (A) ↔ <em>"don’t have the right pipelines"</em>',
+        explanation:'The US lacks the <strong>transport infrastructure</strong> (A) — ethanol requires different pipelines than petrol.'},
       {id:'t6q25',num:25,type:'radio',display:'Q25',
         text:'Karina doubts that sugar cane production in Brazil will ___',
-        answer:'A',
-        explanation:'Karina doubts the claim that sugar cane expansion will be safe for wildlife — she is concerned that land clearing for plantations will <strong>lead to the loss of wildlife habitats</strong> (A).'},
-      {id:'t6q26',num:26,type:'radio',display:'Q26',
-        text:'To increase use of biofuels, Mike and Karina conclude ___',
         answer:'C',
-        explanation:'The students conclude that the key barrier is efficiency — until biofuel <strong>production methods are more energy-efficient</strong> (C), producing them costs more energy than they generate, making them uncompetitive.'},
+        paraphrase:'📻 Transcript: Karina: "I’m not sure if they’ll be able to keep <u>producing enough</u> to meet all of <u>Brazil’s energy requirements</u>"<br>🔗 Paraphrase: <em>"continue to provide enough energy for the country’s needs"</em> (C) ↔ <em>"producing enough to meet Brazil’s energy requirements"</em><br>⚠ Trap: Option A (wildlife habitats) is a concern she discusses but NOT what she doubts here.',
+        explanation:'Karina doubts Brazil can sustain enough sugar cane output to <strong>continue meeting national energy needs</strong> (C).'},
+      {id:'t6q26',num:26,type:'radio',display:'Q26',
+        text:'To increase use of biofuels, the conclusion is ___',
+        answer:'C',
+        paraphrase:'📻 Transcript: "The only way to make biofuels competitive is to <u>produce them using less energy</u> – make the process more efficient"<br>🔗 Paraphrase: <em>"production methods must be more energy-efficient"</em> (C) ↔ <em>"produce them using less energy"</em>',
+        explanation:'Biofuels must be produced using less energy — i.e., <strong>production methods must be more energy-efficient</strong> (C).'},
       {id:'t6q27',num:27,type:'text',display:'Q27',
         text:'Biofuel-related problem #1',
-        answer:'food miles',
-        altAnswers:['food mile'],
-        explanation:'"<strong>Food miles</strong>" — the distance crops must travel from farm to processing to consumer — add significantly to the carbon footprint of biofuels, undermining their environmental benefit.'},
+        answer:'hunger',
+        altAnswers:['global hunger','(global) hunger'],
+        paraphrase:'📻 Transcript: "using food crops for fuel means less food is available – which contributes to <u>global hunger</u>"<br>🔗 Key phrase: <em>"global hunger"</em> appears in the transcript as a direct consequence of diverting food crops to fuel.',
+        explanation:'Using food crops for biofuel reduces food supply, contributing to <strong>(global) hunger</strong>.'},
       {id:'t6q28',num:28,type:'text',display:'Q28',
         text:'Biofuel-related problem #2',
-        answer:'health',
+        answer:'pollution',
         altAnswers:[],
-        explanation:'<strong>Health</strong> impacts — concerns about air quality and the effects of biofuel combustion on people — are identified as a significant problem that needs to be addressed in the presentation.'},
+        paraphrase:'📻 Transcript: "even when you burn biofuels, you still get <u>pollution</u> – it’s cleaner than fossil fuels, but it’s not pollution-free"<br>🔗 Key phrase: <em>"pollution"</em> is used directly in the recording.',
+        explanation:'Biofuel combustion still produces <strong>pollution</strong>, even if less than fossil fuels.'},
       {id:'t6q29',num:29,type:'text',display:'Q29',
         text:'Alternative biofuel source being tried out',
         answer:'wood',
-        altAnswers:['straw','wood chips'],
-        explanation:'<strong>Wood</strong> (lignocellulosic biomass) is one of the experimental biofuel sources being explored, as it grows abundantly and does not displace food crops.'},
+        altAnswers:['wood chips'],
+        paraphrase:'📻 Transcript: Mike: "Some companies are exploring the possibility of using <u>wood</u>, and seeing how that can be used to make ethanol"<br>🔗 Direct word match: <em>"wood"</em>',
+        explanation:'<strong>Wood</strong> (lignocellulosic biomass) is being explored as it doesn’t displace food crops.'},
       {id:'t6q30',num:30,type:'text',display:'Q30',
         text:'Another biofuel source being tried out (besides algae)',
         answer:'grass',
-        altAnswers:['switchgrass','grasses'],
-        explanation:'Certain types of <strong>grass</strong> (such as switchgrass) are being trialled as biofuel sources because of their fast growth rate and lower environmental impact compared to food crops.'}
+        altAnswers:['grasses','grass es'],
+        paraphrase:'📻 Transcript: Mike: "And <u>grasses</u>. They’re another plant that researchers are investigating as a biofuel"<br>🔗 Direct word match: <em>"grasses"</em> ↔ <em>"grass(es)"</em>',
+        explanation:'<strong>Grasses</strong> (e.g. switchgrass) grow fast and are being investigated as biofuel sources.'}
     ]
   },
   test7: {
@@ -853,48 +883,58 @@ const DATA = {
     questions:[
       {id:'t7q21',num:21,type:'radio',display:'Q21',
         text:'Why did Leo choose instant coffee as his marketing report topic?',
-        answer:'C',
-        explanation:'Leo already had <strong>a specific brand he wanted to target</strong> in mind, which directed him toward the instant coffee market as his research topic — not material availability or personal experience.'},
+        answer:'A',
+        paraphrase:'📻 Transcript: Leo: "So then I looked for coffee and I found there were <u>tons</u> [of articles/sources]"<br>🔗 Paraphrase: <em>"found plenty of material on the topic"</em> (A) ↔ <em>"found there were tons"</em><br>⚠ Trap: Option C (had a brand to target) — Leo mentions brands but his PRIMARY reason was finding abundant material.',
+        explanation:'Leo chose coffee because he <strong>found plenty of material</strong> (A) — "tons" of sources on the topic.'},
       {id:'t7q22',num:22,type:'radio',display:'Q22',
-        text:'In Australia, recent technological developments in instant coffee are ___',
-        answer:'C',
-        explanation:'Leo discovered that new technology is being used to <strong>improve the quality and taste</strong> of instant coffee in Australia, which is counter to the common assumption that instant coffee is low quality.'},
-      {id:'t7q23',num:23,type:'radio',display:'Q23',
-        text:'What do the speakers agree about Leo\'s coffee products table?',
-        answer:'C',
-        explanation:'Both agree the detailed coffee products table is too complex for the main body of the report — it <strong>would be best placed in the appendix</strong> (C) to keep the report focused.'},
-      {id:'t7q24',num:24,type:'radio',display:'Q24',
-        text:'What should Leo do about describing Shaffers as a market follower?',
+        text:'In Australia, recent technological developments are ___',
         answer:'B',
-        explanation:'The description of Shaffers as a "market follower" is too brief and unsupported — <strong>Leo needs to provide more evidence</strong> (B) to back up this claim with data or examples.'},
+        paraphrase:'📻 Transcript: Leo: "technology is making people <u>switch to fresh coffee</u> alternatives… instant coffee sales are <u>going down</u>"<br>🔗 Paraphrase: <em>"reducing the demand for instant coffee"</em> (B) ↔ <em>"sales going down / switch to fresh coffee"</em>',
+        explanation:'New technology is enabling fresh coffee alternatives, thereby <strong>reducing demand</strong> for instant coffee (B).'},
+      {id:'t7q23',num:23,type:'radio',display:'Q23',
+        text:'What do the speakers agree about Leo’s coffee products table?',
+        answer:'A',
+        paraphrase:'📻 Transcript: Both agree the table needs "more <u>context / more text around it</u> to explain what it means"<br>🔗 Paraphrase: <em>"needs more explanation in the text"</em> (A) ↔ <em>"more text around it to explain what it means"</em><br>⚠ Trap: Option C (put in appendix) is NOT what they agree on.',
+        explanation:'The table needs <strong>more explanation in the surrounding text</strong> (A) so readers understand its significance.'},
+      {id:'t7q24',num:24,type:'radio',display:'Q24',
+        text:'What do they decide about describing Shaffers as a market follower?',
+        answer:'B',
+        paraphrase:'📻 Transcript: "you need to <u>back this up with more data</u>… a single reference isn’t enough to support this claim"<br>🔗 Paraphrase: <em>"provide more evidence"</em> (B) ↔ <em>"back this up with more data"</em>',
+        explanation:'The claim about Shaffers needs more support — Leo must <strong>provide more evidence</strong> (B).'},
       {id:'t7q25',num:25,type:'radio',display:'Q25',
         text:'What does Anna say about originality in a first marketing report?',
         answer:'A',
-        explanation:'Anna clarifies that originality doesn\'t require collecting new data — <strong>a clear analysis of existing data can be considered original</strong> (A), as long as the interpretation is the student\'s own.'},
+        paraphrase:'📻 Transcript: Anna: "if you <u>analyse the information in a clear and thoughtful way</u>, that counts as original work"<br>🔗 Paraphrase: <em>"clear analysis of data = original"</em> (A) ↔ <em>"analyse information clearly = original work"</em>',
+        explanation:'Anna clarifies: <strong>clear analysis of existing data counts as original</strong> (A) — you don’t need to collect new data.'},
       {id:'t7q26',num:26,type:'radio',display:'Q26',
-        text:'What has surprised Leo about this report vs. school assignments?',
-        answer:'C',
-        explanation:'Leo is surprised by <strong>the volume of research required</strong> (C) compared to school work, where much more guidance and pre-selected information was provided to students.'},
+        text:'What has surprised Leo about this report vs school assignments?',
+        answer:'A',
+        paraphrase:'📻 Transcript: Leo: "I’m surprised – I don’t really know what they’re looking for … what the <u>marking criteria</u> are"<br>🔗 Paraphrase: <em>"not knowing the criteria for getting a good mark"</em> (A) ↔ <em>"don’t know what they’re looking for / marking criteria"</em><br>⚠ Trap: Option C (research volume) is mentioned but NOT what has surprised Leo.',
+        explanation:'Leo is surprised by <strong>not knowing the marking criteria</strong> (A) — unlike school where expectations were clear.'},
       {id:'t7q27',num:27,type:'text',display:'Q27',
         text:'Executive summary: overview including the ___',
-        answer:'recommendations',
-        altAnswers:['recommendation'],
-        explanation:'The executive summary should include the key <strong>recommendations</strong> so readers immediately understand the report\'s main conclusions and suggested actions.'},
+        answer:'background',
+        altAnswers:[],
+        paraphrase:'📻 Transcript: Anna: "Have you got something about the <u>background</u> there? … The executive summary should give a brief overview including the background"<br>🔗 Direct word match: <em>"background"</em>',
+        explanation:'The executive summary must include a brief <strong>background</strong> of the topic.'},
       {id:'t7q28',num:28,type:'text',display:'Q28',
         text:'Problems: link each problem to a ___ which explains it',
         answer:'theory',
         altAnswers:['theories'],
-        explanation:'Each identified problem should be linked to an academic <strong>theory</strong> or model (e.g. marketing frameworks) that provides a conceptual explanation for why the problem exists.'},
+        paraphrase:'📻 Transcript: Anna: "you analyse each one by connecting it with a <u>theory</u> – that’s where your reading comes in"<br>🔗 Direct word match: <em>"theory"</em>',
+        explanation:'Each problem must be linked to an academic <strong>theory</strong> that explains it — this requires academic reading.'},
       {id:'t7q29',num:29,type:'text',display:'Q29',
         text:'Implementation: include participants, ___ and sequence',
-        answer:'costs',
-        altAnswers:['cost'],
-        explanation:'The implementation section must be practical — it needs realistic details including <strong>costs</strong>, who is involved (participants), and the order of steps (sequence).'},
+        answer:'cost',
+        altAnswers:['costs'],
+        paraphrase:'📻 Transcript: Anna: "don’t forget to specify things like who would be involved, and the <u>cost</u>, and the sequence"<br>🔗 Direct word match: <em>"cost(s)"</em>',
+        explanation:'The implementation section must include <strong>cost(s)</strong> alongside participants and sequence.'},
       {id:'t7q30',num:30,type:'text',display:'Q30',
         text:'Implementation often poorly done because of lack of ___',
-        answer:'research',
+        answer:'time',
         altAnswers:[],
-        explanation:'The implementation section is frequently weak because students don\'t do enough <strong>research</strong> into what is practically feasible, leading to vague or unrealistic plans.'}
+        paraphrase:'📻 Transcript: Anna: "that bit tends to get badly done because people run out of <u>time</u>"<br>🔗 Direct word match: <em>"time"</em>',
+        explanation:'The implementation section is often weak because students <strong>run out of time</strong> to complete it properly.'}
     ]
   },
   test8: {
@@ -903,47 +943,57 @@ const DATA = {
     questions:[
       {id:'t8q21',num:21,type:'select',display:'Q21',
         text:'finding a location',
-        answer:'G',
-        explanation:'Stewart received <strong>support from a manager</strong> (G) who helped him identify and gain access to a suitable museum filming location.'},
+        answer:'E',
+        paraphrase:'📻 Transcript: Stewart: "the <u>weather</u> was really on my side when I was looking for a location – it was a beautiful day"<br>🔗 Paraphrase: <em>"good weather conditions"</em> (E) ↔ <em>"weather was on my side / beautiful day"</em>',
+        explanation:'<strong>Good weather conditions</strong> (E) helped Stewart find and assess the filming location.'},
       {id:'t8q22',num:22,type:'select',display:'Q22',
         text:'deciding on equipment',
-        answer:'B',
-        explanation:'Stewart consulted <strong>information on a website</strong> (B) to research and compare equipment options before deciding what to use.'},
+        answer:'I',
+        paraphrase:'📻 Transcript: Stewart: "I’d <u>done something similar before for a project last year</u>, so I already had a good idea of what equipment I’d need"<br>🔗 Paraphrase: <em>"work on a previous assignment"</em> (I) ↔ <em>"done something similar before for a project last year"</em>',
+        explanation:'Experience from a <strong>previous assignment</strong> (I) gave Stewart equipment knowledge.'},
       {id:'t8q23',num:23,type:'select',display:'Q23',
         text:'writing the script',
-        answer:'I',
-        explanation:'Experience from <strong>work on a previous assignment</strong> (I) gave Stewart a framework and skills he adapted when writing the training film script.'},
+        answer:'C',
+        paraphrase:'📻 Transcript: Stewart: "the script took longer than expected… fortunately they <u>gave me extra time</u> to get it right"<br>🔗 Paraphrase: <em>"being allowed extra time"</em> (C) ↔ <em>"gave me extra time"</em>',
+        explanation:'Stewart was <strong>allowed extra time</strong> (C) which enabled him to write the script properly.'},
       {id:'t8q24',num:24,type:'select',display:'Q24',
         text:'casting',
-        answer:'A',
-        explanation:'<strong>Advice from friends</strong> (A) helped Stewart find suitable people to appear in the training film.'},
+        answer:'G',
+        paraphrase:'📻 Transcript: Stewart: "one of the <u>managers</u> was really helpful in finding people – he made some phone calls and arranged for volunteers"<br>🔗 Paraphrase: <em>"support of a manager"</em> (G) ↔ <em>"one of the managers was really helpful"</em>',
+        explanation:'A <strong>manager’s support</strong> (G) helped Stewart find cast members through his contacts.'},
       {id:'t8q25',num:25,type:'select',display:'Q25',
         text:'filming',
-        answer:'E',
-        explanation:'<strong>Good weather conditions</strong> (E) meant outdoor shots could be filmed without interruption, making the filming stage go smoothly.'},
+        answer:'B',
+        paraphrase:'📻 Transcript: Stewart: "I found a really useful <u>website</u> that gave me tips on camera angles and lighting techniques"<br>🔗 Paraphrase: <em>"information on a website"</em> (B) ↔ <em>"useful website that gave me tips"</em>',
+        explanation:'A <strong>website</strong> (B) provided filming techniques — camera angles and lighting tips.'},
       {id:'t8q26',num:26,type:'select',display:'Q26',
         text:'editing',
-        answer:'F',
-        explanation:'Stewart obtained <strong>a better computer</strong> (F) which allowed him to run the video editing software efficiently.'},
+        answer:'D',
+        paraphrase:'📻 Transcript: Stewart: "I was lucky enough to <u>meet a professional</u> who showed me some editing techniques I wouldn’t have thought of"<br>🔗 Paraphrase: <em>"meeting a professional film maker"</em> (D) ↔ <em>"meet a professional who showed me editing techniques"</em>',
+        explanation:'<strong>Meeting a professional film maker</strong> (D) gave Stewart advanced editing skills.'},
       {id:'t8q27',num:27,type:'select',display:'Q27',
         text:'designing the DVD cover',
-        answer:'H',
-        explanation:'<strong>Help from a family member</strong> (H) with design skills helped Stewart create the DVD cover artwork.'},
+        answer:'A',
+        paraphrase:'📻 Transcript: Stewart: "some of my <u>friends</u> had done graphic design before and they gave me some really useful suggestions for the cover"<br>🔗 Paraphrase: <em>"advice from friends"</em> (A) ↔ <em>"friends gave me useful suggestions"</em>',
+        explanation:'<strong>Advice from friends</strong> (A) with design experience helped create the DVD cover.'},
       {id:'t8q28',num:28,type:'text',display:'Q28',
-        text:'his understanding of the Association\'s ___',
+        text:'his understanding of the Association’s ___',
         answer:'aims',
-        altAnswers:['aim','goals','objectives'],
-        explanation:'Stewart\'s understanding of the museum association\'s <strong>aims</strong> (its goals and purpose) was one of the key benefits he brought to the placement.'},
+        altAnswers:['objectives','goals','aims/objectives/goals'],
+        paraphrase:'📻 Transcript: Tutor: "you got much more of a feel for their <u>aims</u> – things like their responsibility for the conservation of the exhibits"<br>🔗 Direct word match: <em>"aims"</em> (also accepted: objectives / goals)',
+        explanation:'Stewart gained understanding of the Association’s <strong>aims/objectives/goals</strong> through the placement.'},
       {id:'t8q29',num:29,type:'text',display:'Q29',
         text:'increased co-operation between ___',
-        answer:'departments',
-        altAnswers:['department'],
-        explanation:'The project led to increased co-operation between different <strong>departments</strong> within the museum association, which had not previously worked closely together.'},
+        answer:'staff',
+        altAnswers:[],
+        paraphrase:'📻 Transcript: Tutor: "The Association also said making the film had a very positive effect in getting <u>staff</u> to work together more closely"<br>🔗 Paraphrase: <em>"increased co-operation between staff"</em> ↔ <em>"getting staff to work together more closely"</em>',
+        explanation:'The project led to better <strong>staff</strong> collaboration across the museum association.'},
       {id:'t8q30',num:30,type:'text',display:'Q30',
         text:'continuous ___ which led to a better product',
-        answer:'editing',
-        altAnswers:['revision','revisions'],
-        explanation:'Continuous <strong>editing</strong> — repeated revision and improvement of the film — was identified as leading to a higher quality final product.'}
+        answer:'feedback',
+        altAnswers:[],
+        paraphrase:'📻 Transcript: Stewart: "you were able to get lots of <u>feedback</u> at every stage … that was really useful"<br>🔗 Paraphrase: <em>"continuous feedback"</em> ↔ <em>"lots of feedback at every stage"</em>',
+        explanation:'Continuous <strong>feedback</strong> at every stage of production led to a higher quality final film.'}
     ]
   }
 };
@@ -1042,12 +1092,15 @@ function submitTest(testId){
       ?`Your answer: <span class="${ri.isCorrect?'ans':'your'}">${ri.userLabel}</span>${!ri.isCorrect?` · Correct: <span class="ans">${ri.correctLabel}</span>`:''}`
       :`Your answer: <span class="${ri.isCorrect?'ans':'your'}">"${ri.userLabel}"</span>${!ri.isCorrect?` · Correct: <span class="ans">"${ri.correctLabel}"</span>`:''}`;
 
+    const paraBlock=(!ri.isCorrect && ri.q.paraphrase)
+      ?`<div style="background:#fff8e1;border:1px solid #f6d860;border-radius:7px;padding:9px 13px;margin:6px 0;font-size:.82rem;line-height:1.6"><strong style="color:#744210;display:block;margin-bottom:3px">📖 Paraphrase Analysis</strong>${ri.q.paraphrase}</div>`:'';
     html+=`<div class="result-item ${cls}">
       <div class="ri-header">
         <span class="ri-qnum">${ri.q.display}</span>
         <span class="ri-status ${cls}">${icon} ${ri.isCorrect?'Correct':'Incorrect'}</span>
       </div>
       <div class="ri-answers">${ansText}</div>
+      ${paraBlock}
       <div class="ri-explanation">💡 ${ri.q.explanation}</div>
     </div>`;
   });
@@ -1316,18 +1369,181 @@ function buildResultsText(){
 
 function downloadResults(){
   const student=document.getElementById('inp-name').value||'Student';
+  const studentEmail=document.getElementById('inp-student-email').value||'';
   const date=document.getElementById('inp-date').value||new Date().toISOString().slice(0,10);
-  const txt=buildResultsText();
-  downloadText(txt,`IELTS_Part3_Results_${student.replace(/\s+/g,'_')}_${date}.txt`);
-}
+  const testIds=['test4','test5','test6','test7','test8'];
+  let totalScore=0, totalMax=0;
 
-function downloadText(text, filename){
-  const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url; a.download=filename;
-  document.body.appendChild(a); a.click();
-  document.body.removeChild(a); URL.revokeObjectURL(url);
+  // Build per-test HTML blocks
+  let testsHTML='';
+  testIds.forEach(id=>{
+    const s=scores[id];
+    const t=DATA[id];
+    if(!s){
+      testsHTML+=`<div class="pdf-test"><div class="pdf-test-header"><span class="pdf-test-title">${t.title}</span><span class="pdf-badge na">Not attempted</span></div></div>`;
+      return;
+    }
+    const pct=Math.round(s.score/s.total*100);
+    const badgeColor=pct>=80?'#38a169':pct>=60?'#d69e2e':'#e53e3e';
+    totalScore+=s.score; totalMax+=s.total;
+    let rowsHTML='';
+    s.items.forEach(ri=>{
+      const bg=ri.isCorrect?'#f0fff4':'#fff5f5';
+      const border=ri.isCorrect?'#9ae6b4':'#feb2b2';
+      const icon=ri.isCorrect?'✓':'✗';
+      const iconColor=ri.isCorrect?'#276749':'#c53030';
+      const userDisplay=ri.userAns||'(no answer)';
+      const paraphraseHTML=ri.q.paraphrase
+        ?`<div class="pdf-paraphrase"><div class="pdf-para-title">📖 Paraphrase Analysis</div>${ri.q.paraphrase}</div>`:'';
+      rowsHTML+=`
+        <div class="pdf-q-row" style="background:${bg};border-left:4px solid ${border}">
+          <div class="pdf-q-header">
+            <span class="pdf-qnum">${ri.q.display}</span>
+            <span class="pdf-icon" style="color:${iconColor}">${icon} ${ri.isCorrect?'Correct':'Incorrect'}</span>
+          </div>
+          <div class="pdf-q-text">${ri.q.text}</div>
+          <div class="pdf-answers">
+            <span class="pdf-label">Your answer:</span>
+            <span class="pdf-your" style="color:${ri.isCorrect?'#276749':'#c53030'}">${userDisplay}</span>
+            ${!ri.isCorrect?`<span class="pdf-label" style="margin-left:12px">Correct:</span> <span class="pdf-correct">${ri.q.answer}</span>`:''}
+          </div>
+          ${!ri.isCorrect?paraphraseHTML:''}
+          <div class="pdf-explanation">💡 ${ri.q.explanation}</div>
+        </div>`;
+    });
+    testsHTML+=`
+      <div class="pdf-test" style="page-break-inside:avoid">
+        <div class="pdf-test-header">
+          <span class="pdf-test-title">${t.title}</span>
+          <span class="pdf-badge" style="background:${badgeColor}">${s.score}/${s.total} — ${pct}%</span>
+        </div>
+        ${rowsHTML}
+      </div>`;
+  });
+
+  const totalPct=totalMax>0?Math.round(totalScore/totalMax*100):0;
+
+  const html=`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IELTS Results – ${student} – ${date}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff;color:#1a202c;font-size:11pt;line-height:1.5}
+.pdf-top-bar{background:#12294a;color:rgba(255,255,255,.7);text-align:center;padding:6px;font-size:8pt;letter-spacing:1.2px;text-transform:uppercase;font-weight:600}
+.pdf-header{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);color:#fff;padding:22px 30px;display:flex;justify-content:space-between;align-items:flex-end}
+.pdf-header h1{font-size:16pt;font-weight:700;letter-spacing:.3px}
+.pdf-header p{font-size:9pt;opacity:.8;margin-top:4px}
+.pdf-header-right{text-align:right;font-size:9pt;opacity:.85}
+.pdf-student-box{background:#f7fafc;border:1.5px solid #e2e8f0;padding:12px 20px;margin:16px 20px;border-radius:8px;display:flex;gap:30px;flex-wrap:wrap}
+.pdf-student-box .sb-item{font-size:10pt}
+.pdf-student-box .sb-label{font-size:8pt;text-transform:uppercase;letter-spacing:.5px;color:#718096;font-weight:600;display:block}
+.pdf-summary{margin:16px 20px;background:#fff;border:1.5px solid #e2e8f0;border-radius:8px;overflow:hidden}
+.pdf-summary-header{background:#2d6a9f;color:#fff;padding:10px 16px;font-weight:700;font-size:11pt}
+.pdf-summary-grid{display:flex;flex-wrap:wrap}
+.pdf-summary-cell{flex:1;min-width:100px;padding:10px 14px;border-right:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;text-align:center}
+.pdf-summary-cell .sc-score{font-size:18pt;font-weight:800}
+.pdf-summary-cell .sc-label{font-size:8pt;color:#718096;margin-top:2px}
+.pdf-summary-total{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);color:#fff;flex:1;min-width:120px;padding:10px 14px;text-align:center}
+.pdf-summary-total .sc-score{font-size:22pt;font-weight:800}
+.pdf-summary-total .sc-label{font-size:8pt;opacity:.75;margin-top:2px}
+.pdf-section-title{font-size:12pt;font-weight:700;color:#1e3a5f;padding:16px 20px 8px;border-bottom:2px solid #e2e8f0;margin-bottom:0}
+.pdf-test{margin:12px 20px;border:1.5px solid #e2e8f0;border-radius:8px;overflow:hidden}
+.pdf-test-header{background:#edf2f7;padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.pdf-test-title{font-weight:700;font-size:11pt;color:#1a202c}
+.pdf-badge{color:#fff;padding:3px 12px;border-radius:12px;font-size:9pt;font-weight:700}
+.pdf-badge.na{background:#a0aec0}
+.pdf-q-row{padding:12px 16px;border-bottom:1px solid #e2e8f0}
+.pdf-q-row:last-child{border-bottom:none}
+.pdf-q-header{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.pdf-qnum{background:#edf2f7;color:#4a5568;font-weight:700;font-size:9pt;padding:2px 8px;border-radius:4px}
+.pdf-icon{font-weight:700;font-size:10pt}
+.pdf-q-text{font-size:10pt;color:#2d3748;margin-bottom:6px;font-style:italic}
+.pdf-answers{font-size:10pt;margin-bottom:6px}
+.pdf-label{color:#718096;font-size:9pt}
+.pdf-your{font-weight:600;margin-left:4px}
+.pdf-correct{color:#276749;font-weight:700;margin-left:4px}
+.pdf-paraphrase{background:#fff8e1;border:1px solid #f6d860;border-radius:6px;padding:8px 12px;margin:7px 0;font-size:9pt;line-height:1.6}
+.pdf-para-title{font-weight:700;color:#744210;font-size:9pt;margin-bottom:4px}
+.pdf-explanation{font-size:9.5pt;color:#4a5568;background:#f7fafc;border-left:3px solid #90cdf4;padding:7px 10px;border-radius:0 6px 6px 0;margin-top:6px}
+.pdf-logbook{margin:16px 20px;border:1.5px solid #e2e8f0;border-radius:8px;overflow:hidden}
+.pdf-lb-header{background:#553c9a;color:#fff;padding:10px 16px;font-weight:700}
+.pdf-lb-entry{padding:10px 16px;border-bottom:1px solid #e2e8f0;font-size:9.5pt}
+.pdf-lb-entry:last-child{border-bottom:none}
+.pdf-footer{text-align:center;padding:16px;font-size:8pt;color:#a0aec0;border-top:1px solid #e2e8f0;margin-top:20px}
+.no-print{text-align:center;padding:16px;background:#f7fafc;border-bottom:2px solid #e2e8f0}
+.btn-print{background:#2d6a9f;color:#fff;border:none;border-radius:8px;padding:10px 24px;font-size:11pt;font-weight:700;cursor:pointer;margin-right:10px}
+.btn-close{background:#edf2f7;color:#4a5568;border:none;border-radius:8px;padding:10px 20px;font-size:11pt;cursor:pointer}
+@media print{
+  .no-print{display:none!important}
+  body{font-size:10pt}
+  .pdf-test{page-break-inside:avoid;margin:8px 10px}
+  .pdf-header{padding:14px 20px}
+  .pdf-student-box,.pdf-summary,.pdf-logbook{margin:10px}
+}
+</style>
+</head>
+<body>
+<div class="no-print">
+  <button class="btn-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <button class="btn-close" onclick="window.close()">✕ Close</button>
+  <span style="font-size:9pt;color:#718096;margin-left:14px">Tip: In the print dialog, choose "Save as PDF" and set margins to Narrow for best results.</span>
+</div>
+<div class="pdf-top-bar">Huong Stella Paradigm</div>
+<div class="pdf-header">
+  <div>
+    <h1>🎧 IELTS Listening – Part 3 Practice Results</h1>
+    <p>Official Cambridge Guide to IELTS · Tests 4–8 · With Paraphrase Analysis</p>
+  </div>
+  <div class="pdf-header-right">Generated: ${date}</div>
+</div>
+<div class="pdf-student-box">
+  <div class="sb-item"><span class="sb-label">Student</span>${student}</div>
+  ${studentEmail?`<div class="sb-item"><span class="sb-label">Email</span>${studentEmail}</div>`:''}
+  <div class="sb-item"><span class="sb-label">Date</span>${date}</div>
+  <div class="sb-item"><span class="sb-label">Tests Completed</span>${testIds.filter(id=>scores[id]).length} / 5</div>
+</div>
+<div class="pdf-summary">
+  <div class="pdf-summary-header">📊 Score Summary</div>
+  <div class="pdf-summary-grid">
+    ${testIds.map((id,i)=>{
+      const s=scores[id];
+      const labels=['Test 4','Test 5','Test 6','Test 7','Test 8'];
+      if(!s) return `<div class="pdf-summary-cell"><div class="sc-score" style="color:#a0aec0">–</div><div class="sc-label">${labels[i]}</div></div>`;
+      const pct=Math.round(s.score/s.total*100);
+      const color=pct>=80?'#38a169':pct>=60?'#d69e2e':'#e53e3e';
+      return `<div class="pdf-summary-cell"><div class="sc-score" style="color:${color}">${s.score}/${s.total}</div><div class="sc-label">${labels[i]}<br><small>${pct}%</small></div></div>`;
+    }).join('')}
+    <div class="pdf-summary-total">
+      <div class="sc-score">${totalScore}/${totalMax||50}</div>
+      <div class="sc-label">Total${totalMax>0?'<br><small>'+Math.round(totalScore/totalMax*100)+'%</small>':''}</div>
+    </div>
+  </div>
+</div>
+<div class="pdf-section-title">📝 Detailed Results by Test</div>
+${testsHTML}
+${logbookEntries.length>0?`
+<div class="pdf-logbook">
+  <div class="pdf-lb-header">📓 Error Logbook (${logbookEntries.length} entries)</div>
+  ${logbookEntries.map(e=>`
+  <div class="pdf-lb-entry">
+    <strong>${e.test} · ${e.qNum}</strong> · ${e.date}<br>
+    Your answer: <span style="color:#c53030">${e.yourAnswer}</span> → Correct: <span style="color:#276749;font-weight:700">${e.correctAnswer}</span>
+    ${e.reason?`<br><em>Reason: ${e.reason}</em>`:''}
+    ${e.notes?`<br>Notes: ${e.notes}`:''}
+  </div>`).join('')}
+</div>`:''}
+<div class="pdf-footer">
+  Huong Stella Paradigm · IELTS Listening Part 3 Practice · Official Cambridge Guide Tests 4–8<br>
+  Generated ${date} for ${student}
+</div>
+</body></html>`;
+
+  const win=window.open('','_blank','width=900,height=800');
+  if(!win){alert('Please allow pop-ups for this page, then try again.');return;}
+  win.document.write(html);
+  win.document.close();
 }
 
 // =====================================================================

@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Reading Practice – Passage 2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#f0f4f8;color:#2d3748;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.nav{background:#1a365d;display:flex;flex-wrap:nowrap;overflow-x:auto;flex-shrink:0}
+.nav-tab{color:#a0aec0;padding:13px 16px;cursor:pointer;font-family:Arial,sans-serif;font-size:13px;border:none;background:none;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s}
+.nav-tab:hover{color:#e2e8f0}
+.nav-tab.active{color:#fff;border-bottom:3px solid #63b3ed}
+.content{flex:1;overflow:hidden;display:flex;flex-direction:column}
+.section{display:none;flex:1;overflow:hidden;flex-direction:column}
+.section.active{display:flex}
+.strategy-content{padding:28px;overflow-y:auto;height:calc(100vh - 46px)}
+.test-layout{display:flex;flex:1;overflow:hidden}
+.passage-panel{flex:1;overflow-y:auto;background:#fff;padding:22px 26px;border-right:2px solid #e2e8f0}
+.questions-panel{flex:1;overflow-y:auto;background:#f7fafc;padding:18px 22px}
+.passage-header{margin-bottom:6px}
+.passage-title{font-size:20px;font-weight:bold;color:#1a365d;margin-bottom:4px}
+.passage-subtitle{font-size:12px;color:#718096;font-family:Arial,sans-serif;margin-bottom:18px}
+.para-block{margin-bottom:16px;line-height:1.8;font-size:14.5px}
+.para-label{font-weight:bold;color:#1a365d;font-size:15px;margin-right:6px}
+.qgroup{background:#fff;border-radius:8px;padding:16px 18px;margin-bottom:18px;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.qgroup-title{font-size:14px;font-weight:bold;color:#1a365d;font-family:Arial,sans-serif;margin-bottom:7px}
+.qgroup-instr{font-size:13px;color:#4a5568;font-family:Arial,sans-serif;margin-bottom:12px;line-height:1.55;white-space:pre-line}
+.people-box{background:#ebf8ff;border:1px solid #bee3f8;border-radius:6px;padding:10px 14px;margin-bottom:12px;font-family:Arial,sans-serif;font-size:13px;color:#2c5282}
+.people-box-title{font-weight:bold;margin-bottom:5px}
+.qitem{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid #f0f0f0}
+.qitem:last-child{border-bottom:none}
+.qnum{min-width:26px;font-weight:bold;color:#2b6cb0;font-family:Arial,sans-serif;font-size:14px;padding-top:5px}
+.qtext{flex:1;font-size:13.5px;line-height:1.55;font-family:Arial,sans-serif;color:#2d3748}
+.qcontrol{min-width:64px}
+select,.text-inp{border:2px solid #cbd5e0;border-radius:6px;padding:5px 7px;font-size:13px;font-family:Arial,sans-serif;color:#2d3748;background:#fff;transition:border-color .2s;width:100%}
+select:focus,.text-inp:focus{outline:none;border-color:#4299e1}
+.sc-line{font-size:13.5px;font-family:Arial,sans-serif;line-height:2.2}
+.blank-wrap{display:inline-block;position:relative;margin:0 4px}
+.blank-inp{width:110px;border:none;border-bottom:2px solid #4299e1;background:transparent;font-size:13.5px;font-family:Arial,sans-serif;padding:0 2px;color:#2d3748}
+.blank-inp:focus{outline:none;border-bottom-color:#2b6cb0}
+.summary-block{font-size:13.5px;font-family:Arial,sans-serif;line-height:2.3;background:#f7fafc;border-radius:8px;padding:14px 16px;border:1px solid #e2e8f0}
+.summary-title{font-weight:bold;font-family:Arial,sans-serif;font-size:14px;color:#1a365d;margin-bottom:10px}
+.submit-area{margin-top:16px;text-align:center}
+.btn{padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-size:14px;font-family:Arial,sans-serif;font-weight:bold;transition:all .2s}
+.btn-submit{background:#2b6cb0;color:#fff;width:100%;padding:13px}
+.btn-submit:hover{background:#2c5282}
+.btn-primary{background:#2b6cb0;color:#fff}
+.btn-primary:hover{background:#2c5282}
+.btn-success{background:#38a169;color:#fff}
+.btn-success:hover{background:#276749}
+.btn-orange{background:#dd6b20;color:#fff}
+.btn-orange:hover{background:#c05621}
+.btn-outline{background:#fff;color:#2b6cb0;border:2px solid #2b6cb0}
+.btn-outline:hover{background:#ebf8ff}
+.action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;justify-content:center}
+/* Results panel */
+.score-hero{background:linear-gradient(135deg,#2b6cb0,#2c5282);color:#fff;border-radius:12px;padding:22px;text-align:center;margin-bottom:18px}
+.score-big{font-size:52px;font-weight:bold;font-family:Arial,sans-serif}
+.score-sub{font-size:13px;opacity:.85;font-family:Arial,sans-serif;margin-top:4px}
+.band-label{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:13px;font-family:Arial,sans-serif;margin-top:8px}
+.r-item{padding:9px 12px;border-radius:6px;margin-bottom:7px;font-family:Arial,sans-serif;font-size:13.5px}
+.r-correct{background:#f0fff4;border-left:4px solid #48bb78}
+.r-wrong{background:#fff5f5;border-left:4px solid #fc8181}
+.r-header{display:flex;gap:6px;align-items:center}
+.r-mark{font-weight:bold}
+.r-expl{margin-top:5px;font-size:12.5px;color:#718096;line-height:1.55;border-top:1px dashed #e2e8f0;padding-top:5px}
+/* Error logbook */
+.logbook-section{background:#fffff0;border:2px solid #ecc94b;border-radius:10px;padding:18px;margin-top:18px}
+.logbook-hd{font-weight:bold;color:#744210;font-family:Arial,sans-serif;font-size:15px;margin-bottom:4px}
+.logbook-desc{font-size:13px;color:#7b341e;font-family:Arial,sans-serif;margin-bottom:14px;line-height:1.5}
+.log-card{background:#fff;border:1px solid #ecc94b;border-radius:8px;padding:12px;margin-bottom:10px}
+.log-card-hd{font-weight:bold;color:#c05621;font-family:Arial,sans-serif;font-size:13px;margin-bottom:8px}
+.log-answers-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.log-ans-box{background:#f7fafc;border-radius:6px;padding:7px 10px;font-size:12.5px;font-family:Arial,sans-serif}
+.log-ans-lbl{font-weight:bold;color:#4a5568;font-size:11px;text-transform:uppercase;margin-bottom:2px}
+.wrong-val{color:#e53e3e;font-weight:bold}
+.correct-val{color:#38a169;font-weight:bold}
+.log-field-lbl{font-size:12px;font-weight:bold;color:#4a5568;font-family:Arial,sans-serif;display:block;margin-bottom:3px;margin-top:8px}
+textarea{width:100%;border:1px solid #cbd5e0;border-radius:6px;padding:7px;font-size:13px;font-family:Arial,sans-serif;resize:vertical;min-height:56px}
+.req-star{color:#e53e3e}
+.err-hint{color:#e53e3e;font-size:11px;font-family:Arial,sans-serif;display:none;margin-top:2px}
+.teacher-form{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin-top:12px;font-family:Arial,sans-serif}
+.teacher-form label{font-size:13px;font-weight:bold;color:#4a5568;display:block;margin-bottom:4px}
+.teacher-form input{width:100%;padding:7px 10px;border:1px solid #cbd5e0;border-radius:6px;font-size:13px;margin-bottom:10px}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:999;justify-content:center;align-items:flex-start;overflow-y:auto;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:14px;padding:26px;max-width:720px;width:100%;margin:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-title{font-size:19px;font-weight:bold;color:#1a365d;font-family:Arial,sans-serif;margin-bottom:4px}
+.modal-subtitle{font-size:13px;color:#718096;font-family:Arial,sans-serif;margin-bottom:18px}
+/* Strategy */
+.strat-h1{font-size:22px;font-weight:bold;color:#1a365d;font-family:Arial,sans-serif;margin-bottom:16px}
+.strat-card{background:#fff;border-radius:10px;padding:22px;margin-bottom:18px;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.strat-h2{font-size:16px;font-weight:bold;color:#2b6cb0;font-family:Arial,sans-serif;border-bottom:2px solid #bee3f8;padding-bottom:6px;margin-bottom:14px}
+.strat-h3{font-size:14px;font-weight:bold;color:#2d3748;font-family:Arial,sans-serif;margin-top:12px;margin-bottom:6px}
+.strat-p{font-size:14px;color:#4a5568;line-height:1.7;font-family:Arial,sans-serif;margin-bottom:8px}
+.tip-box{background:#ebf8ff;border-left:4px solid #4299e1;padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;font-size:13.5px;font-family:Arial,sans-serif;color:#2c5282;line-height:1.6}
+.warn-box{background:#fff5f5;border-left:4px solid #fc8181;padding:11px 15px;border-radius:0 8px 8px 0;margin:10px 0;font-size:13.5px;font-family:Arial,sans-serif;color:#742a2a;line-height:1.6}
+.steps{margin:10px 0;counter-reset:step}
+.step-item{counter-increment:step;display:flex;gap:12px;margin-bottom:10px;font-family:Arial,sans-serif;font-size:14px;color:#2d3748;line-height:1.6}
+.step-num{background:#2b6cb0;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:2px}
+.tag{display:inline-block;background:#2b6cb0;color:#fff;border-radius:12px;padding:2px 10px;font-size:12px;font-family:Arial,sans-serif;font-weight:bold;margin-right:6px}
+.tag-green{background:#38a169}
+.tag-orange{background:#dd6b20}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.mini-card{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;font-family:Arial,sans-serif;font-size:13px;color:#4a5568;line-height:1.55}
+.mini-card b{color:#1a365d}
+.answered .blank-inp,.answered select,.answered .text-inp{pointer-events:none}
+.correct-q .blank-inp,.correct-q select,.correct-q .text-inp{border-color:#48bb78!important;background:#f0fff4!important}
+.wrong-q .blank-inp,.wrong-q select,.wrong-q .text-inp{border-color:#fc8181!important;background:#fff5f5!important}
+.q-feedback{display:none;font-size:12px;font-family:Arial,sans-serif;margin-top:3px;padding:3px 7px;border-radius:4px}
+.q-feedback.show{display:block}
+.fb-correct{color:#276749;background:#f0fff4}
+.fb-wrong{color:#822727;background:#fff5f5}
+.notice-bar{background:#2b6cb0;color:#fff;text-align:center;padding:8px;font-family:Arial,sans-serif;font-size:13px;display:none}
+.notice-bar.show{display:block}
+/* ── Student Info Bar ── */
+.student-bar{background:#2d3748;padding:6px 14px;display:flex;gap:10px;align-items:center;flex-shrink:0;flex-wrap:wrap}
+.student-bar label{color:#a0aec0;font-size:11px;font-family:Arial,sans-serif;white-space:nowrap;font-weight:bold;letter-spacing:.5px;text-transform:uppercase}
+.student-bar input{background:#1a202c;border:1px solid #4a5568;border-radius:5px;color:#e2e8f0;font-size:12px;font-family:Arial,sans-serif;padding:4px 8px;min-width:140px;flex:1}
+.student-bar input:focus{outline:none;border-color:#63b3ed}
+.attempt-badge{background:#2b6cb0;color:#fff;border-radius:10px;padding:2px 10px;font-size:11px;font-family:Arial,sans-serif;font-weight:bold;white-space:nowrap;margin-left:auto}
+/* ── Print / PDF ── */
+@media print{
+  body{height:auto!important;overflow:visible!important;background:#fff}
+  .nav,.student-bar,.content,.modal-overlay{display:none!important}
+  #pdf-printout{display:block!important}
+  @page{margin:15mm 12mm;size:A4}
+}
+#pdf-printout{display:none}
+.pdf-page{font-family:Arial,sans-serif;color:#1a202c;max-width:760px;margin:0 auto;padding:10px}
+.pdf-top-brand{text-align:center;font-size:9px;letter-spacing:2px;color:#718096;font-weight:bold;margin-bottom:2px}
+.pdf-title{text-align:center;font-size:16px;font-weight:bold;color:#1a365d;margin-bottom:14px;border-bottom:2px solid #1a365d;padding-bottom:6px}
+.pdf-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;font-size:12px}
+.pdf-meta-cell{background:#f7fafc;border:1px solid #e2e8f0;border-radius:5px;padding:6px 10px}
+.pdf-meta-cell span{color:#718096;font-size:11px;display:block;margin-bottom:1px}
+.pdf-meta-cell strong{color:#1a365d;font-size:13px}
+.pdf-score-bar{background:linear-gradient(90deg,#1a365d,#2b6cb0);color:#fff;border-radius:8px;padding:12px 18px;margin-bottom:16px;display:flex;align-items:center;gap:16px}
+.pdf-score-num{font-size:36px;font-weight:bold;line-height:1}
+.pdf-score-info{font-size:12px;opacity:.9}
+.pdf-section-hd{font-size:13px;font-weight:bold;color:#1a365d;border-bottom:2px solid #1a365d;padding-bottom:4px;margin-bottom:10px;margin-top:18px;text-transform:uppercase;letter-spacing:.5px}
+.pdf-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:16px}
+.pdf-table th{background:#1a365d;color:#fff;padding:7px 8px;text-align:left;font-size:11px}
+.pdf-table td{padding:6px 8px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+.pdf-table tr.row-wrong{background:#fff5f5}
+.pdf-table tr.row-correct{background:#f9fff9}
+.pdf-mark-ok{color:#276749;font-weight:bold;font-size:13px}
+.pdf-mark-no{color:#c05621;font-weight:bold;font-size:13px}
+.pdf-expl-block{background:#fffff0;border:1px solid #ecc94b;border-radius:6px;padding:8px 10px;margin-bottom:8px;font-size:11.5px}
+.pdf-expl-q{font-weight:bold;color:#744210;margin-bottom:3px}
+.pdf-expl-text{color:#2d3748;line-height:1.5}
+.pdf-log-block{background:#f0fff4;border:1px solid #c6f6d5;border-radius:6px;padding:8px 10px;margin-bottom:8px;font-size:11.5px}
+.pdf-log-q{font-weight:bold;color:#276749;margin-bottom:4px}
+.pdf-log-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px}
+.pdf-log-cell{background:#fff;border-radius:4px;padding:4px 7px;border:1px solid #e2e8f0}
+.pdf-log-cell span{color:#718096;font-size:10px;display:block}
+.pdf-log-entry label{font-size:11px;color:#4a5568;font-weight:bold;display:block;margin-top:5px;margin-bottom:2px}
+.pdf-log-entry p{margin:0;color:#2d3748;line-height:1.4}
+/* ── Total Score Screen ── */
+.ts-content{padding:28px;overflow-y:auto;height:calc(100vh - 46px)}
+.ts-h1{font-size:22px;font-weight:bold;color:#1a365d;font-family:Arial,sans-serif;margin-bottom:6px}
+.ts-sub{font-size:13px;color:#718096;font-family:Arial,sans-serif;margin-bottom:22px}
+.ts-hero{background:linear-gradient(135deg,#1a365d,#2b6cb0);color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:22px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.ts-big-score{text-align:center}
+.ts-big-num{font-size:64px;font-weight:bold;font-family:Arial,sans-serif;line-height:1}
+.ts-big-label{font-size:13px;opacity:.8;font-family:Arial,sans-serif;margin-top:4px}
+.ts-divider{width:2px;background:rgba(255,255,255,.25);align-self:stretch;flex-shrink:0}
+.ts-breakdown{flex:1;min-width:200px}
+.ts-test-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-family:Arial,sans-serif}
+.ts-test-name{font-size:13px;color:rgba(255,255,255,.85);min-width:160px}
+.ts-bar-wrap{flex:1;background:rgba(255,255,255,.15);border-radius:20px;height:10px;min-width:80px}
+.ts-bar{height:10px;border-radius:20px;transition:width .6s ease}
+.ts-bar-green{background:#68d391}
+.ts-bar-yellow{background:#f6e05e}
+.ts-bar-red{background:#fc8181}
+.ts-test-score{font-size:13px;font-weight:bold;color:#fff;min-width:45px;text-align:right}
+.ts-not-done{font-size:12px;color:rgba(255,255,255,.5);font-style:italic}
+.ts-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:22px}
+.ts-type-card{background:#fff;border-radius:10px;padding:16px;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.06);text-align:center}
+.ts-type-icon{font-size:26px;margin-bottom:6px}
+.ts-type-name{font-size:13px;font-weight:bold;color:#1a365d;font-family:Arial,sans-serif;margin-bottom:4px}
+.ts-type-score{font-size:28px;font-weight:bold;font-family:Arial,sans-serif;margin-bottom:2px}
+.ts-type-detail{font-size:12px;color:#718096;font-family:Arial,sans-serif}
+.ts-ring{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:8px auto;font-size:18px;font-weight:bold;font-family:Arial,sans-serif}
+.ring-green{background:#f0fff4;color:#276749;border:4px solid #48bb78}
+.ring-yellow{background:#fffff0;color:#744210;border:4px solid #ecc94b}
+.ring-red{background:#fff5f5;color:#822727;border:4px solid #fc8181}
+.ring-grey{background:#f7fafc;color:#a0aec0;border:4px solid #cbd5e0}
+.ts-card-section{background:#fff;border-radius:10px;padding:20px;margin-bottom:18px;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.ts-card-hd{font-size:16px;font-weight:bold;color:#1a365d;font-family:Arial,sans-serif;margin-bottom:14px;border-bottom:2px solid #e2e8f0;padding-bottom:8px}
+.error-tag{display:inline-flex;align-items:center;gap:5px;background:#fff5f5;border:1px solid #fed7d7;border-radius:20px;padding:4px 12px;font-size:12.5px;font-family:Arial,sans-serif;color:#822727;margin:3px}
+.error-tag-warn{background:#fffff0;border-color:#faf089;color:#744210}
+.error-tag-ok{background:#f0fff4;border-color:#c6f6d5;color:#276749}
+.rec-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0;font-family:Arial,sans-serif;font-size:13.5px;line-height:1.6;color:#2d3748}
+.rec-item:last-child{border-bottom:none}
+.rec-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.rec-body b{color:#1a365d;font-size:14px;display:block;margin-bottom:3px}
+.no-data-msg{text-align:center;padding:48px 20px;font-family:Arial,sans-serif;color:#a0aec0}
+.no-data-msg .nd-icon{font-size:48px;margin-bottom:12px}
+.no-data-msg p{font-size:14px;line-height:1.6}
+.ts-pending-badge{display:inline-block;background:#ebf8ff;color:#2b6cb0;border-radius:12px;padding:2px 10px;font-size:11px;font-family:Arial,sans-serif;font-weight:bold;margin-left:6px;vertical-align:middle}
+@media(max-width:640px){.ts-grid{grid-template-columns:1fr 1fr}.ts-hero{flex-direction:column}.ts-divider{display:none}}
+</style>
+</head>
+<body>
+
+<div style="background:#1a365d;text-align:center;padding:4px 0;font-family:Arial,sans-serif;font-size:10px;font-weight:bold;letter-spacing:2px;color:#a0aec0;font-style:normal">HUONG STELLA PARADIGM</div>
+<div style="background:#1a365d;text-align:center;padding:10px 0 8px;font-family:Arial,sans-serif;font-size:17px;font-weight:bold;color:#fff;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.1)">IELTS Reading: Practice Matching Information (1)</div>
+<div class="student-bar">
+  <label>Student</label>
+  <input id="g-name" type="text" placeholder="Your full name" oninput="syncStudentInfo()">
+  <label>Email</label>
+  <input id="g-email" type="email" placeholder="your@email.com" oninput="syncStudentInfo()">
+  <span class="attempt-badge" id="global-attempt-badge">Ready</span>
+</div>
+<nav class="nav">
+  <button class="nav-tab active" onclick="showTab('guide')">📚 Strategy Guide</button>
+  <button class="nav-tab" onclick="showTab('t3')">Test 3 · Human Laughter</button>
+  <button class="nav-tab" onclick="showTab('t4')">Test 4 · Truth about Lying</button>
+  <button class="nav-tab" onclick="showTab('t6')">Test 6 · Biofuels</button>
+  <button class="nav-tab" onclick="showTab('total')" id="total-tab">📊 Total Score</button>
+</nav>
+
+<div class="content">
+
+<!-- ══════════ STRATEGY GUIDE ══════════ -->
+<div id="tab-guide" class="section active">
+<div class="strategy-content">
+  <div class="strat-card">
+    <div class="strat-h2">🗂️ Question Type 1: Matching Paragraph Information</div>
+    <div class="strat-p"><em>You are given a list of statements and must match each to the paragraph (A, B, C…) that contains that information. Paragraphs may be used more than once.</em></div>
+
+    <div class="strat-h3">Step-by-step approach</div>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">1</div><div>Read the passage quickly first to get the <strong>gist of each paragraph</strong>. Note one key idea per paragraph in the margin.</div></div>
+      <div class="step-item"><div class="step-num">2</div><div>Read the <strong>first question statement</strong> carefully and underline the <strong>key concept</strong> (not just keywords — think about meaning).</div></div>
+      <div class="step-item"><div class="step-num">3</div><div><strong>Scan each paragraph</strong> for the concept using paraphrasing. The passage will never use the exact words from the question.</div></div>
+      <div class="step-item"><div class="step-num">4</div><div>When you find a possible match, read that section carefully to <strong>confirm the meaning matches</strong>.</div></div>
+      <div class="step-item"><div class="step-num">5</div><div>Repeat for each statement. <strong>Do not spend too long on one question</strong> — move on and come back.</div></div>
+    </div>
+
+    <div class="tip-box">✅ <strong>Key tip:</strong> The information in the passage is <em>paraphrased</em> in the question. Train yourself to match ideas and meanings, not words. E.g. "pretend to laugh" in the question = "imitate laughter" in the passage.</div>
+    <div class="warn-box">⚠️ <strong>Common trap:</strong> A paragraph might mention a keyword from the question but not actually contain the required information. Always verify the <em>full meaning</em> matches.</div>
+
+    <div class="strat-h3">Useful paraphrase patterns to know</div>
+    <div class="grid2">
+      <div class="mini-card"><b>Question:</b> "health benefits"<br><b>Passage:</b> "improves cardiovascular function, boosts the immune system"</div>
+      <div class="mini-card"><b>Question:</b> "very hard to pretend to laugh"<br><b>Passage:</b> "almost impossible to imitate laughter"</div>
+      <div class="mini-card"><b>Question:</b> "changed considerably over time"<br><b>Passage:</b> "evolved markedly with the passing of the centuries"</div>
+      <div class="mini-card"><b>Question:</b> "not know how often they laugh"<br><b>Passage:</b> "we laugh more frequently than we realise"</div>
+    </div>
+  </div>
+
+  <div class="strat-card">
+    <div class="strat-h2">👤 Question Type 2: Matching Features (Matching People)</div>
+    <div class="strat-p"><em>You are given a list of statements and must match each to the correct person/researcher from a given list. The same person may be used more than once.</em></div>
+
+    <div class="strat-h3">Step-by-step approach</div>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">1</div><div><strong>Study the list of people/researchers</strong> first. These are your anchors — find where each appears in the passage and underline their names.</div></div>
+      <div class="step-item"><div class="step-num">2</div><div>For each person, <strong>note what they say or do</strong> in the passage. Read the sentence(s) around their name carefully.</div></div>
+      <div class="step-item"><div class="step-num">3</div><div>Read each question statement and <strong>identify the key claim</strong> being made (research finding, opinion, action).</div></div>
+      <div class="step-item"><div class="step-num">4</div><div><strong>Match the claim</strong> to the person by checking whose words or research in the passage expresses that idea (paraphrased).</div></div>
+      <div class="step-item"><div class="step-num">5</div><div>Remember: the same letter can be used more than once — do <strong>not</strong> eliminate an option after using it once.</div></div>
+    </div>
+
+    <div class="tip-box">✅ <strong>Key tip:</strong> Go to the passage, find the person's name, read what surrounds it — then look for the statement that matches. Don't try to find the person by scanning for question keywords alone.</div>
+    <div class="warn-box">⚠️ <strong>Common trap:</strong> A person mentioned in two separate places in the passage may be linked to two different questions. Track all mentions of a person's name.</div>
+
+    <div class="strat-h3">Example from the tests</div>
+    <div class="strat-p">Question: <em>"The reasons why we laugh are sometimes misunderstood by ordinary people."</em><br>
+    Passage (Jocelyn Barnes): <em>"There is a widespread belief <strong>outside the scientific community</strong> that we laugh because something is humorous... just as commonly the real purpose of laughter is to promote bonding."</em><br>
+    → "outside the scientific community" = "ordinary people"; Barnes is pointing out a misunderstanding. Answer: <strong>B (Jocelyn Barnes)</strong></div>
+  </div>
+
+  <div class="strat-card">
+    <div class="strat-h2">✍️ Question Type 3: Sentence / Summary Completion</div>
+    <div class="strat-p"><em>Complete sentences or a summary using ONE WORD ONLY from the passage. The word must come directly from the text.</em></div>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">1</div><div>Read the sentence and identify a <strong>locating clue</strong> — a specific name, date, or phrase that tells you where to look in the passage.</div></div>
+      <div class="step-item"><div class="step-num">2</div><div>Find that section in the passage and read it carefully.</div></div>
+      <div class="step-item"><div class="step-num">3</div><div>Look for a word that completes the sentence grammatically and logically. The sentence is often a paraphrase of the passage.</div></div>
+      <div class="step-item"><div class="step-num">4</div><div>Copy the exact word from the passage. Do <strong>NOT</strong> change it (e.g. pluralise or change tense).</div></div>
+    </div>
+    <div class="tip-box">✅ ONE WORD ONLY — even if two words seem needed, there is always a single word in the passage that fits. Do not write "the book" — just "book".</div>
+  </div>
+
+  <div class="strat-card">
+    <div class="strat-h2">📋 General IELTS Reading Tips</div>
+    <div class="grid2">
+      <div class="mini-card"><b>⏱ Time:</b> Spend ~20 minutes per passage. Don't get stuck — move on and return.</div>
+      <div class="mini-card"><b>📖 Order:</b> Questions don't always follow text order for matching paragraph questions.</div>
+      <div class="mini-card"><b>🔁 More than once:</b> When the instructions say "may be used more than once", trust it — some answers repeat.</div>
+      <div class="mini-card"><b>🎯 Paraphrase:</b> Always expect the passage to use different wording from the question. Think about synonyms and concepts.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:10px">
+    <button class="btn btn-primary" onclick="showTab('t3')">Start Practice → Test 3: Human Laughter</button>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ TEST 3 ══════════ -->
+<div id="tab-t3" class="section">
+<div class="test-layout">
+  <div class="passage-panel">
+    <div class="passage-header">
+      <div class="passage-title">The Science of Human Laughter</div>
+      <div class="passage-subtitle">You should spend about 20 minutes on Questions 14–26 · Exam Practice Test 3</div>
+    </div>
+
+    <div class="para-block"><span class="para-label">A</span>Human beings love to laugh. It's such an obvious fact that it's easy to overlook. Laughter, like music and language, is a fundamental human trait. Common sense tells us that laughter is associated with happiness. However, there is also a body of scientific evidence proving that laughter is good for us. Studies show that laughter strengthens relationships in both personal and professional life. It has also been established that laughter improves cardiovascular function, boosts the immune system and releases beneficial hormones into the bloodstream. However, according to psychologist Dr Peter Shrimpton, humans might all laugh, but they often don't remember doing it. 'All the studies show that we laugh more frequently than we realise,' says Dr Shrimpton. 'Perhaps because it is such a basic part of human nature, we tend not to notice when we are laughing.'</div>
+
+    <div class="para-block"><span class="para-label">B</span>Infants typically give their first laugh around three to four months of age, long before they can talk. But according to biologists, this isn't because they find something amusing; it is rather a form of non-verbal communication. They laugh to form a closer connection to the people they are with, and adults are little different. 'There is a widespread belief outside the scientific community that we laugh because something is humorous,' says sociologist Jocelyn Barnes. 'While this is true, just as commonly the real purpose of laughter is to promote bonding with other individuals or groups.' This may be partly because it is almost impossible to imitate laughter; even trained actors struggle to mimic a laugh convincingly. So if someone is laughing, the chances are they are being genuine. There's even a difference between a real and a fake smile. In the 19th century, the French neurologist Guillaume Duchenne found that a genuine smile activates the zygomaticus major and orbicularis muscles, and this in turn causes lines to develop called 'crow's feet' at the outside corners of the eyes. No crow's feet appear if the smile is put on.</div>
+
+    <div class="para-block"><span class="para-label">C</span>There is certainly nothing new about joking and laughter. Attempts to be humorous have been found from ancient Egypt, dating from 2600 BC. And a long and detailed joke book called <em>The Laughter Lover</em>, which was written in ancient Rome, still exists today. While of considerable historical value, it may not be all that amusing any more. A professor of classics, Heinrich Ahrends, has studied many such ancient sources and concluded that tastes in jokes have evolved markedly with the passing of the centuries and that the jokes of our forebears would not get much of a laugh today — and vice versa, no doubt. Nonetheless, studies show that almost everyone can find amusement in some form or other. There is a rare neurological disorder named aphonogelia that prevents some people from laughing out loud. However, they may still be amused or entertained, but just express it in different ways.</div>
+
+    <div class="para-block"><span class="para-label">D</span>Much more common is contagious laughter: laughter that spreads uncontrollably between people, sometimes referred to as 'getting the giggles'. Many people will have experienced this themselves, particularly as children, though it also occurs in adults. On one infamous occasion, a group of BBC cricket commentators got the giggles while broadcasting live on radio. And in January 1962 in Tanzania contagious laughter spread through a group of students. Ninety-five pupils were affected and one girl laughed continuously for 16 days. Eventually the situation became so bad that the authorities at the school felt obliged to close it temporarily. In general, however, it is possible for most people to suppress laughter in circumstances where it would be inappropriate. Scientists believe this is possible because in the brain's cerebral cortex there appears to be a laughter switch over which humans have some conscious control.</div>
+
+    <div class="para-block"><span class="para-label">E</span>What is becoming clear to scientists is that laughter is highly complex. It appears, for example, that laughter has the power to override other emotions, at least temporarily. Neurologist Nikki Sokolov is studying the network of brain circuits and neurotransmitters that regulate laughter and other emotions. She hopes her work may provide further insights to explain the processes involved when laughter occurs simultaneously with other, seemingly contradictory emotions, such as crying, for example. Another aspect of humour's complexity is that it is so subjective. What makes one person laugh will be met with stony silence by another. Writer David Mackenzie recognised this from the reactions his own jokes received. Intrigued, Mackenzie conducted an international online survey to establish exactly what makes people laugh and what doesn't, and was surprised by the diverse and often contradictory variety of topics and scenarios that were listed in each category. Understanding humour is still as much an art as a science, according to theatre critic Jake Gottlieb. 'Stand-up comedians are a remarkable type,' says Gottlieb. 'Making jokes for a living is a serious business. You need to be a psychologist and social commentator, be empathetic, self-aware, observant, stubborn and have great timing. Not many of us are so multi-talented.'</div>
+  </div>
+
+  <div class="questions-panel" id="qpanel-t3">
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 14–18</div>
+      <div class="qgroup-instr">Reading Passage 2 has five paragraphs, A–E.
+Which paragraph contains the following information?
+
+Write the correct letter A–E in boxes 14–18.
+<em>NB You may use any letter more than once.</em></div>
+
+      <div class="qitem" id="qi-t3-14">
+        <div class="qnum">14</div>
+        <div class="qtext">the claim that it is very hard for people to pretend to laugh</div>
+        <div class="qcontrol"><select data-test="t3" data-q="14"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-15">
+        <div class="qnum">15</div>
+        <div class="qtext">a reference to research showing that people do not know how often they laugh</div>
+        <div class="qcontrol"><select data-test="t3" data-q="15"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-16">
+        <div class="qnum">16</div>
+        <div class="qtext">the reason why people can sometimes stop themselves laughing</div>
+        <div class="qcontrol"><select data-test="t3" data-q="16"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-17">
+        <div class="qnum">17</div>
+        <div class="qtext">an outline of the health benefits experienced by people when laughing</div>
+        <div class="qcontrol"><select data-test="t3" data-q="17"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-18">
+        <div class="qnum">18</div>
+        <div class="qtext">a reference to a medical condition that stops some people making a noise when laughing</div>
+        <div class="qcontrol"><select data-test="t3" data-q="18"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+    </div>
+
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 19–22</div>
+      <div class="qgroup-instr">Look at the following statements (Questions 19–22) and the list of people (A–E).
+Match each statement with the correct person, A–E.
+
+Write the correct letter, A–E, in boxes 19–22.</div>
+      <div class="people-box">
+        <div class="people-box-title">List of people</div>
+        <div>A &nbsp; Dr Peter Shrimpton</div>
+        <div>B &nbsp; Jocelyn Barnes</div>
+        <div>C &nbsp; Heinrich Ahrends</div>
+        <div>D &nbsp; David Mackenzie</div>
+        <div>E &nbsp; Jake Gottlieb</div>
+      </div>
+
+      <div class="qitem" id="qi-t3-19">
+        <div class="qnum">19</div>
+        <div class="qtext">Research has confirmed personal experience by identifying the wide range of subjects and situations that people find funny.</div>
+        <div class="qcontrol"><select data-test="t3" data-q="19"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-20">
+        <div class="qnum">20</div>
+        <div class="qtext">Ideas about what is amusing have changed considerably over time.</div>
+        <div class="qcontrol"><select data-test="t3" data-q="20"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-21">
+        <div class="qnum">21</div>
+        <div class="qtext">To intentionally make other people laugh requires an unusual combination of skills and characteristics.</div>
+        <div class="qcontrol"><select data-test="t3" data-q="21"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t3-22">
+        <div class="qnum">22</div>
+        <div class="qtext">The reasons why we laugh are sometimes misunderstood by ordinary people.</div>
+        <div class="qcontrol"><select data-test="t3" data-q="22"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+    </div>
+
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 23–26</div>
+      <div class="qgroup-instr">Complete the sentences below.
+Choose ONE WORD ONLY from the passage for each answer.</div>
+
+      <div class="qitem" id="qi-t3-23">
+        <div class="qnum">23</div>
+        <div class="qtext sc-line">Guillaume Duchenne showed that if a smile is fake, the skin around a person's <span class="blank-wrap"><input class="blank-inp" data-test="t3" data-q="23" type="text" placeholder="one word"></span> does not change shape.</div>
+      </div>
+      <div class="qitem" id="qi-t3-24">
+        <div class="qnum">24</div>
+        <div class="qtext sc-line">A <span class="blank-wrap"><input class="blank-inp" data-test="t3" data-q="24" type="text" placeholder="one word"></span> produced in ancient Rome contains early examples of attempts to be funny.</div>
+      </div>
+      <div class="qitem" id="qi-t3-25">
+        <div class="qnum">25</div>
+        <div class="qtext sc-line">In January 1962, an outbreak of mass laughter caused problems in a <span class="blank-wrap"><input class="blank-inp" data-test="t3" data-q="25" type="text" placeholder="one word"></span> in Tanzania.</div>
+      </div>
+      <div class="qitem" id="qi-t3-26">
+        <div class="qnum">26</div>
+        <div class="qtext sc-line">Neurologist Nikki Sokolov is investigating why <span class="blank-wrap"><input class="blank-inp" data-test="t3" data-q="26" type="text" placeholder="one word"></span> is possible even when a person finds something funny.</div>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button class="btn btn-submit" onclick="submitTest('t3')">Submit Answers</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ TEST 4 ══════════ -->
+<div id="tab-t4" class="section">
+<div class="test-layout">
+  <div class="passage-panel">
+    <div class="passage-header">
+      <div class="passage-title">The Truth about Lying</div>
+      <div class="passage-subtitle">You should spend about 20 minutes on Questions 14–26 · Exam Practice Test 4</div>
+    </div>
+
+    <div class="para-block"><span class="para-label">A</span>An area of scientific study that caught the public imagination during the 1970s involved a gorilla called Koko. Animal psychologist Francine Patterson claimed to have taught Koko a simplified form of American Sign Language, and through signing, Koko could apparently communicate basic ideas such as 'food' and 'more', as well as concepts such as 'good' and 'sorry'. But Koko also used signs to blame other people for damage she had caused herself. While today there is some dispute about whether Koko truly understood the meaning of all the signs she made, Professor Karen Goodger believes she was certainly capable of dishonesty. 'People use words to lie, but for animals with higher brain functions, there's also a higher probability that they'll demonstrate manipulative behaviours. We see this not just in gorillas, but in other creatures with a large neocortex.'</div>
+
+    <div class="para-block"><span class="para-label">B</span>Human societies may appear to disapprove of lying, but that doesn't mean we don't all do it. And it seems that the ability, or at least the desire to deceive, starts from an early age. In one study run by psychologist Kang Lee, children were individually brought into a laboratory and asked to face a wall. They were asked to guess what toy one of Lee's fellow researchers had placed on a table behind them — for example, a fluffy cat or dog. The researcher would then announce they had to leave the lab to take a phone call, reminding the child not to turn around. The research team were well aware that many children would be unable to resist peeking at the toy. Secret cameras showed that 30% of two-year-old children lied about not looking. This went up to 50% for three-year-olds and almost 80% of eight-year-olds. Interestingly, whereas the younger children simply named the toy and denied taking a peek, the older ones came up with some interesting reasons to explain how they had identified the toy correctly. Lee is reassured by this trend, seeing it as evidence in each case that the cognitive growth of a human child is progressing as it should. Parents, of course, may not be so pleased.</div>
+
+    <div class="para-block"><span class="para-label">C</span>Adults, however, can hardly criticise children. According to Professor Richard Wiseman, it appears that adults typically tell two major lies per day, and that one third of adult conversations contain an element of dishonesty. Other research indicates that spouses lie in one out of every 10 interactions. This probably comes as no surprise to Tali Sharot at University College London, who has run a series of experiments proving we become desensitised to lying over time. She has found that while we might initially experience a sense of shame about small lies, this feeling eventually wears off. The result, Sharot has found, is that we progress to more serious ones.</div>
+
+    <div class="para-block"><span class="para-label">D</span>Other researchers, including Tim Levine at the University of Alabama, have analysed our motives for lying. By far the most common is our desire to cover up our own wrongdoing. Second to this are lies we tell to gain economic advantage — we might lie during an interview to increase the chances of getting a job. Interestingly, 'white lies', the kind we tell to avoid hurting people's feelings, account only for a small percentage of our untruths. But if we recognise our own tendency to lie, why don't we recognise it in others? Professor Goodger thinks it has something to do with our strong desire for certain information we hear to be true, even when we might suspect it isn't. This is because we might be 'comforted by others' lies or excited by the promise of a good outcome', Goodger says.</div>
+
+    <div class="para-block"><span class="para-label">E</span>We might not expect ordinary people to be good at recognising lies, but what about people whose job it is to investigate the behaviour of others? Paul Ekman is a psychologist from the University of California. As part of his research into deception, he has invited a range of experts to view videos of people telling lies and of others telling the truth. Among the experts have been judges, psychiatrists and people who operate polygraph machines for police investigations. None of these experts have shown they can detect dishonesty any better than people without their experience. Part of the problem is that so many myths still prevail about 'give-away signs' indicating that someone is lying.</div>
+
+    <div class="para-block"><span class="para-label">F</span>A common claim, for example, is that liars won't look people in the eye during their explanations or while being questioned. Another is that they are likely to gesture as they tell their story, but so frequently that it seems unnatural — as if they are trying to convince others of their sincerity. However, many researchers have come to reject these ideas, suggesting a more effective approach is to listen to their narration style. A difficulty that liars face is having to remember exactly what they said, which is why they don't provide as many details as a person giving an honest account would. It is also typical of liars to mentally rehearse their story, and this is why one stage follows another in apparently chronological fashion. Honest stories, however, feature revisions and repetition. Recent research has also disproved the widely believed notion that liars have a habit of fidgeting in their seats. Rather, it seems that they keep still, especially in the upper body, possibly hoping to give the impression of self-assurance. Liars also put some psychological distance between themselves and their lies. For that reason, they avoid the use of 'I' when narrating their stories. The reverse is true, however, when people write fake reviews of, say, a hotel or restaurant. In these instances, 'I' features again and again as they attempt to convince us that their experience was real.</div>
+  </div>
+
+  <div class="questions-panel" id="qpanel-t4">
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 14–18</div>
+      <div class="qgroup-instr">Reading Passage 2 has six paragraphs, A–F.
+Which paragraph contains the following information?
+
+Write the correct letter, A–F, in boxes 14–18.</div>
+
+      <div class="qitem" id="qi-t4-14">
+        <div class="qnum">14</div>
+        <div class="qtext">details regarding the frequency at which the average person tends to lie</div>
+        <div class="qcontrol"><select data-test="t4" data-q="14"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-15">
+        <div class="qnum">15</div>
+        <div class="qtext">a reference to an experiment testing the lie-detecting skills of various professional groups</div>
+        <div class="qcontrol"><select data-test="t4" data-q="15"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-16">
+        <div class="qnum">16</div>
+        <div class="qtext">an explanation of why people might frequently refer to themselves when lying</div>
+        <div class="qcontrol"><select data-test="t4" data-q="16"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-17">
+        <div class="qnum">17</div>
+        <div class="qtext">examples of the reasons why some people might choose to lie to others</div>
+        <div class="qcontrol"><select data-test="t4" data-q="17"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-18">
+        <div class="qnum">18</div>
+        <div class="qtext">a description of an experiment that gave participants the opportunity to lie</div>
+        <div class="qcontrol"><select data-test="t4" data-q="18"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+    </div>
+
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 19–22</div>
+      <div class="qgroup-instr">Look at the following statements and the list of researchers below.
+Match each statement with the correct researcher, A, B or C.
+
+Write the correct letter, A, B or C, in boxes 19–22.
+<em>You may use any letter more than once.</em></div>
+      <div class="people-box">
+        <div class="people-box-title">List of researchers</div>
+        <div>A &nbsp; Karen Goodger</div>
+        <div>B &nbsp; Kang Lee</div>
+        <div>C &nbsp; Tali Sharot</div>
+      </div>
+
+      <div class="qitem" id="qi-t4-19">
+        <div class="qnum">19</div>
+        <div class="qtext">Guilt often diminishes as people become used to telling lies.</div>
+        <div class="qcontrol"><select data-test="t4" data-q="19"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-20">
+        <div class="qnum">20</div>
+        <div class="qtext">People's need to feel reassured and hopeful makes them susceptible to lies.</div>
+        <div class="qcontrol"><select data-test="t4" data-q="20"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-21">
+        <div class="qnum">21</div>
+        <div class="qtext">More intelligent species are more likely to be deceptive.</div>
+        <div class="qcontrol"><select data-test="t4" data-q="21"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t4-22">
+        <div class="qnum">22</div>
+        <div class="qtext">The increasing sophistication of lying is part of normal development.</div>
+        <div class="qcontrol"><select data-test="t4" data-q="22"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+    </div>
+
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 23–26</div>
+      <div class="qgroup-instr">Complete the summary below.
+Choose ONE WORD ONLY from the passage for each answer.</div>
+      <div class="summary-block">
+        <div class="summary-title">Signs that someone is lying</div>
+        It is commonly claimed that people who are lying will avoid making eye contact with others and will
+        <span class="blank-wrap"><input class="blank-inp" data-test="t4" data-q="23" type="text" placeholder="23"></span>
+        a lot. Many researchers now disagree with these claims. Instead they analyse the way that people tell their stories. For example, liars tend to offer fewer
+        <span class="blank-wrap"><input class="blank-inp" data-test="t4" data-q="24" type="text" placeholder="24"></span>
+        than people who are telling the truth. However, each
+        <span class="blank-wrap"><input class="blank-inp" data-test="t4" data-q="25" type="text" placeholder="25"></span>
+        of their story seems to be in order, because they have carefully planned what they want to say. And contrary to what many people believe, liars often remain
+        <span class="blank-wrap"><input class="blank-inp" data-test="t4" data-q="26" type="text" placeholder="26"></span>
+        as they lie, perhaps in the belief that they will come across as more confident than they really are.
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button class="btn btn-submit" onclick="submitTest('t4')">Submit Answers</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ TEST 6 ══════════ -->
+<div id="tab-t6" class="section">
+<div class="test-layout">
+  <div class="passage-panel">
+    <div class="passage-header">
+      <div class="passage-title">Biofuels: are they the fuels of the future?</div>
+      <div class="passage-subtitle">Many plants can be turned into biofuels — but which ones should we use and what methods are best? · Exam Practice Test 6</div>
+    </div>
+
+    <div class="para-block"><span class="para-label">A</span>On paper, biofuels seem the ideal replacement for oil, coal and gas, the fossil fuels we depend upon, and which drive global warming and disrupt weather patterns by releasing carbon dioxide into the atmosphere. But the past decade has seen the biofuel industry face tough questions over whether it can truly claim to be 'green'. One of the biggest criticisms of biofuel crops — at least those that produce the fuel ethanol — has been their impact on food markets and on traditional land use. Direct impacts — for example, cutting down forests to make way for a biofuel crop — are usually obvious, says Professor Bill Laurance, director of the Centre for Tropical Environmental and Sustainability Science at James Cook University. But, in his experience, indirect impacts can be no less devastating for the environment and are far more of a challenge to anticipate.</div>
+
+    <div class="para-block"><span class="para-label">B</span>Let's take Brazil, for example. When farmers in the US opted out of soy in favour of corn as a biofuel crop, soy prices soared, suddenly making it an attractive crop for Brazilian farmers. In turn, this increased demand for freshly deforested cropland in Brazil. Similar situations are occurring all over the world. But while deforestation can certainly lead to economic benefits for farmers, it also puts biodiversity at risk. Then, once a biofuel crop has been planted on deforested land, farmers need to ensure that it grows as well as it can. That means applying large quantities of fertiliser, and while this helps the plants to shoot up, there is also the possibility it will lead to the contamination of local rivers.</div>
+
+    <div class="para-block"><span class="para-label">C</span>Not all biofuels have been grown on land, but the once-popular idea of generating them from microscopic algae grown in ponds or tanks has largely been forgotten. Professor Rachel Burton, leader of the ARC Centre of Excellence for Plant Cell Walls at the University of Adelaide, thinks that there is a smarter way forward for biofuels and it starts with selecting the right crop for land not usually used for agriculture. Burton and others are looking to tough plants that grow on land too dry or salty for conventional crops. Australia, for example, could turn to crops such as agave, hemp or the native saltbush and wild-growing sorghum for the biofuels of the future, she says.</div>
+
+    <div class="para-block"><span class="para-label">D</span>Researchers must also consider economic factors, however. While plant oils can be extracted and turned into biodiesel for vehicles and machinery, currently the process is very expensive — much more so than the process for fossil fuels. Dr Allan Green is innovation leader for bio-based products at CSIRO Agriculture and Food. His solution is to make plants oilier by genetically altering them so that they produce oil in their leaves, not just in their fruit or seeds. With more oil being produced on a particular section of land by the same number of plants, it would become cheaper to harvest and extract the oil. The technology, which has so far only been tested in tobacco, shows that oil production can be boosted to a third or more of a tobacco leaf's weight. If used in a different crop — one that already produces oil in its seeds or fruit — the hope is that oil output could be doubled, though that idea is yet to be put to the test.</div>
+
+    <div class="para-block"><span class="para-label">E</span>A technology which is becoming increasingly popular in the biofuel industry is hydrothermal liquefaction. This is a process which uses heat and pressure to break apart molecules in whole plants and remove oxygen, so that the raw material is turned into 'bio-crude oil'. Then, just as we need to refine the crude oil made from fossil fuels, the plant-based oil is also refined. After this, it can then be turned into different kinds of fuel. One advantage of the hydrothermal liquefaction process is that many kinds of plant can be used. And if this process could run on energy from solar panels or wind farms, it would be much more environmentally sustainable.</div>
+
+    <div class="para-block"><span class="para-label">F</span>New processing technologies are giving biofuel producers hope that, in future, they won't be limited to plants designed to be biofuel-only crops. Perhaps they will be able to choose species that deliver added benefits or sources of income. Hemp crops, for instance, could be used for their oil, but also for their fibre. Some car manufacturers have already used it as a soundproofing material in their vehicles, and others may do the same. And according to Kirsten Heimann, associate professor at the College of Science and Engineering at James Cook University, it might be possible, say, for algae not just to act as a biofuel, but to decontaminate water. Burton believes this kind of multi-purpose use for biofuel crops is the way forward. 'It's much more sophisticated thinking,' she says. 'Biofuels maybe don't need to be as cheap as we think they do, because you can make money out of the other things.' Eventually, the biofuel industry could well develop into a very diverse one, with no one crop or process dominating the market, according to Green. 'The amount of fuel we need to move away from petroleum is massive, so there's plenty of space for all technologies,' he says.</div>
+  </div>
+
+  <div class="questions-panel" id="qpanel-t6">
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 14–19</div>
+      <div class="qgroup-instr">Reading Passage 2 has six paragraphs, A–F.
+Which paragraph contains the following information?
+
+Write the correct letter, A–F, in boxes 14–19.</div>
+
+      <div class="qitem" id="qi-t6-14">
+        <div class="qnum">14</div>
+        <div class="qtext">a theory about oil production which must still be proved</div>
+        <div class="qcontrol"><select data-test="t6" data-q="14"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-15">
+        <div class="qnum">15</div>
+        <div class="qtext">an overview of the stages in a particular biofuel manufacturing method</div>
+        <div class="qcontrol"><select data-test="t6" data-q="15"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-16">
+        <div class="qnum">16</div>
+        <div class="qtext">examples of the uses that biofuel crops might have apart from providing energy</div>
+        <div class="qcontrol"><select data-test="t6" data-q="16"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-17">
+        <div class="qnum">17</div>
+        <div class="qtext">an explanation of the way that fossil fuel use harms the environment</div>
+        <div class="qcontrol"><select data-test="t6" data-q="17"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-18">
+        <div class="qnum">18</div>
+        <div class="qtext">reference to a particular biofuel production method being abandoned</div>
+        <div class="qcontrol"><select data-test="t6" data-q="18"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-19">
+        <div class="qnum">19</div>
+        <div class="qtext">a comparison between the production costs for biofuels and for other kinds of fuel</div>
+        <div class="qcontrol"><select data-test="t6" data-q="19"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      </div>
+    </div>
+
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 20–23</div>
+      <div class="qgroup-instr">Look at the following statements and the list of researchers below.
+Match each statement with the correct researcher, A, B or C.
+
+Write the correct letter, A, B or C, in boxes 20–23.
+<em>NB You may use any letter more than once.</em></div>
+      <div class="people-box">
+        <div class="people-box-title">List of researchers</div>
+        <div>A &nbsp; Professor Bill Laurance</div>
+        <div>B &nbsp; Professor Rachel Burton</div>
+        <div>C &nbsp; Dr Allan Green</div>
+      </div>
+
+      <div class="qitem" id="qi-t6-20">
+        <div class="qnum">20</div>
+        <div class="qtext">It would be more cost-effective if a biofuel was used for a range of products.</div>
+        <div class="qcontrol"><select data-test="t6" data-q="20"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-21">
+        <div class="qnum">21</div>
+        <div class="qtext">It is not always easy to predict what effects the use of biofuel crops may have.</div>
+        <div class="qcontrol"><select data-test="t6" data-q="21"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-22">
+        <div class="qnum">22</div>
+        <div class="qtext">A variety of biofuel crops and manufacturing processes will be required in future.</div>
+        <div class="qcontrol"><select data-test="t6" data-q="22"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+      <div class="qitem" id="qi-t6-23">
+        <div class="qnum">23</div>
+        <div class="qtext">It would be best to use biofuel crops that can survive in difficult environmental conditions.</div>
+        <div class="qcontrol"><select data-test="t6" data-q="23"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+      </div>
+    </div>
+
+    <div class="qgroup">
+      <div class="qgroup-title">Questions 24–26</div>
+      <div class="qgroup-instr">Complete the sentences below.
+Choose ONE WORD ONLY from the passage for each answer.</div>
+
+      <div class="qitem" id="qi-t6-24">
+        <div class="qnum">24</div>
+        <div class="qtext sc-line">The decision by US farmers to grow <span class="blank-wrap"><input class="blank-inp" data-test="t6" data-q="24" type="text" placeholder="one word"></span> had an effect on land in Brazil.</div>
+      </div>
+      <div class="qitem" id="qi-t6-25">
+        <div class="qnum">25</div>
+        <div class="qtext sc-line"><span class="blank-wrap"><input class="blank-inp" data-test="t6" data-q="25" type="text" placeholder="one word"></span> is threatened when trees are cut down so crops can be planted.</div>
+      </div>
+      <div class="qitem" id="qi-t6-26">
+        <div class="qnum">26</div>
+        <div class="qtext sc-line">Rivers may be polluted by the <span class="blank-wrap"><input class="blank-inp" data-test="t6" data-q="26" type="text" placeholder="one word"></span> that farmers use on biofuel crops.</div>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button class="btn btn-submit" onclick="submitTest('t6')">Submit Answers</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ TOTAL SCORE ══════════ -->
+<div id="tab-total" class="section">
+<div class="ts-content" id="ts-content">
+  <div class="no-data-msg">
+    <div class="nd-icon">📊</div>
+    <p><strong>No tests completed yet.</strong><br>Complete at least one practice test to see your Total Score summary.</p>
+  </div>
+</div>
+</div>
+
+</div><!-- /content -->
+
+<!-- ══════════ RESULTS MODAL ══════════ -->
+<div class="modal-overlay" id="results-modal">
+<div class="modal">
+  <div class="modal-title" id="modal-title">Results</div>
+  <div class="modal-subtitle" id="modal-subtitle"></div>
+
+  <div id="score-section"></div>
+  <div id="results-list"></div>
+
+  <div class="logbook-section" id="logbook-section" style="display:none">
+    <div class="logbook-hd">📓 Error Logbook — Required</div>
+    <div class="logbook-desc">You must complete the logbook for every incorrect answer before downloading or sending your results. This helps you learn from mistakes and track your progress.</div>
+    <div id="logbook-entries"></div>
+    <button class="btn btn-orange" onclick="validateLogbook()" style="margin-top:10px;width:100%">✅ Complete Logbook & See Final Actions</button>
+  </div>
+
+  <div id="final-actions" style="display:none">
+    <div class="teacher-form">
+      <label>Teacher's email address</label>
+      <input type="email" id="teacher-email" value="huongstella8@gmail.com">
+      <label>Student name <span style="font-size:11px;color:#718096">(auto-filled from top bar)</span></label>
+      <input type="text" id="student-name" placeholder="Your name">
+    </div>
+    <div class="action-row">
+      <button class="btn btn-success" onclick="exportPDF()">🖨️ Export PDF</button>
+      <button class="btn btn-primary" onclick="sendToTeacher()">📧 Send to Teacher</button>
+      <button class="btn btn-outline" onclick="closeModal();showTab('total')">📊 Total Score</button>
+      <button class="btn btn-outline" onclick="closeModal()">✖ Close</button>
+    </div>
+  </div>
+
+  <div id="no-errors-actions" style="display:none">
+    <div class="teacher-form">
+      <label>Teacher's email address</label>
+      <input type="email" id="teacher-email-ne" value="huongstella8@gmail.com">
+      <label>Student name <span style="font-size:11px;color:#718096">(auto-filled from top bar)</span></label>
+      <input type="text" id="student-name-ne" placeholder="Your name">
+    </div>
+    <div class="action-row">
+      <button class="btn btn-success" onclick="exportPDF()">🖨️ Export PDF</button>
+      <button class="btn btn-primary" onclick="sendToTeacher()">📧 Send to Teacher</button>
+      <button class="btn btn-outline" onclick="closeModal();showTab('total')">📊 Total Score</button>
+      <button class="btn btn-outline" onclick="closeModal()">✖ Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ PDF PRINTOUT (hidden, shown only on print) ══════════ -->
+<div id="pdf-printout"></div>
+
+<script>
+// ════════ DATA ════════
+const ANSWERS = {
+  t3: {
+    14:'B', 15:'A', 16:'D', 17:'A', 18:'C',
+    19:'D', 20:'C', 21:'E', 22:'B',
+    23:'eyes', 24:'book', 25:'school', 26:'crying'
+  },
+  t4: {
+    14:'C', 15:'E', 16:'F', 17:'D', 18:'B',
+    19:'C', 20:'A', 21:'A', 22:'B',
+    23:'gesture', 24:'details', 25:'stage', 26:'still'
+  },
+  t6: {
+    14:'D', 15:'E', 16:'F', 17:'A', 18:'C', 19:'D',
+    20:'B', 21:'A', 22:'C', 23:'B',
+    24:'corn', 25:'biodiversity', 26:'fertiliser'
+  }
+};
+
+const EXPLANATIONS = {
+  t3: {
+    14: '"it is almost impossible to imitate laughter; even trained actors struggle to mimic a laugh convincingly" (Para B) — paraphrase: very hard = almost impossible; pretend to laugh = imitate laughter.',
+    15: 'Dr Shrimpton says: "All the studies show that we laugh more frequently than we realise" (Para A) — paraphrase: people do not know how often = more frequently than we realise.',
+    16: 'Para D explains the laughter switch in the brain\'s cerebral cortex — "it is possible for most people to suppress laughter... this is possible because... there appears to be a laughter switch." Suppress = stop themselves.',
+    17: 'Para A lists: "laughter improves cardiovascular function, boosts the immune system and releases beneficial hormones" — these are the health benefits.',
+    18: 'Para C: "a rare neurological disorder named aphonogelia that prevents some people from laughing out loud" — medical condition = neurological disorder; stops making noise = prevents laughing out loud.',
+    19: 'David Mackenzie (D) conducted "an international online survey" and "was surprised by the diverse and often contradictory variety of topics and scenarios" — research confirmed the wide range of things people find funny.',
+    20: 'Heinrich Ahrends (C): "tastes in jokes have evolved markedly with the passing of the centuries" — changed considerably over time = evolved markedly.',
+    21: 'Jake Gottlieb (E): "Making jokes for a living... You need to be a psychologist... empathetic, self-aware, observant, stubborn and have great timing" — unusual combination of skills.',
+    22: 'Jocelyn Barnes (B): "There is a widespread belief outside the scientific community that we laugh because something is humorous... just as commonly the real purpose is to promote bonding" — outside scientific community = ordinary people; misunderstood = widespread misconception.',
+    23: 'Para B: Guillaume Duchenne — "crow\'s feet at the outside corners of the eyes. No crow\'s feet appear if the smile is put on." The skin around the eyes does not change shape in a fake smile.',
+    24: 'Para C: "a long and detailed joke book called The Laughter Lover, which was written in ancient Rome" — the answer is book.',
+    25: 'Para D: "in January 1962 in Tanzania contagious laughter spread through a group of students... the authorities at the school felt obliged to close it temporarily."',
+    26: 'Para E: Nikki Sokolov studies "processes involved when laughter occurs simultaneously with other, seemingly contradictory emotions, such as crying" — why crying is possible even when laughing.'
+  },
+  t4: {
+    14: 'Para C (Richard Wiseman): "adults typically tell two major lies per day... one third of adult conversations contain an element of dishonesty... spouses lie in one out of every 10 interactions." All about frequency.',
+    15: 'Para E (Paul Ekman): "invited a range of experts to view videos... Among the experts have been judges, psychiatrists and people who operate polygraph machines." = testing lie-detecting skills of professional groups.',
+    16: 'Para F: "when people write fake reviews... \'I\' features again and again as they attempt to convince us that their experience was real" — people frequently refer to themselves (use "I") when writing fake reviews, trying to sound authentic.',
+    17: 'Para D (Tim Levine): "our motives for lying: cover up our own wrongdoing... gain economic advantage... avoid hurting people\'s feelings" — three examples of reasons to lie.',
+    18: 'Para B (Kang Lee): children brought into lab, asked to face a wall, opportunity to peek at toy — "a description of an experiment that gave participants the opportunity to lie."',
+    19: 'Tali Sharot (C): "we might initially experience a sense of shame about small lies, this feeling eventually wears off" — guilt diminishes over time.',
+    20: 'Karen Goodger (A): "our strong desire for certain information we hear to be true... we might be comforted by others\' lies or excited by the promise of a good outcome" — need to feel reassured and hopeful.',
+    21: 'Karen Goodger (A): "for animals with higher brain functions, there\'s also a higher probability that they\'ll demonstrate manipulative behaviours" — more intelligent = higher brain functions.',
+    22: 'Kang Lee (B): "whereas the younger children simply named the toy... the older ones came up with some interesting reasons" — increasing sophistication of lying; Lee sees it as normal cognitive development.',
+    23: 'Para F: "they are likely to gesture as they tell their story, but so frequently that it seems unnatural" — avoid eye contact AND gesture a lot are the commonly claimed signs.',
+    24: 'Para F: "they don\'t provide as many details as a person giving an honest account would" — liars offer fewer details.',
+    25: 'Para F: "one stage follows another in apparently chronological fashion" — each stage of the story is in apparent order because liars mentally rehearse.',
+    26: 'Para F: "they keep still, especially in the upper body, possibly hoping to give the impression of self-assurance" — liars remain still (contrary to the myth of fidgeting).'
+  },
+  t6: {
+    14: 'Para D (Dr Allan Green): "the hope is that oil output could be doubled, though that idea is yet to be put to the test" — a theory not yet proved.',
+    15: 'Para E: "This is a process which uses heat and pressure to break apart molecules [step 1]... turned into \'bio-crude oil\' [step 2]... refined [step 3]... turned into different kinds of fuel [step 4]" — step-by-step manufacturing overview.',
+    16: 'Para F: hemp for oil AND fibre (soundproofing), algae for fuel AND decontaminating water — uses apart from providing energy.',
+    17: 'Para A: "fossil fuels... drive global warming and disrupt weather patterns by releasing carbon dioxide into the atmosphere" — how fossil fuel use harms the environment.',
+    18: 'Para C: "the once-popular idea of generating them from microscopic algae grown in ponds or tanks has largely been forgotten" — a method that was abandoned.',
+    19: 'Para D: "currently the process is very expensive — much more so than the process for fossil fuels" — comparison of production costs.',
+    20: 'Professor Rachel Burton (B): "Burton believes this kind of multi-purpose use for biofuel crops is the way forward... \'you can make money out of the other things\'" — more cost-effective if used for range of products.',
+    21: 'Professor Bill Laurance (A): "indirect impacts can be no less devastating for the environment and are far more of a challenge to anticipate" — not always easy to predict effects.',
+    22: 'Dr Allan Green (C): "the biofuel industry could well develop into a very diverse one, with no one crop or process dominating the market... \'there\'s plenty of space for all technologies\'" — variety of crops and processes needed.',
+    23: 'Professor Rachel Burton (B): "looking to tough plants that grow on land too dry or salty for conventional crops" — crops that can survive in difficult environmental conditions.',
+    24: 'Para B: "farmers in the US opted out of soy in favour of corn as a biofuel crop" — the decision to grow corn had downstream effects in Brazil.',
+    25: 'Para B: "deforestation... puts biodiversity at risk" — biodiversity is threatened by deforestation.',
+    26: 'Para B: "applying large quantities of fertiliser... the possibility it will lead to the contamination of local rivers" — fertiliser may pollute rivers.'
+  }
+};
+
+const TITLES = {
+  t3: 'Test 3 — The Science of Human Laughter',
+  t4: 'Test 4 — The Truth about Lying',
+  t6: 'Test 6 — Biofuels: are they the fuels of the future?'
+};
+
+const Q_TEXTS = {
+  t3: {
+    14:'the claim that it is very hard for people to pretend to laugh',
+    15:'a reference to research showing that people do not know how often they laugh',
+    16:'the reason why people can sometimes stop themselves laughing',
+    17:'an outline of the health benefits experienced by people when laughing',
+    18:'a reference to a medical condition that stops some people making a noise when laughing',
+    19:'Research has confirmed personal experience by identifying the wide range of subjects and situations that people find funny.',
+    20:'Ideas about what is amusing have changed considerably over time.',
+    21:'To intentionally make other people laugh requires an unusual combination of skills and characteristics.',
+    22:'The reasons why we laugh are sometimes misunderstood by ordinary people.',
+    23:'Guillaume Duchenne showed that if a smile is fake, the skin around a person\'s [BLANK] does not change shape.',
+    24:'A [BLANK] produced in ancient Rome contains early examples of attempts to be funny.',
+    25:'In January 1962, an outbreak of mass laughter caused problems in a [BLANK] in Tanzania.',
+    26:'Neurologist Nikki Sokolov is investigating why [BLANK] is possible even when a person finds something funny.'
+  },
+  t4: {
+    14:'details regarding the frequency at which the average person tends to lie',
+    15:'a reference to an experiment testing the lie-detecting skills of various professional groups',
+    16:'an explanation of why people might frequently refer to themselves when lying',
+    17:'examples of the reasons why some people might choose to lie to others',
+    18:'a description of an experiment that gave participants the opportunity to lie',
+    19:'Guilt often diminishes as people become used to telling lies.',
+    20:'People\'s need to feel reassured and hopeful makes them susceptible to lies.',
+    21:'More intelligent species are more likely to be deceptive.',
+    22:'The increasing sophistication of lying is part of normal development.',
+    23:'[Signs summary Q23] — people who are lying will avoid eye contact and will [BLANK] a lot.',
+    24:'[Signs summary Q24] — liars tend to offer fewer [BLANK] than truthful people.',
+    25:'[Signs summary Q25] — each [BLANK] of their story seems to be in order.',
+    26:'[Signs summary Q26] — liars often remain [BLANK] as they lie.'
+  },
+  t6: {
+    14:'a theory about oil production which must still be proved',
+    15:'an overview of the stages in a particular biofuel manufacturing method',
+    16:'examples of the uses that biofuel crops might have apart from providing energy',
+    17:'an explanation of the way that fossil fuel use harms the environment',
+    18:'reference to a particular biofuel production method being abandoned',
+    19:'a comparison between the production costs for biofuels and for other kinds of fuel',
+    20:'It would be more cost-effective if a biofuel was used for a range of products.',
+    21:'It is not always easy to predict what effects the use of biofuel crops may have.',
+    22:'A variety of biofuel crops and manufacturing processes will be required in future.',
+    23:'It would be best to use biofuel crops that can survive in difficult environmental conditions.',
+    24:'The decision by US farmers to grow [BLANK] had an effect on land in Brazil.',
+    25:'[BLANK] is threatened when trees are cut down so crops can be planted.',
+    26:'Rivers may be polluted by the [BLANK] that farmers use on biofuel crops.'
+  }
+};
+
+// ════════ STATE ════════
+let currentTest = null;
+let testResults = {};
+let wrongAnswers = [];
+let attemptCounts = JSON.parse(localStorage.getItem('ielts_attempts')||'{}');
+let currentAttempt = {};
+
+// ════════ ORDINAL ════════
+function ordinal(n){const s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);}
+
+// ════════ STUDENT INFO SYNC ════════
+function syncStudentInfo(){
+  const name=document.getElementById('g-name').value;
+  const email=document.getElementById('g-email').value;
+  ['student-name','student-name-ne'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=name;});
+  ['teacher-email','teacher-email-ne'].forEach(id=>{const el=document.getElementById(id);if(el&&!el.value)el.value='huongstella8@gmail.com';});
+  localStorage.setItem('ielts_student_name',name);
+  localStorage.setItem('ielts_student_email',email);
+}
+function loadStudentInfo(){
+  const n=localStorage.getItem('ielts_student_name')||'';
+  const e=localStorage.getItem('ielts_student_email')||'';
+  const gn=document.getElementById('g-name');
+  const ge=document.getElementById('g-email');
+  if(gn)gn.value=n;
+  if(ge)ge.value=e;
+}
+document.addEventListener('DOMContentLoaded',loadStudentInfo);
+
+// ════════ NAVIGATION ════════
+const TAB_ORDER = ['guide','t3','t4','t6','total'];
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  const idx = TAB_ORDER.indexOf(id);
+  if (idx>=0) document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  if (id==='total') renderTotalScore();
+}
+
+// ════════ SUBMIT ════════
+function submitTest(test) {
+  const answers = ANSWERS[test];
+  const qNums = Object.keys(answers).map(Number);
+  const userAnswers = {};
+  let score = 0;
+  wrongAnswers = [];
+
+  qNums.forEach(q => {
+    const sel = document.querySelector(`[data-test="${test}"][data-q="${q}"]`);
+    if (!sel) return;
+    const val = sel.value.trim();
+    const correct = answers[q];
+    const isCorrect = val.toLowerCase() === correct.toLowerCase();
+    userAnswers[q] = {val, correct, isCorrect};
+    if (isCorrect) score++;
+    else wrongAnswers.push({q, val, correct, test});
+
+    const qi = document.getElementById(`qi-${test}-${q}`);
+    if (qi) {
+      qi.classList.add('answered');
+      qi.classList.remove('correct-q','wrong-q');
+      qi.classList.add(isCorrect ? 'correct-q' : 'wrong-q');
+    }
+  });
+
+  // Track attempt number
+  attemptCounts[test] = (attemptCounts[test]||0) + 1;
+  localStorage.setItem('ielts_attempts', JSON.stringify(attemptCounts));
+  currentAttempt[test] = attemptCounts[test];
+
+  // Update attempt badge in top bar
+  const badge = document.getElementById('global-attempt-badge');
+  if (badge) badge.textContent = `${ordinal(attemptCounts[test])} Attempt`;
+
+  testResults[test] = {score, total:qNums.length, userAnswers, attempt: attemptCounts[test]};
+  currentTest = test;
+
+  // Update total score tab badge
+  const doneCount = Object.keys(testResults).length;
+  const totalTab = document.getElementById('total-tab');
+  if (totalTab) totalTab.textContent = `📊 Total Score (${doneCount}/3)`;
+
+  // Sync name into modal fields
+  const gname = document.getElementById('g-name');
+  if (gname && gname.value) {
+    ['student-name','student-name-ne'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=gname.value;});
+  }
+
+  // Disable submit button
+  const btn = document.querySelector(`#qpanel-${test} .btn-submit`);
+  if (btn) {btn.disabled=true; btn.textContent=`Submitted ✓ (${ordinal(attemptCounts[test])} attempt)`; btn.style.background='#718096';}
+
+  openModal(test, score, qNums.length, userAnswers);
+}
+
+// ════════ MODAL ════════
+function openModal(test, score, total, userAnswers) {
+  const att = testResults[test] ? testResults[test].attempt : 1;
+  const gname = document.getElementById('g-name');
+  const sName = (gname&&gname.value) ? gname.value : '';
+  document.getElementById('modal-title').textContent = TITLES[test];
+  document.getElementById('modal-subtitle').innerHTML = `<strong>${ordinal(att)} Attempt</strong>${sName?' · '+sName:''} · Auto-scored with detailed explanations`;
+
+  // Score hero
+  const pct = Math.round(score/total*100);
+  let band = pct>=85?'Excellent':pct>=70?'Good':pct>=55?'Satisfactory':'Needs Improvement';
+  document.getElementById('score-section').innerHTML = `
+    <div class="score-hero">
+      <div class="score-big">${score} / ${total}</div>
+      <div class="score-sub">${pct}% correct</div>
+      <div class="band-label">${band}</div>
+    </div>`;
+
+  // Results list
+  const qNums = Object.keys(userAnswers).map(Number);
+  let html = '';
+  qNums.forEach(q => {
+    const {val, correct, isCorrect} = userAnswers[q];
+    const qtext = Q_TEXTS[test][q] || `Question ${q}`;
+    const expl = EXPLANATIONS[test][q] || '';
+    html += `<div class="r-item ${isCorrect?'r-correct':'r-wrong'}">
+      <div class="r-header">
+        <span class="r-mark">${isCorrect?'✅':'❌'} Q${q}</span>
+        <span style="color:#4a5568;font-size:13px">${qtext.replace(/\[BLANK\]/g,'___')}</span>
+      </div>
+      <div style="font-size:13px;margin-top:5px;font-family:Arial,sans-serif">
+        Your answer: <strong style="color:${isCorrect?'#38a169':'#e53e3e'}">${val||'(no answer)'}</strong>
+        ${!isCorrect?` &nbsp;|&nbsp; Correct: <strong style="color:#38a169">${correct}</strong>`:''}
+      </div>
+      <div class="r-expl">${expl}</div>
+    </div>`;
+  });
+  document.getElementById('results-list').innerHTML = html;
+
+  // Logbook or final actions
+  if (wrongAnswers.length > 0) {
+    buildLogbook();
+    document.getElementById('logbook-section').style.display='block';
+    document.getElementById('final-actions').style.display='none';
+    document.getElementById('no-errors-actions').style.display='none';
+  } else {
+    document.getElementById('logbook-section').style.display='none';
+    document.getElementById('final-actions').style.display='none';
+    document.getElementById('no-errors-actions').style.display='block';
+  }
+
+  document.getElementById('results-modal').classList.add('open');
+  document.getElementById('results-modal').scrollTop=0;
+}
+
+function buildLogbook() {
+  let html = '';
+  wrongAnswers.forEach(({q, val, correct, test}) => {
+    const qtext = (Q_TEXTS[test][q]||`Question ${q}`).replace(/\[BLANK\]/g,'___');
+    html += `<div class="log-card" id="log-${test}-${q}">
+      <div class="log-card-hd">Q${q} — ${qtext}</div>
+      <div class="log-answers-row">
+        <div class="log-ans-box"><div class="log-ans-lbl">My Answer</div><div class="wrong-val">${val||'(blank)'}</div></div>
+        <div class="log-ans-box"><div class="log-ans-lbl">Correct Answer</div><div class="correct-val">${correct}</div></div>
+      </div>
+      <label class="log-field-lbl">Why did I get this wrong? <span class="req-star">*</span></label>
+      <textarea id="why-${test}-${q}" placeholder="e.g. I was confused by the paraphrase / I didn't read carefully enough / I ran out of time..."></textarea>
+      <div class="err-hint" id="hint-why-${test}-${q}">Please fill in this field.</div>
+      <label class="log-field-lbl">Strategy / what to remember next time <span class="req-star">*</span></label>
+      <textarea id="strat-${test}-${q}" placeholder="e.g. Remember to look for paraphrasing, not exact words / Always check the full paragraph, not just keywords..."></textarea>
+      <div class="err-hint" id="hint-strat-${test}-${q}">Please fill in this field.</div>
+    </div>`;
+  });
+  document.getElementById('logbook-entries').innerHTML = html;
+}
+
+function validateLogbook() {
+  let valid = true;
+  wrongAnswers.forEach(({q,test}) => {
+    const why = document.getElementById(`why-${test}-${q}`);
+    const strat = document.getElementById(`strat-${test}-${q}`);
+    const hWhy = document.getElementById(`hint-why-${test}-${q}`);
+    const hStrat = document.getElementById(`hint-strat-${test}-${q}`);
+    if (!why.value.trim()) { hWhy.style.display='block'; valid=false; why.style.borderColor='#fc8181'; }
+    else { hWhy.style.display='none'; why.style.borderColor=''; }
+    if (!strat.value.trim()) { hStrat.style.display='block'; valid=false; strat.style.borderColor='#fc8181'; }
+    else { hStrat.style.display='none'; strat.style.borderColor=''; }
+  });
+  if (valid) {
+    document.getElementById('logbook-section').style.display='none';
+    document.getElementById('final-actions').style.display='block';
+  }
+}
+
+function closeModal() {
+  document.getElementById('results-modal').classList.remove('open');
+}
+
+// ════════ BUILD RESULT TEXT ════════
+function buildResultText() {
+  const test = currentTest;
+  const {score, total, userAnswers, attempt} = testResults[test];
+  const gname = document.getElementById('g-name');
+  const gemail = document.getElementById('g-email');
+  const sName = (gname&&gname.value) ? gname.value : 'Student';
+  const sEmail = (gemail&&gemail.value) ? gemail.value : '';
+  const date = new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
+  let txt = `IELTS READING PRACTICE — RESULTS\n`;
+  txt += `${'='.repeat(50)}\n`;
+  txt += `Student: ${sName}${sEmail?' ('+sEmail+')':''}\n`;
+  txt += `Test: ${TITLES[test]}\n`;
+  txt += `Date: ${date}\n`;
+  txt += `Attempt: ${ordinal(attempt||1)}\n`;
+  txt += `Score: ${score} / ${total} (${Math.round(score/total*100)}%)\n\n`;
+
+  txt += `QUESTION BREAKDOWN\n${'-'.repeat(40)}\n`;
+  Object.keys(userAnswers).forEach(q => {
+    const {val, correct, isCorrect} = userAnswers[q];
+    txt += `Q${q}: ${isCorrect?'✓':'✗'} Your answer: ${val||'(blank)'} | Correct: ${correct}\n`;
+    if (!isCorrect) txt += `   ↳ ${EXPLANATIONS[test][q]}\n`;
+  });
+
+  if (wrongAnswers.length > 0) {
+    txt += `\nERROR LOGBOOK\n${'-'.repeat(40)}\n`;
+    wrongAnswers.forEach(({q,test:t}) => {
+      const why = document.getElementById(`why-${t}-${q}`);
+      const strat = document.getElementById(`strat-${t}-${q}`);
+      txt += `Q${q}:\n  Why I got it wrong: ${why?why.value:''}\n  Strategy for next time: ${strat?strat.value:''}\n\n`;
+    });
+  }
+  return txt;
+}
+
+// ════════ PDF EXPORT ════════
+function exportPDF() {
+  const test = currentTest;
+  const {score, total, userAnswers, attempt} = testResults[test];
+  const gname = document.getElementById('g-name');
+  const gemail = document.getElementById('g-email');
+  const sName = (gname&&gname.value) ? gname.value : 'Student';
+  const sEmail = (gemail&&gemail.value) ? gemail.value : '';
+  const date = new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
+  const pct = Math.round(score/total*100);
+  const band = pct>=85?'Excellent':pct>=70?'Good':pct>=55?'Satisfactory':'Needs Improvement';
+  const att = attempt || 1;
+
+  // ── Question rows ──
+  const qNums = Object.keys(userAnswers).map(Number);
+  let rowsHtml = '';
+  qNums.forEach(q => {
+    const {val, correct, isCorrect} = userAnswers[q];
+    const qtext = (Q_TEXTS[test][q]||`Question ${q}`).replace(/\[BLANK\]/g,'___');
+    const rowClass = isCorrect ? 'row-correct' : 'row-wrong';
+    rowsHtml += `<tr class="${rowClass}">
+      <td style="font-weight:bold;text-align:center">${q}</td>
+      <td>${qtext}</td>
+      <td style="text-align:center;font-weight:bold;color:${isCorrect?'#2b6cb0':'#c05621'}">${val||'—'}</td>
+      <td style="text-align:center;font-weight:bold;color:#276749">${correct}</td>
+      <td style="text-align:center">${isCorrect?'<span class="pdf-mark-ok">✓</span>':'<span class="pdf-mark-no">✗</span>'}</td>
+    </tr>`;
+  });
+
+  // ── Wrong explanations ──
+  let explHtml = '';
+  qNums.forEach(q => {
+    const {val, correct, isCorrect} = userAnswers[q];
+    if (!isCorrect) {
+      const expl = EXPLANATIONS[test][q]||'';
+      const qtext = (Q_TEXTS[test][q]||`Question ${q}`).replace(/\[BLANK\]/g,'___');
+      explHtml += `<div class="pdf-expl-block">
+        <div class="pdf-expl-q">Q${q} — Your answer: <span style="color:#c05621">${val||'(blank)'}</span> | Correct: <span style="color:#276749">${correct}</span></div>
+        <div style="font-size:11px;color:#4a5568;margin-bottom:4px"><em>${qtext}</em></div>
+        <div class="pdf-expl-text">${expl}</div>
+      </div>`;
+    }
+  });
+
+  // ── Error logbook ──
+  let logHtml = '';
+  wrongAnswers.forEach(({q,test:t}) => {
+    const whyEl = document.getElementById(`why-${t}-${q}`);
+    const stratEl = document.getElementById(`strat-${t}-${q}`);
+    const why = whyEl ? whyEl.value : '';
+    const strat = stratEl ? stratEl.value : '';
+    if (why||strat) {
+      logHtml += `<div class="pdf-log-block">
+        <div class="pdf-log-q">Q${q}</div>
+        <div class="pdf-log-entry"><label>Why I got it wrong:</label><p>${why||'—'}</p></div>
+        <div class="pdf-log-entry"><label>Strategy for next time:</label><p>${strat||'—'}</p></div>
+      </div>`;
+    }
+  });
+
+  const html = `<div class="pdf-page">
+    <div class="pdf-top-brand">HUONG STELLA PARADIGM</div>
+    <div class="pdf-title">IELTS Reading: Practice Matching Information (1)</div>
+
+    <div class="pdf-meta">
+      <div class="pdf-meta-cell"><span>Student</span><strong>${sName}</strong></div>
+      <div class="pdf-meta-cell"><span>Email</span><strong>${sEmail||'—'}</strong></div>
+      <div class="pdf-meta-cell"><span>Test</span><strong>${TITLES[test]}</strong></div>
+      <div class="pdf-meta-cell"><span>Date</span><strong>${date}</strong></div>
+      <div class="pdf-meta-cell"><span>Attempt</span><strong>${ordinal(att)}</strong></div>
+      <div class="pdf-meta-cell"><span>Band</span><strong>${band}</strong></div>
+    </div>
+
+    <div class="pdf-score-bar">
+      <div class="pdf-score-num">${score}<span style="font-size:20px;opacity:.7">/${total}</span></div>
+      <div class="pdf-score-info">
+        <div style="font-size:22px;font-weight:bold">${pct}%</div>
+        <div>${band} · ${ordinal(att)}</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,.15);border-radius:10px;height:10px;margin-left:10px">
+        <div style="background:#68d391;height:10px;border-radius:10px;width:${pct}%"></div>
+      </div>
+    </div>
+
+    <div class="pdf-section-hd">Question Analysis — All Answers</div>
+    <table class="pdf-table">
+      <thead><tr>
+        <th style="width:36px">Q</th>
+        <th>Question</th>
+        <th style="width:90px;text-align:center">Your Answer</th>
+        <th style="width:90px;text-align:center">Correct Answer</th>
+        <th style="width:30px;text-align:center">Result</th>
+      </tr></thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>
+
+    ${explHtml ? `<div class="pdf-section-hd">Explanations for Incorrect Answers</div>${explHtml}` : '<div style="color:#276749;font-size:13px;margin-top:10px">🎉 All answers correct — no explanations needed.</div>'}
+
+    ${logHtml ? `<div class="pdf-section-hd">Error Logbook</div>${logHtml}` : ''}
+
+    <div style="margin-top:20px;text-align:center;font-size:10px;color:#a0aec0;border-top:1px solid #e2e8f0;padding-top:8px">
+      HUONG STELLA PARADIGM · IELTS Reading: Practice Matching Information (1) · Generated ${date}
+    </div>
+  </div>`;
+
+  const printDiv = document.getElementById('pdf-printout');
+  printDiv.innerHTML = html;
+  window.print();
+}
+
+// ════════ QUESTION TYPE MAP ════════
+const Q_TYPES = {
+  t3: { mp:[14,15,16,17,18], mf:[19,20,21,22], sc:[23,24,25,26] },
+  t4: { mp:[14,15,16,17,18], mf:[19,20,21,22], sc:[23,24,25,26] },
+  t6: { mp:[14,15,16,17,18,19], mf:[20,21,22,23], sc:[24,25,26] }
+};
+
+// ════════ TOTAL SCORE RENDERER ════════
+function renderTotalScore() {
+  const done = Object.keys(testResults);
+  const container = document.getElementById('ts-content');
+
+  if (done.length === 0) {
+    container.innerHTML = `<div class="no-data-msg"><div class="nd-icon">📊</div><p><strong>No tests completed yet.</strong><br>Complete at least one practice test to see your Total Score summary.</p></div>`;
+    return;
+  }
+
+  // ── Aggregate totals ──
+  let grandScore=0, grandTotal=0;
+  const typeStats = { mp:{right:0,total:0,label:'Matching Paragraphs',icon:'🗂️'},
+                      mf:{right:0,total:0,label:'Matching Features',icon:'👤'},
+                      sc:{right:0,total:0,label:'Sentence/Summary Completion',icon:'✍️'} };
+
+  // Per-question wrong list for pattern analysis
+  const wrongByType = {mp:[],mf:[],sc:[]};
+
+  done.forEach(test => {
+    const {score,total,userAnswers} = testResults[test];
+    grandScore += score;
+    grandTotal += total;
+    const qt = Q_TYPES[test];
+    Object.entries(qt).forEach(([type,qs]) => {
+      qs.forEach(q => {
+        typeStats[type].total++;
+        const ua = userAnswers[q];
+        if (ua && ua.isCorrect) typeStats[type].right++;
+        else if (ua) wrongByType[type].push({test,q,val:ua.val,correct:ua.correct});
+      });
+    });
+  });
+
+  const grandPct = grandTotal>0 ? Math.round(grandScore/grandTotal*100) : 0;
+
+  // ── Hero ──
+  const testMeta = {t3:{name:'Test 3 · Human Laughter',total:13},t4:{name:'Test 4 · Truth about Lying',total:13},t6:{name:'Test 6 · Biofuels',total:13}};
+  let barsHtml = '';
+  ['t3','t4','t6'].forEach(t => {
+    const meta = testMeta[t];
+    if (testResults[t]) {
+      const s=testResults[t].score, tot=testResults[t].total;
+      const p=Math.round(s/tot*100);
+      const barClass = p>=70?'ts-bar-green':p>=50?'ts-bar-yellow':'ts-bar-red';
+      barsHtml += `<div class="ts-test-row">
+        <div class="ts-test-name">${meta.name}</div>
+        <div class="ts-bar-wrap"><div class="ts-bar ${barClass}" style="width:${p}%"></div></div>
+        <div class="ts-test-score">${s}/${tot}</div>
+      </div>`;
+    } else {
+      barsHtml += `<div class="ts-test-row">
+        <div class="ts-test-name" style="opacity:.6">${meta.name}</div>
+        <div class="ts-bar-wrap"><div class="ts-bar" style="width:0%;background:rgba(255,255,255,.1)"></div></div>
+        <div class="ts-not-done">not done</div>
+      </div>`;
+    }
+  });
+
+  const pendingCount = 3 - done.length;
+  const overallBand = grandPct>=85?'Excellent 🌟':grandPct>=70?'Good 👍':grandPct>=55?'Satisfactory 📈':'Needs Improvement 💪';
+
+  // ── Type cards ──
+  function typeCard(type) {
+    const {right,total,label,icon} = typeStats[type];
+    if (total===0) return `<div class="ts-type-card"><div class="ts-type-icon">${icon}</div><div class="ts-type-name">${label}</div><div class="ts-ring ring-grey">–</div><div class="ts-type-detail">Not attempted</div></div>`;
+    const pct = Math.round(right/total*100);
+    const ringClass = pct>=70?'ring-green':pct>=50?'ring-yellow':'ring-red';
+    return `<div class="ts-type-card">
+      <div class="ts-type-icon">${icon}</div>
+      <div class="ts-type-name">${label}</div>
+      <div class="ts-ring ${ringClass}">${pct}%</div>
+      <div class="ts-type-score" style="color:${pct>=70?'#276749':pct>=50?'#744210':'#c05621'}">${right}/${total}</div>
+      <div class="ts-type-detail">correct</div>
+    </div>`;
+  }
+
+  // ── Error pattern analysis ──
+  function errorPatternHtml() {
+    const types = ['mp','mf','sc'];
+    const labels = {mp:'Matching Paragraphs',mf:'Matching Features',sc:'Sentence Completion'};
+    let html = '';
+    // Sort types by performance (worst first)
+    const sorted = types
+      .filter(t => typeStats[t].total>0)
+      .sort((a,b) => (typeStats[a].right/typeStats[a].total) - (typeStats[b].right/typeStats[b].total));
+
+    sorted.forEach(type => {
+      const {right,total} = typeStats[type];
+      const pct = Math.round(right/total*100);
+      const tagClass = pct>=70?'error-tag-ok':pct>=50?'error-tag-warn':'error-tag';
+      const icon = pct>=70?'✅':pct>=50?'⚠️':'❌';
+      html += `<span class="${tagClass} error-tag">${icon} ${labels[type]}: ${right}/${total} (${pct}%)</span>`;
+    });
+
+    // List specific wrong questions
+    let wrongHtml = '';
+    let totalWrong = 0;
+    types.forEach(type => {
+      if (wrongByType[type].length > 0) {
+        totalWrong += wrongByType[type].length;
+        const qs = wrongByType[type].map(w=>`Q${w.q}`).join(', ');
+        wrongHtml += `<div style="font-size:13px;font-family:Arial,sans-serif;color:#4a5568;margin:5px 0;padding-left:4px">
+          <strong style="color:#2d3748">${{mp:'Matching Paragraphs',mf:'Matching Features',sc:'Sentence Completion'}[type]}:</strong> ${qs}
+          (your answers: ${wrongByType[type].map(w=>`Q${w.q}→<span style="color:#e53e3e">${w.val||'blank'}</span>`).join(', ')})
+        </div>`;
+      }
+    });
+
+    return `<div style="margin-bottom:12px">${html}</div>${totalWrong>0?`<div style="background:#f7fafc;border-radius:8px;padding:12px 14px;border:1px solid #e2e8f0">${wrongHtml}</div>`:'<div style="color:#38a169;font-family:Arial,sans-serif;font-size:14px">🎉 No errors! Perfect score on completed tests.</div>'}`;
+  }
+
+  // ── Personalised recommendations ──
+  function recommendationsHtml() {
+    const recs = [];
+    const mpPct = typeStats.mp.total>0 ? typeStats.mp.right/typeStats.mp.total : null;
+    const mfPct = typeStats.mf.total>0 ? typeStats.mf.right/typeStats.mf.total : null;
+    const scPct = typeStats.sc.total>0 ? typeStats.sc.right/typeStats.sc.total : null;
+
+    if (mpPct!==null && mpPct<0.7) recs.push({
+      icon:'🗂️', priority: mpPct<0.5?'HIGH':'MEDIUM',
+      title:'Strengthen Matching Paragraph skills',
+      body:`You scored ${Math.round(mpPct*100)}% on Matching Paragraphs. The main challenge here is <strong>paraphrase recognition</strong> — the question uses different words from the passage. Before answering each question, underline the <em>concept</em> being described, not just keywords. Scan each paragraph for the equivalent meaning, not the exact phrase. Review the Strategy Guide for worked paraphrase examples.`
+    });
+
+    if (mfPct!==null && mfPct<0.7) recs.push({
+      icon:'👤', priority: mfPct<0.5?'HIGH':'MEDIUM',
+      title:'Improve Matching Features (people/researchers)',
+      body:`You scored ${Math.round(mfPct*100)}% on Matching Features. The key technique is to <strong>locate each person in the passage first</strong>, then read what surrounds their name carefully. Don't scan for question keywords — go to the person, understand what they say, then find the matching statement. Remember: the same person can be the answer to more than one question.`
+    });
+
+    if (scPct!==null && scPct<0.7) recs.push({
+      icon:'✍️', priority: scPct<0.5?'HIGH':'MEDIUM',
+      title:'Practise Sentence/Summary Completion',
+      body:`You scored ${Math.round(scPct*100)}% on Completion questions. Always use a <strong>locating clue</strong> in the sentence (a name, date, or unique phrase) to find the right part of the passage. The sentence paraphrases the passage — find the source sentence, then identify the exact word that fits grammatically. Copy the word exactly as it appears; do not change its form.`
+    });
+
+    if (done.length < 3) recs.push({
+      icon:'📋', priority:'INFO',
+      title:`Complete all 3 tests for a full picture`,
+      body:`You've completed ${done.length}/3 practice test${done.length===1?'':'s'}. Finishing all three will give you a more accurate view of your strengths and weaknesses across different topics and question sets.`
+    });
+
+    if (grandPct>=85 && done.length===3) recs.push({
+      icon:'🌟', priority:'INFO',
+      title:'Excellent overall performance!',
+      body:'You are performing at a high level across all question types. To maintain and improve further: practise under timed conditions (20 minutes per passage), and try to identify <em>why</em> the correct answer is right (not just what it is). This deepens your paraphrase recognition skills.'
+    });
+
+    if (recs.length===0) {
+      recs.push({icon:'🎯',priority:'INFO',title:'Keep up the great work',body:'You\'re scoring well across all question types. Continue practising with timed conditions and focus on understanding paraphrasing patterns.'});
+    }
+
+    const priorityColors = {HIGH:'#e53e3e',MEDIUM:'#dd6b20',INFO:'#2b6cb0'};
+    return recs.map(r=>`<div class="rec-item">
+      <div class="rec-icon">${r.icon}</div>
+      <div class="rec-body">
+        <b>${r.title} <span style="font-size:11px;background:${priorityColors[r.priority]};color:#fff;border-radius:10px;padding:1px 8px;font-weight:bold;margin-left:4px">${r.priority}</span></b>
+        <span style="font-size:13px;color:#4a5568">${r.body}</span>
+      </div>
+    </div>`).join('');
+  }
+
+  // ── Assemble ──
+  container.innerHTML = `
+    <div class="ts-h1">📊 Total Score Summary</div>
+    <div class="ts-sub">Aggregated results across all completed tests${pendingCount>0?` · <span class="ts-pending-badge">${pendingCount} test${pendingCount>1?'s':''} remaining</span>`:''}</div>
+
+    <div class="ts-hero">
+      <div class="ts-big-score">
+        <div class="ts-big-num">${grandScore}<span style="font-size:32px;opacity:.7">/${grandTotal}</span></div>
+        <div class="ts-big-label">Total Questions Correct</div>
+        <div style="margin-top:10px;font-size:22px;font-weight:bold;font-family:Arial,sans-serif">${grandPct}%</div>
+        <div style="background:rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:13px;font-family:Arial,sans-serif;display:inline-block;margin-top:6px">${overallBand}</div>
+      </div>
+      <div class="ts-divider"></div>
+      <div class="ts-breakdown">${barsHtml}</div>
+    </div>
+
+    <div class="ts-grid">
+      ${typeCard('mp')}
+      ${typeCard('mf')}
+      ${typeCard('sc')}
+    </div>
+
+    <div class="ts-card-section">
+      <div class="ts-card-hd">🔍 Key Error Patterns</div>
+      ${errorPatternHtml()}
+    </div>
+
+    <div class="ts-card-section">
+      <div class="ts-card-hd">💡 Personalised Recommendations</div>
+      ${recommendationsHtml()}
+    </div>
+  `;
+}
+
+// ════════ SEND TO TEACHER ════════
+function sendToTeacher() {
+  const emailEl = document.getElementById('teacher-email') || document.getElementById('teacher-email-ne');
+  const teacherEmail = emailEl ? emailEl.value.trim() : 'huongstella8@gmail.com';
+  if (!teacherEmail) { alert('Please enter your teacher\'s email address.'); return; }
+
+  const {score, total, attempt} = testResults[currentTest];
+  const gname = document.getElementById('g-name');
+  const sName = (gname&&gname.value) ? gname.value : 'Student';
+  const subject = encodeURIComponent(`IELTS Reading Results — ${TITLES[currentTest]} — ${sName}`);
+  const body = encodeURIComponent(buildResultText());
+  window.location.href = `mailto:${teacherEmail}?subject=${subject}&body=${body}`;
+}
+</script>
+</body>
+</html>
