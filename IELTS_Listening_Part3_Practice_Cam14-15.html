@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Listening Part 3 – Cambridge 14 &amp; 15</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#eef2f7;color:#1a202c;min-height:100vh}
+header{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);color:#fff;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+header h1{font-size:1.4rem;font-weight:700;letter-spacing:.3px}
+header p{font-size:.82rem;opacity:.85;margin-top:3px}
+.student-bar{background:#fff;border-bottom:2px solid #d1dde8;padding:12px 30px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.student-bar label{font-size:.82rem;font-weight:600;color:#4a5568;white-space:nowrap}
+.student-bar input{border:1.5px solid #cbd5e0;border-radius:6px;padding:6px 11px;font-size:.88rem;width:200px}
+.tab-bar{background:#fff;border-bottom:2px solid #d1dde8;padding:0 30px;display:flex;gap:0;overflow-x:auto}
+.tab-btn{padding:12px 16px;font-size:.82rem;font-weight:600;color:#718096;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tab-btn:hover{color:#2d6a9f}
+.tab-btn.active{color:#2d6a9f;border-bottom-color:#2d6a9f}
+.tab-btn.done{color:#38a169}
+.tab-btn.done.active{color:#38a169;border-bottom-color:#38a169}
+.panel{display:none;padding:24px 30px;max-width:900px;margin:0 auto}
+.panel.active{display:block}
+.test-header{background:#fff;border-radius:10px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.test-badge{background:#2d6a9f;color:#fff;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:20px;white-space:nowrap}
+.test-header h2{font-size:1.05rem;font-weight:700;color:#1a202c}
+.test-header p{font-size:.8rem;color:#718096;margin-top:2px}
+audio{width:100%;height:42px;border-radius:8px;margin:8px 0}
+.audio-note{font-size:.76rem;color:#e53e3e;background:#fff5f5;border:1px solid #fed7d7;border-radius:6px;padding:7px 12px;margin-bottom:14px}
+.q-section{background:#fff;border-radius:10px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.q-section-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#4a5568;margin-bottom:14px;padding-bottom:8px;border-bottom:1.5px solid #edf2f7}
+.instruction{font-size:.82rem;color:#718096;font-style:italic;margin-bottom:14px;line-height:1.5}
+.question{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #edf2f7}
+.question:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.q-num{display:inline-block;background:#ebf4ff;color:#2b6cb0;font-weight:700;font-size:.8rem;padding:2px 8px;border-radius:4px;margin-bottom:8px}
+.q-text{font-size:.9rem;font-weight:600;color:#1a202c;margin-bottom:10px;line-height:1.5}
+.option{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;border-radius:7px;cursor:pointer;transition:background .15s;margin-bottom:4px}
+.option:hover{background:#ebf4ff}
+.option input[type=radio],.option input[type=checkbox]{margin-top:2px;accent-color:#2d6a9f;flex-shrink:0;width:15px;height:15px}
+.option-label{font-size:.87rem;color:#2d3748;line-height:1.4}
+.option-key{font-weight:700;color:#4a5568;margin-right:2px}
+select.match-sel{border:1.5px solid #cbd5e0;border-radius:6px;padding:6px 10px;font-size:.86rem;cursor:pointer;background:#fff;min-width:60px}
+.match-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.match-label{font-size:.87rem;color:#1a202c;flex:1;min-width:160px;font-weight:500}
+.match-num{font-weight:700;color:#2b6cb0;font-size:.82rem;background:#ebf4ff;padding:2px 7px;border-radius:4px;margin-right:4px;white-space:nowrap}
+.text-input{border:1.5px solid #cbd5e0;border-radius:6px;padding:7px 12px;font-size:.87rem;width:200px}
+.options-box{background:#f7fafc;border:1.5px solid #e2e8f0;border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:.86rem}
+.options-box strong{display:block;margin-bottom:8px;color:#2d3748}
+.options-box li{list-style:none;padding:3px 0;color:#4a5568}
+.options-box li span{font-weight:700;color:#2d6a9f;margin-right:6px}
+.chk-notice{font-size:.78rem;color:#e53e3e;margin-bottom:10px;font-style:italic}
+.submit-row{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.btn-submit{background:#2d6a9f;color:#fff;border:none;border-radius:8px;padding:11px 26px;font-size:.9rem;font-weight:700;cursor:pointer}
+.btn-submit:hover{background:#1e4f7a}
+.btn-submit:disabled{background:#a0aec0;cursor:not-allowed}
+.btn-reset{background:#fff;color:#718096;border:1.5px solid #cbd5e0;border-radius:8px;padding:11px 22px;font-size:.88rem;font-weight:600;cursor:pointer}
+.score-banner{border-radius:10px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.score-banner.great{background:#f0fff4;border:1.5px solid #9ae6b4}
+.score-banner.ok{background:#fffbeb;border:1.5px solid #fbd38d}
+.score-banner.poor{background:#fff5f5;border:1.5px solid #feb2b2}
+.score-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;flex-shrink:0}
+.score-circle.great{background:#38a169;color:#fff}
+.score-circle.ok{background:#d69e2e;color:#fff}
+.score-circle.poor{background:#e53e3e;color:#fff}
+.score-text h3{font-size:1rem;font-weight:700;color:#1a202c}
+.score-text p{font-size:.83rem;color:#718096;margin-top:3px}
+.result-item{background:#fff;border-radius:8px;padding:14px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.result-item.correct{border-left:4px solid #38a169}
+.result-item.wrong{border-left:4px solid #e53e3e}
+.ri-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ri-qnum{font-weight:700;font-size:.8rem;background:#edf2f7;padding:2px 8px;border-radius:4px;color:#4a5568}
+.ri-status{font-size:.8rem;font-weight:700;padding:2px 8px;border-radius:4px}
+.ri-status.correct{background:#f0fff4;color:#276749}
+.ri-status.wrong{background:#fff5f5;color:#c53030}
+.ri-answers{font-size:.85rem;color:#2d3748;line-height:1.6;margin-bottom:6px}
+.ri-answers .your{color:#e53e3e}
+.ri-answers .ans{color:#276749;font-weight:600}
+.ri-explanation{font-size:.83rem;color:#4a5568;background:#f7fafc;border-radius:6px;padding:8px 12px;line-height:1.5;border-left:3px solid #90cdf4}
+.logbook-wrap{background:#fff;border-radius:10px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.logbook-wrap h2{font-size:1.05rem;font-weight:700;margin-bottom:4px}
+.logbook-wrap p{font-size:.82rem;color:#718096;margin-bottom:18px}
+.lb-entry{border:1.5px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.lb-entry.new-entry{border-color:#bee3f8;background:#ebf8ff}
+.lb-entry-header{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.lb-badge{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;background:#ebf4ff;color:#2b6cb0}
+.lb-badge.wrong{background:#fff5f5;color:#c53030}
+.lb-field{margin-bottom:8px}
+.lb-field label{font-size:.78rem;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.lb-field select,.lb-field textarea{width:100%;border:1.5px solid #cbd5e0;border-radius:6px;padding:7px 10px;font-size:.84rem;font-family:inherit}
+.lb-field textarea{resize:vertical;min-height:60px}
+.lb-empty{text-align:center;color:#a0aec0;font-size:.88rem;padding:30px 0}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:#fff;border-radius:12px;padding:26px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.modal h2{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.modal p{font-size:.83rem;color:#718096;margin-bottom:18px}
+.modal-actions{display:flex;gap:10px;margin-top:18px;justify-content:flex-end}
+.btn-primary{background:#2d6a9f;color:#fff;border:none;border-radius:7px;padding:9px 20px;font-size:.87rem;font-weight:700;cursor:pointer}
+.btn-secondary{background:#edf2f7;color:#4a5568;border:none;border-radius:7px;padding:9px 20px;font-size:.87rem;font-weight:600;cursor:pointer}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:24px}
+.summary-card{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.summary-card .sc-score{font-size:1.6rem;font-weight:800;margin-bottom:4px}
+.summary-card .sc-label{font-size:.75rem;color:#718096}
+.summary-card.total{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);color:#fff}
+.summary-card.total .sc-label{color:rgba(255,255,255,.75)}
+.action-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.btn-download{background:#276749;color:#fff;border:none;border-radius:8px;padding:11px 22px;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-email{background:#553c9a;color:#fff;border:none;border-radius:8px;padding:11px 22px;font-size:.88rem;font-weight:700;cursor:pointer}
+.teacher-form{background:#fff;border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.teacher-form h3{font-size:.95rem;font-weight:700;margin-bottom:12px}
+.teacher-form .tf-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.teacher-form input[type=email]{border:1.5px solid #cbd5e0;border-radius:6px;padding:8px 12px;font-size:.87rem;flex:1;min-width:220px}
+.teacher-form textarea{width:100%;border:1.5px solid #cbd5e0;border-radius:6px;padding:9px 12px;font-size:.85rem;min-height:80px;font-family:inherit;resize:vertical;margin-bottom:10px}
+.alert{padding:10px 16px;border-radius:7px;font-size:.84rem;margin-bottom:12px}
+.alert.success{background:#f0fff4;color:#276749;border:1px solid #9ae6b4}
+.alert.info{background:#ebf8ff;color:#2c5282;border:1px solid #90cdf4}
+/* ── result feedback (new submitTest output) ─────────────────────────── */
+.score-banner.good{background:#f0fff4;border:1.5px solid #9ae6b4}
+.score-banner.bad{background:#fff5f5;border:1.5px solid #feb2b2}
+.score-banner{font-size:1.1rem;font-weight:700;color:#1a202c}
+.results-table{margin-top:12px}
+.result-row{background:#fff;border-radius:8px;padding:12px 16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;gap:12px;align-items:flex-start}
+.result-row.correct{border-left:4px solid #38a169}
+.result-row.wrong{border-left:4px solid #e53e3e}
+.rnum{font-weight:700;font-size:.8rem;background:#edf2f7;padding:3px 8px;border-radius:4px;color:#4a5568;white-space:nowrap;min-width:52px;text-align:center;margin-top:2px}
+.rdetail{flex:1;font-size:.86rem;line-height:1.6;color:#2d3748}
+.rlabel{color:#718096;font-size:.8rem}
+.rexpl{font-size:.82rem;color:#4a5568;background:#f7fafc;border-radius:6px;padding:7px 11px;margin-top:6px;border-left:3px solid #90cdf4;line-height:1.5}
+/* ── logbook rendered entries ────────────────────────────────────────── */
+.lb-date{font-size:.78rem;color:#718096}
+.lb-test{font-size:.82rem;font-weight:700;color:#2d6a9f;flex:1}
+.lb-item{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;background:#f7fafc;border-radius:6px;padding:8px 12px;margin-bottom:6px;font-size:.84rem}
+.lb-qnum{font-weight:700;color:#2b6cb0;min-width:52px}
+.lb-ua{color:#c53030}
+.lb-ans{color:#276749}
+.lb-expl{width:100%;font-size:.8rem;color:#555;margin-top:2px;border-left:2px solid #90cdf4;padding-left:8px}
+.btn-sm{background:#edf2f7;border:none;border-radius:5px;padding:4px 10px;font-size:.76rem;font-weight:600;cursor:pointer}
+.btn-del{color:#c53030}
+.btn-del:hover{background:#fff5f5}
+/* ── summary table ───────────────────────────────────────────────────── */
+.sum-table{width:100%;border-collapse:collapse;margin-top:8px}
+.sum-table th,.sum-table td{border:1px solid #e2e8f0;padding:9px 14px;text-align:left;font-size:.87rem}
+.sum-table th{background:#eff6ff;color:#1e40af;font-weight:700}
+.sum-table tr.not-done td{color:#a0aec0}
+.sum-table tr.grand-total td{font-weight:700;background:#f0f4ff}
+</style>
+</head>
+<body>
+<div style="background:#12294a;text-align:center;padding:4px 0;font-size:.72rem;letter-spacing:1.2px;color:rgba(255,255,255,.65);text-transform:uppercase;font-weight:600">Huong Stella Paradigm</div>
+<header>
+  <div>
+    <h1>🎧 IELTS Listening – Part 3 Practice</h1>
+    <p>Cambridge IELTS 14 &amp; 15 · Tests 1–4 · Auto-scoring with Explanations</p>
+  </div>
+</header>
+<div class="student-bar">
+  <label>Student name:</label>
+  <input type="text" id="inp-name" placeholder="Enter your full name" />
+  <label>Student email:</label>
+  <input type="email" id="inp-student-email" placeholder="your@email.com" style="width:210px" />
+  <label>Date:</label>
+  <input type="date" id="inp-date" />
+  <label>Teacher email:</label>
+  <input type="email" id="inp-teacher-email" value="huongstella8@gmail.com" style="width:210px" />
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('c14t1')" id="tab-c14t1">14·T1</button>
+  <button class="tab-btn" onclick="switchTab('c14t2')" id="tab-c14t2">14·T2</button>
+  <button class="tab-btn" onclick="switchTab('c14t3')" id="tab-c14t3">14·T3</button>
+  <button class="tab-btn" onclick="switchTab('c14t4')" id="tab-c14t4">14·T4</button>
+  <button class="tab-btn" onclick="switchTab('c15t1')" id="tab-c15t1">15·T1</button>
+  <button class="tab-btn" onclick="switchTab('c15t2')" id="tab-c15t2">15·T2</button>
+  <button class="tab-btn" onclick="switchTab('c15t3')" id="tab-c15t3">15·T3</button>
+  <button class="tab-btn" onclick="switchTab('c15t4')" id="tab-c15t4">15·T4</button>
+  <button class="tab-btn" onclick="switchTab('logbook')" id="tab-logbook">📓 Error Logbook</button>
+  <button class="tab-btn" onclick="switchTab('summary')" id="tab-summary">📊 Summary &amp; Results</button>
+</div>
+
+<!-- ===== C14T1 ===== -->
+<div class="panel" id="panel-c14t1">
+  <div class="test-header"><div><div class="test-badge">CAM14 T1 · PART 3</div>
+    <h2 style="margin-top:6px">Cities Built by the Sea</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>14-T1S3.mp3</strong>.</div>
+  <audio controls id="audio-c14t1"><source src="14-T1S3.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–25 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">Carla and Rob were surprised to learn that coastal cities</div>
+      <label class="option"><input type="radio" name="c14t1q21" value="A"><span class="option-label"><span class="option-key">A</span> contain nearly half the world's population.</span></label>
+      <label class="option"><input type="radio" name="c14t1q21" value="B"><span class="option-label"><span class="option-key">B</span> include most of the world's largest cities.</span></label>
+      <label class="option"><input type="radio" name="c14t1q21" value="C"><span class="option-label"><span class="option-key">C</span> are growing twice as fast as other cities.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">According to Rob, building coastal cities near to rivers</div>
+      <label class="option"><input type="radio" name="c14t1q22" value="A"><span class="option-label"><span class="option-key">A</span> may bring pollution to the cities.</span></label>
+      <label class="option"><input type="radio" name="c14t1q22" value="B"><span class="option-label"><span class="option-key">B</span> may reduce the land available for agriculture.</span></label>
+      <label class="option"><input type="radio" name="c14t1q22" value="C"><span class="option-label"><span class="option-key">C</span> may mean the countryside is spoiled by industry.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">What mistake was made when building water drainage channels in Miami in the 1950s?</div>
+      <label class="option"><input type="radio" name="c14t1q23" value="A"><span class="option-label"><span class="option-key">A</span> There were not enough of them.</span></label>
+      <label class="option"><input type="radio" name="c14t1q23" value="B"><span class="option-label"><span class="option-key">B</span> They were made of unsuitable materials.</span></label>
+      <label class="option"><input type="radio" name="c14t1q23" value="C"><span class="option-label"><span class="option-key">C</span> They did not allow for the effects of climate change.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">What do Rob and Carla think that the authorities in Miami should do immediately?</div>
+      <label class="option"><input type="radio" name="c14t1q24" value="A"><span class="option-label"><span class="option-key">A</span> take measures to restore ecosystems</span></label>
+      <label class="option"><input type="radio" name="c14t1q24" value="B"><span class="option-label"><span class="option-key">B</span> pay for a new flood prevention system</span></label>
+      <label class="option"><input type="radio" name="c14t1q24" value="C"><span class="option-label"><span class="option-key">C</span> stop disposing of waste materials into the ocean</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">25</span>
+      <div class="q-text">What do they agree should be the priority for international action?</div>
+      <label class="option"><input type="radio" name="c14t1q25" value="A"><span class="option-label"><span class="option-key">A</span> greater coordination of activities</span></label>
+      <label class="option"><input type="radio" name="c14t1q25" value="B"><span class="option-label"><span class="option-key">B</span> more sharing of information</span></label>
+      <label class="option"><input type="radio" name="c14t1q25" value="C"><span class="option-label"><span class="option-key">C</span> agreement on shared policies</span></label>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 26–30 · Matching</div>
+    <div class="instruction">What decision do the students make about each of the following parts of their presentation?<br>Choose <strong>FIVE</strong> answers from the box and write the correct letter, <strong>A–G</strong>, next to Questions 26–30.</div>
+    <div class="options-box"><strong>Decisions</strong><ul>
+      <li><span>A</span>use visuals</li>
+      <li><span>B</span>keep it short</li>
+      <li><span>C</span>involve other students</li>
+      <li><span>D</span>check the information is accurate</li>
+      <li><span>E</span>provide a handout</li>
+      <li><span>F</span>focus on one example</li>
+      <li><span>G</span>do online research</li>
+    </ul></div>
+    <div class="instruction"><strong>Parts of the presentation</strong></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">Historical background</span><select class="match-sel" id="c14t1q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">Geographical factors</span><select class="match-sel" id="c14t1q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">Past mistakes</span><select class="match-sel" id="c14t1q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">Future risks</span><select class="match-sel" id="c14t1q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label">International implications</span><select class="match-sel" id="c14t1q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c14t1')">Submit Cam14 Test 1</button>
+    <button class="btn-reset" onclick="resetTest('c14t1')">Reset</button>
+  </div>
+  <div id="results-c14t1"></div>
+</div>
+
+<!-- ===== C14T2 ===== -->
+<div class="panel" id="panel-c14t2">
+  <div class="test-header"><div><div class="test-badge">CAM14 T2 · PART 3</div>
+    <h2 style="margin-top:6px">Woolly Mammoths on St Paul's Island</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>14-T2S3.mp3</strong>.</div>
+  <audio controls id="audio-c14t2"><source src="14-T2S3.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–24 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">How will Rosie and Martin introduce their presentation?</div>
+      <label class="option"><input type="radio" name="c14t2q21" value="A"><span class="option-label"><span class="option-key">A</span> with a drawing of woolly mammoths in their natural habitat</span></label>
+      <label class="option"><input type="radio" name="c14t2q21" value="B"><span class="option-label"><span class="option-key">B</span> with a timeline showing when woolly mammoths lived</span></label>
+      <label class="option"><input type="radio" name="c14t2q21" value="C"><span class="option-label"><span class="option-key">C</span> with a video clip about woolly mammoths</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">What was surprising about the mammoth tooth found by Russell Graham?</div>
+      <label class="option"><input type="radio" name="c14t2q22" value="A"><span class="option-label"><span class="option-key">A</span> It was still embedded in the mammoth's jawbone.</span></label>
+      <label class="option"><input type="radio" name="c14t2q22" value="B"><span class="option-label"><span class="option-key">B</span> It was from an unknown species of mammoth.</span></label>
+      <label class="option"><input type="radio" name="c14t2q22" value="C"><span class="option-label"><span class="option-key">C</span> It was not as old as mammoth remains from elsewhere.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">The students will use an animated diagram to demonstrate how the mammoths</div>
+      <label class="option"><input type="radio" name="c14t2q23" value="A"><span class="option-label"><span class="option-key">A</span> became isolated on the island.</span></label>
+      <label class="option"><input type="radio" name="c14t2q23" value="B"><span class="option-label"><span class="option-key">B</span> spread from the island to other areas.</span></label>
+      <label class="option"><input type="radio" name="c14t2q23" value="C"><span class="option-label"><span class="option-key">C</span> coexisted with other animals on the island.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">According to Martin, what is unusual about the date of the mammoths' extinction on the island?</div>
+      <label class="option"><input type="radio" name="c14t2q24" value="A"><span class="option-label"><span class="option-key">A</span> how exact it is</span></label>
+      <label class="option"><input type="radio" name="c14t2q24" value="B"><span class="option-label"><span class="option-key">B</span> how early it is</span></label>
+      <label class="option"><input type="radio" name="c14t2q24" value="C"><span class="option-label"><span class="option-key">C</span> how it was established</span></label>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 25–30 · Matching</div>
+    <div class="instruction">What action will the students take for each of the following sections of their presentation?<br>Choose <strong>SIX</strong> answers from the box, <strong>A–H</strong>, next to Questions 25–30.</div>
+    <div class="options-box"><strong>Actions</strong><ul>
+      <li><span>A</span>make it more interactive</li>
+      <li><span>B</span>reduce visual input</li>
+      <li><span>C</span>add personal opinions</li>
+      <li><span>D</span>contact one of the researchers</li>
+      <li><span>E</span>make detailed notes</li>
+      <li><span>F</span>find information online</li>
+      <li><span>G</span>check timing</li>
+      <li><span>H</span>organise the content more clearly</li>
+    </ul></div>
+    <div class="instruction"><strong>Sections of presentation</strong></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label">Introduction</span><select class="match-sel" id="c14t2q25"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">Discovery of the mammoth tooth</span><select class="match-sel" id="c14t2q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">Initial questions asked by the researchers</span><select class="match-sel" id="c14t2q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">Further research carried out on the island</span><select class="match-sel" id="c14t2q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">Findings and possible explanations</span><select class="match-sel" id="c14t2q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label">Relevance to the present day</span><select class="match-sel" id="c14t2q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c14t2')">Submit Cam14 Test 2</button>
+    <button class="btn-reset" onclick="resetTest('c14t2')">Reset</button>
+  </div>
+  <div id="results-c14t2"></div>
+</div>
+
+<!-- ===== C14T3 ===== -->
+<div class="panel" id="panel-c14t3">
+  <div class="test-header"><div><div class="test-badge">CAM14 T3 · PART 3</div>
+    <h2 style="margin-top:6px">Background on School Marching Band</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>14-T3S3.mp3</strong>.</div>
+  <audio controls id="audio-c14t3"><source src="14-T3S3.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–26 · Note Completion</div>
+    <div class="instruction">Complete the notes below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</div>
+    <div style="background:#f7fafc;border:1.5px solid #e2e8f0;border-radius:8px;padding:16px 20px;font-size:.87rem;line-height:2">
+    <div class="match-row"><span class="match-num">21</span><span class="match-label">It consists of around</span><input type="text" class="text-input" id="c14t3q21" placeholder="..." /><span class="match-label">students.</span></div>
+    <div class="match-row"><span class="match-num">22</span><span class="match-label">It is due to play in a</span><input type="text" class="text-input" id="c14t3q22" placeholder="..." /><span class="match-label">band competition.</span></div>
+    <div class="match-row"><span class="match-num">23</span><span class="match-label">It has been invited to play in the town's</span><input type="text" class="text-input" id="c14t3q23" placeholder="..." /><span class="match-label">(event).</span></div>
+    <div class="match-row"><span class="match-num">24</span><span class="match-label">They have listened to a talk by a</span><input type="text" class="text-input" id="c14t3q24" placeholder="..." /><span class="match-label">(person).</span></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label">Joe will discuss a</span><input type="text" class="text-input" id="c14t3q25" placeholder="..." /><span class="match-label">with the band.</span></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">Joe hopes the band will attend a</span><input type="text" class="text-input" id="c14t3q26" placeholder="..." /><span class="match-label">next month.</span></div>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 27–30 · Matching</div>
+    <div class="instruction">What problem does Joe mention in connection with each of the following band members?<br>Choose <strong>FOUR</strong> answers from the box, <strong>A–F</strong>, next to Questions 27–30.</div>
+    <div class="options-box"><strong>Problems</strong><ul>
+      <li><span>A</span>makes a lot of mistakes in rehearsals</li>
+      <li><span>B</span>keeps making unhelpful suggestions</li>
+      <li><span>C</span>has difficulty with rhythm</li>
+      <li><span>D</span>misses too many rehearsals</li>
+      <li><span>E</span>has a health problem</li>
+      <li><span>F</span>doesn't mix with other students</li>
+    </ul></div>
+    <div class="instruction"><strong>Band members</strong></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">flautist</span><select class="match-sel" id="c14t3q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">trumpeter</span><select class="match-sel" id="c14t3q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">trombonist</span><select class="match-sel" id="c14t3q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label">percussionist</span><select class="match-sel" id="c14t3q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c14t3')">Submit Cam14 Test 3</button>
+    <button class="btn-reset" onclick="resetTest('c14t3')">Reset</button>
+  </div>
+  <div id="results-c14t3"></div>
+</div>
+
+<!-- ===== C14T4 ===== -->
+<div class="panel" id="panel-c14t4">
+  <div class="test-header"><div><div class="test-badge">CAM14 T4 · PART 3</div>
+    <h2 style="margin-top:6px">Children's Literature</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>14-T4S3.mp3</strong>.</div>
+  <audio controls id="audio-c14t4"><source src="14-T4S3.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–25 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">What does Trevor find interesting about the purpose of children's literature?</div>
+      <label class="option"><input type="radio" name="c14t4q21" value="A"><span class="option-label"><span class="option-key">A</span> the fact that authors may not realise what values they're teaching</span></label>
+      <label class="option"><input type="radio" name="c14t4q21" value="B"><span class="option-label"><span class="option-key">B</span> the fact that literature can be entertaining and educational at the same time</span></label>
+      <label class="option"><input type="radio" name="c14t4q21" value="C"><span class="option-label"><span class="option-key">C</span> the fact that adults expect children to imitate characters in literature</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">Trevor says the module about the purpose of children's literature made him</div>
+      <label class="option"><input type="radio" name="c14t4q22" value="A"><span class="option-label"><span class="option-key">A</span> analyse some of the stories that his niece reads.</span></label>
+      <label class="option"><input type="radio" name="c14t4q22" value="B"><span class="option-label"><span class="option-key">B</span> wonder how far popularity reflects good quality.</span></label>
+      <label class="option"><input type="radio" name="c14t4q22" value="C"><span class="option-label"><span class="option-key">C</span> decide to start writing some children's stories.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">Stephanie is interested in the Pictures module because</div>
+      <label class="option"><input type="radio" name="c14t4q23" value="A"><span class="option-label"><span class="option-key">A</span> she intends to become an illustrator.</span></label>
+      <label class="option"><input type="radio" name="c14t4q23" value="B"><span class="option-label"><span class="option-key">B</span> she can remember beautiful illustrations from her childhood.</span></label>
+      <label class="option"><input type="radio" name="c14t4q23" value="C"><span class="option-label"><span class="option-key">C</span> she believes illustrations are more important than words.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">Trevor and Stephanie agree that comics</div>
+      <label class="option"><input type="radio" name="c14t4q24" value="A"><span class="option-label"><span class="option-key">A</span> are inferior to books.</span></label>
+      <label class="option"><input type="radio" name="c14t4q24" value="B"><span class="option-label"><span class="option-key">B</span> have the potential for being useful.</span></label>
+      <label class="option"><input type="radio" name="c14t4q24" value="C"><span class="option-label"><span class="option-key">C</span> discourage children from using their imagination.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">25</span>
+      <div class="q-text">With regard to books aimed at only boys or only girls, Trevor was surprised</div>
+      <label class="option"><input type="radio" name="c14t4q25" value="A"><span class="option-label"><span class="option-key">A</span> how long the distinction had gone unquestioned.</span></label>
+      <label class="option"><input type="radio" name="c14t4q25" value="B"><span class="option-label"><span class="option-key">B</span> how few books were aimed at both girls and boys.</span></label>
+      <label class="option"><input type="radio" name="c14t4q25" value="C"><span class="option-label"><span class="option-key">C</span> how many children enjoyed books intended for the opposite sex.</span></label>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 26–30 · Matching</div>
+    <div class="instruction">What comment is made about each of these stories?<br>Choose <strong>FIVE</strong> answers from the box, <strong>A–G</strong>, next to Questions 26–30.</div>
+    <div class="options-box"><strong>Comments</strong><ul>
+      <li><span>A</span>translated into many other languages</li>
+      <li><span>B</span>hard to read</li>
+      <li><span>C</span>inspired a work in a different area of art</li>
+      <li><span>D</span>more popular than the author's other works</li>
+      <li><span>E</span>original title refers to another book</li>
+      <li><span>F</span>started a new genre</li>
+      <li><span>G</span>unlikely topic</li>
+    </ul></div>
+    <div class="instruction"><strong>Stories</strong></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">Perrault's fairy tales</span><select class="match-sel" id="c14t4q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label"><em>The Swiss Family Robinson</em></span><select class="match-sel" id="c14t4q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label"><em>The Nutcracker and The Mouse King</em></span><select class="match-sel" id="c14t4q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label"><em>The Lord of the Rings</em></span><select class="match-sel" id="c14t4q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label"><em>War Horse</em></span><select class="match-sel" id="c14t4q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c14t4')">Submit Cam14 Test 4</button>
+    <button class="btn-reset" onclick="resetTest('c14t4')">Reset</button>
+  </div>
+  <div id="results-c14t4"></div>
+</div>
+
+<!-- ===== C15T1 ===== -->
+<div class="panel" id="panel-c15t1">
+  <div class="test-header"><div><div class="test-badge">CAM15 T1 · PART 3</div>
+    <h2 style="margin-top:6px">Birth Order &amp; Personality Traits</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>15-T1S3.m4a</strong>.</div>
+  <audio controls id="audio-c15t1"><source src="15-T1S3.m4a" type="audio/mp4">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–26 · Matching</div>
+    <div class="instruction">What did findings of previous research claim about the personality traits a child is likely to have because of their position in the family?<br>Choose <strong>SIX</strong> answers from the box, <strong>A–H</strong>, next to Questions 21–26.</div>
+    <div class="options-box"><strong>Personality Traits</strong><ul>
+      <li><span>A</span>outgoing</li>
+      <li><span>B</span>selfish</li>
+      <li><span>C</span>independent</li>
+      <li><span>D</span>attention-seeking</li>
+      <li><span>E</span>introverted</li>
+      <li><span>F</span>co-operative</li>
+      <li><span>G</span>caring</li>
+      <li><span>H</span>competitive</li>
+    </ul></div>
+    <div class="instruction"><strong>Position in family</strong></div>
+    <div class="match-row"><span class="match-num">21</span><span class="match-label">the eldest child</span><select class="match-sel" id="c15t1q21"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">22</span><span class="match-label">a middle child</span><select class="match-sel" id="c15t1q22"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">23</span><span class="match-label">the youngest child</span><select class="match-sel" id="c15t1q23"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">24</span><span class="match-label">a twin</span><select class="match-sel" id="c15t1q24"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label">an only child</span><select class="match-sel" id="c15t1q25"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">a child with much older siblings</span><select class="match-sel" id="c15t1q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 27–28 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <div class="question">
+      <span class="q-num">27</span>
+      <div class="q-text">What do the speakers say about the evidence relating to birth order and academic success?</div>
+      <label class="option"><input type="radio" name="c15t1q27" value="A"><span class="option-label"><span class="option-key">A</span> There is conflicting evidence about whether oldest children perform best in intelligence tests.</span></label>
+      <label class="option"><input type="radio" name="c15t1q27" value="B"><span class="option-label"><span class="option-key">B</span> There is little doubt that birth order has less influence on academic achievement than socio-economic status.</span></label>
+      <label class="option"><input type="radio" name="c15t1q27" value="C"><span class="option-label"><span class="option-key">C</span> Some studies have neglected to include important factors such as family size.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">28</span>
+      <div class="q-text">What does Ruth think is surprising about the difference in oldest children's academic performance?</div>
+      <label class="option"><input type="radio" name="c15t1q28" value="A"><span class="option-label"><span class="option-key">A</span> It is mainly thanks to their roles as teachers for their younger siblings.</span></label>
+      <label class="option"><input type="radio" name="c15t1q28" value="B"><span class="option-label"><span class="option-key">B</span> The advantages they have only lead to a slightly higher level of achievement.</span></label>
+      <label class="option"><input type="radio" name="c15t1q28" value="C"><span class="option-label"><span class="option-key">C</span> The extra parental attention they receive at a young age makes little difference.</span></label>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 29–30 · Choose TWO Letters</div>
+    <div class="instruction">Which <strong>TWO</strong> experiences of sibling rivalry do the speakers agree has been valuable for them?<br>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</div>
+    <div class="question">
+      <span class="q-num">Q29–30</span>
+      <div class="q-text">Valuable experiences of sibling rivalry:</div>
+      <div class="chk-notice">✏ Choose EXACTLY TWO letters</div>
+      <label class="option"><input type="checkbox" class="chk-c15t1q29_30" value="A" onchange="limitChk('c15t1q29_30',2)"><span class="option-label"><span class="option-key">A</span> learning to share</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t1q29_30" value="B" onchange="limitChk('c15t1q29_30',2)"><span class="option-label"><span class="option-key">B</span> learning to stand up for oneself</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t1q29_30" value="C" onchange="limitChk('c15t1q29_30',2)"><span class="option-label"><span class="option-key">C</span> learning to be a good loser</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t1q29_30" value="D" onchange="limitChk('c15t1q29_30',2)"><span class="option-label"><span class="option-key">D</span> learning to be tolerant</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t1q29_30" value="E" onchange="limitChk('c15t1q29_30',2)"><span class="option-label"><span class="option-key">E</span> learning to say sorry</span></label>
+    </div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c15t1')">Submit Cam15 Test 1</button>
+    <button class="btn-reset" onclick="resetTest('c15t1')">Reset</button>
+  </div>
+  <div id="results-c15t1"></div>
+</div>
+
+<!-- ===== C15T2 ===== -->
+<div class="panel" id="panel-c15t2">
+  <div class="test-header"><div><div class="test-badge">CAM15 T2 · PART 3</div>
+    <h2 style="margin-top:6px">Charles Dickens Display</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>15-T2S3.m4a</strong>.</div>
+  <audio controls id="audio-c15t2"><source src="15-T2S3.m4a" type="audio/mp4">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–24 · Choose TWO Letters</div>
+    <div class="instruction">Choose <strong>TWO</strong> letters for each question.</div>
+    <div class="question">
+      <span class="q-num">Q21–22</span>
+      <div class="q-text">Which TWO groups of people is the display primarily intended for?</div>
+      <div class="chk-notice">✏ Choose EXACTLY TWO letters</div>
+      <label class="option"><input type="checkbox" class="chk-c15t2q21_22" value="A" onchange="limitChk('c15t2q21_22',2)"><span class="option-label"><span class="option-key">A</span> students from the English department</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q21_22" value="B" onchange="limitChk('c15t2q21_22',2)"><span class="option-label"><span class="option-key">B</span> residents of the local area</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q21_22" value="C" onchange="limitChk('c15t2q21_22',2)"><span class="option-label"><span class="option-key">C</span> the university's teaching staff</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q21_22" value="D" onchange="limitChk('c15t2q21_22',2)"><span class="option-label"><span class="option-key">D</span> potential new students</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q21_22" value="E" onchange="limitChk('c15t2q21_22',2)"><span class="option-label"><span class="option-key">E</span> students from other departments</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">Q23–24</span>
+      <div class="q-text">What are Cathy and Graham's TWO reasons for choosing the novelist Charles Dickens?</div>
+      <div class="chk-notice">✏ Choose EXACTLY TWO letters</div>
+      <label class="option"><input type="checkbox" class="chk-c15t2q23_24" value="A" onchange="limitChk('c15t2q23_24',2)"><span class="option-label"><span class="option-key">A</span> His speeches inspired others to try to improve society.</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q23_24" value="B" onchange="limitChk('c15t2q23_24',2)"><span class="option-label"><span class="option-key">B</span> He used his publications to draw attention to social problems.</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q23_24" value="C" onchange="limitChk('c15t2q23_24',2)"><span class="option-label"><span class="option-key">C</span> His novels are well-known now.</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q23_24" value="D" onchange="limitChk('c15t2q23_24',2)"><span class="option-label"><span class="option-key">D</span> He was consulted on a number of social issues.</span></label>
+      <label class="option"><input type="checkbox" class="chk-c15t2q23_24" value="E" onchange="limitChk('c15t2q23_24',2)"><span class="option-label"><span class="option-key">E</span> His reputation has changed in recent times.</span></label>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 25–30 · Matching</div>
+    <div class="instruction">What topic do Cathy and Graham choose to illustrate with each novel?<br>Choose <strong>SIX</strong> answers from the box, <strong>A–H</strong>, next to Questions 25–30.</div>
+    <div class="options-box"><strong>Topics</strong><ul>
+      <li><span>A</span>poverty</li>
+      <li><span>B</span>education</li>
+      <li><span>C</span>Dickens's travels</li>
+      <li><span>D</span>entertainment</li>
+      <li><span>E</span>crime and the law</li>
+      <li><span>F</span>wealth</li>
+      <li><span>G</span>medicine</li>
+      <li><span>H</span>a woman's life</li>
+    </ul></div>
+    <div class="instruction"><strong>Novels by Dickens</strong></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label"><em>The Pickwick Papers</em></span><select class="match-sel" id="c15t2q25"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label"><em>Oliver Twist</em></span><select class="match-sel" id="c15t2q26"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label"><em>Nicholas Nickleby</em></span><select class="match-sel" id="c15t2q27"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label"><em>Martin Chuzzlewit</em></span><select class="match-sel" id="c15t2q28"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label"><em>Bleak House</em></span><select class="match-sel" id="c15t2q29"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label"><em>Little Dorrit</em></span><select class="match-sel" id="c15t2q30"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c15t2')">Submit Cam15 Test 2</button>
+    <button class="btn-reset" onclick="resetTest('c15t2')">Reset</button>
+  </div>
+  <div id="results-c15t2"></div>
+</div>
+
+<!-- ===== C15T3 ===== -->
+<div class="panel" id="panel-c15t3">
+  <div class="test-header"><div><div class="test-badge">CAM15 T3 · PART 3</div>
+    <h2 style="margin-top:6px">Newspaper Analysis Assignment</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>15-T3S3.m4a</strong>.</div>
+  <audio controls id="audio-c15t3"><source src="15-T3S3.m4a" type="audio/mp4">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–26 · Note Completion</div>
+    <div class="instruction">Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</div>
+    <div style="background:#f7fafc;border:1.5px solid #e2e8f0;border-radius:8px;padding:16px 20px;font-size:.87rem;line-height:2">
+      <div style="font-weight:700;margin-bottom:10px;color:#2d3748">What Hazel should analyse about items in newspapers:</div>
+    <div class="match-row"><span class="match-num">21</span><span class="match-label">• what</span><input type="text" class="text-input" id="c15t3q21" placeholder="..." /><span class="match-label">the item is on</span></div>
+    <div class="match-row"><span class="match-num">22</span><span class="match-label">• the</span><input type="text" class="text-input" id="c15t3q22" placeholder="..." /><span class="match-label">of the item, including the headline</span></div>
+    <div class="match-row"><span class="match-num">23</span><span class="match-label">• any</span><input type="text" class="text-input" id="c15t3q23" placeholder="..." /><span class="match-label">accompanying the item</span></div>
+    <div class="match-row"><span class="match-num">24</span><span class="match-label">• the</span><input type="text" class="text-input" id="c15t3q24" placeholder="..." /><span class="match-label">of the item, e.g. what's made prominent</span></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label">• the writer's main</span><input type="text" class="text-input" id="c15t3q25" placeholder="..." /><span class="match-label"></span></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">• the</span><input type="text" class="text-input" id="c15t3q26" placeholder="..." /><span class="match-label">the writer may make about the reader</span></div>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 27–30 · Matching</div>
+    <div class="instruction">What does Hazel decide to do about each of the following types of articles?<br>Write the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>, next to Questions 27–30.</div>
+    <div class="options-box"><strong>Decisions</strong><ul>
+      <li><span>A</span>She will definitely look for a suitable article.</li>
+      <li><span>B</span>She may look for a suitable article.</li>
+      <li><span>C</span>She definitely won't look for an article.</li>
+    </ul></div>
+    <div class="instruction"><strong>Types of articles</strong></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">national news item</span><select class="match-sel" id="c15t3q27"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">editorial</span><select class="match-sel" id="c15t3q28"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">human interest</span><select class="match-sel" id="c15t3q29"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label">arts</span><select class="match-sel" id="c15t3q30"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c15t3')">Submit Cam15 Test 3</button>
+    <button class="btn-reset" onclick="resetTest('c15t3')">Reset</button>
+  </div>
+  <div id="results-c15t3"></div>
+</div>
+
+<!-- ===== C15T4 ===== -->
+<div class="panel" id="panel-c15t4">
+  <div class="test-header"><div><div class="test-badge">CAM15 T4 · PART 3</div>
+    <h2 style="margin-top:6px">Presentation about Refrigeration</h2>
+    <p>Questions 21–30 · 10 marks</p></div></div>
+  <div class="audio-note">⚠ Audio file: <strong>15-T4S3.m4a</strong>.</div>
+  <audio controls id="audio-c15t4"><source src="15-T4S3.m4a" type="audio/mp4">Your browser does not support audio.</audio>
+  <div class="q-section">
+    <div class="q-section-title">Questions 21–24 · Multiple Choice</div>
+    <div class="instruction">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</div>
+    <div class="question">
+      <span class="q-num">21</span>
+      <div class="q-text">What did Annie discover from reading about icehouses?</div>
+      <label class="option"><input type="radio" name="c15t4q21" value="A"><span class="option-label"><span class="option-key">A</span> why they were first created</span></label>
+      <label class="option"><input type="radio" name="c15t4q21" value="B"><span class="option-label"><span class="option-key">B</span> how the ice was kept frozen</span></label>
+      <label class="option"><input type="radio" name="c15t4q21" value="C"><span class="option-label"><span class="option-key">C</span> where they were located</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">22</span>
+      <div class="q-text">What point does Annie make about refrigeration in ancient Rome?</div>
+      <label class="option"><input type="radio" name="c15t4q22" value="A"><span class="option-label"><span class="option-key">A</span> It became a commercial business.</span></label>
+      <label class="option"><input type="radio" name="c15t4q22" value="B"><span class="option-label"><span class="option-key">B</span> It used snow from nearby.</span></label>
+      <label class="option"><input type="radio" name="c15t4q22" value="C"><span class="option-label"><span class="option-key">C</span> It took a long time to become popular.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">23</span>
+      <div class="q-text">In connection with modern refrigerators, both Annie and Jack are worried about</div>
+      <label class="option"><input type="radio" name="c15t4q23" value="A"><span class="option-label"><span class="option-key">A</span> the complexity of the technology.</span></label>
+      <label class="option"><input type="radio" name="c15t4q23" value="B"><span class="option-label"><span class="option-key">B</span> the fact that some are disposed of irresponsibly.</span></label>
+      <label class="option"><input type="radio" name="c15t4q23" value="C"><span class="option-label"><span class="option-key">C</span> the large number that quickly break down.</span></label>
+    </div>
+    <div class="question">
+      <span class="q-num">24</span>
+      <div class="q-text">What do Jack and Annie agree regarding domestic fridges?</div>
+      <label class="option"><input type="radio" name="c15t4q24" value="A"><span class="option-label"><span class="option-key">A</span> They are generally good value for money.</span></label>
+      <label class="option"><input type="radio" name="c15t4q24" value="B"><span class="option-label"><span class="option-key">B</span> There are plenty of useful variations.</span></label>
+      <label class="option"><input type="radio" name="c15t4q24" value="C"><span class="option-label"><span class="option-key">C</span> They are more useful than other domestic appliances.</span></label>
+    </div>
+  </div>
+  <div class="q-section">
+    <div class="q-section-title">Questions 25–30 · Matching</div>
+    <div class="instruction">Who is going to do research into each topic?<br>Write the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>, next to Questions 25–30.</div>
+    <div class="options-box"><strong>People</strong><ul>
+      <li><span>A</span>Annie</li>
+      <li><span>B</span>Jack</li>
+      <li><span>C</span>both Annie and Jack</li>
+    </ul></div>
+    <div class="instruction"><strong>Topics</strong></div>
+    <div class="match-row"><span class="match-num">25</span><span class="match-label">the goods that are refrigerated</span><select class="match-sel" id="c15t4q25"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">26</span><span class="match-label">the effects on health</span><select class="match-sel" id="c15t4q26"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">27</span><span class="match-label">the impact on food producers</span><select class="match-sel" id="c15t4q27"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">28</span><span class="match-label">the impact on cities</span><select class="match-sel" id="c15t4q28"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">29</span><span class="match-label">refrigerated transport</span><select class="match-sel" id="c15t4q29"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+    <div class="match-row"><span class="match-num">30</span><span class="match-label">domestic fridges</span><select class="match-sel" id="c15t4q30"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+  </div>
+  <div class="submit-row">
+    <button class="btn-submit" onclick="submitTest('c15t4')">Submit Cam15 Test 4</button>
+    <button class="btn-reset" onclick="resetTest('c15t4')">Reset</button>
+  </div>
+  <div id="results-c15t4"></div>
+</div>
+
+<div class="panel" id="panel-logbook">
+  <div class="logbook-wrap">
+    <h2>📓 Error Logbook</h2>
+    <p>Wrong answers are automatically added here after each test submission. Reflect on each mistake to improve.</p>
+    <div style="margin-bottom:14px">
+      <button class="btn-sm btn-del" onclick="clearLogbook()">🗑 Clear All</button>
+    </div>
+    <div id="lb-list"></div>
+  </div>
+</div>
+
+<div class="panel" id="panel-summary">
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">
+    <button class="btn-download" onclick="downloadResults()">⬇ Download PDF Results</button>
+    <button class="btn-email" onclick="sendToTeacher()">📧 Send to Teacher</button>
+  </div>
+  <div id="summary-content"><p style="color:#718096;text-align:center;padding:40px 0">Complete at least one test to see your summary.</p></div>
+</div>
+
+<div class="modal-overlay" id="lb-modal" style="display:none" onclick="closeLbModalOutside(event)">
+  <div class="modal">
+    <h2>📓 Update Error Logbook</h2>
+    <p>Record why you got these wrong to track your progress.</p>
+    <div id="lb-modal-content"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="skipLogbook()">Skip</button>
+      <button class="btn-primary" onclick="saveLogbookEntries()">Save to Logbook</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const TEST_IDS = ['c14t1','c14t2','c14t3','c14t4','c15t1','c15t2','c15t3','c15t4'];
+
+const DATA = {
+  c14t1: {
+    title:'Cam14 T1 – Cities Built by the Sea', audio:'14-T1S3.mp3',
+    questions:[
+      {id:'c14t1q21',num:21,type:'radio',display:'Q21',
+       text:'Carla and Rob were surprised to learn that coastal cities',answer:'B',
+       paraphrase:'📻 Transcript: "most of the biggest cities are actually built by the sea, I\'d not realised that before"<br>🔗 Paraphrase: <em>"most of the biggest cities"</em> = <em>"include most of the world\'s largest cities"</em> (B)<br>⚠ Trap: Rob says >half world\'s population lives in cities (A) but that refers to ALL cities, not coastal.',
+       explanation:'Carla says she <strong>hadn\'t realised that most of the biggest cities are actually built by the sea</strong> = option B.'},
+      {id:'c14t1q22',num:22,type:'radio',display:'Q22',
+       text:'According to Rob, building coastal cities near to rivers',answer:'A',
+       paraphrase:'📻 Transcript: Rob: "it means more and more pollutants are discharged into the rivers"<br>🔗 Paraphrase: pollutants in rivers → carried downstream → <em>pollution to the cities</em> (A)',
+       explanation:'Rob explains that industry discharges <strong>pollutants into rivers</strong>, bringing pollution downstream to coastal cities (A).'},
+      {id:'c14t1q23',num:23,type:'radio',display:'Q23',
+       text:'What mistake was made when building water drainage channels in Miami in the 1950s?',answer:'C',
+       paraphrase:'📻 Transcript: Rob: "But what they didn\'t take into account was global warming"<br>🔗 Paraphrase: <em>"didn\'t take into account global warming"</em> = <em>"did not allow for the effects of climate change"</em> (C)',
+       explanation:'The channels failed because they <strong>did not account for global warming/climate change</strong> (C) — sea levels rose and the channels became useless.'},
+      {id:'c14t1q24',num:24,type:'radio',display:'Q24',
+       text:'What do Rob and Carla think the authorities in Miami should do immediately?',answer:'B',
+       paraphrase:'📻 Transcript: Rob: "they just need to find the money for something to replace the drainage channels"<br>🔗 Paraphrase: <em>"find money to replace drainage channels"</em> = <em>"pay for a new flood prevention system"</em> (B)',
+       explanation:'Rob says they need to <strong>find money to replace the drainage channels</strong> = pay for a new flood prevention system (B).'},
+      {id:'c14t1q25',num:25,type:'radio',display:'Q25',
+       text:'What do they agree should be the priority for international action?',answer:'A',
+       paraphrase:'📻 Transcript: Rob: "they should be able to work together to some extent"<br>🔗 Paraphrase: <em>"work together"</em> = <em>"greater coordination of activities"</em> (A)<br>⚠ Trap: option C (shared policies) is mentioned but Rob says it will take a long time — not the priority.',
+       explanation:'Both agree that <strong>working together / coordinating activities</strong> should be the international priority (A).'},
+      {id:'c14t1q26',num:26,type:'select',display:'Q26',
+       text:'Historical background',answer:'B',
+       paraphrase:'📻 Transcript: Rob: "we don\'t want to spend too long on that"<br>🔗 Paraphrase: <em>"don\'t spend too long"</em> = <em>"keep it short"</em> (B)',
+       explanation:'They decide to <strong>keep it short</strong> (B) — other students already know the historical background.'},
+      {id:'c14t1q27',num:27,type:'select',display:'Q27',
+       text:'Geographical factors',answer:'A',
+       paraphrase:'📻 Transcript: Carla: "We could have some maps... Rob: On a handout? Or some slides everyone can see? Carla: Yeah, that\'d be better."<br>🔗 Slides = <em>use visuals</em> (A)',
+       explanation:'They decide to <strong>use visuals / slides</strong> (A) with maps showing geographical features.'},
+      {id:'c14t1q28',num:28,type:'select',display:'Q28',
+       text:'Past mistakes',answer:'F',
+       paraphrase:'📻 Transcript: Carla: "We could use that [New Orleans case study] as the basis for that part of the talk"<br>🔗 Paraphrase: <em>"use that as the basis"</em> = <em>"focus on one example"</em> (F)',
+       explanation:'They decide to <strong>focus on one example</strong> (F) — the New Orleans flooding case study.'},
+      {id:'c14t1q29',num:29,type:'select',display:'Q29',
+       text:'Future risks',answer:'G',
+       paraphrase:'📻 Transcript: Rob: "We\'ll need to look at some websites. Shouldn\'t take too long."<br>🔗 = <em>do online research</em> (G)',
+       explanation:'For future risks, they plan to <strong>do online research</strong> (G) on websites.'},
+      {id:'c14t1q30',num:30,type:'select',display:'Q30',
+       text:'International implications',answer:'C',
+       paraphrase:'📻 Transcript: Carla: "Maybe we could ask people in the audience. We\'ve got people from quite a lot of different places."<br>🔗 = <em>involve other students</em> (C)',
+       explanation:'They plan to <strong>involve other students</strong> (C) — asking audience members from different countries.'}
+    ]
+  },
+  c14t2: {
+    title:'Cam14 T2 – Woolly Mammoths on St Paul\'s Island', audio:'14-T2S3.mp3',
+    questions:[
+      {id:'c14t2q21',num:21,type:'radio',display:'Q21',
+       text:'How will Rosie and Martin introduce their presentation?',answer:'B',
+       paraphrase:'📻 Transcript: Rosie: "it could be a timeline to show when they lived, with illustrations" — Martin: "let\'s go with your last suggestion"<br>🔗 = <em>a timeline showing when woolly mammoths lived</em> (B)',
+       explanation:'They choose <strong>a timeline with illustrations</strong> (B) to introduce the presentation.'},
+      {id:'c14t2q22',num:22,type:'radio',display:'Q22',
+       text:'What was surprising about the mammoth tooth found by Russell Graham?',answer:'C',
+       paraphrase:'📻 Transcript: Rosie: "the mammoth bones previously found on the North American mainland were much less recent than that"<br>🔗 The tooth was MORE recent (younger) than mainland remains → <em>not as old as mammoth remains from elsewhere</em> (C)',
+       explanation:'The tooth was <strong>more recent (younger)</strong> than mainland mammoth remains — surprising because St Paul\'s Island mammoths survived longer (C).'},
+      {id:'c14t2q23',num:23,type:'radio',display:'Q23',
+       text:'The students will use an animated diagram to demonstrate how the mammoths',answer:'A',
+       paraphrase:'📻 Transcript: Rosie: "those mammoths on the island couldn\'t escape; they had to stay on the island"<br>🔗 Sea level rose → island cut off → mammoths <em>became isolated</em> (A)',
+       explanation:'The diagram shows how rising sea levels cut off the island, so mammoths <strong>became isolated</strong> (A).'},
+      {id:'c14t2q24',num:24,type:'radio',display:'Q24',
+       text:'According to Martin, what is unusual about the date of the mammoths\' extinction on the island?',answer:'A',
+       paraphrase:'📻 Transcript: Martin: "the extinction happened 5,600 years ago, which is a very precise time for a prehistoric extinction"<br>🔗 "very precise time" = <em>how exact it is</em> (A)',
+       explanation:'Martin says 5,600 years ago is <strong>unusually precise</strong> for a prehistoric extinction — <em>how exact it is</em> (A).'},
+      {id:'c14t2q25',num:25,type:'select',display:'Q25',
+       text:'Introduction',answer:'E',
+       paraphrase:'📻 Transcript: Rosie: "we need to write down all the ideas we want to include here, not just rely on memory"<br>🔗 = <em>make detailed notes</em> (E)',
+       explanation:'For the introduction, they decide to <strong>make detailed notes</strong> (E) — not rely on memory.'},
+      {id:'c14t2q26',num:26,type:'select',display:'Q26',
+       text:'Discovery of the mammoth tooth',answer:'D',
+       paraphrase:'📻 Transcript: Rosie: "maybe we could get in touch with the researcher who led the team and ask him to tell us a bit more"<br>🔗 = <em>contact one of the researchers</em> (D)',
+       explanation:'They plan to <strong>contact one of the researchers</strong> (D) for more information about the tooth discovery.'},
+      {id:'c14t2q27',num:27,type:'select',display:'Q27',
+       text:'Initial questions asked by the researchers',answer:'A',
+       paraphrase:'📻 Transcript: Rosie: "We could ask the audience to suggest some questions about it and then see how many of them we can answer"<br>🔗 = <em>make it more interactive</em> (A)',
+       explanation:'They plan to <strong>make it more interactive</strong> (A) by asking the audience to suggest questions.'},
+      {id:'c14t2q28',num:28,type:'select',display:'Q28',
+       text:'Further research carried out on the island',answer:'H',
+       paraphrase:'📻 Transcript: Martin: "maybe it would be better if it followed a chronological pattern"<br>🔗 = <em>organise the content more clearly</em> (H)',
+       explanation:'They decide to <strong>organise content more clearly</strong> (H) — following a chronological pattern.'},
+      {id:'c14t2q29',num:29,type:'select',display:'Q29',
+       text:'Findings and possible explanations',answer:'G',
+       paraphrase:'📻 Transcript: Rosie: "we need to practise it so we\'re sure it won\'t overrun"<br>🔗 = <em>check timing</em> (G)',
+       explanation:'For findings, they need to <strong>check timing</strong> (G) by practising to avoid overrunning.'},
+      {id:'c14t2q30',num:30,type:'select',display:'Q30',
+       text:'Relevance to the present day',answer:'C',
+       paraphrase:'📻 Transcript: Tutor: "this is where you need to move away from the ideas of others and give your own viewpoint"<br>🔗 = <em>add personal opinions</em> (C)',
+       explanation:'For relevance, the tutor tells them to <strong>add personal opinions</strong> (C) — give their own viewpoint.'}
+    ]
+  },
+  c14t3: {
+    title:'Cam14 T3 – School Marching Band', audio:'14-T3S3.mp3',
+    questions:[
+      {id:'c14t3q21',num:21,type:'text',display:'Q21',
+       text:'It consists of around _____ students.',answer:'50',altAnswers:[],
+       paraphrase:'📻 Transcript: Joe: "there are about 50 of them altogether"<br>🔗 Direct number: <em>50</em>',
+       explanation:'The band has <strong>50</strong> students — Joe says "about 50 of them altogether".'},
+      {id:'c14t3q22',num:22,type:'text',display:'Q22',
+       text:'It is due to play in a _____ band competition.',answer:'regional',altAnswers:[],
+       paraphrase:'📻 Transcript: Joe: "they\'re in a regional one later in the term"<br>🔗 Direct word: <em>regional</em>',
+       explanation:'The competition is <strong>regional</strong> — not a national one.'},
+      {id:'c14t3q23',num:23,type:'text',display:'Q23',
+       text:'It has been invited to play in the town\'s _____.',answer:'carnival',altAnswers:[],
+       paraphrase:'📻 Transcript: Joe: "the town council\'s organising a carnival in the summer, and the band has been asked to perform"<br>🔗 Direct word: <em>carnival</em>',
+       explanation:'The band has been invited to play at the town\'s <strong>carnival</strong>.'},
+      {id:'c14t3q24',num:24,type:'text',display:'Q24',
+       text:'They have listened to a talk by a _____.',answer:'drummer',altAnswers:[],
+       paraphrase:'📻 Transcript: Joe: "I played a recording I came across, of a drummer talking about how playing in a band had changed his life"<br>🔗 Direct word: <em>drummer</em>',
+       explanation:'Joe played a recording of a <strong>drummer</strong> giving an after-dinner speech about the band changing his life.'},
+      {id:'c14t3q25',num:25,type:'text',display:'Q25',
+       text:'Joe will discuss a _____ with the band.',answer:'film',altAnswers:[],
+       paraphrase:'📻 Transcript: Joe: "I\'m planning to show them that old film from the 1940s \'Strike Up the Band\'"<br>🔗 Direct word: <em>film</em>',
+       explanation:'Joe plans to show the band an old <strong>film</strong> — "Strike Up the Band" (1940s).'},
+      {id:'c14t3q26',num:26,type:'text',display:'Q26',
+       text:'Joe hopes the band will attend a _____ next month.',answer:'parade',altAnswers:[],
+       paraphrase:'📻 Transcript: Joe: "I\'m hoping I can take some of the band to a parade that\'s going to take place next month"<br>🔗 Direct word: <em>parade</em>',
+       explanation:'Joe wants to take the band to a <strong>parade</strong> next month where marching bands will perform.'},
+      {id:'c14t3q27',num:27,type:'select',display:'Q27',
+       text:'flautist',answer:'D',
+       paraphrase:'📻 Transcript: Joe: "she\'s hardly ever there" / "looks for me the next day and gives me a very plausible reason"<br>🔗 = <em>misses too many rehearsals</em> (D)',
+       explanation:'The flautist <strong>misses too many rehearsals</strong> (D) — often absent and makes excuses.'},
+      {id:'c14t3q28',num:28,type:'select',display:'Q28',
+       text:'trumpeter',answer:'B',
+       paraphrase:'📻 Transcript: Joe: "She\'s always saying what she thinks other people should do, which makes my job pretty difficult"<br>🔗 = <em>keeps making unhelpful suggestions</em> (B)',
+       explanation:'The trumpeter <strong>keeps making unhelpful suggestions</strong> (B) about what others should do.'},
+      {id:'c14t3q29',num:29,type:'select',display:'Q29',
+       text:'trombonist',answer:'E',
+       paraphrase:'📻 Transcript: Joe: "he has breathing difficulties, and he doesn\'t really have enough breath for the trombone"<br>🔗 = <em>has a health problem</em> (E)',
+       explanation:'The trombonist <strong>has a health problem</strong> (E) — breathing difficulties unsuited to trombone.'},
+      {id:'c14t3q30',num:30,type:'select',display:'Q30',
+       text:'percussionist',answer:'F',
+       paraphrase:'📻 Transcript: Joe: "he never seems to interact with other people, and he always rushes off as soon as the rehearsal ends"<br>🔗 = <em>doesn\'t mix with other students</em> (F)',
+       explanation:'The percussionist <strong>doesn\'t mix with other students</strong> (F) — isolates himself and leaves immediately.'}
+    ]
+  },
+  c14t4: {
+    title:'Cam14 T4 – Children\'s Literature', audio:'14-T4S3.mp3',
+    questions:[
+      {id:'c14t4q21',num:21,type:'radio',display:'Q21',
+       text:'What does Trevor find interesting about the purpose of children\'s literature?',answer:'A',
+       paraphrase:'📻 Transcript: Trevor: "the writer isn\'t necessarily conscious of the message they\'re conveying"<br>🔗 = <em>authors may not realise what values they\'re teaching</em> (A)',
+       explanation:'Trevor finds it fascinating that <strong>authors may not consciously realise the values</strong> they\'re teaching (A).'},
+      {id:'c14t4q22',num:22,type:'radio',display:'Q22',
+       text:'Trevor says the module about the purpose of children\'s literature made him',answer:'C',
+       paraphrase:'📻 Transcript: Trevor: "it inspired me to have a go at myself, just for my own interest"<br>🔗 = <em>decide to start writing some children\'s stories</em> (C)',
+       explanation:'The module <strong>inspired Trevor to start writing children\'s stories</strong> himself (C).'},
+      {id:'c14t4q23',num:23,type:'radio',display:'Q23',
+       text:'Stephanie is interested in the Pictures module because',answer:'A',
+       paraphrase:'📻 Transcript: Stephanie: "that\'s the field I want to go into when I finish the course"<br>🔗 = <em>she intends to become an illustrator</em> (A)',
+       explanation:'Stephanie is drawn to the module because she <strong>wants to become an illustrator</strong> (A) after the course.'},
+      {id:'c14t4q24',num:24,type:'radio',display:'Q24',
+       text:'Trevor and Stephanie agree that comics',answer:'B',
+       paraphrase:'📻 Transcript: Stephanie: "comics can serve a really useful purpose" — Trevor: "Yes, I suppose you\'re right"<br>🔗 = <em>have the potential for being useful</em> (B)',
+       explanation:'Both agree comics <strong>can serve a really useful purpose</strong> — especially for children who wouldn\'t otherwise read (B).'},
+      {id:'c14t4q25',num:25,type:'radio',display:'Q25',
+       text:'With regard to books aimed at only boys or only girls, Trevor was surprised',answer:'B',
+       paraphrase:'📻 Transcript: Trevor: "I was amazed how many books were targeted at just one sex or the other"<br>🔗 Many books for one sex = very few aimed at both → <em>how few books were aimed at both girls and boys</em> (B)',
+       explanation:'Trevor was amazed by <strong>how many books targeted only one sex</strong> — i.e., very few aimed at both (B).'},
+      {id:'c14t4q26',num:26,type:'select',display:'Q26',
+       text:'Perrault\'s fairy tales',answer:'F',
+       paraphrase:'📻 Transcript: Stephanie: "no stories of that type had been written before, these were the first"<br>🔗 = <em>started a new genre</em> (F)',
+       explanation:'Perrault\'s fairy tales <strong>started a new genre</strong> (F) — the first stories of that type ever written.'},
+      {id:'c14t4q27',num:27,type:'select',display:'Q27',
+       text:'The Swiss Family Robinson',answer:'E',
+       paraphrase:'📻 Transcript: Stephanie: "a more accurate translation would be The Swiss Robinsons... about a Swiss family who are shipwrecked, like Robinson Crusoe in the novel of a century earlier"<br>🔗 Title refers to Robinson Crusoe = <em>original title refers to another book</em> (E)',
+       explanation:'The original title refers to Robinson Crusoe — <strong>original title refers to another book</strong> (E).'},
+      {id:'c14t4q28',num:28,type:'select',display:'Q28',
+       text:'The Nutcracker and The Mouse King',answer:'C',
+       paraphrase:'📻 Transcript: Trevor: "Wasn\'t that the basis for Tchaikovsky\'s ballet The Nutcracker?"<br>🔗 Ballet = different art form → <em>inspired a work in a different area of art</em> (C)',
+       explanation:'The story <strong>inspired Tchaikovsky\'s ballet</strong> — a work in a different area of art (C).'},
+      {id:'c14t4q29',num:29,type:'select',display:'Q29',
+       text:'The Lord of the Rings',answer:'B',
+       paraphrase:'📻 Transcript: Stephanie: "I struggled with Tolkien\'s The Lord of the Rings – three long books, and I gave up after one"<br>🔗 = <em>hard to read</em> (B)',
+       explanation:'Stephanie found Lord of the Rings <strong>hard to read</strong> (B) — gave up after one of three long books.'},
+      {id:'c14t4q30',num:30,type:'select',display:'Q30',
+       text:'War Horse',answer:'G',
+       paraphrase:'📻 Transcript: Trevor: "Hardly what you\'d expect for a children\'s story"<br>🔗 First World War as a children\'s book subject = <em>unlikely topic</em> (G)',
+       explanation:'War Horse has an <strong>unlikely topic</strong> (G) — the First World War is surprising subject matter for a children\'s story.'}
+    ]
+  },
+  c15t1: {
+    title:'Cam15 T1 – Birth Order & Personality Traits', audio:'15-T1S3.m4a',
+    questions:[
+      {id:'c15t1q21',num:21,type:'select',display:'Q21',
+       text:'the eldest child',answer:'G',
+       paraphrase:'📻 Transcript: Ruth: "they were thought to be good at nurturing — certainly in the past... they would have been expected to look after the younger ones"<br>🔗 "nurturing / look after" = <em>caring</em> (G)',
+       explanation:'The eldest child is associated with <strong>caring/nurturing</strong> (G) traits.'},
+      {id:'c15t1q22',num:22,type:'select',display:'Q22',
+       text:'a middle child',answer:'F',
+       paraphrase:'📻 Transcript: Ruth: "Generally eager to please and helpful"<br>🔗 "eager to please / helpful" = <em>co-operative</em> (F)',
+       explanation:'Middle children are seen as <strong>co-operative</strong> (F) — eager to please and helpful.'},
+      {id:'c15t1q23',num:23,type:'select',display:'Q23',
+       text:'the youngest child',answer:'A',
+       paraphrase:'📻 Transcript: Ed: "supposed to have been a sociable and confident child who made friends easily"<br>🔗 "sociable / made friends easily" = <em>outgoing</em> (A)',
+       explanation:'The youngest child is characterised as <strong>outgoing</strong> (A) — sociable and confident.'},
+      {id:'c15t1q24',num:24,type:'select',display:'Q24',
+       text:'a twin',answer:'E',
+       paraphrase:'📻 Transcript: Ed: "a twin is likely to be quite shy in social situations because they always have their twin around to depend on for support"<br>🔗 "shy in social situations" = <em>introverted</em> (E)',
+       explanation:'Twins tend to be <strong>introverted</strong> (E) — shy socially because they rely on each other.'},
+      {id:'c15t1q25',num:25,type:'select',display:'Q25',
+       text:'an only child',answer:'B',
+       paraphrase:'📻 Transcript: Ed: "loners who think the world revolves around them because they\'ve never had to fight for their parents\' attention"<br>🔗 "world revolves around them" = <em>selfish</em> (B)',
+       explanation:'Only children are labelled as <strong>selfish</strong> (B) — never competed for parental attention.'},
+      {id:'c15t1q26',num:26,type:'select',display:'Q26',
+       text:'a child with much older siblings',answer:'C',
+       paraphrase:'📻 Transcript: Ruth: "these children grow up more quickly and are expected to do basic things for themselves — like getting dressed"<br>🔗 "do things for themselves" = <em>independent</em> (C)',
+       explanation:'Children with much older siblings become <strong>independent</strong> (C) early — expected to manage themselves.'},
+      {id:'c15t1q27',num:27,type:'radio',display:'Q27',
+       text:'What do the speakers say about the evidence relating to birth order and academic success?',answer:'C',
+       paraphrase:'📻 Transcript: Ed: "Although what many of them didn\'t take into consideration was family size. The more siblings... the likelier the family is to have a low socio-economic status"<br>🔗 = <em>neglected to include important factors such as family size</em> (C)',
+       explanation:'Many studies <strong>neglected family size</strong> as a factor (C) — more siblings often means lower socio-economic status.'},
+      {id:'c15t1q28',num:28,type:'radio',display:'Q28',
+       text:'What does Ruth think is surprising about the difference in oldest children\'s academic performance?',answer:'A',
+       paraphrase:'📻 Transcript: Ruth: "It\'s not only that they benefit intellectually from extra attention... It\'s that they benefit from being teachers for their younger siblings, by verbalising processes"<br>🔗 = <em>mainly thanks to their roles as teachers for younger siblings</em> (A)',
+       explanation:'Ruth is surprised that the main reason is <strong>being teachers for younger siblings</strong> (A) — not just extra parental attention.'},
+      {id:'c15t1q29_30',num:29,type:'checkpair',display:'Q29–30',
+       text:'Which TWO experiences of sibling rivalry do the speakers agree has been valuable for them?',
+       answer:['B','D'],
+       paraphrase:'📻 Transcript: Ruth: "I know how to defend myself" (B=learning to stand up for oneself) + "we had to put up with each other" (D=learning to be tolerant)<br>⚠ Trap: Ruth mentions "terrible arguments" but NOT learning to say sorry (E).',
+       explanation:'The two valuable experiences are <strong>B (learning to stand up for oneself)</strong> — "I know how to defend myself" — and <strong>D (learning to be tolerant)</strong> — "we had to put up with each other".'}
+    ]
+  },
+  c15t2: {
+    title:'Cam15 T2 – Charles Dickens Display', audio:'15-T2S3.m4a',
+    questions:[
+      {id:'c15t2q21_22',num:21,type:'checkpair',display:'Q21–22',
+       text:'Which TWO groups of people is the display primarily intended for?',
+       answer:['B','D'],
+       paraphrase:'📻 Transcript: Graham: "publicised in the city, to encourage people to come" (B=residents of local area) + "included in information sent to people who are considering applying to study here next year" (D=potential new students)<br>⚠ Trap: students/teaching staff may attend but they\'re NOT the primary audience.',
+       explanation:'Primary audiences are <strong>B (residents of local area)</strong> — publicised citywide — and <strong>D (potential new students)</strong> — included in prospectus information.'},
+      {id:'c15t2q23_24',num:23,type:'checkpair',display:'Q23–24',
+       text:'What are Cathy and Graham\'s TWO reasons for choosing the novelist Charles Dickens?',
+       answer:['B','C'],
+       paraphrase:'📻 Transcript: Cathy: "Most people have heard of him, and have probably read some of his novels" (C=novels well-known) + Graham: "his novels show the awful conditions that most people had to live in... wanted to shock people into doing something about it" (B=used publications to draw attention to social problems)',
+       explanation:'Reasons: <strong>B</strong> — used his novels to expose social problems — and <strong>C</strong> — his novels are well-known to the public.'},
+      {id:'c15t2q25',num:25,type:'select',display:'Q25',
+       text:'The Pickwick Papers',answer:'G',
+       paraphrase:'📻 Transcript: Graham: "there\'s a character who keeps falling asleep, and that medical condition was named after the book — Pickwickian Syndrome"<br>🔗 "medical condition" = <em>medicine</em> (G)',
+       explanation:'Topic: <strong>medicine</strong> (G) — the Pickwickian Syndrome medical condition named after the book.'},
+      {id:'c15t2q26',num:26,type:'select',display:'Q26',
+       text:'Oliver Twist',answer:'B',
+       paraphrase:'📻 Transcript: Cathy: "very few children went to school, particularly not poor children, so they learnt in other ways"<br>🔗 = <em>education</em> (B)',
+       explanation:'Topic: <strong>education</strong> (B) — Oliver is taught to steal because poor children had no schooling.'},
+      {id:'c15t2q27',num:27,type:'select',display:'Q27',
+       text:'Nicholas Nickleby',answer:'D',
+       paraphrase:'📻 Transcript: Graham: "the company of touring actors that Nicholas joins. We could do something on theatres and other amusements of the time"<br>🔗 = <em>entertainment</em> (D)',
+       explanation:'Topic: <strong>entertainment</strong> (D) — theatres and amusements of the Victorian era.'},
+      {id:'c15t2q28',num:28,type:'select',display:'Q28',
+       text:'Martin Chuzzlewit',answer:'C',
+       paraphrase:'📻 Transcript: Cathy: "Dickens himself had been there [USA] a year before, and drew on his experience there in the novel"<br>🔗 = <em>Dickens\'s travels</em> (C)',
+       explanation:'Topic: <strong>Dickens\'s travels</strong> (C) — he visited America and based the novel on his experience.'},
+      {id:'c15t2q29',num:29,type:'select',display:'Q29',
+       text:'Bleak House',answer:'H',
+       paraphrase:'📻 Transcript: Cathy discusses Esther\'s life — child abuse, happiness with guardian, marriage — a woman\'s journey<br>🔗 = <em>a woman\'s life</em> (H)',
+       explanation:'Topic: <strong>a woman\'s life</strong> (H) — the story of Esther, the heroine, from childhood to marriage.'},
+      {id:'c15t2q30',num:30,type:'select',display:'Q30',
+       text:'Little Dorrit',answer:'F',
+       paraphrase:'📻 Transcript: Graham: "focusing on the part when Mr Dorrit inherits a fortune, and he starts pretending he\'s always been rich"<br>🔗 Fortune, pretending to be rich = <em>wealth</em> (F)',
+       explanation:'Topic: <strong>wealth</strong> (F) — Mr Dorrit inheriting a fortune and pretending he was always wealthy.'}
+    ]
+  },
+  c15t3: {
+    title:'Cam15 T3 – Newspaper Analysis Assignment', audio:'15-T3S3.m4a',
+    questions:[
+      {id:'c15t3q21',num:21,type:'text',display:'Q21',
+       text:'what _____ the item is on',answer:'page',altAnswers:[],
+       paraphrase:'📻 Transcript: Tom: "the question of which page of the newspaper the item appears on"<br>🔗 Direct word: <em>page</em>',
+       explanation:'First thing to analyse: which <strong>page</strong> the item appears on — front page vs. page ten shows editor\'s priorities.'},
+      {id:'c15t3q22',num:22,type:'text',display:'Q22',
+       text:'the _____ of the item, including the headline',answer:'size',altAnswers:[],
+       paraphrase:'📻 Transcript: Tom: "the size — how many column inches the story is given, how many columns it spreads over. And that includes the headline."<br>🔗 Direct word: <em>size</em>',
+       explanation:'Analyse the <strong>size</strong> — column inches and number of columns including the headline.'},
+      {id:'c15t3q23',num:23,type:'text',display:'Q23',
+       text:'any _____ accompanying the item',answer:'graphic',altAnswers:['graphics'],
+       paraphrase:'📻 Transcript: Hazel: "What about graphics — whether there\'s anything visual in addition to the text?"<br>🔗 Direct word: <em>graphic(s)</em>',
+       explanation:'Analyse any <strong>graphics</strong> — visuals can sometimes have more impact than the text itself.'},
+      {id:'c15t3q24',num:24,type:'text',display:'Q24',
+       text:'the _____ of the item, e.g. what\'s made prominent',answer:'structure',altAnswers:[],
+       paraphrase:'📻 Transcript: Tom: "look at how the item is put together: what structure is it given? what has the journalist put at the beginning?"<br>🔗 Direct word: <em>structure</em>',
+       explanation:'Analyse the <strong>structure</strong> — what\'s placed first, what\'s buried at the end that few readers will see.'},
+      {id:'c15t3q25',num:25,type:'text',display:'Q25',
+       text:'the writer\'s main _____',answer:'purpose',altAnswers:[],
+       paraphrase:'📻 Transcript: Tom: "what\'s the writer\'s purpose... It may seem to be to inform the public, but often it\'s that they want to create fear, or controversy"<br>🔗 Direct word: <em>purpose</em>',
+       explanation:'Identify the writer\'s main <strong>purpose</strong> — it may be hidden (creating fear/controversy rather than informing).'},
+      {id:'c15t3q26',num:26,type:'text',display:'Q26',
+       text:'the _____ the writer may make about the reader',answer:'assumption',altAnswers:['assumptions'],
+       paraphrase:'📻 Transcript: Tom: "about their knowledge of the subject, their attitudes, and their level of education"<br>🔗 Direct word: <em>assumption(s)</em>',
+       explanation:'Consider what <strong>assumptions</strong> the writer makes about the reader\'s knowledge, attitudes, and education level.'},
+      {id:'c15t3q27',num:27,type:'select',display:'Q27',
+       text:'national news item',answer:'A',
+       paraphrase:'📻 Transcript: Hazel: "a national news item would be worth analysing — I\'m quite keen on politics, so I\'ll try and find a suitable topic"<br>🔗 "will try and find" = <em>definitely will look</em> (A)',
+       explanation:'Hazel will <strong>definitely look</strong> (A) for a national news item — she\'s interested in politics.'},
+      {id:'c15t3q28',num:28,type:'select',display:'Q28',
+       text:'editorial',answer:'C',
+       paraphrase:'📻 Transcript: Tom: "I wanted to compare editorials... but couldn\'t find two on the same topic" — Hazel: "In that case, I won\'t even bother to look"<br>🔗 = <em>definitely won\'t look</em> (C)',
+       explanation:'Hazel <strong>definitely won\'t look</strong> (C) for an editorial — Tom\'s experience shows it\'s too hard to find matching editorials.'},
+      {id:'c15t3q29',num:29,type:'select',display:'Q29',
+       text:'human interest',answer:'C',
+       paraphrase:'📻 Transcript: Hazel: "I usually find stories like that raise quite strong feelings in me! I\'ll avoid that."<br>🔗 = <em>definitely won\'t look</em> (C)',
+       explanation:'Hazel <strong>definitely won\'t look</strong> (C) for human interest — too emotionally affecting for objective analysis.'},
+      {id:'c15t3q30',num:30,type:'select',display:'Q30',
+       text:'arts',answer:'B',
+       paraphrase:'📻 Transcript: Hazel: "Perhaps I\'ll choose an arts topic, like different reviews of a film... I\'ll think about that."<br>🔗 "I\'ll think about that" = <em>may look</em> (B)',
+       explanation:'Hazel <strong>may look</strong> (B) at arts articles — considering it but not committed yet.'}
+    ]
+  },
+  c15t4: {
+    title:'Cam15 T4 – Presentation about Refrigeration', audio:'15-T4S3.m4a',
+    questions:[
+      {id:'c15t4q21',num:21,type:'radio',display:'Q21',
+       text:'What did Annie discover from reading about icehouses?',answer:'B',
+       paraphrase:'📻 Transcript: Annie: "I didn\'t realise that insulating the blocks with straw or sawdust meant they didn\'t melt for months"<br>🔗 "insulating" = <em>how the ice was kept frozen</em> (B)',
+       explanation:'Annie discovered <strong>how ice was kept frozen</strong> (B) — insulating with straw or sawdust stopped melting for months.'},
+      {id:'c15t4q22',num:22,type:'radio',display:'Q22',
+       text:'What point does Annie make about refrigeration in ancient Rome?',answer:'A',
+       paraphrase:'📻 Transcript: Annie: "Both the ice and the snow were then sold. The ice cost more than the snow"<br>🔗 Selling ice/snow at different prices = <em>it became a commercial business</em> (A)',
+       explanation:'Annie points out that Romans <strong>sold ice and snow commercially</strong> — it became a commercial business (A).'},
+      {id:'c15t4q23',num:23,type:'radio',display:'Q23',
+       text:'In connection with modern refrigerators, both Annie and Jack are worried about',answer:'B',
+       paraphrase:'📻 Transcript: Annie: "some people just dump old fridges in the countryside"<br>🔗 Dumping = <em>disposed of irresponsibly</em> (B)',
+       explanation:'Both are worried about fridges being <strong>disposed of irresponsibly</strong> (B) — dumped in the countryside.'},
+      {id:'c15t4q24',num:24,type:'radio',display:'Q24',
+       text:'What do Jack and Annie agree regarding domestic fridges?',answer:'A',
+       paraphrase:'📻 Transcript: Jack: "if you divide the cost by the number of years you can use a fridge, they\'re not expensive, compared with some household appliances"<br>🔗 Not expensive when calculated per year = <em>generally good value for money</em> (A)',
+       explanation:'They agree fridges are <strong>good value for money</strong> (A) — not expensive when cost is spread over 11+ years.'},
+      {id:'c15t4q25',num:25,type:'select',display:'Q25',
+       text:'the goods that are refrigerated',answer:'A',
+       paraphrase:'📻 Transcript: Annie suggests this topic and says "I could do that, unless you particularly want to." Jack: "No, that\'s fine by me."<br>🔗 Annie volunteers → A (Annie)',
+       explanation:'<strong>Annie</strong> (A) will research the range of refrigerated goods.'},
+      {id:'c15t4q26',num:26,type:'select',display:'Q26',
+       text:'the effects on health',answer:'A',
+       paraphrase:'📻 Transcript: Neither wants it, but Annie says "Oh, all right then, I\'ll do you a favour" → Annie takes it<br>🔗 = A (Annie)',
+       explanation:'<strong>Annie</strong> (A) reluctantly agrees to research the health effects.'},
+      {id:'c15t4q27',num:27,type:'select',display:'Q27',
+       text:'the impact on food producers',answer:'B',
+       paraphrase:'📻 Transcript: Annie: "Something for you, maybe?" — Jack: "I don\'t mind. It should be quite interesting."<br>🔗 Jack agrees → B (Jack)',
+       explanation:'<strong>Jack</strong> (B) will research the impact on food producers in poorer countries.'},
+      {id:'c15t4q28',num:28,type:'select',display:'Q28',
+       text:'the impact on cities',answer:'B',
+       paraphrase:'📻 Transcript: Jack mentions an economics book, Annie declines, Jack: "OK, leave it to me, then"<br>🔗 Jack takes it → B (Jack)',
+       explanation:'<strong>Jack</strong> (B) will use the economics book to research refrigeration\'s impact on cities.'},
+      {id:'c15t4q29',num:29,type:'select',display:'Q29',
+       text:'refrigerated transport',answer:'A',
+       paraphrase:'📻 Transcript: Annie: "Thanks. Then there\'s transport... I wouldn\'t mind having a go at that."<br>🔗 = A (Annie)',
+       explanation:'<strong>Annie</strong> (A) will research refrigerated transport — trucks, trains, etc.'},
+      {id:'c15t4q30',num:30,type:'select',display:'Q30',
+       text:'domestic fridges',answer:'C',
+       paraphrase:'📻 Transcript: Annie: "You could investigate 19th- and 20th-century fridges, and I\'ll concentrate on what\'s available these days" — Jack: "OK, that\'d suit me."<br>🔗 Both have a part → C (both Annie and Jack)',
+       explanation:'<strong>Both</strong> Annie and Jack (C) — Jack covers historical fridges, Annie covers modern ones.'}
+    ]
+  }
+};
+
+
+// ── limitChk: cap checkboxes at max ──────────────────────────────────────────
+function limitChk(groupId, max) {
+  const boxes = document.querySelectorAll('.chk-' + groupId);
+  const checked = Array.from(boxes).filter(b => b.checked);
+  if (checked.length > max) {
+    boxes.forEach(b => { if (!b.checked) return; });
+    // uncheck the one just clicked beyond limit
+    const last = checked[checked.length - 1];
+    last.checked = false;
+  }
+}
+
+// ── getAnswer ─────────────────────────────────────────────────────────────────
+function getAnswer(q) {
+  if (q.type === 'radio') {
+    const sel = document.querySelector(`input[name="${q.id}"]:checked`);
+    return sel ? sel.value : '';
+  }
+  if (q.type === 'select') {
+    const el = document.getElementById(q.id);
+    return el ? el.value : '';
+  }
+  if (q.type === 'text') {
+    const el = document.getElementById(q.id);
+    return el ? el.value.trim() : '';
+  }
+  if (q.type === 'checkpair') {
+    const groupId = q.id;
+    const boxes = document.querySelectorAll('.chk-' + groupId);
+    return Array.from(boxes).filter(b => b.checked).map(b => b.value).sort();
+  }
+  return '';
+}
+
+// ── checkAnswer ───────────────────────────────────────────────────────────────
+function checkAnswer(q, userAns) {
+  if (q.type === 'checkpair') {
+    const correct = [...q.answer].sort();
+    const ua = [...(userAns||[])].sort();
+    return JSON.stringify(correct) === JSON.stringify(ua);
+  }
+  if (q.type === 'text') {
+    const ua = (userAns||'').toLowerCase().trim();
+    const correct = q.answer.toLowerCase().trim();
+    if (ua === correct) return true;
+    if (q.altAnswers && q.altAnswers.some(a => a.toLowerCase().trim() === ua)) return true;
+    return false;
+  }
+  return (userAns||'').toString().toUpperCase() === (q.answer||'').toString().toUpperCase();
+}
+
+// ── formatUserAns ─────────────────────────────────────────────────────────────
+function formatUserAns(q, ua) {
+  if (q.type === 'checkpair') return (ua && ua.length ? ua.join(', ') : '—');
+  return ua || '—';
+}
+
+// ── submitTest ────────────────────────────────────────────────────────────────
+function submitTest(testId) {
+  const td = DATA[testId];
+  if (!td) return;
+  const qs = td.questions;
+
+  let scored = 0, total = 0;
+  const results = [];
+
+  qs.forEach(q => {
+    const marks = q.type === 'checkpair' ? 2 : 1;
+    total += marks;
+    const ua = getAnswer(q);
+    const ok = checkAnswer(q, ua);
+    if (ok) scored += marks;
+    results.push({ q, ua, ok, marks });
+  });
+
+  // Render feedback
+  const fb = document.getElementById('results-' + testId);
+  if (!fb) return;
+  const pct = Math.round(scored / total * 100);
+  let html = `<div class="score-banner ${pct>=70?'good':pct>=50?'ok':'bad'}">
+    Score: ${scored} / ${total} &nbsp;(${pct}%)
+  </div><div class="results-table">`;
+
+  results.forEach(({q, ua, ok, marks}) => {
+    const numLabel = q.display || (q.numEnd ? `Q${q.num}–${q.numEnd}` : `Q${q.num}`);
+    const uaFmt = formatUserAns(q, ua);
+    const ansFmt = q.type === 'checkpair' ? q.answer.join(', ') : q.answer;
+    html += `<div class="result-row ${ok?'correct':'wrong'}">
+      <div class="rnum">${numLabel}</div>
+      <div class="rdetail">
+        <span class="rlabel">${ok?'✅':'❌'} Your answer:</span> <strong>${uaFmt}</strong>
+        ${!ok ? `<br><span class="rlabel">Correct:</span> <strong>${ansFmt}</strong>` : ''}
+        <div class="rexpl">${q.paraphrase||''}</div>
+        <div class="rexpl">${q.explanation||''}</div>
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+  fb.innerHTML = html;
+  fb.style.display = 'block';
+  fb.scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Logbook: only save wrong answers
+  const wrongs = results.filter(r => !r.ok);
+  if (wrongs.length > 0) {
+    let lb = JSON.parse(localStorage.getItem('lb_cam1415') || '[]');
+    const entry = {
+      date: new Date().toLocaleDateString('vi-VN'),
+      test: td.title,
+      items: wrongs.map(({q, ua}) => ({
+        num: q.display || (q.numEnd ? `Q${q.num}–${q.numEnd}` : `Q${q.num}`),
+        ua: formatUserAns(q, ua),
+        ans: q.type === 'checkpair' ? q.answer.join(', ') : q.answer,
+        expl: q.explanation || ''
+      }))
+    };
+    lb.push(entry);
+    localStorage.setItem('lb_cam1415', JSON.stringify(lb));
+  }
+
+  // Update summary
+  updateSummary(testId, scored, total);
+}
+
+// ── updateSummary ─────────────────────────────────────────────────────────────
+function updateSummary(testId, scored, total) {
+  let sumData = JSON.parse(localStorage.getItem('sum_cam1415') || '{}');
+  sumData[testId] = {scored, total};
+  localStorage.setItem('sum_cam1415', JSON.stringify(sumData));
+}
+
+// ── resetTest ─────────────────────────────────────────────────────────────────
+function resetTest(testId) {
+  if (!confirm('Reset all answers for this test?')) return;
+  const panel = document.getElementById('panel-' + testId);
+  if (!panel) return;
+  panel.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+  panel.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
+  panel.querySelectorAll('input[type=text]').forEach(t => t.value = '');
+  panel.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  const fb = document.getElementById('results-' + testId);
+  if (fb) { fb.innerHTML = ''; fb.style.display = 'none'; }
+}
+
+// ── switchTab ─────────────────────────────────────────────────────────────────
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const btn = document.getElementById('tab-' + id);
+  const panel = document.getElementById('panel-' + id);
+  if (btn) btn.classList.add('active');
+  if (panel) panel.classList.add('active');
+  if (id === 'logbook') renderLogbook();
+  if (id === 'summary') renderSummary();
+}
+
+// ── renderLogbook ─────────────────────────────────────────────────────────────
+function renderLogbook() {
+  const lb = JSON.parse(localStorage.getItem('lb_cam1415') || '[]');
+  const el = document.getElementById('lb-list');
+  if (!el) return;
+  if (lb.length === 0) {
+    el.innerHTML = '<p style="color:#888;text-align:center;padding:2rem">No errors recorded yet. Complete a test to populate the logbook.</p>';
+    return;
+  }
+  let html = '';
+  lb.forEach((entry, ei) => {
+    html += `<div class="lb-entry">
+      <div class="lb-entry-header">
+        <span class="lb-date">${entry.date}</span>
+        <span class="lb-test">${entry.test}</span>
+        <button class="btn-sm btn-del" onclick="deleteEntry(${ei})">Delete</button>
+      </div>`;
+    entry.items.forEach(it => {
+      html += `<div class="lb-item">
+        <span class="lb-qnum">${it.num}</span>
+        <span class="lb-ua">Your: <strong>${it.ua}</strong></span>
+        <span class="lb-ans">✅ Correct: <strong>${it.ans}</strong></span>
+        <div class="lb-expl">${it.expl}</div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function deleteEntry(idx) {
+  let lb = JSON.parse(localStorage.getItem('lb_cam1415') || '[]');
+  lb.splice(idx, 1);
+  localStorage.setItem('lb_cam1415', JSON.stringify(lb));
+  renderLogbook();
+}
+
+function clearLogbook() {
+  if (!confirm('Clear all logbook entries?')) return;
+  localStorage.removeItem('lb_cam1415');
+  renderLogbook();
+}
+
+// ── renderSummary ─────────────────────────────────────────────────────────────
+function renderSummary() {
+  const sumData = JSON.parse(localStorage.getItem('sum_cam1415') || '{}');
+  const el = document.getElementById('summary-content');
+  if (!el) return;
+  const labels = {
+    c14t1:'Cam14 T1', c14t2:'Cam14 T2', c14t3:'Cam14 T3', c14t4:'Cam14 T4',
+    c15t1:'Cam15 T1', c15t2:'Cam15 T2', c15t3:'Cam15 T3', c15t4:'Cam15 T4'
+  };
+  let html = '<table class="sum-table"><thead><tr><th>Test</th><th>Score</th><th>Total</th><th>%</th><th>Status</th></tr></thead><tbody>';
+  let grandScore = 0, grandTotal = 0;
+  TEST_IDS.forEach(id => {
+    const d = sumData[id];
+    if (d) {
+      const pct = Math.round(d.scored / d.total * 100);
+      const badge = pct >= 70 ? '🟢' : pct >= 50 ? '🟡' : '🔴';
+      html += `<tr><td>${labels[id]}</td><td>${d.scored}</td><td>${d.total}</td><td>${pct}%</td><td>${badge}</td></tr>`;
+      grandScore += d.scored; grandTotal += d.total;
+    } else {
+      html += `<tr class="not-done"><td>${labels[id]}</td><td colspan="4" style="color:#aaa">Not attempted</td></tr>`;
+    }
+  });
+  if (grandTotal > 0) {
+    const gp = Math.round(grandScore / grandTotal * 100);
+    html += `<tr class="grand-total"><td><strong>TOTAL</strong></td><td><strong>${grandScore}</strong></td><td><strong>${grandTotal}</strong></td><td><strong>${gp}%</strong></td><td></td></tr>`;
+  }
+  html += '</tbody></table>';
+  el.innerHTML = html;
+}
+
+// ── downloadResults ───────────────────────────────────────────────────────────
+function downloadResults() {
+  const sname = (document.getElementById('student-name')||{}).value || 'Student';
+  const semail = (document.getElementById('student-email')||{}).value || '';
+  const sumData = JSON.parse(localStorage.getItem('sum_cam1415') || '{}');
+  const lb = JSON.parse(localStorage.getItem('lb_cam1415') || '[]');
+
+  let body = `
+  <div class="pdf-header">
+    <div class="brand">HUONG STELLA PARADIGM</div>
+    <h1>IELTS Listening Part 3 – Cambridge 14 &amp; 15</h1>
+    <p><strong>Student:</strong> ${sname} &nbsp;|&nbsp; <strong>Email:</strong> ${semail} &nbsp;|&nbsp; <strong>Date:</strong> ${new Date().toLocaleDateString('vi-VN')}</p>
+  </div>
+  <h2>Score Summary</h2>
+  <table>
+    <thead><tr><th>Test</th><th>Score</th><th>Total</th><th>%</th></tr></thead>
+    <tbody>`;
+  const labels = {c14t1:'Cam14 T1',c14t2:'Cam14 T2',c14t3:'Cam14 T3',c14t4:'Cam14 T4',c15t1:'Cam15 T1',c15t2:'Cam15 T2',c15t3:'Cam15 T3',c15t4:'Cam15 T4'};
+  let gs=0, gt=0;
+  TEST_IDS.forEach(id => {
+    const d = sumData[id];
+    if (d) { const p=Math.round(d.scored/d.total*100); body+=`<tr><td>${labels[id]}</td><td>${d.scored}</td><td>${d.total}</td><td>${p}%</td></tr>`; gs+=d.scored; gt+=d.total; }
+    else body+=`<tr style="color:#aaa"><td>${labels[id]}</td><td colspan="3">Not attempted</td></tr>`;
+  });
+  if (gt>0) body+=`<tr style="font-weight:bold;background:#f0f4ff"><td>TOTAL</td><td>${gs}</td><td>${gt}</td><td>${Math.round(gs/gt*100)}%</td></tr>`;
+  body += '</tbody></table>';
+
+  if (lb.length > 0) {
+    body += '<h2 style="margin-top:2rem">Error Logbook</h2>';
+    lb.forEach(entry => {
+      body += `<div class="lb-block"><h3>${entry.date} — ${entry.test}</h3>`;
+      entry.items.forEach(it => {
+        body += `<div class="lb-row">
+          <span class="lb-q">${it.num}</span>
+          <span>Your: <strong>${it.ua}</strong> → Correct: <strong>${it.ans}</strong></span>
+          <div class="lb-exp">${it.expl}</div>
+        </div>`;
+      });
+      body += '</div>';
+    });
+  }
+
+  const css = `
+    body{font-family:'Segoe UI',Arial,sans-serif;padding:2rem;color:#222;font-size:13px}
+    .pdf-header{text-align:center;border-bottom:2px solid #2563eb;padding-bottom:1rem;margin-bottom:1.5rem}
+    .brand{font-size:11px;letter-spacing:2px;color:#2563eb;font-weight:700;text-transform:uppercase}
+    h1{font-size:18px;margin:0.5rem 0}
+    h2{font-size:15px;color:#2563eb;border-bottom:1px solid #dde;padding-bottom:4px}
+    h3{font-size:13px;color:#374151;margin:0.5rem 0 0.25rem}
+    table{width:100%;border-collapse:collapse;margin:0.5rem 0 1.5rem}
+    th,td{border:1px solid #ddd;padding:6px 10px;text-align:left}
+    th{background:#eff6ff;color:#1e40af}
+    .lb-block{border:1px solid #e5e7eb;border-radius:6px;padding:0.75rem;margin-bottom:1rem;break-inside:avoid}
+    .lb-row{margin:0.4rem 0;padding:0.4rem;background:#f9fafb;border-radius:4px}
+    .lb-q{font-weight:700;color:#2563eb;margin-right:0.5rem}
+    .lb-exp{font-size:12px;color:#555;margin-top:4px}
+  `;
+  const win = window.open('', '_blank');
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>IELTS Results – ${sname}</title><style>${css}</style></head><body>${body}<script>window.onload=function(){window.print()}<\/script></body></html>`);
+  win.document.close();
+}
+
+// ── sendToTeacher ─────────────────────────────────────────────────────────────
+function sendToTeacher() {
+  const sname = (document.getElementById('student-name')||{}).value || 'Student';
+  const semail = (document.getElementById('student-email')||{}).value || '';
+  const sumData = JSON.parse(localStorage.getItem('sum_cam1415') || '{}');
+  const labels = {c14t1:'Cam14 T1',c14t2:'Cam14 T2',c14t3:'Cam14 T3',c14t4:'Cam14 T4',c15t1:'Cam15 T1',c15t2:'Cam15 T2',c15t3:'Cam15 T3',c15t4:'Cam15 T4'};
+  let scoreLines = '';
+  TEST_IDS.forEach(id => {
+    const d = sumData[id];
+    if (d) scoreLines += `${labels[id]}: ${d.scored}/${d.total} (${Math.round(d.scored/d.total*100)}%)\n`;
+  });
+  if (!scoreLines) scoreLines = 'No tests completed yet.';
+  const sub = encodeURIComponent(`[IELTS Cam14-15 Part3] Result – ${sname}`);
+  const bod = encodeURIComponent(`Dear Teacher,\n\nStudent: ${sname}\nEmail: ${semail}\n\nScores:\n${scoreLines}\nDate: ${new Date().toLocaleDateString('vi-VN')}\n\nBest regards,\n${sname}`);
+  window.location.href = `mailto:huongstella8@gmail.com?subject=${sub}&body=${bod}`;
+}
+
+// ── Logbook modal ─────────────────────────────────────────────────────────────
+function closeLbModalOutside(e) {
+  if (e.target.id === 'lb-modal') document.getElementById('lb-modal').style.display='none';
+}
+function skipLogbook() { document.getElementById('lb-modal').style.display='none'; }
+function saveLogbookEntries() { document.getElementById('lb-modal').style.display='none'; renderLogbook(); }
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  switchTab('c14t1');
+});
+
+</script>
+</body>
+</html>
