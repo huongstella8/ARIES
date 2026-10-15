@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>IELTS Reading Lab Satisfaction Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --paper:#F3F6F7;--surface:#FFFFFF;--sunk:#E9EEF1;--ink:#15222D;--muted:#566878;--line:#D5DEE4;
+  --accent:#0E6A7E;--accent-ink:#FFFFFF;--accent-soft:#DCEEF2;--marker:#E2A11B;--marker-soft:#FBEFCF;
+  --ok:#1D7A4C;--ok-soft:#DDF1E6;--bad:#B2362C;--bad-soft:#F8E0DD;
+  --labL:#2F6FB5;--labR:#1D7A4C;--labW:#B5622F;--labS:#7A4BB0;
+  --head:'Lexend','Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --body:'Source Sans 3','Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F171D;--surface:#16222B;--sunk:#1D2C36;--ink:#E6EEF2;--muted:#9AB0BE;--line:#2A3B47;
+  --accent:#4FB3C8;--accent-ink:#06222A;--accent-soft:#173A44;--marker:#F0B841;--marker-soft:#3A2F14;
+  --ok:#5BC68F;--ok-soft:#163626;--bad:#EE7B70;--bad-soft:#3D1D1A;
+  --labL:#6FA6E6;--labR:#5BC68F;--labW:#E59A6A;--labS:#B08BE0;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+body{padding-bottom:96px}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+header.top{padding:28px 0 12px}
+.eyebrow{font-family:var(--head);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-family:var(--head);font-weight:600;font-size:clamp(1.45rem,4.2vw,2.05rem);line-height:1.2;margin:6px 0 2px}
+.h1en{font-family:var(--head);font-size:clamp(1rem,2.6vw,1.2rem);color:var(--muted);margin:0}
+.chip{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.82rem;font-weight:600}
+.en{display:block;color:var(--muted);font-style:italic;font-weight:400;font-size:.92em}
+/* progress */
+.progress{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 0}
+.bar{height:6px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+@media (max-width:680px){.steps{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.steps::-webkit-scrollbar{display:none}.nav .grow{display:none}.btn{padding:11px 14px;font-size:.95rem}}
+.steps span{font-size:.76rem;padding:2px 9px;border-radius:99px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.steps span.on{background:var(--accent);color:var(--accent-ink)}
+.steps span.done{background:var(--accent-soft);color:var(--accent)}
+.cheer{font-size:.86rem;color:var(--muted);margin-top:6px;min-height:1.3em}
+/* cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin:18px 0}
+.card h2{font-family:var(--head);font-weight:600;font-size:1.3rem;margin:0 0 4px}
+.card h2 .en{font-size:.82em}
+.card .intro{color:var(--muted);margin:8px 0 0;font-size:.95rem}
+.labtag{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:1px}
+h3{font-family:var(--head);font-weight:600;font-size:1.04rem;margin:26px 0 10px;padding-top:16px;border-top:1px dashed var(--line)}
+h3:first-of-type{border-top:0;padding-top:0}
+.q{margin:18px 0}
+.qlab{font-weight:600;display:block;margin-bottom:8px}
+.req{color:var(--bad);margin-left:3px}
+.opt-tag{font-weight:400;color:var(--muted);font-size:.84em;margin-left:4px}
+input[type=text],input[type=email],textarea{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:92px;resize:vertical}
+input:focus-visible,textarea:focus-visible,.pill:focus-within,.cell:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+/* choice pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills.stack{flex-direction:column}
+.pill{position:relative;display:flex;align-items:flex-start;gap:9px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;font-size:.95rem;line-height:1.3}
+.pill input{position:absolute;opacity:0;pointer-events:none}
+.pill .box{flex:0 0 18px;height:18px;border:2px solid var(--muted);border-radius:4px;margin-top:1px;display:grid;place-items:center;font-size:12px;color:transparent}
+.pill.radio .box{border-radius:50%}
+.pill:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.pill input:checked + .box{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pill .en{font-size:.84em}
+/* rating grid */
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--muted);margin:2px 0 10px}
+.legend b{color:var(--ink);font-family:var(--head)}
+.rgrid{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr) repeat(var(--n),58px);align-items:center;border-top:1px solid var(--line)}
+.rrow:first-child{border-top:0}
+.rrow.head{background:var(--sunk);font-size:.72rem;line-height:1.2;color:var(--muted);text-align:center}
+.rrow.head > div{padding:8px 4px}
+.rrow.head > div:first-child{text-align:left;padding-left:14px;font-weight:600;color:var(--ink)}
+.rrow:nth-child(even):not(.head){background:color-mix(in srgb,var(--sunk) 45%,transparent)}
+.rlab{padding:10px 14px;font-size:.95rem;line-height:1.35}
+.rlab .en{font-size:.84em}
+.rlab .code{font-family:ui-monospace,'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-right:6px}
+.cell{display:grid;place-items:center;height:100%;min-height:46px;cursor:pointer;position:relative}
+.cell input{position:absolute;opacity:0;pointer-events:none}
+.cell .tick{width:24px;height:24px;border:2px solid var(--muted);border-radius:6px;display:grid;place-items:center;font-size:14px;font-weight:700;color:transparent;transition:.12s}
+.cell .num{display:none}
+.cell input:checked + .tick{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.cell.na input:checked + .tick{background:var(--muted);border-color:var(--muted)}
+.cell:hover .tick{border-color:var(--accent)}
+.rrow.missing{box-shadow:inset 4px 0 0 var(--marker)}
+@media (max-width:680px){
+  .rrow.head{display:none}
+  .rrow{grid-template-columns:repeat(var(--n),1fr);padding-bottom:10px}
+  .rlab{grid-column:1/-1;padding-bottom:6px}
+  .cell{min-height:40px}
+  .cell .tick{width:auto;min-width:34px;height:34px;padding:0 6px;color:var(--ink);font-size:.82rem;font-weight:600;border-width:1.5px}
+  .cell .tick{font-size:0!important}
+  .cell .tick::before{content:attr(data-n);font-size:.85rem}
+  .cell input:checked + .tick{color:var(--accent-ink)}
+}
+/* issues */
+.irow{display:grid;grid-template-columns:minmax(0,1fr) 290px 170px;}
+.single .irow{grid-template-columns:minmax(0,1fr) 300px}
+.irow{gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line)}
+.irow:first-child{border-top:0}
+.irow.head{background:var(--sunk);font-size:.74rem;color:var(--muted);font-weight:600}
+.seg{display:flex;gap:4px}
+.seg label,.labs label{position:relative;flex:1;text-align:center;font-size:.8rem;padding:6px 4px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:var(--paper);line-height:1.15}
+.seg input,.labs input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.seg label.never:has(input:checked){background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.labs{display:flex;gap:4px}
+.labs label{font-weight:700;font-family:var(--head)}
+.labs label:has(input:checked){color:#fff;border-color:transparent}
+.labs label.L:has(input:checked){background:var(--labL)}.labs label.R:has(input:checked){background:var(--labR)}
+.labs label.W:has(input:checked){background:var(--labW)}.labs label.S:has(input:checked){background:var(--labS)}
+.labs.off{opacity:.35;pointer-events:none}
+@media (max-width:760px){.irow,.single .irow{grid-template-columns:1fr}.irow.head{display:none}}
+/* nps */
+.nps{display:grid;grid-template-columns:repeat(11,1fr);gap:4px}
+.nps label{position:relative;text-align:center;padding:9px 0;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-family:var(--head);font-weight:600;background:var(--paper)}
+.nps input{position:absolute;opacity:0}
+.nps label:has(input:checked){background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.npsends{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:4px}
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 0 calc(12px + env(safe-area-inset-bottom));z-index:6}
+.nav .wrap{display:flex;gap:10px;align-items:center}
+.btn{font:600 1rem var(--head);padding:11px 20px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.nav .grow{flex:1;font-size:.84rem;color:var(--muted)}
+.alert{border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.94rem}
+.alert.warn{background:var(--marker-soft);border:1px solid var(--marker)}
+.alert.bad{background:var(--bad-soft);border:1px solid var(--bad)}
+.alert.ok{background:var(--ok-soft);border:1px solid var(--ok)}
+.notes{margin:14px 0 0;padding-left:20px}
+.notes li{margin:4px 0}
+.thanks{text-align:center;padding:40px 20px}
+.thanks .big{font-size:3rem}
+footer{text-align:center;font-size:.72rem;color:var(--muted);opacity:.7;margin:28px 0}
+[hidden]{display:none!important}
+@media print{.progress,.nav{display:none}body{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow" id="brand"></div>
+    <h1 id="title"></h1>
+    <p class="h1en" id="titleEn"></p>
+    <span class="chip" id="sub"></span>
+  </header>
+</div>
+<div class="progress" id="progress" hidden>
+  <div class="wrap">
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="steps" id="steps"></div>
+    <div class="cheer" id="cheer" aria-live="polite"></div>
+  </div>
+</div>
+<main class="wrap" id="main"></main>
+<div class="wrap"><footer id="foot"></footer></div>
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <button class="btn" id="back" type="button">← Quay lại</button>
+    <div class="grow" id="navInfo"></div>
+    <button class="btn primary" id="next" type="button">Bắt đầu · Start →</button>
+  </div>
+</nav>
+<script>/* IELTS Labs Feedback Survey — single source of truth for HTML, PDF and DOCX.
+   Huong Stella Learning Lab · bilingual (Vietnamese / English). */
+(function (root) {
+  const VERSION = '2026-10-15';
+
+  const SCALES = {
+    sat: {
+      vi: ['Rất không hài lòng', 'Không hài lòng', 'Bình thường', 'Hài lòng', 'Rất hài lòng'],
+      en: ['Very dissatisfied', 'Dissatisfied', 'Neutral', 'Satisfied', 'Very satisfied'],
+      na: { vi: 'Chưa dùng', en: 'Not used' }
+    },
+    agree: {
+      vi: ['Hoàn toàn không đồng ý', 'Không đồng ý', 'Phân vân', 'Đồng ý', 'Hoàn toàn đồng ý'],
+      en: ['Strongly disagree', 'Disagree', 'Not sure', 'Agree', 'Strongly agree'],
+      na: null
+    },
+    useful: {
+      vi: ['Không hữu ích', 'Ít hữu ích', 'Tương đối hữu ích', 'Hữu ích', 'Rất hữu ích'],
+      en: ['Not useful', 'Slightly useful', 'Moderately useful', 'Useful', 'Very useful'],
+      na: { vi: 'Chưa làm', en: 'Not done' }
+    }
+  };
+
+  const opt = (v, vi, en) => ({ v, vi, en });
+
+  const WORKLOAD = (lab) => [
+    { type: 'choice', id: lab + '_amount', vi: 'Khối lượng bài tập', en: 'Amount of exercises', inline: true,
+      options: [opt('1', 'Quá ít', 'Far too little'), opt('2', 'Hơi ít', 'A little too little'), opt('3', 'Vừa phải', 'About right'), opt('4', 'Hơi nhiều', 'A little too much'), opt('5', 'Quá nhiều', 'Far too much')] },
+    { type: 'choice', id: lab + '_diff', vi: 'Độ khó so với trình độ của bạn', en: 'Difficulty compared with your level', inline: true,
+      options: [opt('1', 'Quá dễ', 'Far too easy'), opt('2', 'Hơi dễ', 'Slightly easy'), opt('3', 'Vừa sức', 'Right level'), opt('4', 'Hơi khó', 'Slightly difficult'), opt('5', 'Quá khó', 'Far too difficult')] },
+    { type: 'choice', id: lab + '_time', vi: 'Thời gian bạn dành cho Lab này mỗi tuần', en: 'Time you spend on this Lab each week', inline: true,
+      options: [opt('1', 'Dưới 1 giờ', 'Under 1 hour'), opt('2', '1–2 giờ', '1–2 hours'), opt('3', '2–3 giờ', '2–3 hours'), opt('4', '3–5 giờ', '3–5 hours'), opt('5', 'Trên 5 giờ', 'Over 5 hours')] },
+    { type: 'choice', id: lab + '_deadline', vi: 'Thời hạn hoàn thành và nộp bài', en: 'Deadlines for finishing and submitting', inline: true,
+      options: [opt('1', 'Quá gấp', 'Far too short'), opt('2', 'Hơi gấp', 'A little short'), opt('3', 'Hợp lý', 'Reasonable'), opt('4', 'Khá thoải mái', 'Comfortable'), opt('5', 'Quá dài', 'Too long')] },
+    { type: 'choice', id: lab + '_done', vi: 'Phần bài bạn đã hoàn thành đến nay', en: 'How much of the Lab you have completed so far', inline: true,
+      options: [opt('1', 'Dưới 25%', 'Under 25%'), opt('2', '25–50%', '25–50%'), opt('3', '50–75%', '50–75%'), opt('4', '75–99%', '75–99%'), opt('5', '100%', '100%')] }
+  ];
+
+  const EXPERIENCE = [
+    ['Dễ sử dụng, dễ tìm đúng chức năng', 'Easy to use and to find what I need'],
+    ['Hướng dẫn và yêu cầu bài tập rõ ràng', 'Instructions and task requirements are clear'],
+    ['Giao diện, bố cục dễ đọc', 'Layout is clear and easy to read'],
+    ['Tốc độ tải trang và độ ổn định', 'Loading speed and stability'],
+    ['Trải nghiệm trên điện thoại', 'Experience on a phone'],
+    ['Chấm điểm chính xác, công bằng', 'Marking is accurate and fair'],
+    ['Giúp tôi tiến bộ rõ rệt ở kỹ năng này', 'Helps me make real progress in this skill'],
+    ['Tạo động lực để tôi học đều đặn', 'Motivates me to study regularly']
+  ];
+
+  const OPEN = (lab, name) => [
+    { type: 'text', id: lab + '_best', multiline: true,
+      vi: `Điều bạn đánh giá cao nhất ở ${name} là gì? (điểm vượt trội)`,
+      en: `What do you value most about the ${name}? (its strongest points)` },
+    { type: 'text', id: lab + '_improve', multiline: true,
+      vi: `Phần nào của ${name} cần cải thiện, và bạn đề xuất cải thiện như thế nào?`,
+      en: `Which parts of the ${name} should be improved, and how?` },
+    { type: 'text', id: lab + '_hard', multiline: true,
+      vi: 'Khó khăn, vướng mắc hoặc lỗi bạn gặp khi làm và nộp bài trong Lab này (nếu có)',
+      en: 'Difficulties, obstacles or errors you met while doing or submitting work in this Lab (if any)' }
+  ];
+
+  const labSection = (lab, name, intro, components, extra) => ({
+    id: 'sec' + lab, lab, vi: name, en: name, introVi: intro[0], introEn: intro[1],
+    blocks: [
+      { type: 'rating', id: lab + 'A', scale: 'sat', vi: 'A. Mức độ hài lòng với các cấu phần chính', en: 'A. Satisfaction with the main components',
+        items: components.map((c, i) => ({ id: lab + 'A' + (i + 1), vi: c[0], en: c[1] })) },
+      ...(extra || []),
+      { type: 'rating', id: lab + 'B', scale: 'sat', vi: 'B. Trải nghiệm sử dụng chung', en: 'B. Overall user experience',
+        items: EXPERIENCE.map((c, i) => ({ id: lab + 'B' + (i + 1), vi: c[0], en: c[1] })) },
+      { type: 'group', vi: 'C. Khối lượng, độ khó và thời gian', en: 'C. Workload, difficulty and time', blocks: WORKLOAD(lab) },
+      { type: 'group', vi: 'D. Ý kiến của bạn', en: 'D. Your comments', blocks: OPEN(lab, name) }
+    ]
+  });
+
+  const LAB_LIST = [
+    opt('L', 'Listening Lab', 'Listening Lab'),
+    opt('R', 'Reading Lab', 'Reading Lab'),
+    opt('W', 'Writing Lab (Task 1 – Graphs)', 'Writing Lab (Task 1 – Graphs)'),
+    opt('S', 'Speaking Lab', 'Speaking Lab')
+  ];
+
+  const SECTIONS = [
+    {
+      id: 'secInfo', vi: 'Thông tin chung', en: 'About you',
+      introVi: 'Họ tên và email có thể để trống nếu bạn muốn trả lời ẩn danh. Nếu điền, chúng tôi có thể liên hệ để hỗ trợ khi bạn báo lỗi.',
+      introEn: 'You may leave your name and email blank to answer anonymously. If you fill them in, we can contact you to help with any problem you report.',
+      blocks: [
+        { type: 'text', id: 'name', vi: 'Họ và tên', en: 'Full name', optional: true },
+        { type: 'text', id: 'email', vi: 'Email dùng trong các Lab', en: 'Email you use in the Labs', optional: true, inputType: 'email' },
+        { type: 'text', id: 'class', vi: 'Lớp / khoá học', en: 'Class / course', req: true },
+        { type: 'choice', id: 'labs', multi: true, req: true, vi: 'Bạn đã sử dụng những Lab nào? (chọn tất cả các Lab đã dùng)', en: 'Which Labs have you used? (tick all that apply)', options: LAB_LIST },
+        { type: 'choice', id: 'duration', vi: 'Bạn đã học với các Lab được bao lâu?', en: 'How long have you been using the Labs?', inline: true,
+          options: [opt('1', 'Dưới 2 tuần', 'Under 2 weeks'), opt('2', '2–4 tuần', '2–4 weeks'), opt('3', '1–2 tháng', '1–2 months'), opt('4', 'Trên 2 tháng', 'Over 2 months')] },
+        { type: 'choice', id: 'device', multi: true, vi: 'Bạn thường làm bài trên thiết bị nào?', en: 'Which devices do you usually use?',
+          options: [opt('android', 'Điện thoại Android', 'Android phone'), opt('iphone', 'iPhone', 'iPhone'), opt('tablet', 'iPad / máy tính bảng', 'iPad / tablet'), opt('windows', 'Laptop / PC Windows', 'Windows laptop / PC'), opt('mac', 'MacBook / iMac', 'MacBook / iMac')] },
+        { type: 'choice', id: 'browser', multi: true, vi: 'Trình duyệt bạn dùng', en: 'Browser(s) you use',
+          options: [opt('chrome', 'Chrome', 'Chrome'), opt('safari', 'Safari', 'Safari'), opt('edge', 'Edge', 'Edge'), opt('coccoc', 'Cốc Cốc', 'Coc Coc'), opt('firefox', 'Firefox', 'Firefox'), opt('other', 'Khác', 'Other')] },
+        { type: 'choice', id: 'format', vi: 'Bạn chủ yếu dùng phiên bản nào?', en: 'Which version do you mainly use?', inline: true,
+          options: [opt('online', 'Link online', 'Online link'), opt('offline', 'File HTML tải về (offline)', 'Downloaded HTML file (offline)'), opt('both', 'Cả hai', 'Both')] }
+      ]
+    },
+
+    labSection('L', 'Listening Lab',
+      ['Đánh giá các phần của Listening Lab (Part 1). Chọn “Chưa dùng” nếu bạn chưa sử dụng phần đó.',
+       'Rate the parts of the Listening Lab (Part 1). Choose “Not used” for any part you have not tried.'],
+      [
+        ['Bài kiểm tra xếp lớp và lộ trình Foundation – Core – Extension', 'Placement test and study paths (Foundation – Core – Extension)'],
+        ['Quy chế nghe thi: 30 giây đọc đề, nghe một lần, 30 giây kiểm tra', 'Exam-listen rules: 30 s reading, one play only, 30 s checking'],
+        ['Sửa và làm lại: nghe lại, chỉnh tốc độ, gợi ý sau 3 lần sai', 'Fix & retry: replay, speed control, hints after 3 wrong tries'],
+        ['Đáp án, giải thích trích từ transcript và transcript đầy đủ', 'Answer key, explanations quoted from the transcript, full transcript'],
+        ['Sổ lỗi sai và việc gắn nguyên nhân cho từng lỗi', 'Error logbook and tagging a cause for each error'],
+        ['Thẻ Từ vựng theo chủ đề', 'Vocabulary tab (by topic)'],
+        ['Thẻ Phát âm: cặp âm tối thiểu, câu đố, giọng đọc mẫu', 'Pronunciation tab: minimal pairs, quizzes, model voice'],
+        ['Chất lượng âm thanh của bài nghe', 'Audio quality of the recordings'],
+        ['Báo cáo kết quả PDF (My report)', 'PDF result report (My report)']
+      ]),
+
+    labSection('R', 'Reading Lab',
+      ['Đánh giá Reading Lab – Question Type 1 (Sentence · Note · Table · Flow-chart Completion). Chọn “Chưa dùng” nếu bạn chưa sử dụng phần đó.',
+       'Rate the Reading Lab – Question Type 1 (Sentence · Note · Table · Flow-chart Completion). Choose “Not used” for any part you have not tried.'],
+      [
+        ['Bài kiểm tra xếp lớp P1 và lộ trình Foundation – Core – Extension', 'Placement test P1 and study paths (Foundation – Core – Extension)'],
+        ['Bài đọc: độ dài, chủ đề và mức độ phù hợp với trình độ', 'Reading passages: length, topics and level'],
+        ['Các dạng bài hoàn thành câu, ghi chú, bảng, sơ đồ quy trình và trả lời ngắn', 'Sentence, note, table, flow-chart completion and short-answer tasks'],
+        ['Quy trình 5 bước và mẹo theo từng dạng bài (How it works)', 'The 5-step routine and format tips (How it works)'],
+        ['Kiểm tra từ vựng trước khi đọc (so sánh trước → sau)', 'Vocabulary check before reading (before → after)'],
+        ['Làm bài theo điều kiện thi: đồng hồ đếm ngược, nhắc giờ, tự nộp khi hết giờ', 'Exam conditions: countdown timer, time warnings, auto-submit when time is up'],
+        ['Công cụ tô màu đánh dấu trong bài đọc (từ khoá, từ định vị, paraphrase, đáp án)', 'Highlighting tools in the passage (key words, locating words, paraphrases, answers)'],
+        ['Sửa và làm lại; gợi ý sau 3 lần sai (vị trí + loại từ) và sau 4 lần (chữ cái đầu)', 'Fix & retry; hints after 3 wrong tries (where to look + word type) and after 4 (first letter)'],
+        ['Đáp án và giải thích mở khi đạt từ 70% và đã gắn nguyên nhân lỗi', 'Answer key and explanations unlocking at 70% with all causes tagged'],
+        ['Sổ lỗi sai và bảng đối chiếu paraphrase (câu hỏi → bài đọc)', 'Error logbook and paraphrase table (question → passage)'],
+        ['Thẻ Từ vựng: bộ công cụ paraphrase và từ vựng theo từng bài', 'Vocabulary tab: paraphrase toolkit and words from each exercise'],
+        ['Báo cáo kết quả PDF và mã sao lưu để chuyển tiến độ sang thiết bị khác', 'PDF result report and backup code for moving progress to another device']
+      ]),
+
+    labSection('W', 'Writing Lab',
+      ['Đánh giá Writing Lab – Task 1 Graphs (Unit 3 · Line, bar, pie & table). Phần A đánh giá chức năng, phần A2 đánh giá mức độ hữu ích của từng module.',
+       'Rate the Writing Lab – Task 1 Graphs (Unit 3 · Line, bar, pie & table). Part A covers the features; Part A2 covers how useful each module is.'],
+      [
+        ['Biểu đồ rõ ràng, phóng to được, hiển thị cạnh câu hỏi', 'Charts are clear, can be enlarged and stay beside the questions'],
+        ['Lộ trình học từ G1 đến G10 (từ đọc biểu đồ đến hoàn thiện bài viết)', 'The G1–G10 study path (from reading the chart to a polished answer)'],
+        ['Chấm điểm ngay, giữ điểm lần đầu, câu đúng được khoá lại', 'Instant marking, first score kept, correct items locked'],
+        ['Gợi ý sau 3 lần sai và nút “Show answers” sau 2 lần làm hoặc khi đạt điểm tối đa', 'Hints after 3 wrong tries and “Show answers” after two attempts or a perfect score'],
+        ['Nút “I think my answer is also correct” gửi đáp án khác của tôi để giáo viên xem xét', 'The “I think my answer is also correct” button for the teacher to review'],
+        ['Sổ lỗi sai theo mã lỗi (T, VF, SV, P, A, WC…) kèm cách khắc phục', 'Error logbook by error code (T, VF, SV, P, A, WC…) with how to fix it'],
+        ['Thẻ Language bank: mẫu câu, động từ xu hướng, giới từ với số liệu, so sánh, tỉ lệ', 'Language bank: sentence patterns, trend verbs, prepositions with numbers, comparison, proportions'],
+        ['Writing bank: 26 đề Task 1 với biểu đồ gốc, đồng hồ 20 phút, đếm từ, checklist', 'Writing bank: 26 full Task 1 tasks with original charts, 20-minute timer, word count, checklist'],
+        ['Đồng hồ chỉ chạy khi đang làm bài (tự dừng sau 90 giây không gõ)', 'The clock runs only while I am working (pauses after 90 seconds without typing)'],
+        ['Báo cáo kết quả: tự động gửi về bảng điểm giáo viên, tải PDF, mã sao lưu', 'My report: results sent automatically to the teacher’s sheet, PDF copy, backup code']
+      ],
+      [
+        { type: 'rating', id: 'WM', scale: 'useful', vi: 'A2. Mức độ hữu ích của từng module', en: 'A2. Usefulness of each module',
+          items: [
+            ['G1 · Đọc biểu đồ trước khi viết', 'G1 · Read the chart first'],
+            ['G2 · Viết mở bài', 'G2 · Write the introduction'],
+            ['G3 · Viết đoạn tổng quan (overview)', 'G3 · Write the overview'],
+            ['G4 · Từ vựng mô tả xu hướng', 'G4 · Trend vocabulary'],
+            ['G5 · Mẫu câu và thì', 'G5 · Sentence patterns and tenses'],
+            ['G6 · Số liệu chính xác', 'G6 · Accurate data'],
+            ['G7 · Liên kết các thay đổi và nhận xét', 'G7 · Link changes and comment'],
+            ['G8 · So sánh và xếp hạng', 'G8 · Compare and rank'],
+            ['G9 · Tỉ lệ và biểu đồ tròn', 'G9 · Proportions and pie charts'],
+            ['G10 · Sắp xếp và hoàn thiện bài viết', 'G10 · Organise and polish'],
+            ['W · Writing bank: viết bài Task 1 hoàn chỉnh', 'W · Writing bank: full Task 1 answers']
+          ].map((c, i) => ({ id: 'WM' + (i + 1), vi: c[0], en: c[1] })) }
+      ]),
+
+    labSection('S', 'Speaking Lab',
+      ['Đánh giá Speaking Lab – Unit 1 (The Man-made Environment). Chọn “Chưa dùng” nếu bạn chưa sử dụng phần đó.',
+       'Rate the Speaking Lab – Unit 1 (The Man-made Environment). Choose “Not used” for any part you have not tried.'],
+      [
+        ['Words: thẻ từ vựng lật mặt, phát âm mẫu, chế độ tự kiểm tra', 'Words: flip-card word wall, model pronunciation, Test yourself'],
+        ['Grammar: ghi chú ngữ pháp và bài tập', 'Grammar: notes and exercises'],
+        ['Ideas: xem/nghe thí sinh mẫu, brainstorm, paraphrase cue card', 'Ideas: watching/listening to candidates, brainstorming, paraphrasing the task card'],
+        ['Luyện Part 1: trả lời ngắn và mở rộng câu trả lời', 'Part 1 practice: short and extended answers'],
+        ['Luyện Part 2: cue card, bảng phát triển ý, 1 phút chuẩn bị', 'Part 2 practice: task card, “develop each point” table, 1-minute preparation'],
+        ['Bộ lọc trình độ Foundation – Core – Extension cho từng bài', 'Level filter (Foundation – Core – Extension) for each task'],
+        ['Ghi âm, nghe lại và chọn bài nói cuối cùng gửi giáo viên', 'Recording, listening back and choosing the final take sent to the teacher'],
+        ['Bài mẫu Band 6/7/8 và các lỗi thường gặp ở Band 5', 'Band 6/7/8 model answers and typical Band 5 errors'],
+        ['Tự đánh giá sau mỗi câu và bảng tự kiểm tra cuối mỗi Part', 'Self-assessment after each answer and the Part self-check'],
+        ['Thẻ Sounds: trọng âm từ và luyện nói nhại (shadowing)', 'Sounds tab: word stress and shadowing'],
+        ['Sách bài tập in (PDF / Word)', 'Printed workbook (PDF / Word)'],
+        ['My report: báo cáo PDF, gửi báo cáo cho giáo viên, tải bài ghi âm', 'My report: PDF report, sending the report to the teacher, downloading recordings']
+      ],
+      [
+        { type: 'rating', id: 'SM', scale: 'useful', vi: 'A2. Mức độ hữu ích của từng module', en: 'A2. Usefulness of each module',
+          items: [
+            ['Module A · Home & Buildings (nhà ở, toà nhà, kiến trúc)', 'Module A · Home & Buildings (house, building, design, architecture)'],
+            ['Module B · City & Neighbourhood (thành phố, nông thôn, khu phố, quê nhà)', 'Module B · City & Neighbourhood (city, countryside, neighbourhood, home town)'],
+            ['Sounds · Phát âm và trọng âm', 'Sounds · Pronunciation and word stress']
+          ].map((c, i) => ({ id: 'SM' + (i + 1), vi: c[0], en: c[1] })) }
+      ]),
+
+    {
+      id: 'secRules', vi: 'Quy định học tập trong các Lab', en: 'Learning rules in the Labs',
+      introVi: 'Các Lab dùng chung một số quy định. Mức độ đồng ý của bạn giúp chúng tôi cân nhắc giữ, điều chỉnh hay nới lỏng từng quy định.',
+      introEn: 'The Labs share several rules. How far you agree helps us decide whether to keep, adjust or relax each rule.',
+      blocks: [
+        { type: 'rating', id: 'G', scale: 'agree', vi: 'Mức độ đồng ý với các nhận định sau', en: 'How far do you agree with each statement?',
+          items: [
+            ['Làm lần đầu theo điều kiện thi (nghe một lần, tính giờ) giúp tôi quen với áp lực phòng thi', 'Doing the first attempt under exam conditions (one play, timed) prepares me for real test pressure'],
+            ['Giữ điểm lần làm đầu tiên làm điểm chính thức là hợp lý', 'Keeping the first-attempt score as the official score is fair'],
+            ['Chỉ mở đáp án khi đạt yêu cầu (70% hoặc sau số lần làm quy định) giúp tôi chủ động tự sửa lỗi', 'Opening the key only after reaching the target (70% or the set number of attempts) pushes me to correct my own mistakes'],
+            ['Việc gắn nguyên nhân cho từng lỗi giúp tôi hiểu điểm yếu của mình', 'Tagging a cause for each error helps me understand my weaknesses'],
+            ['Gợi ý xuất hiện sau 3 lần sai là thời điểm phù hợp', 'Hints appearing after 3 wrong tries come at the right time'],
+            ['Nội dung hoàn toàn bằng tiếng Anh vẫn dễ hiểu đối với tôi', 'Content written entirely in English is still easy for me to understand'],
+            ['Báo cáo kết quả giúp tôi theo dõi tiến bộ của mình', 'The result report helps me track my progress'],
+            ['Sau mỗi bài, tôi biết rõ mình cần làm gì tiếp theo', 'After each task I know clearly what to do next'],
+            ['Đồng hồ bấm giờ khi làm bài giúp tôi quản lý thời gian tốt hơn', 'The timer helps me manage my time better'],
+            ['Việc chỉ học viên có email trong danh sách lớp mới được chấm tự động là hợp lý', 'Limiting auto-marking to emails on the class list is reasonable']
+          ].map((c, i) => ({ id: 'G' + (i + 1), vi: c[0], en: c[1] })) },
+        { type: 'choice', id: 'balance', vi: 'Nhìn chung, tổng khối lượng bài tập của tất cả các Lab bạn đang học', en: 'Overall, the total workload of all the Labs you take is', inline: true,
+          options: [opt('1', 'Quá ít', 'Far too little'), opt('2', 'Hơi ít', 'A little too little'), opt('3', 'Vừa phải', 'About right'), opt('4', 'Hơi nhiều', 'A little too much'), opt('5', 'Quá nhiều', 'Far too much')] },
+        { type: 'choice', id: 'pace', vi: 'Tốc độ ra bài mới (unit mới, bài tập mới)', en: 'Pace at which new units and tasks are released', inline: true,
+          options: [opt('1', 'Quá chậm', 'Too slow'), opt('2', 'Hơi chậm', 'A little slow'), opt('3', 'Phù hợp', 'About right'), opt('4', 'Hơi nhanh', 'A little fast'), opt('5', 'Quá nhanh', 'Too fast')] }
+      ]
+    },
+
+    {
+      id: 'secTech', vi: 'Lỗi kỹ thuật và khó khăn khi làm, nộp bài', en: 'Technical problems when doing and submitting work',
+      introVi: 'Với mỗi vấn đề, hãy cho biết bạn gặp bao nhiêu lần và ở Lab nào. Thông tin này giúp chúng tôi tìm và sửa lỗi nhanh hơn.',
+      introEn: 'For each problem, tell us how often it happened and in which Lab. This helps us find and fix problems faster.',
+      blocks: [
+        { type: 'issues', id: 'T', vi: 'Tần suất gặp sự cố', en: 'How often each problem happened',
+          freq: { vi: ['Chưa gặp', '1–2 lần', 'Nhiều lần'], en: ['Never', '1–2 times', 'Often'] },
+          items: [
+            ['Không mở được link/file, hoặc trang tải rất chậm', 'The link or file would not open, or loaded very slowly'],
+            ['Không nhận tên/email, hoặc báo chưa được cấp quyền', 'My name/email was not accepted, or I had no access'],
+            ['Âm thanh hoặc video không phát, bị ngắt quãng', 'Audio or video would not play or kept cutting out'],
+            ['Bài bị tự nộp ngoài ý muốn (hết giờ khi chưa xong, chuyển tab, tải lại trang)', 'Work was submitted automatically before I was ready (time ran out, tab switch, reload)'],
+            ['Trả lời đúng nhưng bị chấm sai', 'A correct answer was marked wrong'],
+            ['Mất tiến độ hoặc kết quả đã làm', 'Progress or results were lost'],
+            ['Micro không ghi âm được, hoặc bài nói không tải lên được', 'The microphone did not record, or the recording failed to upload'],
+            ['Không tải được báo cáo PDF, hoặc lỗi font tiếng Việt trong PDF', 'The PDF report would not download, or Vietnamese characters were broken'],
+            ['Không gửi được kết quả hoặc báo cáo cho giáo viên', 'Results or the report could not be sent to the teacher'],
+            ['Giao diện bị lỗi hoặc khó thao tác trên điện thoại', 'The layout was broken or hard to use on a phone'],
+            ['Nút loa (giọng đọc mẫu) không hoạt động', 'The speaker button (model voice) did not work'],
+            ['Công cụ tô màu trong bài đọc không hoạt động hoặc khó dùng', 'The highlighting tools in the passage did not work or were hard to use'],
+            ['Mã sao lưu không chuyển được tiến độ sang thiết bị khác', 'The backup code did not move my progress to another device']
+          ].map((c, i) => ({ id: 'T' + (i + 1), vi: c[0], en: c[1] })) },
+        { type: 'text', id: 'tech_detail', multiline: true,
+          vi: 'Mô tả lỗi cụ thể nhất bạn gặp: bạn đang làm bước nào, thông báo hiện ra là gì, trên thiết bị và trình duyệt nào?',
+          en: 'Describe the most serious problem: which step you were on, what message appeared, and on which device and browser.' },
+        { type: 'choice', id: 'tech_solved', vi: 'Vấn đề đó đã được giải quyết chưa?', en: 'Has that problem been solved?', inline: true,
+          options: [opt('self', 'Tôi tự xử lý được', 'I solved it myself'), opt('teacher', 'Giáo viên hỗ trợ xử lý', 'The teacher helped me'), opt('no', 'Chưa xử lý được', 'Not solved yet'), opt('none', 'Tôi không gặp lỗi', 'I had no problems')] },
+        { type: 'text', id: 'tech_fix', multiline: true, vi: 'Nếu đã tự xử lý, bạn làm thế nào? (để chia sẻ cho các bạn khác)', en: 'If you solved it yourself, how? (so we can share the tip with others)' }
+      ]
+    },
+
+    {
+      id: 'secOverall', vi: 'Đánh giá chung và đề xuất', en: 'Overall view and suggestions',
+      introVi: 'Phần cuối cùng — cảm ơn bạn đã kiên nhẫn đến đây!', introEn: 'Last section — thank you for staying with us!',
+      blocks: [
+        { type: 'rating', id: 'O', scale: 'sat', noNA: true, vi: 'Mức độ hài lòng chung', en: 'Overall satisfaction',
+          items: [{ id: 'O1', vi: 'Nhìn chung, tôi hài lòng với các IELTS Lab', en: 'Overall, I am satisfied with the IELTS Labs', req: true }] },
+        { type: 'nps', id: 'nps', vi: 'Bạn sẵn sàng giới thiệu các Lab này cho bạn bè đang ôn IELTS ở mức nào? (0 = hoàn toàn không, 10 = chắc chắn có)', en: 'How likely are you to recommend these Labs to a friend preparing for IELTS? (0 = not at all, 10 = extremely likely)' },
+        { type: 'choice', id: 'top', multi: true, max: 3, vi: 'Ba tính năng hữu ích nhất với bạn (chọn tối đa 3)', en: 'The three most useful features for you (choose up to 3)',
+          options: [
+            opt('paths', 'Bài xếp lớp và lộ trình theo trình độ', 'Placement test and level paths'),
+            opt('exam', 'Làm bài theo điều kiện thi', 'Practice under exam conditions'),
+            opt('retry', 'Sửa và làm lại có gợi ý', 'Fix & retry with hints'),
+            opt('keys', 'Đáp án và giải thích chi tiết', 'Detailed keys and explanations'),
+            opt('errors', 'Sổ lỗi sai và nguyên nhân lỗi', 'Error logbook and causes'),
+            opt('vocab', 'Từ vựng theo chủ đề', 'Topic vocabulary'),
+            opt('pron', 'Luyện phát âm, giọng đọc mẫu', 'Pronunciation practice and model voice'),
+            opt('highlight', 'Công cụ tô màu và bảng paraphrase (Reading)', 'Highlighting tools and paraphrase table (Reading)'),
+            opt('writing', 'Các module G1–G10 và Language bank (Writing)', 'G1–G10 modules and Language bank (Writing)'),
+            opt('wbank', 'Writing bank 26 đề Task 1', 'Writing bank of 26 Task 1 tasks'),
+            opt('speaking', 'Ghi âm và bài nói mẫu theo Band', 'Recording and band-level model answers'),
+            opt('selfcheck', 'Tự đánh giá theo tiêu chí IELTS', 'Self-assessment by IELTS criteria'),
+            opt('report', 'Báo cáo kết quả PDF', 'PDF result report')
+          ] },
+        { type: 'choice', id: 'wish', multi: true, vi: 'Bạn muốn bổ sung thêm điều gì?', en: 'What would you like us to add?',
+          options: [
+            opt('tests', 'Thêm đề luyện và đề thi thử', 'More practice tests and mock tests'),
+            opt('mock', 'Chế độ thi thử đầy đủ 4 kỹ năng', 'A full four-skill mock test mode'),
+            opt('video', 'Video hướng dẫn sử dụng các Lab', 'Video guides on using the Labs'),
+            opt('vi', 'Phần giải thích song ngữ Việt – Anh', 'Bilingual (Vietnamese–English) explanations'),
+            opt('remind', 'Nhắc lịch học và hạn nộp bài', 'Study and deadline reminders'),
+            opt('sync', 'Đồng bộ tiến độ giữa các thiết bị', 'Progress sync across devices'),
+            opt('game', 'Bảng thành tích, huy hiệu, thử thách', 'Leaderboards, badges and challenges'),
+            opt('other', 'Khác (ghi ở ô góp ý bên dưới)', 'Other (write it below)')
+          ] },
+        { type: 'choice', id: 'prefer', vi: 'Hình thức học bạn thấy hiệu quả nhất', en: 'The learning format that works best for you', inline: true,
+          options: [opt('online', 'Link online', 'Online link'), opt('offline', 'File offline', 'Offline file'), opt('print', 'Sách bài tập in', 'Printed workbook'), opt('mix', 'Kết hợp các hình thức', 'A mix of formats')] },
+        { type: 'text', id: 'comments', multiline: true, vi: 'Góp ý khác hoặc lời nhắn gửi đến giáo viên', en: 'Any other comments or a message to your teacher' },
+        { type: 'choice', id: 'contact', vi: 'Bạn có đồng ý để giáo viên liên hệ trao đổi thêm về góp ý của mình không?', en: 'May the teacher contact you to talk more about your feedback?', inline: true,
+          options: [opt('yes', 'Có (vui lòng điền email ở phần đầu)', 'Yes (please give your email in the first section)'), opt('no', 'Không', 'No')] }
+      ]
+    }
+  ];
+
+  const TEXT = {
+    brand: 'Huong Stella Paradigm',
+    titleVi: 'Khảo sát mức độ hài lòng với các IELTS Lab',
+    titleEn: 'IELTS Labs Satisfaction Survey',
+    sub: 'Listening · Reading · Writing · Speaking',
+    introVi: [
+      'Cảm ơn bạn đã đồng hành cùng các IELTS Lab của Huong Stella Learning Lab trong thời gian qua. Khảo sát này giúp chúng tôi hiểu rõ bạn đánh giá thế nào về từng phần của Listening, Reading, Writing và Speaking Lab: điều gì đang thực sự hiệu quả, điều gì cần cải thiện, và những khó khăn bạn gặp phải khi làm và nộp bài.',
+      'Mỗi ý kiến của bạn sẽ được đọc kỹ và sử dụng trực tiếp để điều chỉnh bài tập, giao diện và cách hỗ trợ học viên trong các unit tiếp theo.'
+    ],
+    introEn: [
+      'Thank you for learning with the Huong Stella Learning Lab IELTS Labs. This survey helps us understand how you rate each part of the Listening, Reading, Writing and Speaking Labs: what is working well, what should be improved, and what difficulties you have met while doing and submitting your work.',
+      'Every response is read carefully and used directly to improve the exercises, the interface and the support we offer in the next units.'
+    ],
+    notesVi: ['Thời gian: khoảng 10–15 phút.', 'Bạn chỉ trả lời về những Lab mình đã sử dụng.', 'Không có câu trả lời đúng hay sai. Kết quả chỉ dùng để cải tiến chương trình và không ảnh hưởng đến điểm số của bạn.'],
+    notesEn: ['Time: about 10–15 minutes.', 'You only answer about the Labs you have used.', 'There are no right or wrong answers. Results are used only to improve the course and do not affect your marks.'],
+    thanksVi: 'Cảm ơn bạn rất nhiều! Câu trả lời của bạn đã được ghi nhận. Những góp ý chân thành của bạn sẽ giúp các Lab ngày càng hữu ích hơn cho chính bạn và các bạn học viên khác.',
+    thanksEn: 'Thank you very much! Your answers have been recorded. Your honest feedback will make the Labs more useful for you and for other learners.',
+    footer: 'Huong Stella Learning Lab · Contact: huongstella8@gmail.com'
+  };
+
+  /* ---- Single-skill version: keep only what applies to one Lab ---- */
+  const NAMES = {
+    L: { vi: 'Listening Lab', en: 'Listening Lab', skillVi: 'Nghe', skillEn: 'Listening' },
+    R: { vi: 'Reading Lab', en: 'Reading Lab', skillVi: 'Đọc', skillEn: 'Reading' },
+    W: { vi: 'Writing Lab', en: 'Writing Lab', skillVi: 'Viết', skillEn: 'Writing' },
+    S: { vi: 'Speaking Lab', en: 'Speaking Lab', skillVi: 'Nói', skillEn: 'Speaking' }
+  };
+  const ONLY = {
+    G1: 'LR', G4: 'LRW', G9: 'LRW', G10: 'RS',
+    T3: 'LS', T4: 'LR', T7: 'S', T11: 'LS', T12: 'R', T13: 'LRW',
+    paths: 'LR', exam: 'LR', vocab: 'LRS', pron: 'LS', highlight: 'R', writing: 'W', wbank: 'W', speaking: 'S', selfcheck: 'S'
+  };
+  const DROP_SINGLE = ['labs', 'balance', 'mock'];
+  const keep = (id, lab) => !(DROP_SINGLE.includes(id)) && (!ONLY[id] || ONLY[id].includes(lab));
+  function view(lab) {
+    if (!lab) return { SECTIONS, TEXT, LAB: null };
+    const n = NAMES[lab];
+    const fix = t => String(t)
+      .replace('Bạn sẵn sàng giới thiệu các Lab này', `Bạn sẵn sàng giới thiệu ${n.vi}`)
+      .replace('recommend these Labs', `recommend the ${n.en}`)
+      .replace('Nhìn chung, tôi hài lòng với các IELTS Lab', `Nhìn chung, tôi hài lòng với ${n.vi}`)
+      .replace('I am satisfied with the IELTS Labs', `I am satisfied with the ${n.en}`)
+      .replace('Các Lab dùng chung một số quy định.', `${n.vi} có một số quy định học tập.`)
+      .replace('The Labs share several rules.', `The ${n.en} has several learning rules.`)
+      .replace('Quy định học tập trong các Lab', `Quy định học tập trong ${n.vi}`)
+      .replace('Learning rules in the Labs', `Learning rules in the ${n.en}`)
+      .replace('Với mỗi vấn đề, hãy cho biết bạn gặp bao nhiêu lần và ở Lab nào.', 'Với mỗi vấn đề, hãy cho biết bạn gặp bao nhiêu lần.')
+      .replace('tell us how often it happened and in which Lab.', 'tell us how often it happened.')
+      .replace('Bạn đã học với các Lab được bao lâu?', `Bạn đã học với ${n.vi} được bao lâu?`)
+      .replace('How long have you been using the Labs?', `How long have you been using the ${n.en}?`)
+      .replace('Email dùng trong các Lab', `Email dùng trong ${n.vi}`)
+      .replace('Email you use in the Labs', `Email you use in the ${n.en}`)
+      .replace('Sau mỗi bài, tôi biết', 'Sau mỗi bài, tôi biết')
+      .replace('Bạn muốn bổ sung thêm điều gì?', `Bạn muốn ${n.vi} bổ sung thêm điều gì?`)
+      .replace('What would you like us to add?', `What would you like us to add to the ${n.en}?`)
+      .replace('Ba tính năng hữu ích nhất với bạn', 'Ba tính năng hữu ích nhất với bạn');
+    const mapBlock = b => {
+      if (!keep(b.id, lab)) return null;
+      const o = Object.assign({}, b, { vi: fix(b.vi), en: fix(b.en) });
+      if (b.blocks) o.blocks = b.blocks.map(mapBlock).filter(Boolean);
+      if (b.items) o.items = b.items.filter(it => keep(it.id, lab)).map(it => Object.assign({}, it, { vi: fix(it.vi), en: fix(it.en) }));
+      if (b.options) o.options = b.options.filter(op => keep(op.v, lab));
+      if (b.type === 'issues') o.single = true;
+      return o;
+    };
+    const secs = SECTIONS.filter(sec => !sec.lab || sec.lab === lab).map(sec => {
+      const o = Object.assign({}, sec, { vi: fix(sec.vi), en: fix(sec.en), introVi: fix(sec.introVi), introEn: fix(sec.introEn) });
+      o.blocks = sec.blocks.map(mapBlock).filter(Boolean);
+      return o;
+    });
+    const T = Object.assign({}, TEXT, {
+      titleVi: `Khảo sát mức độ hài lòng với IELTS ${n.vi}`,
+      titleEn: `IELTS ${n.en} Satisfaction Survey`,
+      sub: `${n.en} · Kỹ năng ${n.skillVi}`,
+      introVi: [
+        `Cảm ơn bạn đã đồng hành cùng IELTS ${n.vi} của Huong Stella Learning Lab trong thời gian qua. Khảo sát này giúp chúng tôi hiểu rõ bạn đánh giá thế nào về từng phần của ${n.vi}: điều gì đang thực sự hiệu quả, điều gì cần cải thiện, và những khó khăn bạn gặp phải khi làm và nộp bài.`,
+        TEXT.introVi[1]
+      ],
+      introEn: [
+        `Thank you for learning with the Huong Stella Learning Lab IELTS ${n.en}. This survey helps us understand how you rate each part of the ${n.en}: what is working well, what should be improved, and what difficulties you have met while doing and submitting your work.`,
+        TEXT.introEn[1]
+      ],
+      notesVi: ['Thời gian: khoảng 8–10 phút.', TEXT.notesVi[2]],
+      notesEn: ['Time: about 8–10 minutes.', TEXT.notesEn[2]],
+      thanksVi: TEXT.thanksVi.replace('các Lab', n.vi), thanksEn: TEXT.thanksEn.replace('the Labs', `the ${n.en}`)
+    });
+    return { SECTIONS: secs, TEXT: T, LAB: lab };
+  }
+
+  const api = { VERSION, SCALES, SECTIONS, TEXT, LAB_LIST, NAMES, view };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.SURVEY = api;
+})(this);
+</script>
+<script>
+/* ===== Endpoint: paste the Apps Script Web App URL between the quotes (not needed when the survey is served by Apps Script itself) ===== */
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw7fRk0zTz41NxmoD0RjXqFcF7hxmMaapaG3o4dILk8LPV2EOF_HrmMhrcv2iA-CphK5Q/exec';
+/* ======================================================================================================================================== */
+(function(){
+const LAB_ONLY = 'R';
+const V = window.SURVEY.view(LAB_ONLY);
+const S = Object.assign({}, window.SURVEY, {SECTIONS: V.SECTIONS, TEXT: V.TEXT}), $ = s => document.querySelector(s);
+const KEY = 'hsp-labs-survey-v1' + (LAB_ONLY ? '-' + LAB_ONLY : '');
+const store = {
+  get(){ try{ return JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){ return null; } },
+  set(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+};
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid = () => 'R' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2,6).toUpperCase();
+
+let saved = store.get() || {};
+let A = saved.answers || {};
+if (LAB_ONLY) A.labs = [LAB_ONLY];
+let respId = saved.respId || uid();
+let step = saved.step || 0;
+let submitted = !!saved.submitted;
+const persist = () => store.set({answers:A, respId, step, submitted});
+
+/* --- header --- */
+$('#brand').textContent = S.TEXT.brand;
+$('#title').textContent = S.TEXT.titleVi;
+$('#titleEn').textContent = S.TEXT.titleEn;
+$('#sub').textContent = S.TEXT.sub;
+$('#foot').textContent = S.TEXT.footer;
+
+/* --- pages --- */
+const pages = () => {
+  const labs = A.labs || [];
+  return [{id:'intro'}].concat(S.SECTIONS.filter(s => !s.lab || labs.includes(s.lab)));
+};
+const bi = (vi,en) => `${esc(vi)}<span class="en" lang="en">${esc(en)}</span>`;
+const labColor = l => `var(--lab${l})`;
+
+function renderBlock(b){
+  if (b.type === 'group') return `<h3>${bi(b.vi,b.en)}</h3>` + b.blocks.map(renderBlock).join('');
+  if (b.type === 'text') {
+    const v = esc(A[b.id]||'');
+    const tag = b.req ? '<span class="req">*</span>' : (b.optional ? '<span class="opt-tag">(không bắt buộc · optional)</span>' : '');
+    const field = b.multiline
+      ? `<textarea id="f_${b.id}" data-id="${b.id}" rows="3">${v}</textarea>`
+      : `<input id="f_${b.id}" data-id="${b.id}" type="${b.inputType||'text'}" value="${v}" autocomplete="${b.id==='email'?'email':(b.id==='name'?'name':'off')}">`;
+    return `<div class="q" id="q_${b.id}"><label class="qlab" for="f_${b.id}">${esc(b.vi)}${tag}<span class="en" lang="en">${esc(b.en)}</span></label>${field}</div>`;
+  }
+  if (b.type === 'choice') {
+    const cur = A[b.id];
+    const multi = !!b.multi;
+    const items = b.options.map(o => {
+      const on = multi ? (cur||[]).includes(o.v) : cur === o.v;
+      return `<label class="pill ${multi?'':'radio'}"><input type="${multi?'checkbox':'radio'}" name="c_${b.id}" value="${esc(o.v)}" data-id="${b.id}" ${on?'checked':''}><span class="box">✓</span><span>${esc(o.vi)}${o.en!==o.vi?`<span class="en" lang="en">${esc(o.en)}</span>`:''}</span></label>`;
+    }).join('');
+    const hint = b.max ? ` <span class="opt-tag">(tối đa ${b.max} · up to ${b.max})</span>` : '';
+    return `<fieldset class="q" id="q_${b.id}" style="border:0;padding:0;margin:18px 0"><legend class="qlab">${esc(b.vi)}${b.req?'<span class="req">*</span>':''}${hint}<span class="en" lang="en">${esc(b.en)}</span></legend><div class="pills ${(b.inline||b.options.every(o=>o.vi.length<22))?'':'stack'}">${items}</div></fieldset>`;
+  }
+  if (b.type === 'rating') {
+    const sc = S.SCALES[b.scale];
+    const na = sc.na && !b.noNA;
+    const n = 5 + (na?1:0);
+    const legend = sc.vi.map((t,i)=>`<span><b>${i+1}</b> = ${esc(t)} <i>(${esc(sc.en[i])})</i></span>`).join('') + (na?`<span><b>–</b> = ${esc(sc.na.vi)} <i>(${esc(sc.na.en)})</i></span>`:'');
+    const head = `<div class="rrow head" style="--n:${n}"><div>${b.items.length>1?'Nội dung · Item':''}</div>${sc.vi.map((t,i)=>`<div>${i+1}<br>${esc(t)}</div>`).join('')}${na?`<div>–<br>${esc(sc.na.vi)}</div>`:''}</div>`;
+    const rows = b.items.map(it => {
+      const cur = A[it.id];
+      let cells = '';
+      for (let i=1;i<=5;i++) cells += `<label class="cell" title="${esc(sc.vi[i-1])} · ${esc(sc.en[i-1])}"><input type="radio" name="r_${it.id}" value="${i}" data-id="${it.id}" ${cur==i?'checked':''} aria-label="${esc(it.en)}: ${i}"><span class="tick" data-n="${i}">✓</span></label>`;
+      if (na) cells += `<label class="cell na" title="${esc(sc.na.vi)}"><input type="radio" name="r_${it.id}" value="0" data-id="${it.id}" ${cur==0&&cur!==undefined&&cur!==''?'checked':''} aria-label="${esc(it.en)}: N/A"><span class="tick" data-n="–">✓</span></label>`;
+      return `<div class="rrow" id="row_${it.id}" style="--n:${n}"><div class="rlab"><span class="code">${esc(it.id)}</span>${esc(it.vi)}${it.req?'<span class="req">*</span>':''}<span class="en" lang="en">${esc(it.en)}</span></div>${cells}</div>`;
+    }).join('');
+    return `<h3>${bi(b.vi,b.en)}</h3><div class="legend">${legend}</div><div class="rgrid" role="group">${head}${rows}</div>`;
+  }
+  if (b.type === 'issues') {
+    const f = b.freq;
+    const labs = (A.labs && A.labs.length) ? A.labs : ['L','R','W','S'];
+    const head = `<div class="irow head"><div>Sự cố · Problem</div><div>Tần suất · How often</div>${b.single?'':'<div>Ở Lab nào · Which Lab</div>'}</div>`;
+    const rows = b.items.map(it => {
+      const cur = A[it.id];
+      const seg = f.vi.map((t,i)=>`<label class="${i===0?'never':''}"><input type="radio" name="t_${it.id}" value="${i}" data-id="${it.id}" ${cur!==undefined&&cur!==''&&+cur===i?'checked':''}>${esc(t)}<br><small>${esc(f.en[i])}</small></label>`).join('');
+      const lc = A[it.id+'_labs']||[];
+      const lb = labs.map(l=>`<label class="${l}" title="${l==='L'?'Listening':l==='R'?'Reading':l==='W'?'Writing':'Speaking'}"><input type="checkbox" value="${l}" data-id="${it.id}_labs" ${lc.includes(l)?'checked':''}>${l}</label>`).join('');
+      return `<div class="irow" id="row_${it.id}"><div class="rlab" style="padding:0"><span class="code">${esc(it.id)}</span>${esc(it.vi)}<span class="en" lang="en">${esc(it.en)}</span></div><div class="seg">${seg}</div>${b.single?'':`<div class="labs ${(+cur>0)?'':'off'}" id="labs_${it.id}">${lb}</div>`}</div>`;
+    }).join('');
+    return `<h3>${bi(b.vi,b.en)}</h3>${b.single?'':'<div class="legend"><span>L = Listening · R = Reading · W = Writing · S = Speaking</span></div>'}<div class="rgrid ${b.single?'single':''}">${head}${rows}</div>`;
+  }
+  if (b.type === 'nps') {
+    const cur = A[b.id];
+    let cells=''; for(let i=0;i<=10;i++) cells+=`<label><input type="radio" name="n_${b.id}" value="${i}" data-id="${b.id}" ${cur!==undefined&&cur!==''&&+cur===i?'checked':''}>${i}</label>`;
+    return `<div class="q" id="q_${b.id}"><span class="qlab">${esc(b.vi)}<span class="en" lang="en">${esc(b.en)}</span></span><div class="nps">${cells}</div><div class="npsends"><span>0 · Hoàn toàn không / Not at all</span><span>10 · Chắc chắn có / Extremely likely</span></div></div>`;
+  }
+  return '';
+}
+
+const cheers = [
+  'Bắt đầu thôi — cảm ơn bạn đã dành thời gian! · Let’s begin — thank you for your time!',
+  'Khởi đầu tốt lắm! · Great start!',
+  'Mỗi lựa chọn của bạn đều giúp Lab tốt hơn. · Every answer helps us improve.',
+  'Bạn đã đi được nửa chặng đường rồi! · You are halfway there!',
+  'Chỉ còn một chút nữa thôi. · Only a little more to go.',
+  'Gần xong rồi — cố lên nhé! · Almost done — keep going!',
+  'Phần cuối cùng! · Final section!'
+];
+
+function render(){
+  const P = pages();
+  if (step >= P.length) step = P.length-1;
+  const main = $('#main');
+  if (submitted) { renderThanks(); return; }
+  const pg = P[step];
+  $('#progress').hidden = step===0;
+  $('#back').style.visibility = step===0 ? 'hidden' : 'visible';
+  if (pg.id === 'intro') {
+    main.innerHTML = `<section class="card">
+      <h2>Lời ngỏ<span class="en" lang="en">Welcome</span></h2>
+      ${S.TEXT.introVi.map(t=>`<p>${esc(t)}</p>`).join('')}
+      <ul class="notes">${S.TEXT.notesVi.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+      <hr style="border:0;border-top:1px dashed var(--line);margin:18px 0">
+      <div lang="en" style="color:var(--muted)">${S.TEXT.introEn.map(t=>`<p>${esc(t)}</p>`).join('')}
+      <ul class="notes">${S.TEXT.notesEn.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>
+      ${Object.keys(A).length?'<div class="alert ok">Bạn có bài đang làm dở — câu trả lời đã được lưu trên thiết bị này. · Your unfinished answers have been saved on this device.</div>':''}
+    </section>`;
+    $('#next').textContent = Object.keys(A).length ? 'Tiếp tục · Continue →' : 'Bắt đầu · Start →';
+  } else {
+    const lab = pg.lab ? `<span class="labtag" style="background:${labColor(pg.lab)}"></span>` : '';
+    main.innerHTML = `<section class="card" ${pg.lab?`style="border-top:4px solid ${labColor(pg.lab)}"`:''}>
+      <h2>${lab}${esc(pg.vi)}${pg.vi!==pg.en?`<span class="en" lang="en">${esc(pg.en)}</span>`:''}</h2>
+      <p class="intro">${esc(pg.introVi)}<span class="en" lang="en">${esc(pg.introEn)}</span></p>
+      <div id="msg"></div>
+      ${pg.blocks.map(renderBlock).join('')}
+    </section>`;
+    const last = step === P.length-1;
+    $('#next').textContent = last ? 'Gửi khảo sát · Submit ✓' : 'Tiếp theo · Next →';
+  }
+  // progress
+  const total = P.length-1;
+  $('#barFill').style.width = (step/total*100)+'%';
+  $('#steps').innerHTML = P.slice(1).map((p,i)=>`<span class="${i+1===step?'on':(i+1<step?'done':'')}">${esc(p.lab? p.vi.replace(' Lab','') : p.vi)}</span>`).join('');
+  const on=document.querySelector('#steps .on'); if(on&&on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'center'});
+  $('#cheer').textContent = cheers[Math.min(cheers.length-1, Math.round(step/total*(cheers.length-1)))];
+  $('#navInfo').textContent = step ? `Phần ${step}/${total} · Section ${step} of ${total}` : '';
+  window.scrollTo({top:0,behavior:'instant' in window ? 'instant' : 'auto'});
+}
+
+/* --- input handling --- */
+document.addEventListener('input', e => {
+  const el = e.target, id = el.dataset && el.dataset.id; if (!id) return;
+  if (el.type === 'checkbox') {
+    const arr = new Set(A[id]||[]);
+    el.checked ? arr.add(el.value) : arr.delete(el.value);
+    const blk = findBlock(id);
+    if (blk && blk.max && arr.size > blk.max) { el.checked = false; arr.delete(el.value); flash(`Bạn chỉ chọn tối đa ${blk.max} mục. · Please choose up to ${blk.max}.`); }
+    A[id] = [...arr];
+  } else if (el.type === 'radio') {
+    A[id] = el.value;
+    const row = document.getElementById('row_'+id); if (row) row.classList.remove('missing');
+    const lb = document.getElementById('labs_'+id); if (lb) lb.classList.toggle('off', !(+el.value>0));
+  } else A[id] = el.value;
+  persist();
+});
+function findBlock(id){
+  for (const s of S.SECTIONS) for (const b of flat(s.blocks)) if (b.id===id) return b;
+  return null;
+}
+function flat(bs){ return bs.flatMap(b => b.type==='group' ? flat(b.blocks) : [b]); }
+function flash(t, kind){ const m = $('#msg'); if (m){ m.innerHTML = `<div class="alert ${kind||'warn'}">${t}</div>`; m.scrollIntoView({behavior:'smooth',block:'center'}); } }
+
+/* --- validation --- */
+function check(pg){
+  const missingReq = [], unanswered = [];
+  for (const b of flat(pg.blocks||[])) {
+    if (b.type==='rating') for (const it of b.items) {
+      const v = A[it.id]; const empty = v===undefined || v==='';
+      if (empty) { (it.req?missingReq:unanswered).push(it.id); }
+    } else if (b.req) {
+      const v = A[b.id]; if (v===undefined || v==='' || (Array.isArray(v)&&!v.length) || (typeof v==='string'&&!v.trim())) missingReq.push(b.id);
+    }
+  }
+  return {missingReq, unanswered};
+}
+let warnedStep = -1;
+$('#next').addEventListener('click', async () => {
+  const P = pages(); const pg = P[step];
+  if (pg.id !== 'intro') {
+    const {missingReq, unanswered} = check(pg);
+    document.querySelectorAll('.missing').forEach(x=>x.classList.remove('missing'));
+    if (missingReq.length) {
+      missingReq.forEach(id => { const r = document.getElementById('row_'+id)||document.getElementById('q_'+id); if (r) r.classList.add('missing'); });
+      flash('Vui lòng trả lời các câu bắt buộc (*) được đánh dấu. · Please answer the required (*) questions marked.');
+      return;
+    }
+    if (unanswered.length && warnedStep !== step) {
+      warnedStep = step;
+      unanswered.forEach(id => { const r = document.getElementById('row_'+id); if (r) r.classList.add('missing'); });
+      flash(`Còn ${unanswered.length} mục đánh giá chưa chọn (được tô vàng). Bạn có thể chọn “Chưa dùng” nếu chưa sử dụng phần đó, hoặc bấm tiếp để bỏ qua. · ${unanswered.length} rating(s) left blank (highlighted). Choose “Not used” if you have not tried that part, or press again to skip.`);
+      return;
+    }
+  }
+  if (step === P.length-1) return submit();
+  step++; warnedStep = -1; persist(); render();
+});
+$('#back').addEventListener('click', () => { if (step>0){ step--; warnedStep=-1; persist(); render(); } });
+
+/* --- payload --- */
+function choiceLabel(b, v){
+  const o = b.options.find(o=>o.v===v); if (!o) return v;
+  return /^\d$/.test(o.v) ? `${o.v} · ${o.vi}` : o.vi;
+}
+function buildPayload(){
+  const columns = [], values = {}, ratings = [], issues = [], workload = [];
+  const labs = A.labs||[];
+  for (const s of S.SECTIONS) {
+    const used = !s.lab || labs.includes(s.lab);
+    for (const b of flat(s.blocks)) {
+      if (b.type==='rating') {
+        const sc = S.SCALES[b.scale];
+        for (const it of b.items) {
+          columns.push([it.id, `${it.id} · ${it.en}`]);
+          const v = A[it.id];
+          if (!used || v===undefined || v==='') { values[it.id] = ''; continue; }
+          values[it.id] = +v===0 ? 'N/A' : +v;
+          ratings.push({section:s.en, lab:s.lab||'All', block:b.id, code:it.id, en:it.en, vi:it.vi, score:+v, scale:b.scale, label: +v===0 ? sc.na.en : sc.en[+v-1]});
+        }
+      } else if (b.type==='issues') {
+        for (const it of b.items) {
+          columns.push([it.id, `${it.id} · ${it.en}`]);
+          columns.push([it.id+'_labs', `${it.id}_labs · Labs where ${it.id} happened`]);
+          const v = A[it.id], l = LAB_ONLY || (A[it.id+'_labs']||[]).join(', ');
+          values[it.id] = (v===undefined||v==='') ? '' : b.freq.en[+v];
+          values[it.id+'_labs'] = +v>0 ? l : '';
+          if (v!==undefined && v!=='') issues.push({code:it.id, en:it.en, vi:it.vi, freq:+v, freqLabel:b.freq.en[+v], labs: +v>0 ? l : ''});
+        }
+      } else if (b.type==='choice') {
+        columns.push([b.id, `${b.id} · ${b.en}`]);
+        const v = A[b.id];
+        if (!used || v===undefined) { values[b.id] = ''; continue; }
+        values[b.id] = Array.isArray(v) ? v.map(x=>choiceLabel(b,x)).join('; ') : choiceLabel(b,v);
+        if (s.lab && /_(amount|diff|time|deadline|done)$/.test(b.id) && v!=='') {
+          const o = b.options.find(o=>o.v===v);
+          workload.push({lab:s.lab, code:b.id, aspect:b.en, value:+v, label:o?o.en:v});
+        }
+      } else if (b.type==='text' || b.type==='nps') {
+        columns.push([b.id, `${b.id} · ${b.en.replace(/\s*\(.*\)\s*$/,'')}`]);
+        const v = A[b.id];
+        values[b.id] = (!used || v===undefined) ? '' : (b.type==='nps' ? (v===''?'':+v) : String(v).trim());
+      }
+    }
+  }
+  if (LAB_ONLY) { columns.unshift(['labs', 'labs · Which Labs have you used? (tick all that apply)']); values.labs = S.NAMES[LAB_ONLY].vi; }
+  return { token:'hsp-labs-survey', version:S.VERSION + ' · ' + (LAB_ONLY ? S.NAMES[LAB_ONLY].en : 'All Labs'), survey:(LAB_ONLY ? S.NAMES[LAB_ONLY].en : 'All Labs'), respId, submittedAt:new Date().toISOString(),
+           device:navigator.userAgent, columns, values, ratings, issues, workload };
+}
+
+/* --- send --- */
+function endpoint(){
+  let h = ''; try { h = decodeURIComponent(location.hash.slice(1)); } catch(e){}
+  if (h && /^https:\/\/script\.google\.com\//.test(h)) { try{localStorage.setItem(KEY+'-url', h);}catch(e){} return h; }
+  if (h && /^AKfy[\w-]{20,}$/.test(h)) { const u = `https://script.google.com/macros/s/${h}/exec`; try{localStorage.setItem(KEY+'-url', u);}catch(e){} return u; }
+  if (WEB_APP_URL) return WEB_APP_URL;
+  try { return localStorage.getItem(KEY+'-url') || ''; } catch(e){ return ''; }
+}
+function send(payload){
+  if (window.google && google.script && google.script.run) {
+    return new Promise((res, rej) => google.script.run.withSuccessHandler(res).withFailureHandler(rej).submitSurvey(payload));
+  }
+  const url = endpoint();
+  if (!url) return Promise.reject(new Error('no-endpoint'));
+  return fetch(url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload)}).then(()=>({ok:true}));
+}
+async function submit(){
+  const btn = $('#next'); btn.disabled = true; btn.textContent = 'Đang gửi… · Sending…';
+  const payload = buildPayload();
+  try {
+    const r = await send(payload);
+    if (r && r.ok === false) throw new Error(r.error||'rejected');
+    submitted = true; persist(); renderThanks();
+  } catch (e) {
+    btn.disabled = false; btn.textContent = 'Gửi lại · Try again';
+    const why = e && e.message === 'no-endpoint'
+      ? 'Khảo sát chưa được kết nối với bảng tính của giáo viên. · The survey is not connected to the teacher’s sheet yet.'
+      : 'Không gửi được, có thể do mạng chập chờn. Câu trả lời vẫn được lưu trên thiết bị — hãy thử gửi lại. · Sending failed, possibly due to the connection. Your answers are still saved on this device — please try again.';
+    flash(`${why}<br><br><button class="btn" type="button" id="dl">Tải bản sao câu trả lời · Download a copy</button> <span style="font-size:.85rem">rồi gửi file cho giáo viên · then send the file to your teacher</span>`, 'bad');
+    const dl = document.getElementById('dl'); if (dl) dl.onclick = () => download(payload);
+  }
+}
+function download(p){
+  const lines = [`${S.TEXT.titleEn} — ${p.respId} — ${new Date().toLocaleString()}`, ''];
+  p.columns.forEach(([k,h]) => { const v = p.values[k]; if (v!=='' && v!==undefined) lines.push(`${h}: ${v}`); });
+  const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `IELTS-Labs-Survey_${(A.name||'anonymous').replace(/\s+/g,'-')}_${p.respId}.txt`; a.click();
+}
+function renderThanks(){
+  $('#progress').hidden = true; $('#nav').hidden = true;
+  $('#main').innerHTML = `<section class="card thanks">
+    <div class="big" aria-hidden="true">🌟</div>
+    <h2>Cảm ơn bạn!<span class="en" lang="en">Thank you!</span></h2>
+    <p>${esc(S.TEXT.thanksVi)}</p><p lang="en" style="color:var(--muted)">${esc(S.TEXT.thanksEn)}</p>
+    <p style="font-size:.8rem;color:var(--muted)">Mã phản hồi · Response ID: <b>${esc(respId)}</b></p>
+    <button class="btn" type="button" id="edit">Sửa câu trả lời · Edit my answers</button>
+  </section>`;
+  $('#edit').onclick = () => { submitted = false; step = 1; persist(); $('#nav').hidden = false; render(); };
+}
+
+render();
+})();
+</script>
+</body>
+</html>
