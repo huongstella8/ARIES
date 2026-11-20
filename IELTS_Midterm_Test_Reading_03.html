@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Midterm Test – Reading 03</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#f0f4f8;overflow:hidden}
+#loginScreen{position:fixed;inset:0;background:linear-gradient(145deg,#001a52 0%,#003fa3 60%,#005fc7 100%);display:flex;align-items:center;justify-content:center;z-index:9999}
+.login-card{background:#fff;border-radius:16px;padding:44px 40px 36px;width:100%;max-width:460px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.login-title{font-size:20px;font-weight:800;color:#002d72;text-align:center;margin-bottom:4px}
+.login-sub{font-size:13px;color:#888;text-align:center;margin-bottom:16px}
+.login-card label{display:block;font-size:11px;font-weight:700;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.login-card input{width:100%;padding:13px 15px;border:2px solid #dde2ea;border-radius:9px;font-size:15px;margin-bottom:18px;font-family:inherit;color:#222;outline:none}
+.login-card input:focus{border-color:#0057b7;box-shadow:0 0 0 3px rgba(0,87,183,.12)}
+.btn-start{width:100%;padding:15px;background:#002d72;color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:800;cursor:pointer;letter-spacing:1.5px;text-transform:uppercase}
+.btn-start:hover{background:#0057b7}
+.login-note{font-size:12px;color:#bbb;text-align:center;margin-top:16px;line-height:1.6}
+.err{color:#dc3545;font-size:12px;margin-top:-12px;margin-bottom:10px;display:none}
+#examScreen{display:none;flex-direction:column;height:100vh}
+.sticky-top{position:sticky;top:0;z-index:100}
+.top-bar{background:#001840;color:#fff;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:58px;flex-shrink:0;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.top-bar .logo{font-size:16px;font-weight:900;letter-spacing:1px}
+.top-bar .sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:1px}
+.timer-label{font-size:10px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
+#timerDisplay{font-size:26px;font-weight:900;font-family:monospace;letter-spacing:3px;color:#fff}
+#timerDisplay.warn{color:#ffd700}
+#timerDisplay.danger{color:#ff4444;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.btn-submit{background:rgba(255,255,255,.18);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.3);padding:10px 22px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer}
+.btn-submit:hover{background:rgba(255,255,255,.28);color:#fff}
+.tabs-nav{background:#00264d;display:flex;align-items:flex-end;padding:0 22px;height:46px;gap:4px}
+.tab-btn{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65);border:none;padding:7px 18px;border-radius:6px 6px 0 0;font-size:12px;font-weight:700;cursor:pointer;height:38px;display:inline-flex;align-items:center;gap:7px}
+.tab-btn:hover{background:rgba(255,255,255,.2);color:#fff}
+.tab-btn.active{background:#fff;color:#001840}
+.tab-btn.complete{color:#8ef5a0}
+.student-bar{margin-left:auto;align-self:center;color:rgba(255,255,255,.55);font-size:11px}
+.passage-wrap{display:flex;flex:1;overflow:hidden;height:calc(100vh - 104px)}
+.left-panel{flex:0 0 55%;max-width:55%;border-right:3px solid #d4dde8;overflow-y:auto;padding:26px 30px;background:#fff;font-size:14.5px;line-height:1.85;color:#1a1a1a}
+.right-panel{flex:0 0 45%;max-width:45%;overflow-y:auto;padding:22px 20px;background:#f5f7fa}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:#b0c4de;border-radius:3px}
+.p-label{font-size:11px;font-weight:800;color:#0055a4;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.p-instruction{font-size:12.5px;font-style:italic;color:#555;background:#f0f5ff;border-left:3px solid #0055a4;padding:9px 13px;border-radius:0 5px 5px 0;margin-bottom:18px;line-height:1.5}
+.p-title{font-size:21px;font-weight:900;color:#001840;text-align:center;margin-bottom:14px}
+.p-text p{margin-bottom:13px}
+.p-text .para-id{font-weight:900;color:#0055a4;margin-right:8px;font-size:14px}
+.q-block{margin-bottom:26px}
+.q-head{background:#001840;color:#fff;padding:10px 15px;border-radius:7px;margin-bottom:12px}
+.q-head h3{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.q-head .q-inst{font-size:12.5px;color:rgba(255,255,255,.78);margin-top:4px;font-style:italic;line-height:1.4}
+.q-note{font-size:13px;font-style:italic;color:#555;background:#fff;border-left:3px solid #0055a4;padding:8px 12px;border-radius:0 5px 5px 0;margin-bottom:12px;line-height:1.5}
+.q-note strong{color:#001840}
+hr.divider{border:none;border-top:2px dashed #d4dde8;margin:20px 0}
+.tfng-item,.yng-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#fff;border-radius:7px;margin-bottom:7px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.tfng-qn,.yng-qn{font-weight:800;color:#0055a4;min-width:22px;font-size:15px;padding-top:1px}
+.tfng-txt,.yng-txt{flex:1;font-size:14px;line-height:1.5}
+.tfng-opts,.yng-opts{display:flex;gap:5px;flex-shrink:0}
+.tfng-btn,.yng-btn{padding:5px 8px;border:2px solid #dde3ed;border-radius:5px;font-size:11px;font-weight:800;cursor:pointer;background:#fff;white-space:nowrap}
+.tfng-btn:hover,.yng-btn:hover{border-color:#0055a4;color:#0055a4}
+.tfng-btn.sel,.yng-btn.sel{background:#001840;color:#fff;border-color:#001840}
+.match-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#fff;border-radius:7px;margin-bottom:7px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.match-qn{font-weight:800;color:#0055a4;min-width:24px;font-size:15px;padding-top:2px}
+.match-txt{flex:1;font-size:14px;line-height:1.5}
+.match-sel{border:2px solid #dde3ed;border-radius:5px;padding:5px 8px;font-size:14px;font-weight:700;color:#001840;cursor:pointer;outline:none;min-width:64px}
+.match-sel:focus{border-color:#0055a4}
+.q-n{font-weight:800;color:#0055a4;margin-right:4px}
+.ans-input{border:none;border-bottom:2px solid #0055a4;background:transparent;font-size:14px;width:150px;padding:2px 4px;color:#001840;outline:none;font-family:inherit}
+.ans-input:focus{border-bottom-color:#e8380d}
+.flow-box{background:#fff;border-radius:7px;box-shadow:0 1px 4px rgba(0,0,0,.07);padding:14px 16px;margin-bottom:12px}
+.flow-step{border:2px solid #dde3ed;border-radius:7px;padding:9px 12px;font-size:13.5px;line-height:1.6;background:#f8fbff}
+.flow-arrow{text-align:center;color:#0055a4;font-size:17px;margin:4px 0}
+.summary-box{font-size:14px;line-height:2.1;background:#fff;padding:14px 16px;border-radius:7px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:12px}
+.summary-box p{margin-bottom:9px;line-height:2.1}
+.headings-box,.endings-box,.word-bank{background:#fff;border:2px solid #dde3ed;border-radius:7px;padding:11px 13px;margin-bottom:12px}
+.hb-title{font-size:12px;font-weight:800;color:#0055a4;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+.head-item,.end-item{display:flex;gap:8px;padding:4px 0;font-size:13px;line-height:1.5;border-bottom:1px solid #f0f4f8}
+.head-item:last-child,.end-item:last-child{border-bottom:none}
+.head-num,.end-letter{font-weight:800;color:#0055a4;flex-shrink:0;min-width:26px}
+.mc-q{padding:10px 13px;background:#fff;border-radius:7px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.mc-q-text{font-size:14px;font-weight:700;color:#222;line-height:1.5;margin-bottom:10px}
+.mc-q-num{color:#0055a4;margin-right:6px}
+.mc-opt{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border:2px solid #e8edf4;border-radius:5px;margin-bottom:5px;cursor:pointer;font-size:14px;line-height:1.4}
+.mc-opt:hover{border-color:#0055a4}
+.mc-opt.sel{border-color:#001840;background:#f0f4ff}
+.mc-opt input{margin-top:2px;flex-shrink:0}
+.mc-letter{font-weight:800;color:#0055a4;margin-right:5px}
+.chk-group{background:#fff;border-radius:7px;padding:4px 6px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:8px}
+.chk-opt{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border:2px solid #e8edf4;border-radius:5px;margin-bottom:5px;cursor:pointer;font-size:14px;line-height:1.4}
+.chk-opt:hover{border-color:#0055a4}
+.chk-opt.sel{border-color:#001840;background:#f0f4ff}
+.chk-opt input{margin-top:2px;flex-shrink:0}
+.q-hint{font-size:12px;color:#777;margin:2px 2px 10px}
+.passage-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0 6px;margin-top:8px;border-top:2px dashed #d4dde8}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;border:2px solid #001840;background:#fff;color:#001840}
+.nav-btn:hover{background:#001840;color:#fff}
+.nav-btn.next{background:#001840;color:#fff}
+.nav-btn.next:hover{background:#0055a4;border-color:#0055a4}
+.nav-spacer{flex:1}
+mark.hl-yellow{background:#fff176;border-radius:2px;cursor:pointer}
+mark.hl-green{background:#b9f6ca;border-radius:2px;cursor:pointer}
+mark.hl-pink{background:#fce4ec;border-radius:2px;cursor:pointer}
+mark.hl-blue{background:#bbdefb;border-radius:2px;cursor:pointer}
+mark[class^="hl-"]:hover{filter:brightness(.88)}
+.hl-toolbar{position:fixed;background:#1a1a2e;border-radius:9px;padding:7px 10px;display:none;flex-direction:row;gap:7px;align-items:center;z-index:9000;box-shadow:0 6px 24px rgba(0,0,0,.45);user-select:none}
+.hl-toolbar::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#1a1a2e;border-bottom:none}
+.hl-color{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer}
+.hl-color:hover{transform:scale(1.25);border-color:#fff}
+.hl-sep{width:1px;height:18px;background:rgba(255,255,255,.2)}
+.hl-label{font-size:10px;color:rgba(255,255,255,.55);white-space:nowrap}
+.hl-erase-btn{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.3);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;cursor:pointer}
+.hl-erase-btn:hover{background:rgba(255,80,80,.4)}
+.hl-hint{background:#fffde7;border:1.5px solid #f9c333;border-radius:7px;padding:7px 12px;font-size:12px;color:#555;margin-bottom:14px;display:flex;align-items:center;gap:8px;line-height:1.5}
+.hl-swatches{display:inline-flex;gap:4px}
+.hl-swatch{width:13px;height:13px;border-radius:50%;border:1.5px solid rgba(0,0,0,.12)}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#001840;color:#fff;padding:12px 26px;border-radius:8px;font-size:13px;z-index:9998;display:none}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,32,.6);z-index:9997;align-items:center;justify-content:center}
+.modal-card{background:#fff;border-radius:12px;padding:32px;width:380px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.modal-card h2{font-size:20px;color:#001840;margin-bottom:10px}
+.modal-card p{font-size:13px;color:#666;margin-bottom:22px;line-height:1.5}
+.modal-btns{display:flex;gap:10px;justify-content:center}
+.modal-btns button{padding:10px 24px;border-radius:7px;font-size:14px;font-weight:800;cursor:pointer;border:none}
+.btn-cancel{background:#e8edf4;color:#444}
+.btn-confirm{background:#001840;color:#fff}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+<div class="hl-toolbar" id="hlToolbar">
+  <span class="hl-label">Highlight:</span>
+  <div class="hl-color" style="background:#fff176" onclick="applyHL('yellow')"></div>
+  <div class="hl-color" style="background:#b9f6ca" onclick="applyHL('green')"></div>
+  <div class="hl-color" style="background:#fce4ec" onclick="applyHL('pink')"></div>
+  <div class="hl-color" style="background:#bbdefb" onclick="applyHL('blue')"></div>
+  <div class="hl-sep"></div>
+  <button class="hl-erase-btn" onclick="eraseHL()">✕ Clear</button>
+</div>
+
+<!-- DRAFT MODAL -->
+<div id="modalDraft" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:14px;padding:36px 32px;max-width:420px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.25)">
+    <div style="font-size:50px;margin-bottom:12px">💾</div>
+    <h3 style="margin:0 0 10px;font-size:20px;color:#001840">Unsaved answers found!</h3>
+    <p style="color:#444;font-size:14.5px;line-height:1.6;margin:0 0 22px">Found an unfinished attempt by <strong id="draftName"></strong> saved at <strong id="draftTime"></strong>.<br>Continue from where you left off?</p>
+    <div style="display:flex;gap:12px;justify-content:center">
+      <button onclick="discardReadingDraft()" style="padding:10px 22px;border:2px solid #bbb;border-radius:8px;background:#fff;color:#555;font-size:14px;cursor:pointer;font-weight:600">Start Fresh</button>
+      <button onclick="restoreReadingDraft()" style="padding:10px 22px;border:none;border-radius:8px;background:#001840;color:#fff;font-size:14px;cursor:pointer;font-weight:700">Restore Answers</button>
+    </div>
+  </div>
+</div>
+
+<div id="confirmModal" class="modal">
+  <div class="modal-card"><h2>Submit Test?</h2><p>You still have <strong id="timeLeft"></strong> remaining. Are you sure you want to submit now?</p>
+  <div class="modal-btns"><button class="btn-cancel" onclick="closeConfirm()">Continue</button><button class="btn-confirm" onclick="submitTest()">Submit Now</button></div></div>
+</div>
+<div id="timeupModal" class="modal">
+  <div class="modal-card"><div style="font-size:48px;margin-bottom:10px">⏰</div><h2>Time's Up!</h2><p>Your 60 minutes have ended. Your test will be submitted automatically.</p>
+  <button class="btn-confirm" style="width:100%;padding:13px" onclick="submitTest()">View My Results</button></div>
+</div>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-title">IELTS MIDTERM TEST · READING</div>
+    <div class="login-sub">Huong Stella Paradigm</div>
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" placeholder="Enter your full name" autocomplete="off" spellcheck="false">
+    <div class="err" id="nameErr">Please enter your full name.</div>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob">
+    <div class="err" id="dobErr">Please enter your date of birth.</div>
+    <button class="btn-start" onclick="startExam()">Begin Test ›</button>
+    <p class="login-note">Reading Module · 3 Passages · 40 Questions · 60 minutes<br>Results are sent to your teacher automatically</p>
+  </div>
+</div>
+
+<!-- EXAM -->
+<div id="examScreen">
+  <div class="sticky-top">
+    <div class="top-bar">
+      <div><div class="logo">IELTS MIDTERM TEST · READING 03</div><div class="sub">Huong Stella Paradigm</div></div>
+      <div style="text-align:center"><div class="timer-label">TIME REMAINING</div><div id="timerDisplay">60:00</div></div>
+      <button class="btn-submit" onclick="confirmSubmit()">SUBMIT TEST ✓</button>
+    </div>
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tab1btn" onclick="switchTab(1)">Passage 1 · In Deep Water</button>
+      <button class="tab-btn" id="tab2btn" onclick="switchTab(2)">Passage 2 · Multi-tasking</button>
+      <button class="tab-btn" id="tab3btn" onclick="switchTab(3)">Passage 3 · Ancient Rome</button>
+      <div class="student-bar" id="studentBar"></div>
+    </div>
+  </div>
+
+  <!-- ===== PASSAGE 1 ===== -->
+  <div class="passage-wrap" id="pw1">
+    <div class="left-panel">
+      <div class="hl-hint">🖊 <strong>Highlight:</strong> select text → choose a colour. Click a highlight to remove.
+        <span class="hl-swatches"><span class="hl-swatch" style="background:#fff176"></span><span class="hl-swatch" style="background:#b9f6ca"></span><span class="hl-swatch" style="background:#fce4ec"></span><span class="hl-swatch" style="background:#bbdefb"></span></span>
+      </div>
+      <div class="p-label">Reading Passage 1</div>
+      <div class="p-instruction">You should spend about 20 minutes on <strong>Questions 1–13</strong>, which are based on Reading Passage 1 below.</div>
+      <div class="p-title">In Deep Water</div>
+      <div class="p-subtitle" style="font-style:italic;color:#555;margin-bottom:10px">Scientists are learning more about the sea floor around New Zealand</div>
+      <div class="p-text">
+        <p>While we know that the sea is a big place, few of us realise just how big it really is. More than 66% of the world's surface is covered by ocean, and the sea makes up 97% of the environments on Earth that can support living things. The vast majority of this area — and New Zealand's seas are no exception — remains unexplored. In fact, the deepest parts of the ocean are so poorly known that nearly every submarine dive or research trawl (pulling up specimens from the seabed) brings new knowledge of genuine significance to oceanographers. Our present knowledge of land biodiversity (all animal and plant life) compared with ocean biodiversity is one measure of how early we are in the task of researching the deep sea. A good example is the New Zealand takahe bird. In 1948, a small population of takahe, a flightless bird which at that time was thought to be extinct, was found living in New Zealand's mountains. The rediscovery of this one species created a sensation among bird lovers. In dramatic contrast, new species from New Zealand's deep sea are today being discovered at a rate of about one every two weeks.</p>
+        <p>What's more, catching, examining and naming a new species is only the first step in the learning process. Just because an animal has been given a scientific name and shelf space in a museum doesn't necessarily mean that we know anything at all about its lifestyle and ecology. Most deep-sea animals have never been seen alive, and the few that have were almost certainly acting unnaturally in the glare of lights from the submarine camera with which they were observed. For this reason, our understanding of life in the deep sea relies heavily on conjecture. Fierce debate continues among scientists over such details as how fast a giant squid can swim, and why lantern fish flash their little lights. In some respects, deep-sea biology parallels the way that detectives hunt for criminals, requiring comparable problem-solving and clue-finding skills.</p>
+        <p>The sea floor around New Zealand has a wide range of seabed features. One of the most important are seamounts, which are underwater volcanoes. Most of the world's charted seamounts were discovered in the past 40 years, although the exact number around New Zealand is not known. One of the most conspicuous is the Bollons Seamount, which among others was visited by a scientific expedition in 2002. It rises more than three kilometres above the surrounding seabed, and measures two hundred kilometres across, making it a remarkable size, and therefore of particular interest.</p>
+        <p>Research has shown that these mountains of the deep are home to many species, although it is not clear why. One theory is that the ocean currents cause plankton, which is an important source of food, to thrive on their upper surfaces. Another factor is that they are not completely draped with the fine mud that covers just about everything else in the deep sea. Instead, their rocky surfaces provide attachment points for animals like sponges and anemones. Many seamounts are found on the Chatham Rise, which is a huge platform in a remote part of the ocean. The top of the rise is covered with small seamounts, many of which have been named by the inhabitants of the nearby Chatham Islands. They come fishing here because a valuable species called orange roughy seasonally migrates to these shallow waters to spawn.</p>
+        <p>Canyons are another of New Zealand's underwater features. These trenches cut deeply into the sea floor and come unusually close to land. At Goose Bay, the squid that live in the canyon attract sperm whales, and every year thousands of people come to see the whales just off the coast, helping local tourism. Further south, near the city of Dunedin, several canyons are found. Since the 1960s, the University of Otago's ship Munida has conducted research in this area, leading to many unusual discoveries. Among these was a population of button-sized coral, whose remains had originally been mistaken by early fossil collectors for small dinosaur bones.</p>
+        <p>Scientists believe that canyons were created when powerful underwater currents cut into the seabed. Nearly all submarine canyons are located offshore from a large river, and it was the force of this flowing from the land into the sea that set the underwater current in motion. However, there are other explanations for canyons in other parts of the world, and a spectacular example took place in November 1929, when a significant earthquake in Canadian waters triggered an underwater current that travelled more than 720 kilometres, creating a canyon and cutting an undersea communication cable in the process.</p>
+        <p>Research in the seas around New Zealand has resulted in a far better understanding of the seamounts, canyons and other underwater features that stand out from the otherwise flat sea floor. Indeed, the seabed generally is very flat compared to the land. To deal with this, oceanographers use a technique called 'vertical exaggeration' in their maps, to make changes in ocean depth more apparent. Unfortunately, this has resulted in many people believing that the seabed is much steeper than it really is. But this misunderstanding aside, we know much more about the deep ocean today than we did even 20 years ago, and the speed of scientists' discoveries is only likely to increase.</p>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 1–7</h3><div class="q-inst">Do the following statements agree with the information given in Reading Passage 1?</div></div>
+        <div class="q-note"><strong>TRUE</strong> – if the statement agrees with the information<br><strong>FALSE</strong> – if the statement contradicts the information<br><strong>NOT GIVEN</strong> – if there is no information on this</div>
+        <div class="tfng-item" id="row1"><div class="tfng-qn">1</div><div class="tfng-txt">Research trawls in the deepest oceans tend to produce important findings.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(1,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(1,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(1,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="tfng-item" id="row2"><div class="tfng-qn">2</div><div class="tfng-txt">In New Zealand, research into land biodiversity is better funded than ocean research.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(2,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(2,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(2,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="tfng-item" id="row3"><div class="tfng-qn">3</div><div class="tfng-txt">The takahe bird was first recorded as a species in 1948.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(3,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(3,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(3,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="tfng-item" id="row4"><div class="tfng-qn">4</div><div class="tfng-txt">Museums only display a small number of their specimens from the deep ocean.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(4,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(4,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(4,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="tfng-item" id="row5"><div class="tfng-qn">5</div><div class="tfng-txt">Filming specimens gives accurate information about the normal behaviour of their species.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(5,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(5,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(5,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="tfng-item" id="row6"><div class="tfng-qn">6</div><div class="tfng-txt">Scientists disagree about the swimming speed of giant squid.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(6,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(6,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(6,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="tfng-item" id="row7"><div class="tfng-qn">7</div><div class="tfng-txt">The approach used by deep-sea biologists is similar to that used in police investigations.</div><div class="tfng-opts"><button class="tfng-btn" data-val="TRUE" onclick="setTFNG(7,'TRUE',this)">TRUE</button><button class="tfng-btn" data-val="FALSE" onclick="setTFNG(7,'FALSE',this)">FALSE</button><button class="tfng-btn" data-val="NOT GIVEN" onclick="setTFNG(7,'NOT GIVEN',this)">NG</button></div></div>
+      </div>
+      <hr class="divider">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 8–13</h3><div class="q-inst">Complete the notes below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</div></div>
+        <div class="q-note" style="text-align:center;font-weight:700;color:#001840">Seamounts</div>
+        <div class="summary-box">
+          <p>• The Bollons Seamount is unusual because of its <span class="q-n">8</span><input type="text" class="ans-input" id="q8" placeholder="......" oninput="updateBadge()" spellcheck="false">.</p>
+          <p>• Seamounts are home to many species, perhaps because there is more food and less <span class="q-n">9</span><input type="text" class="ans-input" id="q9" placeholder="......" oninput="updateBadge()" spellcheck="false">.</p>
+          <p>• The Chatham Rise is considered a good place for <span class="q-n">10</span><input type="text" class="ans-input" id="q10" placeholder="......" oninput="updateBadge()" spellcheck="false"> by local people.</p>
+        </div>
+        <div class="q-note" style="text-align:center;font-weight:700;color:#001840;margin-top:10px">Canyons</div>
+        <div class="summary-box">
+          <p>• The presence of whales in Goose Bay has resulted in the development of <span class="q-n">11</span><input type="text" class="ans-input" id="q11" placeholder="......" oninput="updateBadge()" spellcheck="false">.</p>
+          <p>• A species of <span class="q-n">12</span><input type="text" class="ans-input" id="q12" placeholder="......" oninput="updateBadge()" spellcheck="false"> has been discovered near Dunedin.</p>
+          <p>• One canyon near Canada was formed when a big <span class="q-n">13</span><input type="text" class="ans-input" id="q13" placeholder="......" oninput="updateBadge()" spellcheck="false"> started a current in 1929.</p>
+        </div>
+        <div class="passage-nav"><span class="nav-spacer"></span><button class="nav-btn next" onclick="switchTab(2)">Passage 2 · Multi-tasking &nbsp;→</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PASSAGE 2 ===== -->
+  <div class="passage-wrap" id="pw2" style="display:none">
+    <div class="left-panel">
+      <div class="hl-hint">🖊 <strong>Highlight:</strong> select text → choose a colour. Click a highlight to remove.
+        <span class="hl-swatches"><span class="hl-swatch" style="background:#fff176"></span><span class="hl-swatch" style="background:#b9f6ca"></span><span class="hl-swatch" style="background:#fce4ec"></span><span class="hl-swatch" style="background:#bbdefb"></span></span>
+      </div>
+      <div class="p-label">Reading Passage 2</div>
+      <div class="p-instruction">You should spend about 20 minutes on <strong>Questions 14–26</strong>, which are based on Reading Passage 2 below.</div>
+      <div class="p-title">Multi-tasking and the brain</div>
+      <div class="p-text">
+        <p><span class="para-id">A</span>Do you think you're a master of multi-tasking? Think again. Unless you are one of the three percent of super-taskers in the population, research shows that your brain isn't capable of paying close attention to more than one complex task at a time. Researchers who study attention say that effective multi-tasking is beyond most of us. Psychiatrist Edward M Hallowell even describes multi-tasking as 'a mythical activity in which people believe they can perform two or more tasks simultaneously as effectively as they can perform one'.</p>
+        <p><span class="para-id">B</span>It is true that you can check your email while eating your lunch, or listen to music while walking. But innate activities like walking, chewing, and breathing do not require you to pay attention, whereas activities such as reading, tapping out a text message, or driving a car do require attention. 'Why is paying attention to two things at once difficult? The brain can perform simultaneous tasks, but attention has capacity limitations,' says Associate Professor Paul E Dux, a cognitive neuroscientist at the University of Queensland in Australia. When you do only one thing at a time, you're better at that task than when you're doing multiple things concurrently. Take the classic multi-tasking scenario of talking on a mobile phone while driving - an ill-advised activity that many people believe they have mastered. When David Strayer, Professor of Psychology at the University of Utah in the US, and his team observed 56,000 drivers as they approached an intersection, the majority of drivers who were talking on their phone failed to stop in accordance with traffic laws. And it did not matter if the driver was using a handheld or hands-free device. Even with both eyes on the road and both hands on the wheel, drivers' performance was impaired. Strayer's research shows that performance deteriorates drastically when attention is split between tasks: more mistakes are made and it takes longer to complete each activity.</p>
+        <p><span class="para-id">C</span>The prefrontal cortex is the brain region responsible for choosing what to pay attention to, and for coordinating inputs from other brain areas. By scanning the prefrontal cortex of people while they multi-tasked, scientists at the French Institute of Health and Medical Research in Paris (INSERM) found that when people focused on a single thing, the right and left sides of the prefrontal cortex work together. But when people attempt to perform two things at once, the sides work independently. Neuroscientist Etienne Koechlin says his study demonstrates that while the brain can switch back and forth between two tasks, we might be in great trouble when we try to juggle more than two tasks, simply because we have only two frontal lobes.</p>
+        <p><span class="para-id">D</span>To the question of whether there is a difference between the sexes, Koechlin's imaging studies uncovered no differences in the ability to switch between tasks in the prefrontal cortices of men or women. But other researchers studying real life scenarios such as finding lost keys, believe there might be some truth to the claim that women are superior multi-taskers. Women have a much better strategy for finding the keys, whereas men tend to jump to it and be far less organised and thorough. 'It's as if they don't stop to reflect and plan for a moment,' says Professor Keith Laws from the University of Hertfordshire in England. But while the ability to develop strategies for coping with the numerous tasks in everyday life could give women an advantage, 'nobody can juggle two, never mind three, "complex" tasks at the same time.'</p>
+        <p><span class="para-id">E</span>However, David Strayer's research uncovered that some rare people possess extraordinary multi-tasking ability. These so-called 'super-taskers' exhibit different patterns of brain activity when multi-tasking compared to ordinary people: they show less activity in the prefrontal cortex during multi-tasking, suggesting their brains are functioning with a high level of efficiency. Strayer thinks that pilots of high-performance aircraft, high-end chefs who can cook several meals at the same time to perfection, and elite doctors in hospital emergency rooms might all be more likely to be super-taskers. "All other things being equal, we suspect that super-taskers will rise to a top position in any occupation that places a high demand on juggling various tasks that demand attention at the same time."</p>
+        <p><span class="para-id">F</span>The ability to multi-task probably comes down to the DNA you inherit from your parents to a large extent, says Strayer. 'You are either born with the neural structure that allows you to overcome the usual multi-tasking challenges, or you aren't. Super-taskers' brains are doing something we can't do.' All in all, these findings may have very real consequences on our lives.</p>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 14–19</h3><div class="q-inst">Reading Passage 2 has six sections, A–F. Choose the correct heading for each section from the list of headings below. Write the correct number, i–viii.</div></div>
+        <div class="headings-box">
+          <div class="hb-title">List of Headings</div>
+          <div class="head-item"><span class="head-num">i</span> Professions in which super-taskers are likely to be found</div>
+          <div class="head-item"><span class="head-num">ii</span> The effects of multi-tasking on neurological structure</div>
+          <div class="head-item"><span class="head-num">iii</span> A distinction between situations when people can and can't multi-task</div>
+          <div class="head-item"><span class="head-num">iv</span> Real multi-tasking is nearly impossible</div>
+          <div class="head-item"><span class="head-num">v</span> Multi-tasking and gender</div>
+          <div class="head-item"><span class="head-num">vi</span> The neurological reasons for struggling to manage more things</div>
+          <div class="head-item"><span class="head-num">vii</span> The ability to multi-task is determined by people's genes</div>
+          <div class="head-item"><span class="head-num">viii</span> Gender and the structure of the brain</div>
+        </div>
+        <div class="match-item"><div class="match-qn">14</div><div class="match-txt">Section A</div><select class="match-sel" id="q14" onchange="updateBadge()"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select></div>
+        <div class="match-item"><div class="match-qn">15</div><div class="match-txt">Section B</div><select class="match-sel" id="q15" onchange="updateBadge()"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select></div>
+        <div class="match-item"><div class="match-qn">16</div><div class="match-txt">Section C</div><select class="match-sel" id="q16" onchange="updateBadge()"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select></div>
+        <div class="match-item"><div class="match-qn">17</div><div class="match-txt">Section D</div><select class="match-sel" id="q17" onchange="updateBadge()"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select></div>
+        <div class="match-item"><div class="match-qn">18</div><div class="match-txt">Section E</div><select class="match-sel" id="q18" onchange="updateBadge()"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select></div>
+        <div class="match-item"><div class="match-qn">19</div><div class="match-txt">Section F</div><select class="match-sel" id="q19" onchange="updateBadge()"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select></div>
+      </div>
+      <hr class="divider">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 20–23</h3><div class="q-inst">Look at the following statements (Questions 20–23) and the list of researchers below. Match each statement with the correct researcher, A–E. <strong>NB</strong> You may use any letter more than once.</div></div>
+        <div class="endings-box">
+          <div class="hb-title">List of Researchers</div>
+          <div class="end-item"><span class="end-letter">A</span> Edward M Hallowell</div>
+          <div class="end-item"><span class="end-letter">B</span> Paul E Dux</div>
+          <div class="end-item"><span class="end-letter">C</span> David Strayer</div>
+          <div class="end-item"><span class="end-letter">D</span> Etienne Koechlin</div>
+          <div class="end-item"><span class="end-letter">E</span> Keith Laws</div>
+        </div>
+        <div class="match-item"><div class="match-qn">20</div><div class="match-txt">The brain of a good multi-tasker works differently from other people's.</div><select class="match-sel" id="q20" onchange="updateBadge()"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+        <div class="match-item"><div class="match-qn">21</div><div class="match-txt">The rate of error is considerably higher when people multi-task.</div><select class="match-sel" id="q21" onchange="updateBadge()"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+        <div class="match-item"><div class="match-qn">22</div><div class="match-txt">People are mistaken in their assumption that they can multi-task.</div><select class="match-sel" id="q22" onchange="updateBadge()"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+        <div class="match-item"><div class="match-qn">23</div><div class="match-txt">One gender does not seem to pause to consider before taking action.</div><select class="match-sel" id="q23" onchange="updateBadge()"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      </div>
+      <hr class="divider">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 24–26</h3><div class="q-inst">Complete the summary below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</div></div>
+        <div class="q-note" style="text-align:center;font-weight:700;color:#001840">Super-taskers</div>
+        <div class="summary-box">
+          <p>Super-taskers are those of us who possess special multi-tasking ability. They can be found in all professions. People who are pilots, chefs and doctors are often super-taskers, and super-taskers are most likely to achieve a <span class="q-n">24</span><input type="text" class="ans-input" id="q24" placeholder="......" oninput="updateBadge()" spellcheck="false"> that is high on the career ladder.</p>
+          <p>Super-taskers typically have to undertake many tasks simultaneously that need their <span class="q-n">25</span><input type="text" class="ans-input" id="q25" placeholder="......" oninput="updateBadge()" spellcheck="false">.</p>
+          <p>Genes play an important role in having this capability: these people have a special brain <span class="q-n">26</span><input type="text" class="ans-input" id="q26" placeholder="......" oninput="updateBadge()" spellcheck="false">, which helps them do what we cannot.</p>
+        </div>
+        <div class="passage-nav"><button class="nav-btn" onclick="switchTab(1)">← Passage 1</button><button class="nav-btn next" onclick="switchTab(3)">Passage 3 · Ancient Rome &nbsp;→</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PASSAGE 3 ===== -->
+  <div class="passage-wrap" id="pw3" style="display:none">
+    <div class="left-panel">
+      <div class="hl-hint">🖊 <strong>Highlight:</strong> select text → choose a colour. Click a highlight to remove.
+        <span class="hl-swatches"><span class="hl-swatch" style="background:#fff176"></span><span class="hl-swatch" style="background:#b9f6ca"></span><span class="hl-swatch" style="background:#fce4ec"></span><span class="hl-swatch" style="background:#bbdefb"></span></span>
+      </div>
+      <div class="p-label">Reading Passage 3</div>
+      <div class="p-instruction">You should spend about 20 minutes on <strong>Questions 27–40</strong>, which are based on Reading Passage 3 below.</div>
+      <div class="p-title">Looking at daily life in ancient Rome</div>
+      <div class="p-subtitle" style="font-style:italic;color:#555;margin-bottom:10px">In this preface to a history the writer explains the factors affecting the scope of his study</div>
+      <div class="p-text">
+        <p>If our ideas on Roman life are not to become lost in confusion, we must study it within a strictly defined time. Nothing changes more rapidly than human customs. Looking at our own more familiar world, apart from the great scientific discoveries of recent centuries which have turned it upside down - steam, electricity, railways, motor cars and aeroplanes, for example, it is clear that the elementary forms of everyday life have been subject to increasing change. Potatoes, for example, were not introduced into Europe until the sixteenth century, coffee was first drunk there in the late sixteenth or early seventeenth, and the banana was used in desserts in Europe at the beginning of the twentieth. The law of change was not less operative in antiquity. It was a commonplace of Roman rhetoric to contrast the crude simplicity of the Republic (509 BC-27BC) with the luxury and refinement of the imperial times which followed. There is no common standard by which to compare homes, houses, or furnishings between such vastly different ages.</p>
+        <p>Since a choice of time must necessarily be made, this history will confine itself to studying the generation which was born about the middle of the first century AD, toward the end of the reign of Claudius (41-54 AD) or the beginning of the reign of Nero (54-68 AD), and which lived on into the reign of Trajan (98-117 AD) and of Hadrian (117-138 AD). This generation saw the Roman Empire at its most powerful and prosperous. It was witness to the last conquests of the Caesars: the conquest of Dacia, in modern-day eastern Europe, which brought vast mineral wealth into the Empire, and the conquest of Arabia, which helped to bring the riches of India and East Asia flooding into Rome. In the material domain, this generation attained the pinnacle of ancient civilization.</p>
+        <p>By a fortunate coincidence - all the more fortunate in that Latin literature was soon to run nearly dry - this generation is the one whose records combine to offer us the most complete picture of Roman life that we possess. We have a profusion of vivid and picturesque descriptions, precise and colourful, in such works as the Epigrams of Martial, the Satires of Juvenal and the Letters of Pliny. In addition, the Forum of Trajan in Rome itself and the ruins of Herculaneum and Pompeii, the two prosperous resorts buried by the eruption of Mount Vesuvius in 79 AD supply an immense fund of archaeological evidence. Later excavations have also restored to us the ruins of the city of Ostia, which date in the main from the time when the Emperor Hadrian created this great commercial city as a realisation of his town planning ideas. Fortune has favoured the historian of this time.</p>
+        <p>It is not enough to focus our study of Roman life only on a fixed time. It would lack foundation and consistency if we did not also focus it in space - in the country or in the town. Even today, when the facilities for communication bring something of the city into the smallest and most isolated country cottage, there remains a significant difference between rural existence and the excitement of city life: a much greater gulf separated the peasant from the townsman of antiquity. So large was the inequality between them that, according to the historian Rostovtzeff, 'it pitted one against the other in a fierce and silent struggle which pierced the wall protecting the Roman privileged classes from the barbarian flood from the north' When the barbarian forces began to invade Roman territory, the peasants decided to fight alongside them.</p>
+        <p>The townsman, in fact, enjoyed all the goods and resources of the earth. The peasant knew nothing but unending labour without profit and was unable to enjoy the activities available in even the poorest of cities: the liveliness of the sports field, the warmth of the public baths and the magnificence of public spectacles. In a work on the history of everyday life, we must give up any attempt to blend two such dissimilar pictures into one and must choose between them. The time which we have chosen to describe day by day is that of those Roman subjects who spent their time exclusively in the town, or rather in The City, Rome, which they regarded as the hub and centre of the universe, proud and wealthy ruler of a world which seemed at that time to have been pacified forever.</p>
+        <p>To perform our task well, we must first try to form an adequate picture of the surroundings in which our subjects lived, and by which their lives were coloured, freeing ourselves from any misconceptions concerning it. We must seek to reconstruct the physical nature of the great city and the social milieu of the various classes of the hierarchy by which it was governed. We must also investigate the moral background of thought and sentiment which can help explain both its strength and its weaknesses. The way in which the Romans of Rome employed their time can only be studied satisfactorily after we have plotted out the main lines of the framework within which they lived and outside of which the routine of their daily life would be more or less unintelligible.</p>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 27–30</h3><div class="q-inst">Choose the correct letter, A, B, C or D.</div></div>
+        <div class="mc-q">
+          <div class="mc-q-text"><span class="mc-q-num">27</span> What does the writer say about the period mentioned in the second paragraph?</div>
+          <label class="mc-opt" id="q27A"><input type="radio" name="q27" value="A" onchange="setMC(27,'A')"> <span><span class="mc-letter">A</span> There was a high level of immigration into Rome.</span></label>
+          <label class="mc-opt" id="q27B"><input type="radio" name="q27" value="B" onchange="setMC(27,'B')"> <span><span class="mc-letter">B</span> The export of minerals made Rome rich.</span></label>
+          <label class="mc-opt" id="q27C"><input type="radio" name="q27" value="C" onchange="setMC(27,'C')"> <span><span class="mc-letter">C</span> Rome sent armies to control trade with India and East Asia.</span></label>
+          <label class="mc-opt" id="q27D"><input type="radio" name="q27" value="D" onchange="setMC(27,'D')"> <span><span class="mc-letter">D</span> The Roman standard of living reached its highest level.</span></label>
+        </div>
+        <div class="mc-q" style="margin-top:10px">
+          <div class="mc-q-text"><span class="mc-q-num">28</span> Ostia is mentioned as</div>
+          <label class="mc-opt" id="q28A"><input type="radio" name="q28" value="A" onchange="setMC(28,'A')"> <span><span class="mc-letter">A</span> a city which often features in literature.</span></label>
+          <label class="mc-opt" id="q28B"><input type="radio" name="q28" value="B" onchange="setMC(28,'B')"> <span><span class="mc-letter">B</span> an important area for archaeological research.</span></label>
+          <label class="mc-opt" id="q28C"><input type="radio" name="q28" value="C" onchange="setMC(28,'C')"> <span><span class="mc-letter">C</span> the birthplace of a Roman Emperor.</span></label>
+          <label class="mc-opt" id="q28D"><input type="radio" name="q28" value="D" onchange="setMC(28,'D')"> <span><span class="mc-letter">D</span> a city whose layout was similar to that of Rome.</span></label>
+        </div>
+        <div class="mc-q" style="margin-top:10px">
+          <div class="mc-q-text"><span class="mc-q-num">29</span> The statement that Fortune has favoured the historian of this time refers to the fact that</div>
+          <label class="mc-opt" id="q29A"><input type="radio" name="q29" value="A" onchange="setMC(29,'A')"> <span><span class="mc-letter">A</span> historians of this period have become wealthy as a result of their discoveries.</span></label>
+          <label class="mc-opt" id="q29B"><input type="radio" name="q29" value="B" onchange="setMC(29,'B')"> <span><span class="mc-letter">B</span> works on this period are popular among the reading public.</span></label>
+          <label class="mc-opt" id="q29C"><input type="radio" name="q29" value="C" onchange="setMC(29,'C')"> <span><span class="mc-letter">C</span> a wide range of sources is available for this period.</span></label>
+          <label class="mc-opt" id="q29D"><input type="radio" name="q29" value="D" onchange="setMC(29,'D')"> <span><span class="mc-letter">D</span> this period has been less studied than many others.</span></label>
+        </div>
+        <div class="mc-q" style="margin-top:10px">
+          <div class="mc-q-text"><span class="mc-q-num">30</span> In comparing urban and rural life in the Roman Empire, the writer states that</div>
+          <label class="mc-opt" id="q30A"><input type="radio" name="q30" value="A" onchange="setMC(30,'A')"> <span><span class="mc-letter">A</span> rural Romans were largely illiterate.</span></label>
+          <label class="mc-opt" id="q30B"><input type="radio" name="q30" value="B" onchange="setMC(30,'B')"> <span><span class="mc-letter">B</span> rural life and urban life had little in common.</span></label>
+          <label class="mc-opt" id="q30C"><input type="radio" name="q30" value="C" onchange="setMC(30,'C')"> <span><span class="mc-letter">C</span> little information is available concerning rural life.</span></label>
+          <label class="mc-opt" id="q30D"><input type="radio" name="q30" value="D" onchange="setMC(30,'D')"> <span><span class="mc-letter">D</span> most readers of history are more interested in city life.</span></label>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 31–36</h3><div class="q-inst">Do the following statements agree with the claims of the writer in Reading Passage 3?</div></div>
+        <div class="q-note"><strong>YES</strong> – if the statement agrees with the claims of the writer<br><strong>NO</strong> – if the statement contradicts the claims of the writer<br><strong>NOT GIVEN</strong> – if it is impossible to say what the writer thinks about this</div>
+        <div class="yng-item" id="row31"><div class="yng-qn">31</div><div class="yng-txt">Rome's conquest of Arabia resulted in large-scale immigration from the east into Rome.</div><div class="yng-opts"><button class="yng-btn" data-val="YES" onclick="setYNG(31,'YES',this)">YES</button><button class="yng-btn" data-val="NO" onclick="setYNG(31,'NO',this)">NO</button><button class="yng-btn" data-val="NOT GIVEN" onclick="setYNG(31,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="yng-item" id="row32"><div class="yng-qn">32</div><div class="yng-txt">More can be learned about Roman life from the literature of the period studied in this book than from later Latin literature.</div><div class="yng-opts"><button class="yng-btn" data-val="YES" onclick="setYNG(32,'YES',this)">YES</button><button class="yng-btn" data-val="NO" onclick="setYNG(32,'NO',this)">NO</button><button class="yng-btn" data-val="NOT GIVEN" onclick="setYNG(32,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="yng-item" id="row33"><div class="yng-qn">33</div><div class="yng-txt">Discoveries at Herculaneum and Pompeii showed that certain beliefs about Roman life were wrong.</div><div class="yng-opts"><button class="yng-btn" data-val="YES" onclick="setYNG(33,'YES',this)">YES</button><button class="yng-btn" data-val="NO" onclick="setYNG(33,'NO',this)">NO</button><button class="yng-btn" data-val="NOT GIVEN" onclick="setYNG(33,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="yng-item" id="row34"><div class="yng-qn">34</div><div class="yng-txt">Roman peasants provided assistance to the Empire when it was attacked.</div><div class="yng-opts"><button class="yng-btn" data-val="YES" onclick="setYNG(34,'YES',this)">YES</button><button class="yng-btn" data-val="NO" onclick="setYNG(34,'NO',this)">NO</button><button class="yng-btn" data-val="NOT GIVEN" onclick="setYNG(34,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="yng-item" id="row35"><div class="yng-qn">35</div><div class="yng-txt">Rural inhabitants of the Roman Empire had a difficult life.</div><div class="yng-opts"><button class="yng-btn" data-val="YES" onclick="setYNG(35,'YES',this)">YES</button><button class="yng-btn" data-val="NO" onclick="setYNG(35,'NO',this)">NO</button><button class="yng-btn" data-val="NOT GIVEN" onclick="setYNG(35,'NOT GIVEN',this)">NG</button></div></div>
+        <div class="yng-item" id="row36"><div class="yng-qn">36</div><div class="yng-txt">Entertainment facilities were limited to the city of Rome itself.</div><div class="yng-opts"><button class="yng-btn" data-val="YES" onclick="setYNG(36,'YES',this)">YES</button><button class="yng-btn" data-val="NO" onclick="setYNG(36,'NO',this)">NO</button><button class="yng-btn" data-val="NOT GIVEN" onclick="setYNG(36,'NOT GIVEN',this)">NG</button></div></div>
+      </div>
+      <hr class="divider">
+      <div class="q-block">
+        <div class="q-head"><h3>Questions 37–40</h3><div class="q-inst">Complete the summary using the list of words, <strong>A–I</strong>, below. Write the correct letter, A–I.</div></div>
+        <div class="endings-box">
+          <div class="hb-title">List of Words</div>
+          <div class="end-item"><span class="end-letter">A</span> emperors</div>
+          <div class="end-item"><span class="end-letter">B</span> setting</div>
+          <div class="end-item"><span class="end-letter">C</span> values</div>
+          <div class="end-item"><span class="end-letter">D</span> peasants</div>
+          <div class="end-item"><span class="end-letter">E</span> city-dwellers</div>
+          <div class="end-item"><span class="end-letter">F</span> social classes</div>
+          <div class="end-item"><span class="end-letter">G</span> myths</div>
+          <div class="end-item"><span class="end-letter">H</span> period</div>
+          <div class="end-item"><span class="end-letter">I</span> investigation</div>
+        </div>
+        <div class="q-note" style="text-align:center;font-weight:700;color:#001840">The scope of the writer's study</div>
+        <div class="summary-box">
+          <p>It was important for the writer to limit several aspects of his <span class="q-n">37</span><select class="match-sel" id="q37" onchange="updateBadge()" style="min-width:60px"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select>. He decided to focus on a limited <span class="q-n">38</span><select class="match-sel" id="q38" onchange="updateBadge()" style="min-width:60px"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select> in Roman history, and to concentrate on the section of the population who were <span class="q-n">39</span><select class="match-sel" id="q39" onchange="updateBadge()" style="min-width:60px"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select>. The writer was interested in the physical environment, the people that ruled the country and the <span class="q-n">40</span><select class="match-sel" id="q40" onchange="updateBadge()" style="min-width:60px"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select> that contributed both to Rome's strength and to its weaknesses.</p>
+        </div>
+        <div class="passage-nav"><button class="nav-btn" onclick="switchTab(2)">← Passage 2</button><span class="nav-spacer"></span></div>
+      </div>
+    </div>
+  </div>
+</div><!-- end examScreen -->
+
+<!-- RESULTS -->
+<div id="resultsScreen" style="display:none;min-height:100vh;background:linear-gradient(145deg,#001840,#0055a4);padding:40px 20px;overflow-y:auto">
+  <div style="background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.4);max-width:520px;width:100%;text-align:center;padding:48px 40px;margin:auto">
+    <div style="font-size:64px;margin-bottom:16px">✅</div>
+    <h2 style="font-size:24px;font-weight:900;color:#001840;margin-bottom:10px">Test Completed!</h2>
+    <p id="resSubtitle" style="font-size:15px;color:#555;margin-bottom:24px"></p>
+    <div style="background:#f0f5ff;border-radius:10px;padding:18px 24px;margin-bottom:24px;font-size:15px;color:#333;line-height:1.8">
+      Your results have been recorded and<br><strong>automatically sent to your teacher</strong>.<br>You will receive feedback as soon as possible.
+    </div>
+    <div id="emailStatus" style="font-size:14px;color:#888">✉ Sending results to teacher…</div>
+  </div>
+</div>
+
+<script>
+let studentName='',studentDOB='',examStartTime='';
+let timerInterval=null,timeLeft=3600;
+let answers={};
+let submitted=false;
+const DRAFT_KEY='ielts_midterm_reading03';
+let draftSaveTimer=null;
+
+function saveDraft(){
+  if(submitted||!studentName) return;
+  try{
+    const saved={};
+    document.querySelectorAll('input.ans-input').forEach(el=>{if(el.id) saved[el.id]=el.value;});
+    document.querySelectorAll('select.match-sel').forEach(el=>{if(el.id) saved[el.id]=el.value;});
+    localStorage.setItem(DRAFT_KEY,JSON.stringify({name:studentName,dob:studentDOB,timeLeft,inputs:saved,btnAnswers:{...answers},savedAt:new Date().toISOString()}));
+  }catch(e){}
+}
+function saveDraftDebounced(){clearTimeout(draftSaveTimer);draftSaveTimer=setTimeout(saveDraft,2000);}
+function clearDraft(){try{localStorage.removeItem(DRAFT_KEY);}catch(e){}}
+function checkReadingDraft(){
+  try{const raw=localStorage.getItem(DRAFT_KEY);if(!raw)return;const d=JSON.parse(raw);if(!d||!d.name)return;
+    const t=new Date(d.savedAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('draftName').textContent=d.name;document.getElementById('draftTime').textContent=t;
+    document.getElementById('modalDraft').style.display='flex';}catch(e){}
+}
+function restoreReadingDraft(){
+  try{const d=JSON.parse(localStorage.getItem(DRAFT_KEY));if(!d){document.getElementById('modalDraft').style.display='none';return;}
+    document.getElementById('fullName').value=d.name||'';document.getElementById('dob').value=d.dob||'';
+    document.getElementById('modalDraft').style.display='none';startExam();
+    if(d.timeLeft>0)timeLeft=d.timeLeft;
+    if(d.inputs){Object.entries(d.inputs).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.value=v;});}
+    if(d.btnAnswers){Object.assign(answers,d.btnAnswers);
+      for(let i=1;i<=7;i++){const v=answers['q'+i];if(!v)continue;const row=document.getElementById('row'+i);if(row)row.querySelectorAll('.tfng-btn').forEach(b=>b.classList.toggle('sel',b.dataset.val===v));}
+      for(let i=31;i<=36;i++){const v=answers['q'+i];if(!v)continue;const row=document.getElementById('row'+i);if(row)row.querySelectorAll('.yng-btn').forEach(b=>b.classList.toggle('sel',b.dataset.val===v));}
+      [27,28,29,30].forEach(i=>{const v=answers['q'+i];if(!v)return;const r=document.querySelector('input[name="q'+i+'"][value="'+v+'"]');if(r)r.checked=true;['A','B','C','D'].forEach(l=>{const el=document.getElementById('q'+i+l);if(el)el.classList.toggle('sel',l===v);});});
+    }
+    updateBadge();
+  }catch(e){document.getElementById('modalDraft').style.display='none';}
+}
+function discardReadingDraft(){clearDraft();document.getElementById('modalDraft').style.display='none';}
+document.addEventListener('input',e=>{if(e.target.classList.contains('ans-input'))saveDraftDebounced();});
+document.addEventListener('change',e=>{if(e.target.classList.contains('match-sel'))saveDraftDebounced();});
+window.addEventListener('beforeunload',e=>{if(studentName&&!submitted){saveDraft();e.preventDefault();return e.returnValue='';}});
+window.addEventListener('load',()=>{checkReadingDraft();setInterval(saveDraft,30000);});
+
+const ANSWER_KEY={
+  q1:'TRUE',q2:'NOT GIVEN',q3:'FALSE',q4:'NOT GIVEN',q5:'FALSE',q6:'TRUE',q7:'TRUE',
+  q8:'size',q9:'mud',q10:'fishing',q11:'tourism',q12:['coral','corals'],q13:'earthquake',
+  q14:'iv',q15:'iii',q16:'vi',q17:'v',q18:'i',q19:'vii',
+  q20:'C',q21:'C',q22:'A',q23:'E',
+  q24:'position',q25:'attention',q26:'structure',
+  q27:'D',q28:'B',q29:'C',q30:'B',
+  q31:'NOT GIVEN',q32:'YES',q33:'NOT GIVEN',q34:'NO',q35:'YES',q36:'NO',
+  q37:'I',q38:'H',q39:'E',q40:'C'
+};
+const BAND_TABLE=[[39,9.0],[37,8.5],[35,8.0],[33,7.5],[30,7.0],[27,6.5],[23,6.0],[19,5.5],[15,5.0],[13,4.5],[10,4.0],[8,3.5],[6,3.0],[4,2.5]];
+function getBand(s){for(const[min,b]of BAND_TABLE){if(s>=min)return b.toFixed(1);}return'2.0';}
+
+function startExam(){
+  const name=document.getElementById('fullName').value.trim();const dob=document.getElementById('dob').value;
+  let ok=true;document.getElementById('nameErr').style.display='none';document.getElementById('dobErr').style.display='none';
+  if(!name){document.getElementById('nameErr').style.display='block';ok=false;}
+  if(!dob){document.getElementById('dobErr').style.display='block';ok=false;}
+  if(!ok)return;
+  studentName=name;studentDOB=dob;examStartTime=new Date().toLocaleString('en-GB');
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('examScreen').style.display='flex';
+  document.getElementById('studentBar').textContent='👤 '+studentName;
+  startTimer();showToast('Good luck, '+studentName.split(' ')[0]+'! You have 60 minutes.',3000);
+}
+function startTimer(){
+  timerInterval=setInterval(()=>{
+    timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const d=document.getElementById('timerDisplay');
+    d.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');d.className='';
+    if(timeLeft<=300)d.classList.add('warn');if(timeLeft<=60)d.classList.add('danger');
+    if(timeLeft<=0){clearInterval(timerInterval);d.textContent='00:00';document.getElementById('timeupModal').style.display='flex';}
+  },1000);
+}
+function switchTab(n){[1,2,3].forEach(i=>{document.getElementById('pw'+i).style.display=i===n?'flex':'none';document.getElementById('tab'+i+'btn').classList.toggle('active',i===n);});}
+function setTFNG(q,v,btn){const row=document.getElementById('row'+q);row.querySelectorAll('.tfng-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');answers['q'+q]=v;saveDraftDebounced();updateBadge();}
+function setYNG(q,v,btn){const row=document.getElementById('row'+q);row.querySelectorAll('.yng-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');answers['q'+q]=v;saveDraftDebounced();updateBadge();}
+function setMC(q,v){answers['q'+q]=v;['A','B','C','D'].forEach(l=>{const el=document.getElementById('q'+q+l);if(el)el.classList.toggle('sel',l===v);});saveDraftDebounced();updateBadge();}
+function updateCheck(grp,el,max){
+  const c=document.getElementById('group'+grp);const checks=c.querySelectorAll('input[type=checkbox]');
+  const selected=Array.from(checks).filter(x=>x.checked);
+  if(selected.length>max&&el.checked){el.checked=false;}
+  c.querySelectorAll('.chk-opt').forEach(l=>l.classList.toggle('sel',l.querySelector('input').checked));
+  answers[grp]=Array.from(c.querySelectorAll('input:checked')).map(i=>i.value);
+  saveDraftDebounced();updateBadge();
+}
+
+function countAnswered(){
+  let p1=0,p2=0,p3=0;
+  for(let i=1;i<=7;i++)if(answers['q'+i])p1++;
+  [8,9,10,11,12,13].forEach(i=>{const el=document.getElementById('q'+i);if(el&&el.value.trim())p1++;});
+  [14,15,16,17,18,19,20,21,22,23].forEach(i=>{const el=document.getElementById('q'+i);if(el&&el.value)p2++;});
+  [24,25,26].forEach(i=>{const el=document.getElementById('q'+i);if(el&&el.value.trim())p2++;});
+  [27,28,29,30].forEach(i=>{if(document.querySelector('input[name="q'+i+'"]:checked'))p3++;});
+  for(let i=31;i<=36;i++)if(answers['q'+i])p3++;
+  [37,38,39,40].forEach(i=>{const el=document.getElementById('q'+i);if(el&&el.value)p3++;});
+  return{p1,p2,p3};
+}
+function updateBadge(){const{p1,p2,p3}=countAnswered();
+  if(p1===13)document.getElementById('tab1btn').classList.add('complete');
+  if(p2===13)document.getElementById('tab2btn').classList.add('complete');
+  if(p3===14)document.getElementById('tab3btn').classList.add('complete');}
+
+function confirmSubmit(){const m=Math.floor(timeLeft/60),s=timeLeft%60;document.getElementById('timeLeft').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');document.getElementById('confirmModal').style.display='flex';}
+function closeConfirm(){document.getElementById('confirmModal').style.display='none';}
+function submitTest(){
+  clearInterval(timerInterval);document.getElementById('confirmModal').style.display='none';document.getElementById('timeupModal').style.display='none';
+  document.getElementById('examScreen').style.display='none';collectAllAnswers();showResults();
+}
+function collectAllAnswers(){
+  [8,9,10,11,12,13,24,25,26].forEach(i=>{const el=document.getElementById('q'+i);if(el)answers['q'+i]=(el.value||'').trim().toLowerCase();});
+  [14,15,16,17,18,19,20,21,22,23,37,38,39,40].forEach(i=>{const el=document.getElementById('q'+i);if(el)answers['q'+i]=el.value;});
+  [27,28,29,30].forEach(i=>{const r=document.querySelector('input[name="q'+i+'"]:checked');if(r)answers['q'+i]=r.value;});
+}
+function scoreAnswers(){
+  let total=0,p1=0,p2=0,p3=0;const results={};
+  function chk(q,passage){
+    const k='q'+q;const correct=ANSWER_KEY[k];const student=answers[k]||'';let ok=false;
+    if(Array.isArray(correct))ok=correct.some(c=>c.toLowerCase()===student.toLowerCase());
+    else ok=(correct||'').toLowerCase()===(student||'').toLowerCase();
+    results[q]={student,correct:Array.isArray(correct)?correct.join(' / '):correct,ok};
+    if(ok){total++;if(passage===1)p1++;else if(passage===2)p2++;else p3++;}
+  }
+  for(let i=1;i<=13;i++)chk(i,1);
+  for(let i=14;i<=26;i++)chk(i,2);
+  for(let i=27;i<=40;i++)chk(i,3);
+  return{total,p1,p2,p3,results};
+}
+function showResults(){
+  submitted=true;clearDraft();
+  const{total,p1,p2,p3,results}=scoreAnswers();const band=getBand(total);
+  window._results={total,p1,p2,p3,band,results};
+  document.getElementById('resultsScreen').style.display='block';
+  document.getElementById('resSubtitle').textContent=studentName+' · '+new Date().toLocaleDateString('en-GB');
+  setTimeout(()=>sendToTeacher(),1000);
+}
+function pdfSafe(s){if(!s)return '';return s
+  .replace(/[àáảãạăằắẳẵặâầấẩẫậ]/g,'a').replace(/[ÀÁẢÃẠĂẰẮẲẴẶÂẦẤẨẪẬ]/g,'A').replace(/đ/g,'d').replace(/Đ/g,'D')
+  .replace(/[èéẻẽẹêềếểễệ]/g,'e').replace(/[ÈÉẺẼẸÊỀẾỂỄỆ]/g,'E').replace(/[ìíỉĩị]/g,'i').replace(/[ÌÍỈĨỊ]/g,'I')
+  .replace(/[òóỏõọôồốổỗộơờớởỡợ]/g,'o').replace(/[ÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢ]/g,'O')
+  .replace(/[ùúủũụưừứửữự]/g,'u').replace(/[ÙÚỦŨỤƯỪỨỬỮỰ]/g,'U').replace(/[ỳýỷỹỵ]/g,'y').replace(/[ỲÝỶỸỴ]/g,'Y');}
+function formatDOB(d){return d?new Date(d).toLocaleDateString('en-GB'):'';}
+function buildPDFDoc(){
+  const{jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const W=210,H=297,M=18,CW=W-M*2,safeName=pdfSafe(studentName);
+  doc.setFillColor(0,45,114);doc.rect(0,0,W,36,'F');doc.setFillColor(200,164,0);doc.rect(0,36,W,1.5,'F');
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(19);doc.text('IELTS Midterm Test - Reading 03',W/2,13,{align:'center'});
+  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.text('Student Result Report  ·  Huong Stella Paradigm',W/2,22,{align:'center'});
+  doc.setFontSize(9);doc.text('Date: '+examStartTime,W/2,30,{align:'center'});
+  let y=45;doc.setFillColor(240,244,252);doc.setDrawColor(0,45,114);doc.setLineWidth(0.6);doc.roundedRect(M,y,CW,30,2,2,'FD');
+  doc.setTextColor(0,45,114);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('CANDIDATE INFORMATION',M+5,y+7);
+  doc.setTextColor(40,40,40);doc.setFontSize(10);const half=CW/2;
+  [['Full Name',safeName],['Date of Birth',formatDOB(studentDOB)],['Test Date',examStartTime.split(',')[0]||examStartTime],['Test Name','IELTS Midterm Test - Reading 03']].forEach((r,i)=>{
+    const col=i<2?0:1,row=i%2,rx=M+5+col*half,ry=y+15+row*9;doc.setFont('helvetica','bold');doc.text(r[0]+': ',rx,ry);
+    const lw=doc.getTextWidth(r[0]+': ');doc.setFont('helvetica','normal');doc.text(r[1],rx+lw,ry);});
+  y+=38;const{total,p1,p2,p3,band}=window._results;const pct=Math.round(total/40*100);
+  doc.setFillColor(0,45,114);doc.roundedRect(M,y,CW,28,4,4,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(28);
+  doc.text('Score: '+total+' / 40',W/2,y+13,{align:'center'});doc.setFontSize(13);doc.text('Band: '+band+'  ·  '+pct+'%',W/2,y+23,{align:'center'});
+  y+=34;const parts=[{qs:13,lbl:'Passage 1 (Q1–13)',sc:p1},{qs:13,lbl:'Passage 2 (Q14–26)',sc:p2},{qs:14,lbl:'Passage 3 (Q27–40)',sc:p3}];
+  const colW=(CW-8)/3;doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(0,51,102);doc.text('PASSAGE SCORES',M,y+6);y+=10;
+  parts.forEach((pt,i)=>{const x=M+i*(colW+4);doc.setFillColor(240,244,248);doc.roundedRect(x,y,colW,20,3,3,'F');doc.setFillColor(0,51,102);doc.rect(x,y,colW,4,'F');
+    doc.setTextColor(255,255,255);doc.setFontSize(7);doc.text(pt.lbl,x+colW/2,y+2.8,{align:'center'});doc.setTextColor(0,51,102);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text(pt.sc+'/'+pt.qs,x+colW/2,y+14,{align:'center'});});
+  y+=26;const{results}=window._results;
+  const blocks=[{from:1,to:13,label:'Passage 1 – Q1–13'},{from:14,to:26,label:'Passage 2 – Q14–26'},{from:27,to:40,label:'Passage 3 – Q27–40'}];
+  blocks.forEach(({from,to,label})=>{
+    if(y>255){doc.addPage();y=15;}
+    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(0,51,102);doc.text(label,M,y);y+=6;
+    const rowH=9,cols=5,cw=(W-M*2)/cols;let idx=0;
+    for(let q=from;q<=to;q++){const d=results[q]||{student:'—',correct:'',ok:false};const col=idx%cols,row=Math.floor(idx/cols);const x=M+col*cw;
+      if(y+row*rowH>265&&col===0&&row>0){doc.addPage();y=15;}
+      const ady=y+row*rowH;doc.setFillColor(d.ok?232:255,d.ok?245:235,d.ok?232:235);doc.rect(x,ady-5,cw-1,rowH-1,'F');
+      doc.setTextColor(d.ok?30:180,d.ok?110:30,d.ok?40:30);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('Q'+q+': '+(d.student||'—').substring(0,20),x+2,ady);
+      if(!d.ok){doc.setFont('helvetica','normal');doc.setFontSize(7);doc.text('✓ '+(d.correct||'').substring(0,22),x+2,ady+3.5);}idx++;}
+    const rows=Math.ceil((to-from+1)/cols);y+=rows*rowH+6;
+  });
+  const tp=doc.internal.getNumberOfPages();for(let p=1;p<=tp;p++){doc.setPage(p);doc.setFillColor(0,45,114);doc.rect(0,H-11,W,11,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.setFontSize(8);
+    doc.text('IELTS Midterm Test - Reading 03  ·  Huong Stella Paradigm  ·  '+safeName,M,H-4);doc.text('Page '+p+' of '+tp,W-M,H-4,{align:'right'});}
+  return doc;
+}
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwXgN9lsPpTWRpxz09kG-OK8Zvb5I0yiugDdGvxzdghyEkqL6hs95p1JalHwNuSoG6ONw/exec';
+function setEmailStatus(msg,color){const el=document.getElementById('emailStatus');if(el){el.textContent=msg;el.style.color=color||'#888';}}
+function sendToTeacher(){
+  if(!window._results)return;const{total,p1,p2,p3,band,results}=window._results;const details={};
+  for(let i=1;i<=40;i++){if(results[i])details[i]=results[i];}
+  const doc=buildPDFDoc();const pdfBase64=doc.output('datauristring').split(',')[1];
+  setEmailStatus('✉ Sending results to teacher…','#888');
+  fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify({
+    name:studentName,dob:studentDOB,date:examStartTime,testName:'IELTS Midterm Test - Reading 03',
+    raw:total,band:String(band),pct:Math.round(total/40*100),scores:{1:p1,2:p2,3:p3,4:'—'},details,pdf:pdfBase64
+  })}).then(r=>r.json()).then(res=>{
+    if(res.status==='ok')setEmailStatus('✅ Results sent to teacher successfully.','#27ae60');
+    else setEmailStatus('❌ Send failed: '+res.message,'#c0392b');
+  }).catch(err=>setEmailStatus('❌ Could not connect: '+err,'#c0392b'));
+}
+
+// ── HIGHLIGHT ──
+let _savedRange=null;
+function showToast(msg,ms){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>{t.style.display='none';},ms||2500);}
+function makeMarkListener(mark){mark.addEventListener('click',function(e){e.stopPropagation();const p=this.parentNode;while(this.firstChild)p.insertBefore(this.firstChild,this);p.removeChild(this);p.normalize();});}
+document.addEventListener('mouseup',e=>{
+  if(e.target.closest('#hlToolbar'))return;
+  if(!e.target.closest('.left-panel')){hideHL();return;}
+  const sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.toString().trim()){hideHL();return;}
+  const range=sel.getRangeAt(0);_savedRange=range.cloneRange();const rect=range.getBoundingClientRect();
+  const bar=document.getElementById('hlToolbar');bar.style.display='flex';const barW=bar.offsetWidth||230;
+  let left=rect.left+rect.width/2-barW/2;left=Math.max(8,Math.min(left,window.innerWidth-barW-8));
+  let top=rect.top-52+window.scrollY;if(top<8)top=rect.bottom+10+window.scrollY;
+  bar.style.left=left+'px';bar.style.top=top+'px';
+});
+document.addEventListener('mousedown',e=>{if(!e.target.closest('#hlToolbar'))hideHL();});
+function hideHL(){document.getElementById('hlToolbar').style.display='none';_savedRange=null;}
+function applyHL(color){const range=_savedRange;if(!range)return;
+  try{const mark=document.createElement('mark');mark.className='hl-'+color;mark.title='Click to remove';makeMarkListener(mark);range.surroundContents(mark);}
+  catch(e){try{const frag=range.extractContents();const mark=document.createElement('mark');mark.className='hl-'+color;mark.title='Click to remove';makeMarkListener(mark);mark.appendChild(frag);range.insertNode(mark);}catch(e2){showToast('Please highlight within a single paragraph.',2500);}}
+  window.getSelection().removeAllRanges();hideHL();}
+function eraseHL(){if(_savedRange){const anc=_savedRange.commonAncestorContainer;const el=anc.nodeType===3?anc.parentElement:anc;const panel=el.closest('.left-panel');
+  if(panel){[...panel.querySelectorAll('mark[class^="hl-"]')].forEach(m=>{const mR=document.createRange();mR.selectNode(m);
+    if(_savedRange.compareBoundaryPoints(Range.END_TO_START,mR)<=0&&_savedRange.compareBoundaryPoints(Range.START_TO_END,mR)>=0){const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);p.normalize();}});}}
+  window.getSelection().removeAllRanges();hideHL();}
+
+// ── ANTI-CHEAT ──
+document.addEventListener('copy',e=>{if(!e.target.closest('.right-panel')&&!e.target.closest('#resultsScreen')){e.preventDefault();showToast('Text copying is disabled during the exam.',2000);}});
+document.addEventListener('cut',e=>e.preventDefault());
+document.addEventListener('contextmenu',e=>{if(e.target.closest('.left-panel'))e.preventDefault();});
+document.addEventListener('keydown',e=>{const ctrl=e.ctrlKey||e.metaKey;
+  if(ctrl&&(e.key==='f'||e.key==='F')){e.preventDefault();showToast('🔒 Search is disabled during the exam.',2500);return;}
+  if(ctrl&&e.shiftKey&&e.key.toUpperCase()==='R'){e.preventDefault();if(!confirm('Register "'+TEST_META.testName+'" in Test Map?'))return;
+    fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(Object.assign({action:'registerTest'},TEST_META))}).then(r=>r.json()).then(res=>alert(res.status==='ok'?'✅ Registered':'❌ '+(res.message||'Error'))).catch(err=>alert('❌ '+err));}
+});
+const TEST_META={testName:"IELTS Midterm Test - Reading 03",skill:"Reading",mockNum:"MT-R03",file:"IELTS_Midterm_Test_Reading_03.html",source:"True IELTS 11/11, 19/11, 3/11",draftKey:"ielts_midterm_reading03",audio:"-"};
+</script>
+</body>
+</html>
